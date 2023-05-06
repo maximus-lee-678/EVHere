@@ -3,7 +3,7 @@
 pip install flask python-dotenv
 
 [npm]
-@ /frontend:
+command prompt cd to </react>:
 npm install
 npm install http-proxy-middleware --save
 
