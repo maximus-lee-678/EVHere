@@ -23,3 +23,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# flask ignores
+/flask/venv
+/flask/__pycache__
