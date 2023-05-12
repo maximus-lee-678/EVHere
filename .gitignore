@@ -1,7 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# react ignores
-
+# [react ignores]
 # dependencies
 /react/node_modules
 /react/.pnp
@@ -24,6 +23,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# flask ignores
+# [flask ignores]
 /flask/venv
 /flask/__pycache__
+
+# [global ignores]
+*.db

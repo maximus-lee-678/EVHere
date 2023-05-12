@@ -1,35 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route, Redirect, Navigate, useNavigate, Switch } from 'react-router-dom';
 
-function App() {
-  const [currentTime, setCurrentTime] = useState(0);
+import Dashboard from './MainPages/Dashboard.js';
+import NotFound from './MainPages/NotFound.js';
+import Login from './Auth/Login.js';
+import Register from './Auth/Register.js';
 
-  useEffect(() => {
-    fetch('http://localhost:5000/time').then(res => res.json())
-      .then(data => { setCurrentTime(data.time); })
-      .catch(err => console.log(err));
-  }, []);
-
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <p>The current time is {currentTime}.</p>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          {/* This route is for home element with exact path "/", in element props we passes the imported element*/}
+          <Route exact path="/" element={<Dashboard />} />
+          <Route exact path="/Login" element={<Login />} />
+          <Route exact path="/Register" element={<Register />} />
+
+          {/* If any route mismatches the upper route endpoints then, redirect triggers and redirects app to home element with to="/" */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
-
-export default App;
