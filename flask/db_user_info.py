@@ -168,3 +168,4 @@ def password_check(password, password_hashed):
 # Generates random UUID
 def generate_uuid():
     return str(uuid.uuid4())
+

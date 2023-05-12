@@ -1,7 +1,7 @@
 import sqlite3
 
-DATABASE_PATH = 'database.db'
-SCRIPT_PATH = 'db_schema.sql'
+DATABASE_PATH = '../database/database.db'
+SCRIPT_PATH = '../database/db_schema.sql'
 
 def touch_database():
     with open(SCRIPT_PATH, 'r') as sql_file:

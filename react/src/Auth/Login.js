@@ -1,5 +1,4 @@
 // https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications
-// https://stackoverflow.com/questions/41956465/how-to-create-multiple-page-app-using-react
 
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
