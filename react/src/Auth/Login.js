@@ -1,40 +1,48 @@
 // https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Login() {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    function authenticate(username, password) {
+
+    async function handleLogin(e) {
+        e.preventDefault();
+
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username: username, password: password })
+            body: JSON.stringify({ email: email, password: password })
         };
-        fetch('http://localhost:5000/login', requestOptions)
-            .then(res => res.json())
-            .then(data => { console.log(data.username); })
-            .catch(err => console.log(err));
-    }
 
-    function handleLogin(e) {
-        e.preventDefault();
-        authenticate(username, password);
-        console.log('You clicked submit.');
+        let response;
+        await fetch('http://localhost:5000/login', requestOptions)
+            .then(res => res.json())
+            .then(data => { response = data })
+            .catch(err => console.log(err));
+
+        if (response.result) {
+            // store the user in localStorage
+            localStorage.setItem('user_email', email);
+
+            // reload page
+            window.location.replace('/'); 
+        } else {
+            alert(response.description);
+        }
     }
 
     return (
-
         <form class="w-full max-w-sm mx-auto mt-6" onSubmit={handleLogin}>
             <div class="md:flex md:items-center mb-6">
                 <div class="md:w-1/3">
                     <label class="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4" for="inline-usename">
-                        Username
+                        Email
                     </label>
                 </div>
                 <div class="md:w-2/3">
-                    <input value={username} onChange={(event) => setUsername(event.target.value)} class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-cyan-500" id="inline-full-name" type="text" placeholder="janeDoe" />
+                    <input value={email} onChange={(event) => setEmail(event.target.value)} class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-cyan-500" id="inline-full-name" type="text" placeholder="janeDoe@email.com" />
                 </div>
             </div>
             <div class="md:flex md:items-center mb-6">

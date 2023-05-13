@@ -8,9 +8,8 @@ export default function Register() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [fullName, setFullName] = useState('');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(`Submitted form with username: ${username}, password: ${password}, email: ${email}, phone_number: ${phoneNumber}, full_name: ${fullName}`);
+  async function handleSubmit(e) {
+    e.preventDefault();
 
     const requestOptions = {
       method: 'POST',
@@ -18,14 +17,21 @@ export default function Register() {
       body: JSON.stringify({ username: username, password: password, email: email, phone_number: phoneNumber, full_name: fullName })
     };
 
-    fetch('http://localhost:5000/create_account', requestOptions)
+    let response;
+    await fetch('http://localhost:5000/create_account', requestOptions)
       .then(res => res.json())
-      .then(data => { })
+      .then(data => { response = data })
       .catch(err => console.log(err));
+
+    alert(response.description);
+
+    if (response.result) {
+      // reload page
+      window.location.replace('/Login');
+    }
   };
 
   return (
-
     <form class="w-full max-w-sm mx-auto mt-6" onSubmit={handleSubmit}>
       <div class="md:flex md:items-center mb-6">
         <div class="md:w-1/3">

@@ -1,7 +1,7 @@
 import sqlite3
 
-DATABASE_PATH = '../database/database.db'
-SCRIPT_PATH = '../database/db_schema.sql'
+DATABASE_PATH = './database/database.db'
+SCRIPT_PATH = './database/db_schema.sql'
 
 def touch_database():
     with open(SCRIPT_PATH, 'r') as sql_file:
@@ -19,12 +19,12 @@ def setup_connection():
 def close_connection(conn):
     conn.close()
 
-def check_if_exists(table_name, column_name, sanitised_value):
+def check_if_exists(table_name, where_column_name, sanitised_value):
     conn = setup_connection()
     cursor = conn.cursor()
 
     task = (sanitised_value,)
-    cursor.execute(f'SELECT * FROM {table_name} WHERE {column_name}=?', task)
+    cursor.execute(f'SELECT * FROM {table_name} WHERE {where_column_name}=?', task)
 
     row = cursor.fetchone()
     close_connection(conn)
@@ -34,3 +34,14 @@ def check_if_exists(table_name, column_name, sanitised_value):
     else:
         return True
     
+def get_first_row(table_name, where_column_name, sanitised_value, columns):
+    conn = setup_connection()
+    cursor = conn.cursor()
+
+    task = (sanitised_value,)
+    cursor.execute(f'SELECT {columns} FROM {table_name} WHERE {where_column_name}=?', task)
+
+    row = cursor.fetchone()
+    close_connection(conn)
+
+    return row

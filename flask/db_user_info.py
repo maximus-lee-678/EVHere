@@ -3,7 +3,6 @@ import re, uuid, bcrypt
 import db_methods
 
 # This feels very much like C, how do i make that not so?
-CREATE_SUCCESS = 0
 ACCOUNT_ALREADY_EXISTS = 1
 USERNAME_INVALID_LENGTH = 2
 PASSWORD_INVALID_LENGTH = 3
@@ -13,8 +12,11 @@ EMAIL_INVALID_SYNTAX = 6
 PHONE_NUMBER_INVALID = 7
 FULL_NAME_INVALID_LENGTH = 8
 
-create_user_code_dict = {
-    CREATE_SUCCESS: "Account successfully created!",
+CREATE_SUCCESS = 100
+LOGIN_SUCCESS = 101
+LOGIN_FAILURE = 102
+
+service_code_dict = {
     ACCOUNT_ALREADY_EXISTS: "Account already exists in system.",
     USERNAME_INVALID_LENGTH: "Username is of invalid length.",
     PASSWORD_INVALID_LENGTH: "Password is of invalid length.",
@@ -22,7 +24,10 @@ create_user_code_dict = {
     EMAIL_INVALID_LENGTH: "Email is of invalid length.",
     EMAIL_INVALID_SYNTAX: "Email is not valid.",
     PHONE_NUMBER_INVALID: "Phone number is not valid.",
-    FULL_NAME_INVALID_LENGTH: "Full name is of invalid length."
+    FULL_NAME_INVALID_LENGTH: "Full name is of invalid length.",
+    CREATE_SUCCESS: "Account successfully created!",
+    LOGIN_SUCCESS: "Login Successful!",
+    LOGIN_FAILURE: "Email or Password is incorrect."
 }
 
 # INSERTS a new user into database.
@@ -86,6 +91,31 @@ def create_user(input_username, input_password, input_email, input_full_name, in
     db_methods.close_connection(conn)
 
     return CREATE_SUCCESS
+
+
+
+def login_user(input_email, input_password):
+    # validate email
+    if len(input_email) > 255:
+        return EMAIL_INVALID_LENGTH
+    if not validate_email(input_email):
+        return EMAIL_INVALID_SYNTAX
+    email = string_sanitise(input_email)
+
+    # get first row of email, if any
+    row = db_methods.get_first_row("user_info", "email", email, "password")
+
+    if row is None:
+        return LOGIN_FAILURE
+    
+    password_hash_string = row[0]
+
+    if password_check(input_password, password_hash_string):
+        return LOGIN_SUCCESS
+    else:
+        return LOGIN_FAILURE
+
+##################################################
 
 # Used to check if string matches email format
 def validate_email(email):
@@ -168,4 +198,3 @@ def password_check(password, password_hashed):
 # Generates random UUID
 def generate_uuid():
     return str(uuid.uuid4())
-

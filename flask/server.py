@@ -20,9 +20,11 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 # Route: Authenticate user login
 @app.route('/login', methods=['POST'])      
 def fun_login():
-    username = request.json['username']
+    email = request.json['email']
     password = request.json['password']
-    return {'username': username, 'password': password}
+
+    return_code = db_user_info.login_user(email, password)
+    return jsonify(result=return_code == db_user_info.LOGIN_SUCCESS, description=db_user_info.service_code_dict[return_code])
 
 # Route: Create new user account
 @app.route('/create_account', methods=['POST'])      
@@ -34,7 +36,7 @@ def login_create_account():
     phone_number = request.json['phone_number']
 
     return_code = db_user_info.create_user(username, password, email, full_name, phone_number)
-    return jsonify(result=return_code == 0, description=db_user_info.create_user_code_dict[return_code])
+    return jsonify(result=return_code == db_user_info.CREATE_SUCCESS, description=db_user_info.service_code_dict[return_code])
 
 # Running app
 if __name__ == '__main__':

@@ -1,7 +1,6 @@
-cd react
-
 :: run react
-start cmd /k npm start
+cd react && start cmd /k npm start
+cd ..
 
 :: run flask
-npm run start-api
+flask run --no-debugger
