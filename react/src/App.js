@@ -15,18 +15,8 @@ export default function App() {
   useMemo(() => {
     loggedInUser = localStorage.getItem("user_email");
   }, []);
-
-  // console.log(loggedInUser);
-  // console.log(window.location.pathname);
-
+  
   if (loggedInUser === null && (window.location.pathname != "/Login" || window.location.pathname != "/Register")) {
-    // Redirect doesnt work properly, can find a much better way
-    // return (
-    //   <BrowserRouter>
-    //     <Navigate to="/Login"/>
-    //   </BrowserRouter>
-    // );
-
     // Allow access only to register page, rest of pages lead to login
     return (
       <BrowserRouter>

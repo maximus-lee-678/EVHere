@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="drawSQL-mysql-export-2023-05-11.sql" id="Project-1e93" database="Sqlite" >
+	<schema name="public" >
+		<table name="charger" spec="" >
+			<column name="id" type="CHAR" length="36" jt="1" mandatory="y" />
+			<column name="name" type="VARCHAR" length="255" jt="12" mandatory="y" />
+			<column name="latitude" type="DOUBLE" length="0" decimal="0" jt="8" mandatory="y" />
+			<column name="longitude" type="DOUBLE" length="0" decimal="0" jt="8" mandatory="y" />
+			<column name="last_updated" prior="last updated" type="DATETIME" jt="93" mandatory="y" />
+			<index name="pk_charger" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="favourited_chargers" prior="favourited chargers" spec="" >
+			<column name="id" type="CHAR" length="36" jt="1" mandatory="y" />
+			<column name="id_user_info" prior="id user info" type="CHAR" length="36" jt="1" mandatory="y" />
+			<column name="id_charger" prior="id charger" type="BIGINT" jt="-5" mandatory="y" />
+			<index name="pk_favourited chargers" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="favourited chargers id user info foreign" to_schema="public" to_table="user_info" options="" >
+				<fk_column name="id_user_info" pk="id" />
+			</fk>
+			<fk name="favourited chargers id charger foreign" to_schema="public" to_table="charger" options="" >
+				<fk_column name="id_charger" pk="id" />
+			</fk>
+		</table>
+		<table name="user_info" prior="user info" spec="" >
+			<column name="id" type="CHAR" length="36" jt="1" mandatory="y" />
+			<column name="username" type="VARCHAR" length="64" jt="12" mandatory="y" />
+			<column name="password" type="VARCHAR" length="64" jt="12" mandatory="y" />
+			<column name="email" type="VARCHAR" length="255" jt="12" mandatory="y" />
+			<column name="full_name" type="VARCHAR" length="255" jt="12" mandatory="y" />
+			<column name="phone_no" prior="phone no" type="VARCHAR" length="8" jt="12" />
+			<column name="created_at" type="DATETIME" jt="93" mandatory="y" />
+			<column name="modified_at" type="DATETIME" jt="93" mandatory="y" />
+			<index name="pk_user info" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+	</schema>
+	<layout name="Layout" id="Layout-136d" confirmed="y" show_relation="columns" >
+		<entity schema="public" name="charger" color="BED3F4" x="48" y="48" />
+		<entity schema="public" name="favourited_chargers" color="BED3F4" x="288" y="48" />
+		<entity schema="public" name="user_info" color="BED3F4" x="512" y="48" />
+		<callout x="912" y="208" pointer="Round" >
+			<comment><![CDATA[Add tables to the layout diagram (here) by drag & drop from the Project Tree.
+Drop this callout from its right-click pop-up.]]></comment>
+		</callout>
+	</layout>
+</project>
