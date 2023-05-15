@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Icon } from 'leaflet'
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet';
+import Navbar from "../shared/Navbar";
 
 import "leaflet/dist/leaflet.css";
 import markerIconPng from "leaflet/dist/images/marker-icon.png"
@@ -48,6 +49,7 @@ export default function Dashboard() {
 
   return (
     <div>
+      <Navbar/>
       <h2>Dashboard</h2>
       <div class="mx-auto">
         <button class="shadow bg-cyan-500 hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit"
