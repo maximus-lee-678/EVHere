@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 
-export default function Navbar() {
-    const [loggedIn, setLoggedIn] = useState('');
+export default function Navbar(props) {
+  const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const [loggedIn, setLoggedIn] = useState('');
 
-    if (loggedIn == '') {
+    if (loggedIn === '') {
         //not logged in
-        if (localStorage.getItem("user_email") != "" && localStorage.getItem("user_email") == null) {
+        if (localStorage.getItem("user_email") !== "" && localStorage.getItem("user_email") == null) {
             setLoggedIn("false");
         }
         //if logged in
@@ -14,51 +15,120 @@ export default function Navbar() {
             setLoggedIn("true");
         }
     }
-   
 
 
-    return (
-        <nav class="flex items-center justify-between flex-wrap bg-cyan-500 p-5">
-            <div class="flex items-center flex-shrink-0 text-white mr-6">
-                <span class="font-semibold text-xl tracking-tight">EVHere</span>
-            </div>
-            <div class="block lg:hidden">
-                <button class="flex items-center px-3 py-2 border rounded text-cyan-200 border-cyan-400 hover:text-white hover:border-white" onClick={menuButtonClicked}>
-                    <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
-                </button>
-            </div>
-            <div id="menu" class="hidden w-full flex-grow lg:flex lg:items-center lg:w-auto">
-                <div class="text-sm lg:flex-grow">
-                    <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-cyan-200 hover:text-white mr-4">
-                        Docs
-                    </a>
-                    <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-cyan-200 hover:text-white mr-4">
-                        Examples
-                    </a>
-                    <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-cyan-200 hover:text-white mr-4">
-                        Blog
-                    </a>
-                    <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-cyan-200 hover:text-white mr-4">
-                        Examples
-                    </a>
-                    <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-cyan-200 hover:text-white">
-                        Blog
-                    </a>
-                </div>
-                <div>
-                    <Link to="/Register" id="signupButton" class={
-                        loggedIn == "true" ? "hidden text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0 mr-4" : "inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0 mr-4"
-                    }>Sign up</Link>
-                    <Link to="/Login" id="loginButton" class={
-                        loggedIn == "true" ? "hidden text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0 mr-4" : "inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0 mr-4"
-                    }>Login</Link>
-                    <button id="logoutButton" onClick={handleLogout} class={
-                        loggedIn == "false" ? "hidden text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0 mr-4" : "inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0 mr-4"
-                    }>Logout</button>
-                </div>
-            </div>
-        </nav>
-    )
+  return (
+    <nav
+      className={
+        (props.transparent
+          ? "top-0 absolute z-50 w-full"
+          : "relative shadow-lg bg-white shadow-lg") +
+        " flex flex-wrap items-center justify-between px-2 py-3 "
+      }
+    >
+      <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
+        <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+          <a
+            className={
+              (props.transparent ? "text-white" : "text-gray-800") +
+              " text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
+            }
+            href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/presentation"
+          >
+            EVHere
+          </a>
+          <button
+            className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+            type="button"
+            onClick={() => setNavbarOpen(!navbarOpen)}
+          >
+            <i
+              className={
+                (props.transparent ? "text-white" : "text-gray-800") +
+                " fas fa-bars"
+              }
+            ></i>
+          </button>
+        </div>
+        <div
+          className={
+            "lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none" +
+            (navbarOpen ? " block rounded shadow-lg" : " hidden")
+          }
+          id="example-navbar-warning"
+        >
+          <ul className="flex flex-col lg:flex-row list-none mr-auto">
+            <li className="flex items-center">
+              <a
+                className={
+                  (props.transparent
+                    ? "lg:text-white lg:hover:text-gray-300 text-gray-800"
+                    : "text-gray-800 hover:text-gray-600") +
+                  " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                }
+                href="#test"
+              >
+                <i
+                  className={
+                    (props.transparent
+                      ? "lg:text-gray-300 text-gray-500"
+                      : "text-gray-500") +
+                    " far fa-file-alt text-lg leading-lg mr-2"
+                  }
+                />{" "}
+                Docs
+              </a>
+            </li>
+          </ul>
+          <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
+            <li className="flex items-center">
+              <Link to="/Register"
+                className={
+                  (props.transparent
+                    ? "bg-white text-gray-800 hover:bg-gray-300"
+                    : "bg-pink-500 text-white hover:bg-pink-600") + (loggedIn === "true" ? " hidden" : "") + 
+                  " text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
+                }
+                type="button"
+                style={{ transition: "all .15s ease" }}
+              >
+                Sign up
+              </Link>
+            </li>
+            <li className="flex items-center">
+              <Link to="/Login"
+                className={
+                  (props.transparent
+                    ? "bg-white text-gray-800 hover:bg-gray-300"
+                    : "bg-pink-500 text-white hover:bg-pink-600") + (loggedIn === "true" ? " hidden" : "") + 
+                  " text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
+                }
+                type="button"
+                style={{ transition: "all .15s ease" }}
+              >
+                Login
+              </Link>
+            </li>
+            <li className="flex items-center">
+              <button
+                className={
+                  (props.transparent
+                    ? "bg-white text-gray-800 active:bg-gray-100"
+                    : "bg-pink-500 text-white active:bg-pink-600") + (loggedIn === "false" ? " hidden" : "") + 
+                  " text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
+                }
+                type="button"
+                style={{ transition: "all .15s ease" }}
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
 }
 
 function handleLogout() {
@@ -69,12 +139,11 @@ function handleLogout() {
     window.location.reload();
 }
 
-
-function menuButtonClicked() {
-    const menu = document.getElementById("menu");
-    menu.classList.toggle("hidden");
-    console.log(menu.classList);
+function handleLogin() {
+    window.location.href = "/Login";
 }
 
-
+function handleSignup() {
+    window.location.href = "/Register";
+}
 
