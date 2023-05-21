@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from "../shared/Navbar";
+import { Link } from 'react-router-dom';
 
 export default function Dashboard() {
   return (
@@ -37,7 +38,7 @@ export default function Dashboard() {
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap">
               <div className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
-                <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+                <div className="relative flex flex-col min-w-0 break-words bg-white hover:bg-blue-50 cursor-pointer w-full mb-8 shadow-lg rounded-lg">
                   <div className="px-4 py-5 flex-auto">
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400">
                       <i className="fas fa-dollar-sign"></i>
@@ -51,7 +52,7 @@ export default function Dashboard() {
               </div>
 
               <div className="w-full md:w-4/12 px-4 text-center">
-                <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+                <Link to="/Favourites" className="relative flex flex-col min-w-0 break-words bg-white hover:bg-red-50 cursor-pointer w-full mb-8 shadow-lg rounded-lg">
                   <div className="px-4 py-5 flex-auto">
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
                     <i class="fa-solid fa-heart" style={{color: "#ffffff"}}></i>
@@ -63,11 +64,11 @@ export default function Dashboard() {
                       Save the location of your favourite EV chargers<br></br>with just a click.
                     </p>
                   </div>
-                </div>
+                </Link>
               </div>
 
               <div className="pt-6 w-full md:w-4/12 px-4 text-center">
-                <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+                <div className="relative flex flex-col min-w-0 break-words bg-white hover:bg-green-50 cursor-pointer w-full mb-8 shadow-lg rounded-lg">
                   <div className="px-4 py-5 flex-auto">
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-green-400">
                       <i className="fas fa-map-marker-alt"></i>

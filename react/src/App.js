@@ -8,6 +8,7 @@ import Dashboard from './MainPages/Dashboard.js';
 import NotFound from './MainPages/NotFound.js';
 import Login from './Auth/Login.js';
 import Register from './Auth/Register.js';
+import Favourites from './MainPages/Favourites.js';
 
 export default function App() {
   let loggedInUser;
@@ -38,6 +39,8 @@ export default function App() {
 
         {/* If any route mismatches the upper route endpoints then, redirect triggers and redirects app to home element with to="/" */}
         <Route path="*" element={<NotFound />} />
+
+        <Route exact path="/Favourites" element={<Favourites />} />
       </Routes>
     </BrowserRouter>
   );
