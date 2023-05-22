@@ -1,0 +1,4 @@
+https://github.com/yinshanyang/singapore/tree/master/maps
+https://data.gov.sg/dataset/electoral-boundary-2015?resource_id=5cdc1551-d947-4054-9361-24c692cb65c2
+https://data.gov.sg/dataset/master-plan-2019-region-boundary-no-sea
+https://data.gov.sg/open-data-licence
