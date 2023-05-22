@@ -9,6 +9,7 @@ import NotFound from './MainPages/NotFound.js';
 import Login from './Auth/Login.js';
 import Register from './Auth/Register.js';
 import Favourites from './MainPages/Favourites.js';
+import Recommendations from './MainPages/Recommendations.js';
 
 export default function App() {
   let loggedInUser;
@@ -41,6 +42,7 @@ export default function App() {
         <Route path="*" element={<NotFound />} />
 
         <Route exact path="/Favourites" element={<Favourites />} />
+        <Route exact path="/Recommendations" element={<Recommendations />} />
       </Routes>
     </BrowserRouter>
   );
