@@ -14,7 +14,7 @@ export default function Navbar() {
             setLoggedIn("true");
         }
     }
-   
+
 
 
     return (
@@ -75,6 +75,3 @@ function menuButtonClicked() {
     menu.classList.toggle("hidden");
     console.log(menu.classList);
 }
-
-
-
