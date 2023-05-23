@@ -68,7 +68,7 @@ export default function Recommendations() {
                             </div>
 
                             <div className="col-span-2">
-                                <Map />
+                                <Map desiredZoom={11} mapWidth={"100%"} mapHeight={"70vh"}/>
                             </div>
                         </div>
                     </div>

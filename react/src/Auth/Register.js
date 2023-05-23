@@ -9,23 +9,29 @@ export default function Register() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [fullName, setFullName] = useState('');
 
+  // Handler for login form submission. Transforms fields from useStates into POST fields
+  // and sends it to backend. Receives a JSON and acts based on response result.
   async function handleSubmit(e) {
     e.preventDefault();
 
+    // Forms POST header
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username: username, password: password, email: email, phone_number: phoneNumber, full_name: fullName })
     };
 
+    // Store response
     let response;
     await fetch('http://localhost:5000/create_account', requestOptions)
       .then(res => res.json())
       .then(data => { response = data })
       .catch(err => console.log(err));
 
+    // TODO make a nicer way of displaying success state
     alert(response.description);
 
+    // If success, redirect
     if (response.result) {
       // reload page
       window.location.replace('/Login');

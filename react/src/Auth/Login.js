@@ -7,22 +7,28 @@ import Navbar from '../shared/Navbar';
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loginError, setLoginError] = useState('');
 
+    // Handler for login form submission. Transforms email and password from useStates into POST fields
+    // and sends it to backend. Receives a JSON and acts based on response result.
     async function handleLogin(e) {
         e.preventDefault();
 
+        // Forms POST header
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: email, password: password })
         };
 
+        // Store response
         let response;
         await fetch('http://localhost:5000/login', requestOptions)
             .then(res => res.json())
             .then(data => { response = data })
             .catch(err => console.log(err));
 
+        // result is boolean of status
         if (response.result) {
             // store the user in localStorage
             localStorage.setItem('user_email', email);
@@ -30,6 +36,9 @@ export default function Login() {
             // reload page
             window.location.replace('/');
         } else {
+            // setLoginError useState for use with popup error
+            // TODO
+            setLoginError(response.description);
             alert(response.description);
         }
     }
@@ -102,9 +111,9 @@ export default function Login() {
                                             </div>
                                         </form>
                                         <div className='text-center'>
-                                        <Link to="/Register" className="mt-6 text-gray-900 hover:text-gray-700">
-                                            Don't have an account? Create one.
-                                        </Link>
+                                            <Link to="/Register" className="mt-6 text-gray-900 hover:text-gray-700">
+                                                Don't have an account? Create one.
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>

@@ -7,7 +7,18 @@ import markerIconPng from "leaflet/dist/images/marker-icon.png"
 import geoJsonSubzone from "./2-planning-area.json"
 import geoJsonRegion from "./master-plan-2019-region-boundary-no-sea-geojson.json"
 
-export default function Map() {
+// This component renders a map centered on singapore. Pass in properties to change the kind of returns you get.
+//
+// Supported Props:[
+// desiredZoom: how zoomed in the map initially is, the smaller the value the more zoomed out.
+// mapWidth: how wide the map is. (%)
+// mapHeight: how tall the map is. (html measurements e.g. vh)
+// ] See defaults below.
+export default function Map(props) {
+    const singaporeCenter = [1.3521, 103.8198];
+    const defaultZoom = 12;
+    const defaultWidth = "100%";
+    const defaultHeight = "70vh";
     const [responseChargerInfo, setResponseChargerInfo] = useState();
 
     useEffect(() => {
@@ -21,7 +32,7 @@ export default function Map() {
         }
     }, []);
 
-    function GetZoomLevel(){
+    function GetZoomLevel() {
         const [zoomLevel, setZoomLevel] = useState(12); // initial zoom level provided for MapContainer
 
         const mapEvents = useMapEvents({
@@ -58,7 +69,7 @@ export default function Map() {
         const zoomLevel = GetZoomLevel();
 
         const map = useMap();
-        for(var i = 0; i < mapMarkers.length; i++){
+        for (var i = 0; i < mapMarkers.length; i++) {
             map.removeLayer(mapMarkers[i]);
         }
 
@@ -89,12 +100,13 @@ export default function Map() {
     }
 
     return (
-        <MapContainer center={[1.365, 103.815]} zoom={12} scrollWheelZoom={true} style={{ width: "100%", height: "75vh" }}>
+        <MapContainer center={singaporeCenter} zoom={props.desiredZoom || defaultZoom} scrollWheelZoom={true}
+            style={{ width: props.mapWidth || defaultWidth, height: props.mapHeight || defaultHeight }}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            {<OverlayRender />  /* Must be called like this to be a descendant of MapContainer */}
+            {<OverlayRender />  /* Must be rendered as a component to be a considered descendant of MapContainer */}
         </MapContainer>
     );
 }

@@ -1,9 +1,7 @@
 # Import flask and datetime module for showing date and time
 from flask import Flask, request, jsonify
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 import os
-import time
-import json
 
 import db_user_info
 import db_methods
@@ -21,7 +19,6 @@ app.json.sort_keys = False
 
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
-
 
 # Route: Authenticate user login
 @app.route('/login', methods=['POST'])

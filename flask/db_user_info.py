@@ -35,7 +35,7 @@ service_code_dict = {
 def create_user(input_username, input_password, input_email, input_full_name, input_phone_no):
     """
     INSERTS a new user into database.
-    Returns an integer, >0 means failure. Check create_user_code_dict for mappings.
+    Returns an integer, >0 means failure. Check service_code_dict for mappings.
     TODO far in future: return a list of errors instead of just first error encountered.
     id: guid
     username: varchar(64)
@@ -98,6 +98,12 @@ def create_user(input_username, input_password, input_email, input_full_name, in
 
 
 def login_user(input_email, input_password):
+    """
+    Takes an input email and password and verifies that it exists in the database.
+    Returns an integer, >0 means failure. Check service_code_dict for mappings.
+    TODO far in future: return a list of errors instead of just first error encountered.
+    """
+
     # validate email
     if len(input_email) > 255:
         return EMAIL_INVALID_LENGTH

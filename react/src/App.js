@@ -1,5 +1,4 @@
 import React, { useState, useMemo, useEffect, useContext } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import { BrowserRouter, Routes, Route, Redirect, Navigate, useNavigate, Switch } from 'react-router-dom';
@@ -17,13 +16,13 @@ export default function App() {
   useMemo(() => {
     loggedInUser = localStorage.getItem("user_email");
   }, []);
-  
+
   if (loggedInUser === null && (window.location.pathname != "/Login" || window.location.pathname != "/Register")) {
     // Allow access only to register page, rest of pages lead to login
     return (
       <BrowserRouter>
         <Routes>
-        <Route exact path="/Login" element={<Login />} />
+          <Route exact path="/Login" element={<Login />} />
           <Route exact path="/Register" element={<Register />} />
 
           <Route path="*" element={<Login />} />
