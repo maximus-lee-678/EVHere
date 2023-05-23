@@ -68,8 +68,7 @@ export default function Dashboard() {
               </div>
 
               <div className="pt-6 w-full md:w-4/12 px-4 text-center">
-                <Link to="/Recommendations" className="relative flex flex-col min-w-0 break-words bg-white hover:bg-red-50 cursor-pointer w-full mb-8 shadow-lg rounded-lg">
-                  <div className="relative flex flex-col min-w-0 break-words bg-white hover:bg-green-50 cursor-pointer w-full mb-8 shadow-lg rounded-lg">
+                <Link to="/Recommendations" className="relative flex flex-col min-w-0 break-words bg-white hover:bg-green-50 cursor-pointer w-full mb-8 shadow-lg rounded-lg">
                     <div className="px-4 py-5 flex-auto">
                       <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-green-400">
                         <i className="fas fa-map-marker-alt"></i>
@@ -81,7 +80,7 @@ export default function Dashboard() {
                         Don't know where to find chargers? Use our map,<br></br>complete with recommendations for you!
                       </p>
                     </div>
-                  </div>
+                  
                 </Link>
               </div>
 
