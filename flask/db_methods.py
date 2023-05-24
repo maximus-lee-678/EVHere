@@ -1,9 +1,7 @@
 import sqlite3
-import uuid
 
 DATABASE_PATH = './database/database.db'
 SCRIPT_PATH = './database/db_schema.sql'
-
 
 def touch_database():
     with open(SCRIPT_PATH, 'r') as sql_file:
@@ -22,13 +20,6 @@ def setup_connection():
 
 def close_connection(conn):
     conn.close()
-
-
-def generate_uuid():
-    """
-    Generates random UUID
-    """
-    return str(uuid.uuid4())
 
 
 def check_if_exists(table_name, where_column_name, sanitised_value):

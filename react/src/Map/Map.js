@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Icon, divIcon, marker } from 'leaflet'
 import { MapContainer, TileLayer, useMap, useMapEvents, Marker, Popup, GeoJSON, Tooltip } from 'react-leaflet';
 
@@ -19,15 +20,24 @@ export default function Map(props) {
     const defaultZoom = 12;
     const defaultWidth = "100%";
     const defaultHeight = "70vh";
-    const [responseChargerInfo, setResponseChargerInfo] = useState();
+
+    const userEmail = localStorage.getItem("user_email");
+    const [allChargerInfo, setAllChargerInfo] = useState();
 
     useEffect(() => {
-        fetch_charger()
+        fetchAllChargers()
 
-        async function fetch_charger() {
-            await fetch('http://localhost:5000/get_chargers')
+        async function fetchAllChargers() {
+            // Forms POST header
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: userEmail })
+            };
+
+            await fetch('http://localhost:5000/get_all_chargers', requestOptions)
                 .then(res => res.json())
-                .then(data => { setResponseChargerInfo(data) })
+                .then(data => { setAllChargerInfo(data) })
                 .catch(err => console.log(err));
         }
     }, []);
@@ -47,16 +57,21 @@ export default function Map(props) {
     function RenderMarkers() {
         let result = [];
 
-        for (var i = 0; i < responseChargerInfo.length; i++) {
+        for (var i = 0; i < allChargerInfo.length; i++) {
             result.push(
-                <Marker position={[responseChargerInfo[i].lat, responseChargerInfo[i].long]}
-                    icon={new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -30] })}>
+                <Marker position={[allChargerInfo[i].lat, allChargerInfo[i].long]}
+                    icon={new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -30] })}
+                    key={allChargerInfo[i].lat + ", " + allChargerInfo[i].long}>
                     <Popup>
-                        {responseChargerInfo[i].name}
+                        {allChargerInfo[i].name}
                         <br />
-                        <button class="shadow bg-cyan-500 hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
-                            ⭐
-                        </button>
+                        <Link to={`/Charger?id=${allChargerInfo[i].id}`}>
+                            <button id={allChargerInfo[i].id}
+                                className="shadow bg-cyan-500 hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                            >
+                                ⓘ
+                            </button>
+                        </Link>
                     </Popup>
                 </Marker>
             )
@@ -64,15 +79,33 @@ export default function Map(props) {
         return result;
     }
 
+    // function handleAddFavourite(e) {
+    //     console.log(e.target.id);
+    // }
+
     let mapMarkers = [];
     function OverlayRender() {
         const zoomLevel = GetZoomLevel();
 
+        // Get bounds of map on map change.
+        // TODO optimise markers displayed only within screen
+        const mapEvents = useMapEvents({
+            dragend: (e) => handleMapEvent(e),
+            zoomend: (e) => handleMapEvent(e),
+        });
+        const handleMapEvent = (e) => {
+            console.log("mapCenter", e.target.getCenter());
+            console.log("map bounds", e.target.getBounds());
+        };
+
+        // Remove all old markers
         const map = useMap();
         for (var i = 0; i < mapMarkers.length; i++) {
             map.removeLayer(mapMarkers[i]);
         }
 
+        // displays district name in region centre, currently not used
+        // use by placing in onEachFeature={onEachFeature} in GeoJSON
         const onEachFeature = (feature, layer) => {
             const label = divIcon({
                 className: 'label',
@@ -89,10 +122,10 @@ export default function Map(props) {
 
         // Return geoJSON overlay depending on zoom level
         if (zoomLevel >= 15) {  // No overlay, only markers
-            return responseChargerInfo && RenderMarkers();
+            return allChargerInfo && <RenderMarkers />;
         }
-        if (zoomLevel >= 13) {  // District Level
-            return <GeoJSON data={geoJsonSubzone} key={Date.now()} onEachFeature={onEachFeature} />;
+        if (zoomLevel >= 13) {  // District Level and Markers
+            return allChargerInfo && <div><RenderMarkers /><GeoJSON data={geoJsonSubzone} key={Date.now()} /></div>;
         }
         else {                  // Region Level
             return <GeoJSON data={geoJsonRegion} key={Date.now()} />;

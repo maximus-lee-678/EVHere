@@ -20,8 +20,8 @@ app.json.sort_keys = False
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-# Route: Authenticate user login
-@app.route('/login', methods=['POST'])
+
+@app.route('/login', methods=['POST'])  # Route: Authenticate user login
 def fun_login():
     email = request.json['email']
     password = request.json['password']
@@ -43,16 +43,28 @@ def fun_create_account():
         username, password, email, full_name, phone_number)
     return jsonify(result=return_code == db_user_info.CREATE_SUCCESS, description=db_user_info.service_code_dict[return_code])
 
-# Route: Get all chargers
-@app.route('/get_chargers')
-def fun_get_chargers():
-    rows = db_charger.get_chargers()
 
+# Route: Get all chargers
+@app.route('/get_all_chargers', methods=['GET', 'POST'])
+def fun_get_chargers():
     list = []
-    for row in rows:
-        list.append({"name": row[0], "lat": row[1], "long": row[2]})
+
+    if request.method == 'POST':
+        email = request.json['email']
+        rows = db_charger.get_all_chargers(input_email=email)
+
+        for row in rows:
+            list.append({"id": row[0], "name": row[1],
+                        "lat": row[2], "long": row[3], "is_favourite": row[4]})
+    else:
+        rows = db_charger.get_all_chargers(input_email=None)
+
+        for row in rows:
+            list.append({"id": row[0], "name": row[1],
+                        "lat": row[2], "long": row[3]})
 
     return list
+
 
 # Running app
 if __name__ == '__main__':
