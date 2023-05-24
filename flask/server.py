@@ -21,7 +21,7 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 
-@app.route('/login', methods=['POST'])  # Route: Authenticate user login
+@app.route('/api/login', methods=['POST'])  # Route: Authenticate user login
 def fun_login():
     email = request.json['email']
     password = request.json['password']
@@ -31,7 +31,7 @@ def fun_login():
 
 
 # Route: Create new user account
-@app.route('/create_account', methods=['POST'])
+@app.route('/api/create_account', methods=['POST'])
 def fun_create_account():
     username = request.json['username']
     password = request.json['password']
@@ -45,7 +45,7 @@ def fun_create_account():
 
 
 # Route: Get all chargers
-@app.route('/get_all_chargers', methods=['GET', 'POST'])
+@app.route('/api/get_all_chargers', methods=['GET', 'POST'])
 def fun_get_chargers():
     list = []
 

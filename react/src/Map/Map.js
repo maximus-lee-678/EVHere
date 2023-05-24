@@ -35,7 +35,7 @@ export default function Map(props) {
                 body: JSON.stringify({ email: userEmail })
             };
 
-            await fetch('http://localhost:5000/get_all_chargers', requestOptions)
+            await fetch('/api/get_all_chargers', requestOptions)
                 .then(res => res.json())
                 .then(data => { setAllChargerInfo(data) })
                 .catch(err => console.log(err));

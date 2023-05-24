@@ -23,7 +23,7 @@ export default function Login() {
 
         // Store response
         let response;
-        await fetch('http://localhost:5000/login', requestOptions)
+        await fetch('/api/login', requestOptions)
             .then(res => res.json())
             .then(data => { response = data })
             .catch(err => console.log(err));

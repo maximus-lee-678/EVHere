@@ -23,7 +23,7 @@ export default function Register() {
 
     // Store response
     let response;
-    await fetch('http://localhost:5000/create_account', requestOptions)
+    await fetch('/api/create_account', requestOptions)
       .then(res => res.json())
       .then(data => { response = data })
       .catch(err => console.log(err));
