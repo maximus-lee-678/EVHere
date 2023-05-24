@@ -12,8 +12,8 @@ export default function Favourites() {
         }}>
             <Navbar transparent />
             <main>
-                <section className="bg-gray-900 w-full h-full">
-                    <div className="relative container mx-auto px-4 h-full">
+                <section className="w-full h-full">
+                    <div className="relative container mx-auto px-4 h-full bg-gray-900">
                         <div className="h-40">
                             <div className="flex content-center items-center justify-center h-full w-full font-semibold text-3xl text-white">Your Favourite Chargers</div>
                         </div>

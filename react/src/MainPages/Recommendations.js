@@ -8,8 +8,8 @@ export default function Recommendations() {
         >
             <Navbar transparent />
             <main>
-                <section className="bg-gray-900 w-full h-full">
-                    <div className="relative container mx-auto px-4 h-full">
+                <section className="w-full h-full">
+                    <div className="relative container mx-auto px-4 h-full bg-gray-900">
                         <div className="h-40">
                             <div className="flex content-center items-center justify-center h-full w-full font-semibold text-3xl text-white">Map</div>
                         </div>
@@ -34,7 +34,7 @@ export default function Recommendations() {
                                             <div className="ml-4 inline-block">
                                                 <div className="uppercase text-gray-700 font-bold">Best value for money:</div>
                                                 <div>
-                                                    Charger name
+                                                Shell Recharge Punggol
                                                 </div>
                                             </div>
                                         </div>
@@ -46,7 +46,7 @@ export default function Recommendations() {
                                             <div className="ml-4 inline-block">
                                                 <div className="uppercase text-gray-700 font-bold">Nearest to me:</div>
                                                 <div>
-                                                    Charger name
+                                                Bukit Merah / Telok Blangah Rise / Blk 32
                                                 </div>
                                             </div>
                                         </div>
@@ -58,7 +58,7 @@ export default function Recommendations() {
                                             <div className="ml-4 inline-block">
                                                 <div className="uppercase text-gray-700 font-bold">Fastest charging speed:</div>
                                                 <div>
-                                                    Charger name
+                                                Shell Recharge Punggol
                                                 </div>
                                             </div>
                                         </div>
