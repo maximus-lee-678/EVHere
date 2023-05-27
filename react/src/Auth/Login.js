@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../shared/Navbar';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -39,12 +41,22 @@ export default function Login() {
             // setLoginError useState for use with popup error
             // TODO
             setLoginError(response.description);
-            alert(response.description);
+            toast.error(response.description);
         }
     }
 
     return (
         <div>
+            <ToastContainer position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored" />
             <Navbar transparent />
             <main>
                 <section className="absolute w-full h-full">
@@ -71,11 +83,12 @@ export default function Login() {
                                             <div className="relative w-full mb-3">
                                                 <label
                                                     className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                                                    htmlFor="grid-password"
+                                                    for="emailInput"
                                                 >
                                                     Email
                                                 </label>
                                                 <input
+                                                    id="emailInput"
                                                     type="email"
                                                     className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                                                     placeholder="janeDoe@email.com"
@@ -87,11 +100,12 @@ export default function Login() {
                                             <div className="relative w-full mb-3">
                                                 <label
                                                     className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                                                    htmlFor="grid-password"
+                                                    for="passwordInput"
                                                 >
                                                     Password
                                                 </label>
                                                 <input
+                                                    id="passwordInput"
                                                     type="password"
                                                     className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                                                     placeholder="******************"

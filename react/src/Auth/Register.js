@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../shared/Navbar';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Register() {
   const [username, setUsername] = useState('');
@@ -28,18 +30,29 @@ export default function Register() {
       .then(data => { response = data })
       .catch(err => console.log(err));
 
-    // TODO make a nicer way of displaying success state
-    alert(response.description);
-
     // If success, redirect
     if (response.result) {
+      toast.success(response.description);
       // reload page
       window.location.replace('/Login');
+    }
+    else {
+      toast.error(response.description);
     }
   };
 
   return (
     <div>
+      <ToastContainer position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored" />
       <Navbar transparent />
       <main>
         <section className="absolute w-full h-full">
