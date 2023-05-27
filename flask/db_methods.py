@@ -1,7 +1,10 @@
 import sqlite3
+import csv
 
 DATABASE_PATH = './database/database.db'
 SCRIPT_PATH = './database/db_schema.sql'
+DEFAULT_CHARGER_PATH = './database/chargers.csv'
+
 
 def touch_database():
     with open(SCRIPT_PATH, 'r') as sql_file:
@@ -10,6 +13,17 @@ def touch_database():
     conn = setup_connection()
     cursor = conn.cursor()
     cursor.executescript(sql_script)
+
+    # adding charger data
+    with open(DEFAULT_CHARGER_PATH, 'r', encoding='UTF-8') as file:
+        # csv.DictReader uses first line in file for column headings by default
+        dr = csv.DictReader(file)  # comma is default delimiter
+        to_db = [(i['id'], i['name'], i['latitude'], i['longitude'], i['address'], i['provider'],
+                  i['connectors'], i['online'], i['kilowatts'], i['twenty_four_hours'], i['last_updated']) for i in dr]
+
+    cursor.executemany(
+        "INSERT INTO charger VALUES (?,?,?,?,?,?,?,?,?,?,?)", to_db)
+
     conn.commit()
     close_connection(conn)
 

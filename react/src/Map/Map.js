@@ -59,17 +59,27 @@ export default function Map(props) {
 
         for (var i = 0; i < allChargerInfo.length; i++) {
             result.push(
-                <Marker position={[allChargerInfo[i].lat, allChargerInfo[i].long]}
+                <Marker position={[allChargerInfo[i].latitude, allChargerInfo[i].longitude]}
                     icon={new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -30] })}
-                    key={allChargerInfo[i].lat + ", " + allChargerInfo[i].long}>
+                    key={allChargerInfo[i].latitude + ", " + allChargerInfo[i].longitude}>
                     <Popup>
-                        {allChargerInfo[i].name}
+                        [Name] {allChargerInfo[i].name}
+                        <br />
+                        [Address] {allChargerInfo[i].address}
+                        <br />
+                        [Provider] {allChargerInfo[i].provider}
+                        <br />
+                        [Connectors] {allChargerInfo[i].connectors}
+                        <br />
+                        [Power] {allChargerInfo[i].kilowatts || 0} kW
+                        <br />
+                        [24/7] {allChargerInfo[i].twenty_four_hours}
                         <br />
                         <Link to={`/Charger?id=${allChargerInfo[i].id}`}>
                             <button id={allChargerInfo[i].id}
                                 className="shadow bg-cyan-500 hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                             >
-                                ⓘ
+                                ➕❤️
                             </button>
                         </Link>
                     </Popup>

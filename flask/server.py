@@ -55,13 +55,17 @@ def fun_get_chargers():
 
         for row in rows:
             list.append({"id": row[0], "name": row[1],
-                        "lat": row[2], "long": row[3], "is_favourite": row[4]})
+                        "latitude": row[2], "longitude": row[3], "address": row[4], "provider": row[5],
+                         "connectors": row[6], "online": row[7], "kilowatts": row[8], 
+                         "twenty_four_hours": row[9], "last_updated": row[10], "is_favourite": row[11]})
     else:
         rows = db_charger.get_all_chargers(input_email=None)
 
         for row in rows:
             list.append({"id": row[0], "name": row[1],
-                        "lat": row[2], "long": row[3]})
+                        "latitude": row[2], "longitude": row[3], "address": row[4], "provider": row[5],
+                         "connectors": row[6], "online": row[7], "kilowatts": row[8], 
+                         "twenty_four_hours": row[9], "last_updated": row[10]})
 
     return list
 

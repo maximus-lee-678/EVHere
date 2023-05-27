@@ -1,0 +1,4987 @@
+{
+    "results": [
+        {
+            "id": "queenstown-scienceparkdr-dnvgl-lobby",
+            "public_name": "Queenstown/Science Park Dr/DNV GL/Lobby",
+            "lat": 1.29014253616333,
+            "lng": 103.786895751953,
+            "address": "16, Science Park Dr",
+            "postal_code": "118227",
+            "city": "Singapore",
+            "uid": "edf40bed-5707-4554-850a-e90e3586044f",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "9badedd5-e1f5-4609-bfb6-5e0eef602117",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "STATION",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "central-claymorerd-21",
+            "public_name": "Central/Claymore Rd/21",
+            "lat": 1.3077385,
+            "lng": 103.8301985,
+            "address": "Claymore Road 21",
+            "postal_code": "229545",
+            "city": "Singapore",
+            "uid": "da402f9a-b612-41c6-8d1f-87671cddd894",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "6a16a63d-42a5-489e-8704-73fbf2afcf43",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "748224b7-3546-41a0-9119-72b32d712628",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "STATION",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "queenstown-hollanddr-blk18-deck1a",
+            "public_name": "Queenstown/Holland Dr/Blk 18/Deck 1A",
+            "lat": 1.3118,
+            "lng": 103.79207,
+            "address": "18 Holland Drive",
+            "postal_code": "271018",
+            "city": "Singapore",
+            "uid": "27023f3d-d6e6-42a3-b36e-b183665da073",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "0b095b3c-502b-428a-bd5d-362e26e68d6e",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "3742ddc9-3926-48f9-b226-6c9021363aee",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "central-mohamedsultanrd-28",
+            "public_name": "Central/Mohamed Sultan Rd/28",
+            "lat": 1.29288,
+            "lng": 103.8413,
+            "address": "28 Mohamed Sultan Road",
+            "postal_code": "238275",
+            "city": "Singapore",
+            "uid": "457916cb-28cc-4a5b-9961-5e83d6e47b39",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "e9851559-316c-4862-b549-225f701d0e9c",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "22f7570f-470b-4795-88bc-cd0d052fea0a",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "STATION",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "yishun-yishunst22-blk265",
+            "public_name": "Yishun/Yishun St 22/Blk265",
+            "lat": 1.4369706,
+            "lng": 103.8383619,
+            "address": "265 Yishun Street 22",
+            "postal_code": "760265",
+            "city": "Singapore",
+            "uid": "c3ea9c6f-6fba-472b-a2a2-62a3a5ea156a",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "a10abe8c-c5b8-434c-b253-92a5b74231a9",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "3f499f2d-13d7-479f-93fe-d33a056f4d3e",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "tampines-simeist1-blk108-deck373",
+            "public_name": "Tampines/Simei St 1/Blk 108",
+            "lat": 1.343322,
+            "lng": 103.951077,
+            "address": "108 Simei Street 1",
+            "postal_code": "520108",
+            "city": "Singapore",
+            "uid": "34981b4a-8825-4df1-b44a-884471233cff",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "09a74eaf-e91f-4ae4-befc-b95fc292ede1",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "76509a6d-a53c-4409-9ea8-1a222d279e5d",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "angmokio-angmokioav4-blk157",
+            "public_name": "Ang Mo Kio/Ang Mo Kio Av 4/Blk 157",
+            "lat": 1.3751449,
+            "lng": 103.839079,
+            "address": "157 Ang Mo Kio Avenue 4",
+            "postal_code": "560157",
+            "city": "Singapore",
+            "uid": "54234c90-b17c-4484-a4f3-68538a962c80",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "5c820e7e-d6a5-43d8-8816-dda73e08fae0",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "c893f5c4-0760-43ae-88fc-afa4befaaa27",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "tampines-tampinesst41-blk420",
+            "public_name": "Tampines/Tampines St 41/Blk 420",
+            "lat": 1.357537,
+            "lng": 103.947125,
+            "address": "420 Tampines Street 41",
+            "postal_code": "520418",
+            "city": "Singapore",
+            "uid": "47909734-240a-45b9-963f-3c7e0ddfa35c",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "8dc36351-c700-44c3-9ac3-985ec9e58cd5",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "4c082b82-bd0e-4b7c-b9de-40b4aa9f2791",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "queenstown-fusionopolispl-1-deckb4",
+            "public_name": "Queenstown/Fusionopolis Pl/1/Deck B4",
+            "lat": 1.29866,
+            "lng": 103.78748,
+            "address": "1 Fusionopolis Place",
+            "postal_code": "138632",
+            "city": "Singapore",
+            "uid": "8c75c833-c9d4-4358-a631-0b13c4d583b2",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "93789366-9631-4f44-8816-5c77c0109501",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "76b785cc-c70f-4824-b5c1-97eb9e255519",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "simei-simeistreet1-blk132",
+            "public_name": "Tampines/Simei Street 1/Blk 132",
+            "lat": 1.3472048,
+            "lng": 103.9562201,
+            "address": "132 Simei Street 1",
+            "postal_code": "520132",
+            "city": "Singapore",
+            "uid": "5e422191-f7f7-410f-a89a-2bb72da6f8f8",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "93059747-64cc-453e-ace6-39049e438994",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "9d90b09e-c8aa-4945-a8a5-2c1a5f5de847",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "tampines-tampinesavenue4-blk902",
+            "public_name": "Tampines/Tampines Avenue 4/Blk 902",
+            "lat": 1.351249,
+            "lng": 103.939541,
+            "address": "902 Tampines Avenue 4",
+            "postal_code": "520902",
+            "city": "Singapore",
+            "uid": "04912733-8408-44fd-9677-52ade8cc653f",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "292ba19c-a165-4d4d-bd2f-4b8ef01dd7be",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "c188441a-12b5-42d0-8f93-259780649d41",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "buonavista-11biopolisway-helios-deckb2",
+            "public_name": "Queenstown/11 Biopolis Way/Helios/Deck B2",
+            "lat": 1.304152,
+            "lng": 103.791778,
+            "address": "11 Biopolis Way",
+            "postal_code": "138667",
+            "city": "Singapore",
+            "uid": "c481cfe0-523a-40cc-9354-259058c262e3",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "9241e3a6-9f3c-4ee7-8731-93fcf0772ded",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "b6ff783e-d5e7-4190-84a5-58e36ad5c547",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "yishun-yishunringroad-blk853",
+            "public_name": "Yishun/Yishun Ring Road/Blk 853",
+            "lat": 1.416593,
+            "lng": 103.836526,
+            "address": "850 to 855 Yishun Ring Road",
+            "postal_code": "760855",
+            "city": "Singapore",
+            "uid": "2f778469-ef7e-4796-b5a0-182dda4d57e9",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "259c7842-4390-46b4-a14a-37c19a31a1b0",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "b174d055-92ff-4c9b-8a4f-9beb650922b8",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "No issues with CP",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "geylang-haigroad-blk8",
+            "public_name": "Geylang/Haig Road/Blk 8",
+            "lat": 1.31379,
+            "lng": 103.896451,
+            "address": "8 Haig Road",
+            "postal_code": "430007",
+            "city": "Singapore",
+            "uid": "539acc82-ebba-44da-9644-08eb9a6c991d",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "d3fa9724-f660-4ce1-bf36-fc3296fc8332",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "1eb6e7b1-d86f-4b49-ae63-2e64b90d731b",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "clementi-clementiweststreet1-blk602",
+            "public_name": "Clementi/Clementi West Street 1/Blk 602",
+            "lat": 1.304373,
+            "lng": 103.766838,
+            "address": "Blk 602 Clementi West Street 1",
+            "postal_code": "120601",
+            "city": "Singapore",
+            "uid": "31a21db2-5f77-43a1-a853-6af5cd92a0f0",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "b851b23c-9172-40e4-970e-1d07cfd59ba5",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "bb9a7cca-af43-411b-845b-7b3c0a35ec0a",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "jurongwest-boonlaydrive-blk188",
+            "public_name": "Jurong West/Boon Lay Drive/Blk 188",
+            "lat": 1.344062,
+            "lng": 103.711245,
+            "address": "188 Boon Lay Drive",
+            "postal_code": "640188",
+            "city": "Singapore",
+            "uid": "a0a359b9-30e2-47f6-bed6-babbe79cf603",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "d4ecdc8f-e545-4482-b6b0-e4033532d7c9",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "c104ea37-29b6-4a4c-adb2-142e7af4648b",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bedok-chaicheeavenue-blk37",
+            "public_name": "Bedok/Chai Chee Avenue/Blk 37",
+            "lat": 1.325325,
+            "lng": 103.925817,
+            "address": "37 Chai Chee Avenue",
+            "postal_code": "461037",
+            "city": "Singapore",
+            "uid": "03367fed-e31a-4260-8262-b19b523f6bb3",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "81b5a01c-4417-4a99-880d-4d1f6073ec64",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "a53d6846-1a59-475f-afe3-25a8151807fe",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "tampines-tampinesstreet22-blk274",
+            "public_name": "Tampines/Tampines Street 22/Blk 274",
+            "lat": 1.348438,
+            "lng": 103.950524,
+            "address": "Blk 272/275 Tampines Street 22",
+            "postal_code": "520275",
+            "city": "Singapore",
+            "uid": "97761b56-d7e3-45d3-9f43-1e3d114f2dde",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "c9e94fad-2bc9-4e90-96de-4c7ed0fd1599",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "217fb05a-ba18-48a2-a316-cc1ce9ea233a",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bukitmerah-bukitmerahview-blk129a-deck2a",
+            "public_name": "Bukit Merah/Bukit Merah View/Blk 129A/Deck 2A",
+            "lat": 1.283532,
+            "lng": 103.823372,
+            "address": "129A Bukit Merah View",
+            "postal_code": "151129",
+            "city": "Singapore",
+            "uid": "a8ce50cd-e003-4c7f-988d-f733b8a81b73",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "e6f6195a-bf40-4450-bbfa-01b1b70a15c0",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "b334bcb9-94c6-4ceb-a781-4650c9137698",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bukittimah-queensroad-blk4-deck1a",
+            "public_name": "Bukit Timah/Queens Road/Blk 4/Deck 1A",
+            "lat": 1.318738,
+            "lng": 103.808169,
+            "address": "4 Queen's Road",
+            "postal_code": "260004",
+            "city": "Singapore",
+            "uid": "c1b93929-72cf-4a49-8b24-07bf80e2b88d",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "c40bcef0-1e55-41a4-bc95-c31afc064f13",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "ba56cdce-2411-495f-a52d-b2c4cfe9a14d",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "hougang-hougangstreet61-blk688",
+            "public_name": "Hougang/Hougang Street 61/Blk 688",
+            "lat": 1.37595,
+            "lng": 103.885492,
+            "address": "Blk 685/691 Hougang Street 61",
+            "postal_code": "530685",
+            "city": "Singapore",
+            "uid": "70252e4a-e80e-412d-bc50-00c72192ca45",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "10549424-e700-44bf-9384-e971f366d540",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "36f99d66-0db6-465e-92f5-2a8a46236ac4",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "yishun-yishunavenue3-blk769",
+            "public_name": "Yishun/Yishun Avenue 3/Blk 769",
+            "lat": 1.424284,
+            "lng": 103.833346,
+            "address": "773 Yishun Avenue 3",
+            "postal_code": "760773",
+            "city": "Singapore",
+            "uid": "5e8251fa-9d94-4913-923a-fa4db8809ef4",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "584ee456-4f75-4aca-a587-577dc4d5438b",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "4ca4e7af-82cf-4b4a-a0fe-3884221627df",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "yishun-yishunringroad-blk809",
+            "public_name": "Yishun/Yishun Ring Road/Blk 809",
+            "lat": 1.416833,
+            "lng": 103.83048,
+            "address": "800-812 Yishun Ring Road",
+            "postal_code": "760806",
+            "city": "Singapore",
+            "uid": "30b5f058-9880-451d-91a7-08e54905f461",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "d0466180-830d-403f-8b51-2fc3382adcb9",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "c6b94949-46be-4c77-b044-534ba269e7e2",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "geylang-eunoscrescent-blk31a-deck1a",
+            "public_name": "Geylang/Eunos Crescent/Blk 31A/Deck 1A",
+            "lat": 1.320225,
+            "lng": 103.9017609,
+            "address": "31A Eunos Crescent",
+            "postal_code": "401031",
+            "city": "Singapore",
+            "uid": "29f8414e-5f04-4e61-8edb-0e30cf215d51",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "f9034bfc-8810-4396-b573-936fedf2b44f",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "84cfbaa8-d458-4759-9add-27e8a1032a74",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "clementi-westcoastroad-blk708",
+            "public_name": "Clementi/West Coast Road/Blk 708",
+            "lat": 1.306052,
+            "lng": 103.761812,
+            "address": "704-714 West Coast Road",
+            "postal_code": "120704",
+            "city": "Singapore",
+            "uid": "e1574e8f-8e33-49a2-b7b7-cac8ef034e9f",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "e4c0f1d8-1520-4e29-a1c5-b157772cf0e9",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "cca47f7f-1767-4889-8112-16d812f1828e",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bedok-bedoksouthavenue3-behindblk69",
+            "public_name": "Bedok/Bedok South Avenue 3/Behind Blk 69",
+            "lat": 1.319455,
+            "lng": 103.943098,
+            "address": "69 Bedok South Avenue 3",
+            "postal_code": "460069",
+            "city": "Singapore",
+            "uid": "a7668aac-551a-42f4-8ac3-3d5f01a39f8d",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "5e3b44af-6e1c-4d98-adc1-dd2f43ea9022",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "e23b9f3b-0cc6-48f3-9c33-6c875458bb60",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "kembangan-21jalanmasjid-besidekembanganplaza",
+            "public_name": "Kembangan/21 Jalan Masjid/Beside Kembangan Plaza",
+            "lat": 1.320397,
+            "lng": 103.912296,
+            "address": "21 Jalan Masjid",
+            "postal_code": "418946",
+            "city": "Singapore",
+            "uid": "a00da8ef-cd20-46cb-b1a7-00c538ef364c",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "f4d9f04f-2972-4334-bd13-d6d772f2f6ea",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "2e81a1ff-272d-4729-ad99-99caae554e6f",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bukitbatok-bukitbatokstreet52-blk537",
+            "public_name": "Bukit Batok/Bukit Batok Street 52/Blk 537",
+            "lat": 1.355013,
+            "lng": 103.751187,
+            "address": "537 Bukit Batok Street 52",
+            "postal_code": "650537",
+            "city": "Singapore",
+            "uid": "7714d2c4-96c2-4802-b005-f026b8c4daee",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "a18dfdb5-eece-411d-91a9-a6ad0a9c0985",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "af0a3b24-29af-4df1-82d8-5cd46e7e2564",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "jurongeast-8jurongtownhallroad-jtcsummit-deckb2",
+            "public_name": "Jurong East/8 Jurong Town Hall Road/JTC Summit/Deck B2",
+            "lat": 1.33115,
+            "lng": 103.74184,
+            "address": "8 Jurong Town Hall Road",
+            "postal_code": "609434",
+            "city": "Singapore",
+            "uid": "b638c3b5-63cd-4037-a678-e07b436378c6",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "89966e7d-c39d-4ad4-8226-f6e2f94e5474",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "b43cc19c-8a32-4a83-a5b6-f8317cad6e3b",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "angmokio-angmokioavenue9-blk627",
+            "public_name": "Ang Mo Kio/Ang Mo Kio Avenue 9/Blk 627",
+            "lat": 1.382052,
+            "lng": 103.841393,
+            "address": "627 Ang Mo Kio Avenue 9",
+            "postal_code": "560627",
+            "city": "Singapore",
+            "uid": "544eb0a0-c8a1-4c70-997f-b7ddf98b2793",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "082a21cc-004e-4b7f-9c27-19327330a207",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "09bcb992-c2f1-4213-8f11-b96d43c35fce",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "punggol-punggolplace-blk273-deck1",
+            "public_name": "Punggol/Punggol Place/Blk 273/Deck 1",
+            "lat": 1.402703,
+            "lng": 103.901963,
+            "address": "273 Punggol Place",
+            "postal_code": "820273",
+            "city": "Singapore",
+            "uid": "8f7bdc7b-2493-48f8-ac4c-2e23cb68be03",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "71316a71-d693-491e-b165-9b030a3017f6",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "d7b62f9f-8c9e-4a4f-b906-5e3a9f55e84a",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "tampines-tampinesstreet91-blk921a-deck1a",
+            "public_name": "Tampines/Tampines Street 91/Blk 921A/Deck 1A",
+            "lat": 1.347284,
+            "lng": 103.941371,
+            "address": "921A Tampines Street 91",
+            "postal_code": "521921",
+            "city": "Singapore",
+            "uid": "60c3fb7e-d6c1-4ed0-ac32-1d94d791631a",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "23fcab88-542e-401b-bb85-5dc46ae82c27",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "5267d83a-70ce-4639-bd4f-d5a74a546bb5",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "jurongeast-jurongeaststreet21-blk230",
+            "public_name": "Jurong East/Jurong East Street 21/Blk 230",
+            "lat": 1.341813,
+            "lng": 103.737565,
+            "address": "215-230 Jurong East Street 21",
+            "postal_code": "600231",
+            "city": "Singapore",
+            "uid": "39cca336-f685-4345-b45a-b6e90fb77693",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "c47323c5-4560-4687-b1b8-fee4bb2dce24",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "5491ac5c-aaf0-4c7a-8154-2bbf49286ced",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "angmokio-angmokioavenue6-blk123",
+            "public_name": "Ang Mo Kio/Ang Mo Kio Avenue 6/Blk 123",
+            "lat": 1.370392,
+            "lng": 103.844376,
+            "address": "123 Ang Mo Kio Avenue 6",
+            "postal_code": "560123",
+            "city": "Singapore",
+            "uid": "7a3a80c7-c74a-4d36-9349-9acd96184459",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "ecfa5b69-b574-446e-adda-9f72149e6f76",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "966865f9-bdd2-4868-8b1a-4820870c3677",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "jurongwest-jurongweststreet81-blk854a-deck1a",
+            "public_name": "Jurong West/Jurong West Street 81/Blk 854A/Deck 1A",
+            "lat": 1.347775,
+            "lng": 103.696495,
+            "address": "854A Jurong West Street 81",
+            "postal_code": "641854",
+            "city": "Singapore",
+            "uid": "206e2ae2-28bb-45cf-a8c2-d06f4a0767bf",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "e2383dc3-4d26-4c32-b476-a45a86815829",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "93be8292-ee40-4461-8168-1c55b149523f",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "clementi-clementiavenue2-blk334-besidecaltex",
+            "public_name": "Clementi/Clementi Avenue 2/Blk 334/Beside Caltex",
+            "lat": 1.314724,
+            "lng": 103.768296,
+            "address": "334 Clementi Avenue 2",
+            "postal_code": "120334",
+            "city": "Singapore",
+            "uid": "97f0b5e5-2643-4e50-858c-6fa582ad1298",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "4ef6a4b6-7a90-42d2-9976-a7da7582d1c1",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "714b3bdf-27e5-4264-b8f8-0f1e566aa95d",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bukitbatok-bukitbatokstreet34-blk346",
+            "public_name": "Bukit Batok/Bukit Batok Street 34/Blk 346",
+            "lat": 1.362466,
+            "lng": 103.750963,
+            "address": "346 Bukit Batok Street 34",
+            "postal_code": "650346",
+            "city": "Singapore",
+            "uid": "1e56f662-dced-439a-b7d2-a85af2e07b2e",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "1991df43-60f0-43dc-b0f3-a83b2fae9696",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "a93acccd-5fee-4761-9d39-df3b99618011",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "tampines-tampinesstreet83-blk851",
+            "public_name": "Tampines/Tampines Street 83/Blk 851",
+            "lat": 1.353051,
+            "lng": 103.935061,
+            "address": "851 Tampines Street 83",
+            "postal_code": "520851",
+            "city": "Singapore",
+            "uid": "58b92982-60e0-4038-a4d4-f8cff9e7b27a",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "062a8f83-a739-4944-8cfd-88d424f2bfd1",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "16646500-8f8d-4edc-8093-7d4fcec339e2",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "serangoon-upperserangoonview-blk476-deck3",
+            "public_name": "Serangoon/Upper Serangoon View/Blk 476/Deck 3",
+            "lat": 1.37738,
+            "lng": 103.903721,
+            "address": "476 Upper Serangoon View",
+            "postal_code": "530476",
+            "city": "Singapore",
+            "uid": "e675962b-5f2c-46e9-bbf6-d3992e869efd",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "403ea2a6-f8ca-4620-aa9e-b396ad594480",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "6d0a1203-9e0c-48c5-bc80-30586c9eac69",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bishan-bishanstreet13-blk186",
+            "public_name": "Bishan/Bishan Street 13/Blk 186",
+            "lat": 1.349585,
+            "lng": 103.852838,
+            "address": "186 Bishan Street 13",
+            "postal_code": "570186",
+            "city": "Singapore",
+            "uid": "50a10a9e-441d-404f-aaa6-6d1df44eea36",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "33dc6562-88a8-4192-b7a3-6cdbbff9dcff",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "ff318064-665b-4349-9394-ed369f5e683b",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "geylang-ubiavenue1-blk326",
+            "public_name": "Geylang/Ubi Avenue 1/Blk 326",
+            "lat": 1.327319,
+            "lng": 103.904146,
+            "address": "326 Ubi Avenue 1",
+            "postal_code": "400326",
+            "city": "Singapore",
+            "uid": "20b8b155-f35a-4b67-9e89-00562f3d2ac0",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "14b3c18a-a176-4225-a2ad-4bb33fa0880d",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "60329de0-c780-4cc1-bcc0-d171f89764d0",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "geylang-52simsplace-alongsimsplace",
+            "public_name": "Geylang/52 Sims Place/Along Sims Place",
+            "lat": 1.316531,
+            "lng": 103.880106,
+            "address": "52 Sims Place",
+            "postal_code": "380052",
+            "city": "Singapore",
+            "uid": "01d7b495-d6a9-46a6-9046-b3d415eb3f20",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "f0f82fea-c541-4d11-87bb-2df574a63dca",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "1a858bf3-fd76-4596-a52e-e00257d39bdc",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "marineparade-across343telokkarauroad-besidestpatrickscourt",
+            "public_name": "Marine Parade/Across 343 Telok Karau Road/Beside St'Patrick's Court",
+            "lat": 1.308605,
+            "lng": 103.912432,
+            "address": "Across 343 Telok Kurau Road",
+            "postal_code": "423870",
+            "city": "Singapore",
+            "uid": "1e5a5212-c4b8-4a2a-9133-1ae25ef42b42",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "042a8089-2576-4ace-bf41-c675abc8c5b3",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "865e39ae-9e3b-4cd7-b425-6d6e4cca67f5",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "hougang-hougangstreet92-blk941a-deck1a",
+            "public_name": "Hougang/Hougang Street 92/Blk 941A/Deck 1A",
+            "lat": 1.374287,
+            "lng": 103.87912,
+            "address": "941A Hougang Street 92",
+            "postal_code": "531941",
+            "city": "Singapore",
+            "uid": "999a389a-9c5d-4ad6-9b88-eaee59bc8ea8",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "6ad24982-8538-4a50-bc0b-71d21971d1c8",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "8c06530e-e65e-4d93-b039-91657aaed21c",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "jurongwest-jurongweststreet91-blk903",
+            "public_name": "Jurong West/Jurong West Street 91/Blk 903",
+            "lat": 1.339625,
+            "lng": 103.686256,
+            "address": "903 Jurong West Street 91",
+            "postal_code": "640903",
+            "city": "Singapore",
+            "uid": "71082dce-cb2b-4101-a723-dbe5aa937b8f",
+            "status": "closed",
+            "charge_availability": [],
+            "scheduled_at": null,
+            "charging_status": "broken",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "toapayoh-potongpasiravenue1-blk117",
+            "public_name": "Toa Payoh/Potong Pasir Avenue 1/Blk 117",
+            "lat": 1.336558,
+            "lng": 103.863104,
+            "address": "117 Potong Pasir Avenue 1",
+            "postal_code": "350117",
+            "city": "Singapore",
+            "uid": "ea106d41-2cfc-4094-aac4-57cb44b2fcf3",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "9a77982f-06cc-4f96-8d3f-0dd80f6bd094",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "7289c107-7619-42c0-9c56-8bd69ae30eab",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "yishun-yishunringroad-blk165",
+            "public_name": "Yishun/Yishun Ring Road/Blk 165",
+            "lat": 1.4355487,
+            "lng": 103.8320274,
+            "address": "165 Yishun Ring Road",
+            "postal_code": "760165",
+            "city": "Singapore",
+            "uid": "ebc100a0-a5b2-4ad3-8ed7-e8eaee6a852c",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "9f3002af-c54d-459d-a506-07558f8e5c31",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "346fe537-0f7a-42bc-b18a-3f644b6fdcfe",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "punggol-punggolwalk-blk213-deck1a",
+            "public_name": "Punggol/Punggol Walk/Blk 213/Deck 1A",
+            "lat": 1.400134,
+            "lng": 103.898428,
+            "address": "213 Punggol Walk",
+            "postal_code": "820213",
+            "city": "Singapore",
+            "uid": "e070c03a-7d22-4e7f-9f16-a8eff0e3cf62",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "9735b027-7d6d-4f46-8671-6462e9a704b7",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "5ce693b3-ed54-48ca-9aa9-91b5ee657f33",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "hougang-hougangavenue2-blk707",
+            "public_name": "Hougang/Hougang Avenue 2/Blk 707",
+            "lat": 1.366507,
+            "lng": 103.888389,
+            "address": "707 Hougang Avenue 2",
+            "postal_code": "530707",
+            "city": "Singapore",
+            "uid": "e276753b-9059-4c36-a6f4-1f2e29ae2474",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "8b8e33b6-fb5d-4794-bcd4-4d5580b8bb56",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "b9ca8efe-8382-4aea-8612-ea717ad44c76",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bedok-bedokreservoirroad-blk609",
+            "public_name": "Bedok/Bedok Reservoir Road/Blk 609",
+            "lat": 1.33135,
+            "lng": 103.912391,
+            "address": "609 Bedok Reservoir Road",
+            "postal_code": "470609",
+            "city": "Singapore",
+            "uid": "45838618-6158-4b98-ace8-98bd4e67f0c0",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "9f404254-18e1-41f3-a0e8-5b93a1965853",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "4274303b-6e4c-4ece-94ed-e5d7318fd814",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "jurongeast-jurongeaststreet13-blk116",
+            "public_name": "Jurong East/Jurong East Street 13/Blk 116",
+            "lat": 1.339583,
+            "lng": 103.734451,
+            "address": "116 Jurong East Street 13",
+            "postal_code": "600116",
+            "city": "Singapore",
+            "uid": "306aeb8e-53e8-40e9-884d-ebf51c2d87c3",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "ed0188a9-2d7f-43c2-b0d9-67c86a3b8ce8",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "88ea0786-cf1d-49df-9671-9a3d8f11f375",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bukitbatok-bukitbatokeastavenue5-blk241a-deck1a",
+            "public_name": "Bukit Batok/Bukit Batok East Avenue 5/Blk 241A/Deck 1A",
+            "lat": 1.350931,
+            "lng": 103.755227,
+            "address": "241A Bukit Batok East Avenue 5",
+            "postal_code": "651241",
+            "city": "Singapore",
+            "uid": "a4be569a-161e-44a0-961d-1285bd96bc91",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "a9808363-38ae-4b75-8744-8187e8f25f21",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "8ae18a16-92df-4659-85c9-97831c556ce2",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "hougang-hougangstreet31-blk373a-deckb1b",
+            "public_name": "Hougang/Hougang Street 31/Blk 373A/Deck B1B",
+            "lat": 1.362366,
+            "lng": 103.890053,
+            "address": "373A Hougang Street 31",
+            "postal_code": "531373",
+            "city": "Singapore",
+            "uid": "d961f8b2-fb88-4d5e-9067-2d9b423fb54c",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "a9eeef16-8c5a-4114-b9cd-2cedb659af4a",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "60c151d2-e47c-4f2e-9ea9-bc297e61047f",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "pasirris-pasirrisdrive6-blk417",
+            "public_name": "Pasir Ris/Pasir Ris Drive 6/Blk 417",
+            "lat": 1.372102,
+            "lng": 103.955033,
+            "address": "417 Pasir Ris Drive 6",
+            "postal_code": "510417",
+            "city": "Singapore",
+            "uid": "73508de4-a894-4ac0-9f9e-2f37d4c3c8e8",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "e0429fd1-ab06-4cc4-9ceb-282c07f1eff2",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "8459936a-fe0f-43a2-aa47-70359fcb3101",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "Station will remain closed for Carpark Improvement works till further notice",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "serangoon-serangoonavenue4-blk212",
+            "public_name": "Serangoon/Serangoon Avenue 4/Blk 212",
+            "lat": 1.356934,
+            "lng": 103.873229,
+            "address": "212 Serangoon Avenue 4",
+            "postal_code": "550212",
+            "city": "Singapore",
+            "uid": "254744a4-8629-430c-a33a-1d1d215fc305",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "bfcb0320-5e97-42bb-8e8e-32b8dea409d3",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "480bee67-d5f9-4afd-9763-acb842ede00a",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "hougang-hougangavenue9-blk966a-deck1a",
+            "public_name": "Hougang/Hougang Avenue 9/Blk 966A/Deck 1A",
+            "lat": 1.377891,
+            "lng": 103.877869,
+            "address": "966A Hougang Avenue 9",
+            "postal_code": "531966",
+            "city": "Singapore",
+            "uid": "229f564c-27a0-473a-b2f1-5d84fb5d8016",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "a6ca1a78-faa0-47bf-87bc-4a0eb391ea22",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "cadd4ec8-3720-456f-8242-8680ca1c69eb",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "sengkang-anchorvalestreet-blk329-deck1a",
+            "public_name": "Sengkang/Anchorvale Street/Blk 329/Deck 1A",
+            "lat": 1.39634,
+            "lng": 103.889296,
+            "address": "329 Anchorvale Street",
+            "postal_code": "540329",
+            "city": "Singapore",
+            "uid": "55178dba-5575-4e10-a4ee-ad58f1eb94ab",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "8ea55468-f519-4ba7-841a-f160e3447dcb",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "9ac6f038-3f4c-458d-be4f-7e78f770c34b",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "choachukang-choachukangcrescent-blk678a-deck1b",
+            "public_name": "Choa Chu Kang/Choa Chu Kang Crescent/Blk 678A/Deck 1B",
+            "lat": 1.401978,
+            "lng": 103.74481,
+            "address": "678A Choa Chu Kang Crescent",
+            "postal_code": "681678",
+            "city": "Singapore",
+            "uid": "07d31df3-c741-44a4-8c43-ce177cce5462",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "f5708f57-ab0f-445c-b3db-6bb1cc29f228",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "1508e298-7ee9-4a84-9d91-a2b378fd3e18",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "angmokio-angmokioavenue4-blk114",
+            "public_name": "Ang Mo Kio/Ang Mo Kio Avenue 4/Blk 114",
+            "lat": 1.372293,
+            "lng": 103.836312,
+            "address": "114 Ang Mo Kio Avenue 4",
+            "postal_code": "560114",
+            "city": "Singapore",
+            "uid": "8f3ef75e-2aee-4316-8e3d-3295b34202b8",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "d4f3c313-fbed-4211-9aea-4d977b1a48cb",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "d8fd1a92-e3e4-440e-a697-beff27b8e7bc",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "kallang-bendemeerroad-blk10-deck1a",
+            "public_name": "Kallang/Bendemeer Road/Blk 10/Deck 1A",
+            "lat": 1.315203,
+            "lng": 103.860333,
+            "address": "10 Bendemeer Road",
+            "postal_code": "330010",
+            "city": "Singapore",
+            "uid": "ee9b9920-92ad-432e-9b25-44beb236539f",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "ddb7e0dd-2b7e-4d6d-9ec9-6c92dc32620b",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "b60d7062-d5bc-4350-acb1-13c18610e7f4",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "angmokio-angmokioavenue6-blk647",
+            "public_name": "Ang Mo Kio/Ang Mo Kio Avenue 6/Blk 647",
+            "lat": 1.378898,
+            "lng": 103.843833,
+            "address": "647 Ang Mo Kio Avenue 6",
+            "postal_code": "560647",
+            "city": "Singapore",
+            "uid": "d1a5edf9-d268-496d-accc-3d727ce13078",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "3d5735b9-1406-4205-ba2c-cda28540f681",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "8972e7c6-df21-4fd7-a136-e5495034252f",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bedok-bedoknorthstreet3-blk534",
+            "public_name": "Bedok/Bedok North Street 3/Blk 534",
+            "lat": 1.333285,
+            "lng": 103.92394,
+            "address": "534 Bedok North Street 3",
+            "postal_code": "460534",
+            "city": "Singapore",
+            "uid": "671d78fe-f8b5-437e-a0b0-0ddf30a8f92b",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "dd22623c-9190-4419-990e-d33394fecc77",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "d4bba385-da89-4565-a234-b077f8c4ca27",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "queenstown-commonwealthdrive-blk117besideblk117openspacecarpark",
+            "public_name": "Queenstown/Commonwealth Drive/Blk 117 (Beside Blk 117 Open Space Carpark)",
+            "lat": 1.306972,
+            "lng": 103.799566,
+            "address": "117 Commonwealth Drive",
+            "postal_code": "140117",
+            "city": "Singapore",
+            "uid": "ba3e39d7-d30d-48f1-af24-700371898247",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "b0261a6e-71bb-459f-8e4b-905609a56a75",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "a59d0087-1c38-4667-8430-42e83cf46bad",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "kallang-jalanrajah-blk103",
+            "public_name": "Kallang/Jalan Rajah/Blk 103",
+            "lat": 1.327411,
+            "lng": 103.852514,
+            "address": "103 Jalan Rajah",
+            "postal_code": "321103",
+            "city": "Singapore",
+            "uid": "ae859e20-1430-4386-8393-5df194facf9b",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "72cbba7d-15b1-4a25-93cc-b9a7588409b2",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "e5b88cc4-5c84-47ae-a8cd-3a9c59dd1133",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bukitbatok-bukitbatokstreet33-blk319",
+            "public_name": "Bukit Batok/Bukit Batok Street 33/Blk 319",
+            "lat": 1.361125,
+            "lng": 103.746545,
+            "address": "319 Bukit Batok Street 33",
+            "postal_code": "650319",
+            "city": "Singapore",
+            "uid": "34ccd6d6-47c7-4598-9ed4-bd7855832122",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "dfb5c292-f4e8-494d-81a3-c1fb5c13c506",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "2003d922-532e-4bbf-b8a5-f402a2271350",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bishan-bishanstreet12-blk112",
+            "public_name": "Bishan/Bishan Street 12/Blk 112",
+            "lat": 1.346756,
+            "lng": 103.848871,
+            "address": "112 Bishan Street 12",
+            "postal_code": "570112",
+            "city": "Singapore",
+            "uid": "de27818c-6074-4da9-a5c2-e4d0b2b09020",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "43f0cff7-a564-4931-b24e-1aac3a2e80d8",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "120c2e67-9c81-4728-b570-f933816a6b99",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "sengkang-fernvalestreet-blk472-deck1a",
+            "public_name": "Sengkang/Fernvale Street/Blk 472/Deck 1A",
+            "lat": 1.396952,
+            "lng": 103.881727,
+            "address": "472 Fernvale Street",
+            "postal_code": "790472",
+            "city": "Singapore",
+            "uid": "4ac5cbd6-3440-4133-a358-38ae8ef5ebc3",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "e8979dc6-b4f0-47f6-9981-35b7eeee7d8a",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "19f4f368-0ca3-4ea4-a591-ae156be287ab",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "yishun-yishunstreet51-blk513-deck2",
+            "public_name": "Yishun/Yishun Street 51/Blk 513/Deck 2",
+            "lat": 1.415984,
+            "lng": 103.844221,
+            "address": "513 Yishun Street 51",
+            "postal_code": "760513",
+            "city": "Singapore",
+            "uid": "042055bc-8e1a-44d1-b8ba-828030ebbc3a",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "f02c0c1c-8932-4491-b1dc-3f8b3a9605a4",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "b16f257a-e743-470d-8c7c-0b7139c7829f",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "sengkang-compassvaleroad-blk203-deck1a",
+            "public_name": "Sengkang/Compassvale Road/Blk 203/Deck 1A",
+            "lat": 1.387328,
+            "lng": 103.895393,
+            "address": "203 Compassvale Road",
+            "postal_code": "540203",
+            "city": "Singapore",
+            "uid": "5199dbc4-04d1-4a9b-9e10-070858b2aafc",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "349d79b5-15d1-455c-aed6-04ec510a6c1f",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "95bb2273-6395-43a9-b9b8-c9ea18b84b0c",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "serangoon-serangoonnorthavenue4-blk512a-deck1b",
+            "public_name": "Serangoon/Serangoon North Avenue 4/Blk 512A/Deck 1B",
+            "lat": 1.371005,
+            "lng": 103.8751,
+            "address": "512A Serangoon North Avenue 4",
+            "postal_code": "551512",
+            "city": "Singapore",
+            "uid": "e091f04c-fb31-4da4-9b85-670113b3ca05",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "083c4609-a56b-40b7-9c43-e3823c09c9f6",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "4aac7c1f-0825-4d1b-b124-e3e49992f654",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "angmokio-angmokiostreet51-blk590-deck1a",
+            "public_name": "Ang Mo Kio/Ang Mo Kio Street 51/Blk 590/Deck 1A",
+            "lat": 1.371634,
+            "lng": 103.853064,
+            "address": "590 Ang Mo Kio Street 51",
+            "postal_code": "560590",
+            "city": "Singapore",
+            "uid": "a393fe4d-a58c-42bb-8693-e1dc993e0694",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "41ff625a-0ad5-406e-8445-ed8e4fef6ca9",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "92875ab3-ebd6-453d-9d07-945d112fd09d",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "sengkang-compassvalewalk-blk236a-deck1b",
+            "public_name": "Sengkang/Compassvale Walk/Blk 236A/Deck 1B",
+            "lat": 1.390343,
+            "lng": 103.900021,
+            "address": "236A Compassvale Walk",
+            "postal_code": "541236",
+            "city": "Singapore",
+            "uid": "87d88a05-d899-4d0b-980e-eca0ede134c7",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "16c42486-2697-465a-acb1-dfcbd63878f9",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "e77c2589-e2cd-4c1a-961a-6648e87d9e1b",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "queenstown-ghimmohroad-blk2a-deck1",
+            "public_name": "Queenstown/Ghim Moh Road/Blk 2A/Deck 1",
+            "lat": 1.312774,
+            "lng": 103.787393,
+            "address": "2A Ghim Moh Road",
+            "postal_code": "272002",
+            "city": "Singapore",
+            "uid": "af177f50-76aa-4e7a-b1a0-d76a68a5510d",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "b5ff75aa-5e44-46b0-b78f-fd18fafe81af",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "488b169e-8002-4cc8-8a9c-d952d241d482",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "central-9rafflesplace-republicplaza-level4",
+            "public_name": "Central/9 Raffles Place/Republic Plaza/Level 4",
+            "lat": 1.283658,
+            "lng": 103.850455,
+            "address": "9 Raffles Place, Republic Plaza",
+            "postal_code": "048619",
+            "city": "Singapore",
+            "uid": "6543552a-f616-4828-928b-636062d89907",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "17b9fed3-c5e0-4f0e-b17e-f0b5978932ad",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "677cad39-bebb-4c15-b153-f8b1171f0235",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "choachukang-choachukangavenue4-lotone-deckb2",
+            "public_name": "Choa Chu Kang/Choa Chu Kang Avenue 4/Lot one/Deck B2",
+            "lat": 1.38525,
+            "lng": 103.744922,
+            "address": "21 Choa Chu Kang Avenue 4",
+            "postal_code": "689812",
+            "city": "Singapore",
+            "uid": "39d479bc-22d9-448d-8e49-001c8c2fc684",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "6b8dd345-21cf-494c-bc6a-d37324e738f7",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "sentosa-50beachview-basement-beachstationnearbeachstationescalator",
+            "public_name": "Sentosa/50 Beach View/Basement/Beach Station(Near Beach Station Escalator)",
+            "lat": 1.251171,
+            "lng": 103.819188,
+            "address": "50 Beach View",
+            "postal_code": "098604",
+            "city": "Singapore",
+            "uid": "a771a337-62ae-4617-8eae-3885946bfabe",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "0dea7273-0cb6-4021-8d52-9a0bbb75e660",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "57ca8045-74fa-4a34-a9fd-0197c2cd200d",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "central-1esplanadedrive-basement1-liftlobbyb",
+            "public_name": "Central/1 Esplanade Drive/Basement 1/Lift Lobby B",
+            "lat": 1.289691,
+            "lng": 103.85577,
+            "address": "1 Esplanade Drive",
+            "postal_code": "038981",
+            "city": "Singapore",
+            "uid": "1ba78f58-08dc-45e1-a01f-e33ff6946a6b",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "254bcef0-678a-43e2-9c73-164c769d3074",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "f9e2e92a-6565-4806-a629-4463ee7af391",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "sentosa-1coveavenue-sentosacove-blkb-level2",
+            "public_name": "Sentosa/1 Cove Avenue/Sentosa Cove/Blk B/Level 2",
+            "lat": 1.247741,
+            "lng": 103.840256,
+            "address": "1 Cove Avenue, Sentosa Cove",
+            "postal_code": "098537",
+            "city": "Singapore",
+            "uid": "de3e87af-cb94-4481-8e07-d48e26e82378",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "eae411ba-be44-46d1-98e1-0cf606943806",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "4d028ed1-4204-4dd3-8500-ab327a199b08",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "central-3erivervalleyroad-clarkquayblke-level3",
+            "public_name": "Central/3E River Valley Road/Clark Quay Blk E/Level 3",
+            "lat": 1.290715,
+            "lng": 103.846146,
+            "address": "3E River Valley Road",
+            "postal_code": "179024",
+            "city": "Singapore",
+            "uid": "4a8184c6-6a13-4f0a-b652-46c624403105",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "8b7535ce-8041-4b41-83a7-3e6cb116df20",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "5fb34047-2864-4e04-bae4-142a12e10732",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "kallang-cambridgeroad-blk43oppositentuc",
+            "public_name": "Kallang/Cambridge Road/Blk 43 (Opposite NTUC)",
+            "lat": 1.314899,
+            "lng": 103.849479,
+            "address": "43 Cambridge Road",
+            "postal_code": "210043",
+            "city": "Singapore",
+            "uid": "30ae27d3-fab0-4d5b-8900-9a19c20fe898",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "1b5ebac6-90d8-403a-873a-0433a1ec9a0e",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "79dbf170-36a8-4633-b191-1953dda76c71",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "angmokio-angmokioavenue4-blk110",
+            "public_name": "Ang Mo Kio/Ang Mo Kio Avenue 4/Blk 110",
+            "lat": 1.370557,
+            "lng": 103.837923,
+            "address": "110 Ang Mo Kio Avenue 4",
+            "postal_code": "560110",
+            "city": "Singapore",
+            "uid": "2600c532-da1c-43eb-b9cf-1f04a75d3495",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "6a201f22-72c8-4be5-a443-2380d740818e",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "190cbb48-aef5-4af5-995b-8765825dfe9e",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "yishun-yishunringroad-blk781",
+            "public_name": "Yishun/Yishun Ring Road/Blk 781",
+            "lat": 1.422343,
+            "lng": 103.832121,
+            "address": "781 Yishun Ring Road",
+            "postal_code": "760781",
+            "city": "Singapore",
+            "uid": "6942cb0a-a95a-4014-ab77-dbc864cf8da9",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "7cb1aa80-2221-4410-91a1-a017a4254936",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "75da9219-f68a-474a-8713-3582a08e7079",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "tampines-simeiroad-blk155",
+            "public_name": "Tampines/Simei Road/Blk 155",
+            "lat": 1.344756,
+            "lng": 103.958393,
+            "address": "155 Simei Road",
+            "postal_code": "520155",
+            "city": "Singapore",
+            "uid": "e2fd2883-2ae2-418b-a21b-d628b2cd38d1",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "861bce73-aabe-4385-8a5a-e43d4c42becc",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "2331e518-ec28-4f46-ab8d-19ce5be9814e",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bukittimah-170upperbukittimahroadinfrontbukittimahshoppingcentre",
+            "public_name": "Bukit Timah/170 Upper Bukit Timah Road (Infront Bukit Timah Shopping Centre)",
+            "lat": 1.343312,
+            "lng": 103.775637,
+            "address": "170 Upper Bukit Timah Road",
+            "postal_code": "588179",
+            "city": "Singapore",
+            "uid": "e187e400-810f-44c9-9b32-d656477995d4",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "8edd7a52-1051-43e1-864a-ac91256d89e5",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "5eea80c1-946b-4a82-bca8-25a2cdc06500",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "hougang-hougangavenue6-blk524",
+            "public_name": "Hougang/Hougang Avenue 6/Blk 524",
+            "lat": 1.373931,
+            "lng": 103.890352,
+            "address": "524 Hougang Avenue 6",
+            "postal_code": "530524",
+            "city": "Singapore",
+            "uid": "d96f4e91-544d-4105-a128-15587ec194bd",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "c2fb1e00-bcd9-42e9-9c65-995f5b2fabd7",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "bf3e8230-3eec-4a85-96fb-6b558fc7ed10",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "angmokio-angmokioavenue10-blk449",
+            "public_name": "Ang Mo Kio/Ang Mo Kio Avenue 10/Blk 449",
+            "lat": 1.36805,
+            "lng": 103.8558,
+            "address": "449 Ang Mo Kio Avenue 10",
+            "postal_code": "560449",
+            "city": "Singapore",
+            "uid": "45f181ca-e816-459b-a298-a6807b9be7bc",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "bfc61cd6-66eb-4a2f-b60a-f3ffab53aa88",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "f91c9e25-5909-48f7-95bb-311f27b9ebca",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "tampines-tampinesstreet72-blk742a-deck1a",
+            "public_name": "Tampines/Tampines Street 72/Blk 742A/Deck 1A",
+            "lat": 1.359905,
+            "lng": 103.934176,
+            "address": "742A Tampines Street 72",
+            "postal_code": "521742",
+            "city": "Singapore",
+            "uid": "2a83b6c2-48b5-485c-ba21-88750a455f36",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "84175de0-ef76-4c50-95a7-684c51bcca9c",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "3e261490-bf59-44e3-b807-b0e3b355e0c2",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "novena-tantocksenghospital-basement4-nearliftlobbyd",
+            "public_name": "Novena/Tan Tock Seng Hospital/Basement 4/Near Lift Lobby D",
+            "lat": 1.321282,
+            "lng": 103.84588,
+            "address": "11 Jalan Tan Tock Seng",
+            "postal_code": "308433",
+            "city": "Singapore",
+            "uid": "c0c15bc0-4769-4886-acba-8f5f072535c3",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "003b3206-e714-4663-acb7-7eb696de2e7a",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "5e9e9e01-77c1-4cab-98c8-46e3bc8a5e20",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "angmokio-angmokioavenue8-blk510",
+            "public_name": "Ang Mo Kio/Ang Mo Kio Avenue 8/Blk 510",
+            "lat": 1.373288,
+            "lng": 103.849485,
+            "address": "510 Ang Mo Kio Avenue 8",
+            "postal_code": "560510",
+            "city": "Singapore",
+            "uid": "65a8af9e-c16f-4ead-ad2b-d2f33b4928dd",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "f9e11a1a-6e95-471d-86e4-e78a7c8fbd89",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "35350569-6067-4001-a580-2a1bd0e6d21b",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "angmokio-angmokioavenue10-blk559",
+            "public_name": "Ang Mo Kio/Ang Mo Kio Avenue 10/Blk 559",
+            "lat": 1.371022,
+            "lng": 103.857277,
+            "address": "559 Ang Mo Kio Avenue 10",
+            "postal_code": "560559",
+            "city": "Singapore",
+            "uid": "bff50da7-555e-4a90-ad77-90c86c211be1",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "085a4f88-9756-4540-94a0-0bb6072d5baf",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "7a8d67d1-ec57-4f4a-9b17-f841054cb04f",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "pasirris-pasirrisstreet12-blk108a-deck1a",
+            "public_name": "Pasir Ris/Pasir Ris Street 12/Blk 108A/Deck 1A",
+            "lat": 1.367987,
+            "lng": 103.956949,
+            "address": "108A Pasir Ris Street 12",
+            "postal_code": "511108",
+            "city": "Singapore",
+            "uid": "cda6905a-365c-400f-bd89-27817694b8cf",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "db7bd31c-288f-4ad6-83cc-9bca97af34d5",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "44d83163-79c8-463d-b9d1-716d51a42fff",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "woodlands-woodlandscircle-blk747a-deck1a",
+            "public_name": "Woodlands/Woodlands Circle/Blk 747A/Deck 1A",
+            "lat": 1.443332,
+            "lng": 103.795599,
+            "address": "747A Woodlands Circle",
+            "postal_code": "731747",
+            "city": "Singapore",
+            "uid": "c4e048bc-6236-4c21-8ea4-9cd518ac0c84",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "93525044-b9f9-40ec-a73e-15188cbdd5c4",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "2057f6c3-b0aa-4ebd-bfbf-cf647c1a8772",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "kallang-saintgeorgesroad-blk22",
+            "public_name": "Kallang/Saint George's Road/Blk 22",
+            "lat": 1.32537,
+            "lng": 103.862659,
+            "address": "22 Saint George's Road",
+            "postal_code": "321022",
+            "city": "Singapore",
+            "uid": "25d13f97-dc2d-49d7-aa7b-0da9c5273fc5",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "80d2de6c-ab85-4786-9f22-25659c2077a7",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "70088d98-df0a-46db-a207-089e2d15b999",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "punggol-edgedaleplains-blk172-deck1a",
+            "public_name": "Punggol/Edgedale Plains/Blk 172/Deck 1A",
+            "lat": 1.39557,
+            "lng": 103.911788,
+            "address": "172 Edgedale Plains",
+            "postal_code": "820172",
+            "city": "Singapore",
+            "uid": "72b8ffb9-7e0d-47fd-8034-be8e0b5487df",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "39368ac5-f399-4eb2-a94f-cbf3dcf3d8fc",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "0621441b-cfb7-4744-9ca5-f1e9ac0be41c",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bukitpanjang-petirroad-blk140",
+            "public_name": "Bukit Panjang/Petir Road/Blk 140",
+            "lat": 1.375471,
+            "lng": 103.769068,
+            "address": "140 Petir Road",
+            "postal_code": "670140",
+            "city": "Singapore",
+            "uid": "342439ad-435c-4b13-855e-7ce749509b3a",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "92ee4131-44a0-4753-9d0e-a738e1890019",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "42b4f839-af6e-4801-a869-72b77ae93b05",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "jurongeast-jurongeaststreet32-blk307",
+            "public_name": "Jurong East/Jurong East Street 32/Blk 307",
+            "lat": 1.346612,
+            "lng": 103.734402,
+            "address": "307 Jurong East Street 32",
+            "postal_code": "600307",
+            "city": "Singapore",
+            "uid": "174faca5-f13d-4b9f-b8f5-513d2d335b2b",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "5b3512b0-605a-4dc8-90da-4b360243c6b2",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "b58d6ebe-24f6-44a9-9f67-e206b448148c",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bedok-chaicheestreet-blk53",
+            "public_name": "Bedok/Chai Chee Street/Blk 53",
+            "lat": 1.328941,
+            "lng": 103.921295,
+            "address": "53 Chai Chee Street",
+            "postal_code": "460053",
+            "city": "Singapore",
+            "uid": "9fffd0ce-82f2-47a0-9ea1-7120893ea4f0",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "8d966faf-fb8f-47f2-8242-9b34b422be16",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "77c2afdf-a98d-43ba-bdb9-fd2af51c8330",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bedok-bedoknorthroad-blk425",
+            "public_name": "Bedok/Bedok North Road/Blk 425",
+            "lat": 1.329159,
+            "lng": 103.92944,
+            "address": "425 Bedok North Road",
+            "postal_code": "460425",
+            "city": "Singapore",
+            "uid": "9d89d59b-791b-4f9b-9a6a-991f6fa278fb",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "009a22ad-98ff-45b6-8c3b-222ecbf19b38",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "efd6c819-6f14-4a2a-a129-99229bc787dd",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "tampines-tampinesstreet11-blk107",
+            "public_name": "Tampines/Tampines Street 11/Blk 107",
+            "lat": 1.348142,
+            "lng": 103.947926,
+            "address": "107 Tampines Street 11",
+            "postal_code": "521107",
+            "city": "Singapore",
+            "uid": "342b8644-1cea-47e8-8956-acdb17ce71cf",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "c9f98846-bf37-44b0-a023-574445cbc0fa",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "163eef28-3188-4689-9646-b37f66756c5d",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "queenstown-ghimmohlink-blk24-deck1b",
+            "public_name": "Queenstown/Ghim Moh Link/Blk 24/Deck 1B",
+            "lat": 1.308908,
+            "lng": 103.785607,
+            "address": "24 Ghim Moh Link",
+            "postal_code": "270024",
+            "city": "Singapore",
+            "uid": "6c89f8f1-2595-4a53-a203-54574d6cfb7d",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "9f2a17c6-6145-40dd-a02e-c6f9ba90c19b",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "2027a0f8-0b0b-47bc-9e35-d143022ea0c3",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "jurongwest-yunganroad-blk364-deck1a",
+            "public_name": "Jurong West/Yung An Road/Blk 364/Deck 1A",
+            "lat": 1.337184,
+            "lng": 103.720457,
+            "address": "364 Yung An Road",
+            "postal_code": "610364",
+            "city": "Singapore",
+            "uid": "5f32302a-c34e-441d-ae47-a363600f9d1a",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "857811a7-a61c-48cc-a4f9-1e637c7bfa9a",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "49c7e491-403b-4677-bebf-b28c482e8593",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "clementi-clementiavenue3-blk440-deck1a",
+            "public_name": "Clementi/Clementi Avenue 3/Blk 440/Deck 1A",
+            "lat": 1.31642,
+            "lng": 103.76392,
+            "address": "440 Clementi Avenue 3",
+            "postal_code": "120440",
+            "city": "Singapore",
+            "uid": "06ae63de-111e-4aa9-bf08-10b74eccceb7",
+            "status": "closed",
+            "charge_availability": [],
+            "scheduled_at": null,
+            "charging_status": "broken",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "yishun-yishunstreet31-blk333-deck1a",
+            "public_name": "Yishun/Yishun Street 31/Blk 333/Deck 1A",
+            "lat": 1.43154,
+            "lng": 103.844951,
+            "address": "333 Yishun Street 31",
+            "postal_code": "760333",
+            "city": "Singapore",
+            "uid": "b43f0b07-1036-475c-87d0-e700441ab345",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "81255f92-42c4-4c9f-85b4-710bcc5bef88",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "a8da0bc9-353a-4a83-a734-585d94969347",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "pasirris-pasirrisstreet71-blk762a-deck1a",
+            "public_name": "Pasir Ris/Pasir Ris Street 71/Blk 762A/Deck 1A",
+            "lat": 1.376083,
+            "lng": 103.9333,
+            "address": "762A Pasir Ris Street 71",
+            "postal_code": "511762",
+            "city": "Singapore",
+            "uid": "88743113-cc41-4549-af36-ac182c7d8da6",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "cc0d27a2-07d1-4f16-9033-b377895a2331",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "a19ad7fa-d6bd-47ae-825b-9b70fcfefcd5",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bukitmerah-bukitpurmeiroad-blk109",
+            "public_name": "Bukit Merah/Bukit Purmei Road/Blk 109",
+            "lat": 1.273803,
+            "lng": 103.8258,
+            "address": "109 Bukit Purmei Road",
+            "postal_code": "090109",
+            "city": "Singapore",
+            "uid": "9cbb1fd6-559d-4ebe-86ab-a4a00bde0e33",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "98298795-9b44-4b4a-a3c4-739962347961",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "10e86de0-907a-433b-bf27-2dad589487a8",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "toapayoh-lorong8toapayoh-blk213",
+            "public_name": "Toa Payoh/Lorong 8 Toa Payoh/Blk 213",
+            "lat": 1.341068,
+            "lng": 103.8551,
+            "address": "213 Lorong 8 Toa Payoh",
+            "postal_code": "310213",
+            "city": "Singapore",
+            "uid": "e1b1d6cb-5cec-4994-a0c7-a9086b6e9bb6",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "53888bf5-3266-45b0-a684-40655ec64302",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "ff75403f-567c-46f2-8970-270f6469f745",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "choachukang-choachukangcentral-blk205",
+            "public_name": "Choa Chu Kang/Choa Chu Kang Central/Blk 205",
+            "lat": 1.381051,
+            "lng": 103.7481,
+            "address": "205 Choa Chu Kang Central",
+            "postal_code": "680205",
+            "city": "Singapore",
+            "uid": "1e18215e-7802-4168-b8bb-b1ff0cd9a4ce",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "aced6d28-6827-4c91-a1d9-edca70b1ec70",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "619ef10c-29d2-4d01-bef5-f71598a038b2",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "tampines-tampinesstreet22-blk299a",
+            "public_name": "Tampines/Tampines Street 22/Blk 299A",
+            "lat": 1.350399,
+            "lng": 103.95424,
+            "address": "299A Tampines Street 22",
+            "postal_code": "521299",
+            "city": "Singapore",
+            "uid": "11b937ed-d93e-4c3b-bb39-ff2b82622d1f",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "9bb4d19c-2ecb-41f0-a933-44af328d1def",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "1bc61d03-d6ac-4873-97a2-56c0a920df95",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "clementi-clementiweststreet2-blk727",
+            "public_name": "Clementi/Clementi West Street 2/Blk 727",
+            "lat": 1.304208,
+            "lng": 103.763558,
+            "address": "727 Clementi West Street 2",
+            "postal_code": "120727",
+            "city": "Singapore",
+            "uid": "a9e050fe-20b9-4f6f-9114-adc28b858ea5",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "c7efb92e-e312-4570-b283-ecfa0e4c6960",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "bcf07d14-4166-4168-b6d7-1683f1a521e6",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bukitmerah-hendersonroad-blk96-deck1a",
+            "public_name": "Bukit Merah/Henderson Road/Blk 96/Deck 1A",
+            "lat": 1.287793,
+            "lng": 103.821375,
+            "address": "96 Henderson Road",
+            "postal_code": "150096",
+            "city": "Singapore",
+            "uid": "4015a4a0-f2fc-4571-8689-ce12a3f396eb",
+            "status": "closed",
+            "charge_availability": [],
+            "scheduled_at": null,
+            "charging_status": "broken",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bukitbatok-bukitbatokwestavenue5-blk436-deck1a",
+            "public_name": "Bukit Batok/Bukit Batok West Avenue 5/Blk 436/Deck 1A",
+            "lat": 1.358769,
+            "lng": 103.739499,
+            "address": "436 Bukit Batok West Avenue 5",
+            "postal_code": "650436",
+            "city": "Singapore",
+            "uid": "4eb2df40-5978-4f6a-beb3-61de50fbdf8c",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "1a929f21-223a-4933-9d0a-2c10d3981b66",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "725984ef-9c04-4cc1-9cb5-dd85b2a6c13f",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "tampines-tampinesavenue8-blk879c-deck1a",
+            "public_name": "Tampines/Tampines Avenue 8/Blk 879C/Deck 1A",
+            "lat": 1.351144,
+            "lng": 103.928663,
+            "address": "879C Tampines Avenue 8",
+            "postal_code": "523879",
+            "city": "Singapore",
+            "uid": "dcea5726-6a8e-4096-981e-39a9170bdb95",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "a0e4b96d-972e-424c-921b-1b2dd088752b",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "c804725d-31f3-42e7-8299-a9d4c382e85d",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "punggol-punggolfield-blk204-deckb1",
+            "public_name": "Punggol/Punggol Field/Blk 204/Deck B1",
+            "lat": 1.398494,
+            "lng": 103.90305,
+            "address": "204 Punggol Field",
+            "postal_code": "820204",
+            "city": "Singapore",
+            "uid": "01b3cd22-3898-4a1e-906d-eae0e139b917",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "8e36bf16-94ce-46e3-ad1d-916981def769",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "50b111ba-2972-48d9-a8d5-8c381cd4e68b",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bukitmerah-telokblangahrise-blk32",
+            "public_name": "Bukit Merah/Telok Blangah Rise/Blk 32",
+            "lat": 1.273125,
+            "lng": 103.82106,
+            "address": "32 Telok Blangah Rise",
+            "postal_code": "090032",
+            "city": "Singapore",
+            "uid": "49d769a8-fcdf-4666-a7d4-5f2a39f94003",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "2e77aa27-4156-4039-9966-ad7d63ff3403",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "0f586266-9646-4177-b2dc-46b102682c5a",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "bedok-bedoknorthstreet2-blk129",
+            "public_name": "Bedok/Bedok North Street 2/Blk 129",
+            "lat": 1.327761,
+            "lng": 103.93846,
+            "address": "124 Bedok North Street 2",
+            "postal_code": "460124",
+            "city": "Singapore",
+            "uid": "2e7f7a85-4862-4201-a84a-2faf9f4272c1",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "ec66dbfd-5385-49e1-be94-ed16ea99d201",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 1,
+                        "type2_standard": 1
+                    }
+                },
+                {
+                    "uid": "301bdc25-d680-4877-9057-0cab41a4d075",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "marineparade-marineterrace-blk59",
+            "public_name": "Marine Parade/Marine Terrace/Blk 59",
+            "lat": 1.305782,
+            "lng": 103.914158,
+            "address": "59 Marine Terrace",
+            "postal_code": "440059",
+            "city": "Singapore",
+            "uid": "de281d73-0a7f-4ccf-b430-5dc5c162cc32",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "75c2fcaf-e5ed-4c35-8d26-5c220c2900a6",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                },
+                {
+                    "uid": "47705706-0bc1-4777-bfa7-aff1a488b00e",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 0,
+                        "type2_standard": 0
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "central-109northbridgeroad-funanmall-basement3-liftlobbyb",
+            "public_name": "Central/109 North Bridge Road/Funan Mall/Basement 3/Lift Lobby B",
+            "lat": 1.291599,
+            "lng": 103.849823,
+            "address": "109 North Bridge Road",
+            "postal_code": "179097",
+            "city": "Singapore",
+            "uid": "33a17cde-c6b6-4d72-9311-8060a45b223f",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "514a0294-3801-42ca-ab97-c1d4626565c1",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "d50152c6-e8f8-4cc7-9241-d49175e2ad48",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "PARKING",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        },
+        {
+            "id": "central-252northbridgeroad",
+            "public_name": "Central/252 North Bridge Road/Raffles City/Deck B3",
+            "lat": 1.2939583,
+            "lng": 103.8526163,
+            "address": "252 North Bridge Road",
+            "postal_code": "179103",
+            "city": "SINGAPORE",
+            "uid": "39b015b5-120d-4d56-8dc8-22579a8b02e9",
+            "status": "ok",
+            "charge_availability": [
+                {
+                    "uid": "77728cd2-6947-46f1-ac67-0ce8c446de88",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                },
+                {
+                    "uid": "0d057822-49eb-4958-8e7d-dcbd1ac10ec1",
+                    "kind": "ier-bca-22086928",
+                    "communicative": true,
+                    "bookable": true,
+                    "client_category": "",
+                    "availability": {
+                        "park_spaces": 2,
+                        "type2_standard": 2
+                    }
+                }
+            ],
+            "scheduled_at": null,
+            "charging_status": "operational",
+            "subscription_status": "nonexistent",
+            "kind": "STATION",
+            "displayed_comment": "",
+            "pricing_zone": null,
+            "web_url": null,
+            "supports_mobile_badge_activation": false
+        }
+    ]
+}

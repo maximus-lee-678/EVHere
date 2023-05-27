@@ -1,0 +1,64 @@
+https://jmespath.org/
+https://jmespath.org/tutorial.html
+https://jmespath.org/specification.html
+https://jsonformatter.org/json-editor
+https://www.convertcsv.com/json-to-csv.htm
+
+In the converted csv, replace \nSINGAPORE, with SINGAPORE, (use ctrl+enter to leave line in vsc)
+
+[!] Some data is made up to simulate reality. See JMESPath Notes for which fields have been faked. [!]
+
+=Plugshare=
+[Source]
+https://www.plugshare.com/
+Data retrieved from page API.
+
+[Adapted JMESPath Query]
+[*].{name: name, latitude: latitude, longitude: longitude, address: address, provider: `Plugshare`, connectors: length(stations), online: stations[0].outlets[0].kilowatts != null, kilowatts: stations[0].outlets[0].kilowatts, twenty_four_hours: icon_type=='Y'}
+
+[*].{name: name, latitude: latitude, longitude: longitude, address: address, provider: `Plugshare`, connectors: length(stations), online: stations[0].outlets[0].kilowatts != null, kilowatts: join('', [to_string(stations[0].outlets[0].kilowatts), 'kW']), twenty_four_hours: icon_type=='Y'}
+
+[JMESPath Notes]
+Connectors are actually stations, and are assumed to be identical.
+24/7 info does not exist, is a falsified value based on its power status, high power = 24/7, public = not
+
+///
+=Shell=
+[Source]
+https://www.shell.com.sg/motorists/shell-station-locator.html
+Data retrieved from page API.
+
+[Adapted JMESPath Query]
+locations[?site_category == 'conventional_fuel_site_with_ev' || 'conventional_fuel_site' || 'destination_charging_ev'].{name: name, latitude: lat, longitude: lng, address: formatted_address, provider: `Shell`, connectors: `4`, online: !inactive, kilowatts: length(name), twenty_four_hours: open_status == 'twenty_four_hour'}
+
+[JMESPath Notes]
+Connectors hardcoded to 4.
+Kilowatt info does not exist, is a falsified value based on station name.
+
+///
+=Bluecharge=
+[Source]
+https://www.bluecharge.sg/stations-map
+Data retrieved from page API.
+
+[Adapted JMESPath Query]
+results[*].{name: public_name, latitude: lat, longitude: lng, address: address, provider: `Bluecharge`, connectors: sum(charge_availability[*].availability.type2_standard), online: status == 'ok', kilowatts: length(public_name), twenty_four_hours: kind == 'PARKING'}
+
+[JMESPath Notes]
+Online is assumed to be status, all chargers seem to be online.
+Kilowatt info does not exist, is a falsified value based on station name.
+24/7 info does not exist, is a falsified value based on station type, PARKING = 24/7, STATION = not 
+
+///
+=SPMobility=
+[Source]
+https://www.spmobility.sg/charger-locations
+Data retrieved from page API.
+
+[Adapted JMESPath Query]
+data[*].{name: title, latitude: latitude, longitude: longitude, address: address, provider: `SPMobility`, connectors: sum([ac_charging, dc_charging]), online: `true`, kilowatts: length(title), twenty_four_hours: free_parking == `1`}
+
+[JMESPath Notes]
+Online is hardcoded to true.
+Kilowatt info does not exist, is a falsified value based on station name.
+24/7 info does not exist, is a falsified value based on free parking.
