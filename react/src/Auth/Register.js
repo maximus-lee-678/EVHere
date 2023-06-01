@@ -44,15 +44,15 @@ export default function Register() {
   return (
     <div>
       <ToastContainer position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored" />
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored" />
       <Navbar transparent />
       <main>
         <section className="absolute w-full h-full">
@@ -79,11 +79,12 @@ export default function Register() {
                       <div className="relative w-full mb-3">
                         <label
                           className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                          for="email"
+                          for="emailInput"
                         >
                           Email
                         </label>
                         <input
+                          id="emailInput"
                           type="email"
                           className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                           placeholder="janeDoe@email.com"
@@ -95,11 +96,12 @@ export default function Register() {
                       <div className="relative w-full mb-3">
                         <label
                           className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                          for="username"
+                          for="usernameInput"
                         >
                           Username
                         </label>
                         <input
+                          id="usernameInput"
                           type="text"
                           className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                           placeholder="janeDoe"
@@ -111,11 +113,12 @@ export default function Register() {
                       <div className="relative w-full mb-3">
                         <label
                           className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                          for="password"
+                          for="passwordInput"
                         >
                           Password
                         </label>
                         <input
+                          id="passwordInput"
                           type="password"
                           className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                           placeholder="******************"
@@ -127,11 +130,12 @@ export default function Register() {
                       <div className="relative w-full mb-3">
                         <label
                           className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                          for="fullName"
+                          for="fullNameInput"
                         >
                           Full Name
                         </label>
                         <input
+                          id="fullNameInput"
                           type="text"
                           className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                           placeholder="Jane Doe"
@@ -143,11 +147,12 @@ export default function Register() {
                       <div className="relative w-full mb-3">
                         <label
                           className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                          for="phoneNumber"
+                          for="phoneNumberInput"
                         >
                           Phone Number
                         </label>
                         <input
+                          id="phoneNumberInput"
                           type="tel"
                           className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                           placeholder="91234567"

@@ -3,10 +3,10 @@ import Navbar from "../shared/Navbar";
 
 export default function Favourites() {
     return (
-        <div className="min-h-screen bg-gray-900 "
+        <div className="min-h-screen bg-gray-900"
         style={{
             backgroundImage:
-                "url('favourites.png')",
+                "url('battery.png')",
             backgroundSize: "100%",
             backgroundRepeat: "repeat"
         }}>
