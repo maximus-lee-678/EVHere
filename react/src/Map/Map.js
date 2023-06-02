@@ -4,7 +4,8 @@ import { Icon, divIcon, marker } from 'leaflet'
 import { MapContainer, TileLayer, useMap, useMapEvents, Marker, Popup, GeoJSON, Tooltip } from 'react-leaflet';
 
 import "leaflet/dist/leaflet.css";
-import markerIconPng from "leaflet/dist/images/marker-icon.png"
+import markerIconPng from "./marker-icon.png"
+import markerIconFavouritePng from "./marker-icon-favourite.png"
 import geoJsonSubzone from "./2-planning-area.json"
 import geoJsonRegion from "./master-plan-2019-region-boundary-no-sea-geojson.json"
 
@@ -21,47 +22,93 @@ export default function Map(props) {
     const defaultWidth = "100%";
     const defaultHeight = "70vh";
 
+    const districtZoomThreshold = 12;
+    const displayMarkersThreshold = 14;
+
     const userEmail = localStorage.getItem("user_email");
     const [allChargerInfo, setAllChargerInfo] = useState();
 
+    // Function that loads all chargers. Called on page load, populates allChargerInfo.
+    async function fetchAllChargers() {
+        // Forms POST header
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: userEmail })
+        };
+
+        // JSON returns keys 'result', 'type' & 'content'
+        await fetch('/api/get_all_chargers', requestOptions)
+            .then(res => res.json())
+            .then(data => { setAllChargerInfo(data['content']) })
+            .catch(err => console.log(err));
+    }
+
     useEffect(() => {
         fetchAllChargers()
-
-        async function fetchAllChargers() {
-            // Forms POST header
-            const requestOptions = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: userEmail })
-            };
-
-            await fetch('/api/get_all_chargers', requestOptions)
-                .then(res => res.json())
-                .then(data => { setAllChargerInfo(data) })
-                .catch(err => console.log(err));
-        }
     }, []);
 
-    function GetZoomLevel() {
-        const [zoomLevel, setZoomLevel] = useState(12); // initial zoom level provided for MapContainer
+    async function handleFavourite(charger_id, operation) {
+        // Ugly confirmation prompt, TODO better
+        if(!window.confirm(operation + " favourite charger?")){
+            return;
+        }
 
+        // Forms POST header
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: userEmail, charger_id: charger_id, action: operation })
+        };
+
+        // Store response (JSON returns key 'result')
+        let response;
+        await fetch('/api/modify_favourite_charger', requestOptions)
+            .then(res => res.json())
+            .then(data => { response = data['result'] })
+            .catch(err => console.log(err));
+
+        // If operation successful, reload charger information
+        // Which reloads markers
+        if(response == 'Favourite modified.'){
+            fetchAllChargers();
+        }
+    }
+
+    // Returns zoom level of map.
+    function GetZoomLevel() {
+        const [zoomLevel, setZoomLevel] = useState(-1);
+
+        // Attach zoomend event handler
         const mapEvents = useMapEvents({
             zoomend: () => {
                 setZoomLevel(mapEvents.getZoom());
             },
         });
 
+        // If zoomLevel "uninitialised", init it
+        if (zoomLevel <= -1) {
+            setZoomLevel(mapEvents.getZoom());
+        }
+
         return zoomLevel;
     }
 
+    // Component that formats charger information into markers for display. Reads from allChargerInfo.
     function RenderMarkers() {
         let result = [];
 
         for (var i = 0; i < allChargerInfo.length; i++) {
+            // this is necessary for event handler to work, using allChargerInfo[i] directly causes it to go out of bound for some reason
+            let id = allChargerInfo[i].id;
+            let favourite = allChargerInfo[i].is_favourite;
+
             result.push(
                 <Marker position={[allChargerInfo[i].latitude, allChargerInfo[i].longitude]}
-                    icon={new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -30] })}
-                    key={allChargerInfo[i].latitude + ", " + allChargerInfo[i].longitude}>
+                    icon={allChargerInfo[i].is_favourite == 0 ?
+                        new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -30] }) :
+                        new Icon({ iconUrl: markerIconFavouritePng, iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -30] })}
+                    key={allChargerInfo[i].id}>
                     <Popup>
                         [Name] {allChargerInfo[i].name}
                         <br />
@@ -75,13 +122,12 @@ export default function Map(props) {
                         <br />
                         [24/7] {allChargerInfo[i].twenty_four_hours}
                         <br />
-                        <Link to={`/Charger?id=${allChargerInfo[i].id}`}>
-                            <button id={allChargerInfo[i].id}
-                                className="shadow bg-cyan-500 hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                            >
-                                ➕❤️
-                            </button>
-                        </Link>
+                        <button id={allChargerInfo[i].id}
+                            onClick={() => handleFavourite(id, favourite == 0 ? 'add' : 'remove')}
+                            className="shadow bg-cyan-500 hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                        >
+                            {allChargerInfo[i].is_favourite == 0 ? '❤️' : '🚫'}
+                        </button>
                     </Popup>
                 </Marker>
             )
@@ -89,11 +135,8 @@ export default function Map(props) {
         return result;
     }
 
-    // function handleAddFavourite(e) {
-    //     console.log(e.target.id);
-    // }
-
     let mapMarkers = [];
+    // Component that overlays region information and markers on map.
     function OverlayRender() {
         const zoomLevel = GetZoomLevel();
 
@@ -131,13 +174,13 @@ export default function Map(props) {
         };
 
         // Return geoJSON overlay depending on zoom level
-        if (zoomLevel >= 15) {  // No overlay, only markers
-            return allChargerInfo && <RenderMarkers />;
+        if (zoomLevel >= displayMarkersThreshold) {// No overlay, only markers
+            return allChargerInfo && <div><RenderMarkers /></div>;
         }
-        if (zoomLevel >= 13) {  // District Level and Markers
-            return allChargerInfo && <div><RenderMarkers /><GeoJSON data={geoJsonSubzone} key={Date.now()} /></div>;
+        if (zoomLevel >= districtZoomThreshold) {  // District Level
+            return allChargerInfo && <div><GeoJSON data={geoJsonSubzone} key={Date.now()} /></div>;
         }
-        else {                  // Region Level
+        else {                                     // Region Level
             return <GeoJSON data={geoJsonRegion} key={Date.now()} />;
         }
     }

@@ -31,13 +31,16 @@ export default function Register() {
       .catch(err => console.log(err));
 
     // If success, redirect
-    if (response.result) {
-      toast.success(response.description);
+    if (response.result == 'Account successfully created!') {
+      toast.success(response.result);
+
+      await new Promise(resolve => setTimeout(resolve, 3000));
+
       // reload page
       window.location.replace('/Login');
     }
     else {
-      toast.error(response.description);
+      toast.error(response.result + '\n' + response.reason);
     }
   };
 

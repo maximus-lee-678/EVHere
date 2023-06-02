@@ -10,7 +10,6 @@ import NotFound from './MainPages/NotFound.js';
 import Dashboard from './MainPages/Dashboard.js';
 import Favourites from './MainPages/Favourites.js';
 import Recommendations from './MainPages/Recommendations.js';
-import Charger from './MainPages/Charger';
 import Profile from './MainPages/Profile';
 import ChargingHistory from './MainPages/ChargingHistory';
 
@@ -46,7 +45,6 @@ export default function App() {
 
         <Route exact path="/Favourites" element={<Favourites />} />
         <Route exact path="/Recommendations" element={<Recommendations />} />
-        <Route exact path="/Charger" element={<Charger />} />
         <Route exact path="/Profile" element={<Profile />} />
         <Route exact path="/ChargingHistory" element={<ChargingHistory />} />
       </Routes>

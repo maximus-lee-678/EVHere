@@ -9,7 +9,6 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [loginError, setLoginError] = useState('');
 
     // Handler for login form submission. Transforms email and password from useStates into POST fields
     // and sends it to backend. Receives a JSON and acts based on response result.
@@ -31,7 +30,7 @@ export default function Login() {
             .catch(err => console.log(err));
 
         // result is boolean of status
-        if (response.result) {
+        if (response.result == 'Login successful!') {
             // store the user in localStorage
             localStorage.setItem('user_email', email);
 
@@ -39,9 +38,7 @@ export default function Login() {
             window.location.replace('/');
         } else {
             // setLoginError useState for use with popup error
-            // TODO
-            setLoginError(response.description);
-            toast.error(response.description);
+            toast.error(response.reason);
         }
     }
 
