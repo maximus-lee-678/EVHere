@@ -8,6 +8,8 @@ import markerIconPng from "./marker-icon.png"
 import markerIconFavouritePng from "./marker-icon-favourite.png"
 import geoJsonSubzone from "./2-planning-area.json"
 import geoJsonRegion from "./master-plan-2019-region-boundary-no-sea-geojson.json"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // This component renders a map centered on singapore. Pass in properties to change the kind of returns you get.
 //
@@ -51,8 +53,11 @@ export default function Map(props) {
     async function handleFavourite(charger_id, operation) {
         // Ugly confirmation prompt, TODO better
         if(!window.confirm(operation + " favourite charger?")){
+            //do nothing if cancel confirmation
             return;
         }
+        //maybe can make a dialog that opens when button is clicked, then yes no goes to handle favourite? TODO
+        
 
         // Forms POST header
         const requestOptions = {
@@ -72,6 +77,13 @@ export default function Map(props) {
         // Which reloads markers
         if(response == 'Favourite modified.'){
             fetchAllChargers();
+            if (operation === "add") {
+                toast.success("Added to favourites!")
+            }
+            if (operation === "remove") {
+                toast.success("Removed from favourites!")
+            }
+            
         }
     }
 
@@ -124,9 +136,11 @@ export default function Map(props) {
                         <br />
                         <button id={allChargerInfo[i].id}
                             onClick={() => handleFavourite(id, favourite == 0 ? 'add' : 'remove')}
-                            className="shadow bg-cyan-500 hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                            className={(allChargerInfo[i].is_favourite == 0 ? "hover:bg-red-900" : "hover:bg-red-300")
+                            + " bg-red-400 px-3 py-2 mr-2 rounded-full text-white"}
                         >
-                            {allChargerInfo[i].is_favourite == 0 ? '❤️' : '🚫'}
+                            <i className="fas fa-heart" style={{ color: "#ffffff" }}></i>
+                            {allChargerInfo[i].is_favourite == 0 ? ' Add to favourites' : ' Remove favourite'}
                         </button>
                     </Popup>
                 </Marker>
@@ -186,13 +200,25 @@ export default function Map(props) {
     }
 
     return (
-        <MapContainer center={singaporeCenter} zoom={props.desiredZoom || defaultZoom} scrollWheelZoom={true}
-            style={{ width: props.mapWidth || defaultWidth, height: props.mapHeight || defaultHeight }}>
-            <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            {<OverlayRender />  /* Must be rendered as a component to be a considered descendant of MapContainer */}
-        </MapContainer>
+        <>
+            <ToastContainer position="top-center"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="colored" />
+            <MapContainer center={singaporeCenter} zoom={props.desiredZoom || defaultZoom} scrollWheelZoom={true}
+                style={{ width: props.mapWidth || defaultWidth, height: props.mapHeight || defaultHeight }}>
+                <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                {<OverlayRender />  /* Must be rendered as a component to be a considered descendant of MapContainer */}
+            </MapContainer>
+        </>
     );
 }

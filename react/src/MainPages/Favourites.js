@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from "../shared/Navbar";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Favourites() {
     const userEmail = localStorage.getItem("user_email");
@@ -28,6 +30,37 @@ export default function Favourites() {
             .catch(err => console.log(err));
     }
 
+    async function handleFavourite(charger_id, operation) {
+        // Ugly confirmation prompt, TODO better
+        if (!window.confirm("Remove favourite charger?")) {
+            //do nothing if cancel confirmation
+            return;
+        }
+        //maybe can make a dialog that opens when button is clicked, then yes no goes to handle favourite? TODO
+
+
+        // Forms POST header
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: userEmail, charger_id: charger_id, action: operation })
+        };
+
+        // Store response (JSON returns key 'result')
+        let response;
+        await fetch('/api/modify_favourite_charger', requestOptions)
+            .then(res => res.json())
+            .then(data => { response = data['result'] })
+            .catch(err => console.log(err));
+
+        // If operation successful, reload favourite charger information
+        if (response == 'Favourite modified.') {
+            fetchFavouriteChargers();
+            toast.success("Removed from favourites!")
+
+        }
+    }
+
     useEffect(() => {
         fetchFavouriteChargers()
     }, []);
@@ -37,6 +70,8 @@ export default function Favourites() {
         let result = [];
 
         for (var i = 0; i < favouriteChargerInfo.length; i++) {
+            let id = favouriteChargerInfo[i].id;
+
             result.push(
                 <div className="flex py-4 px-10 bg-white rounded-lg">
                     <div className="w-4/5">
@@ -48,7 +83,9 @@ export default function Favourites() {
                         <div>Hours: {favouriteChargerInfo[i].twenty_four_hours == 'TRUE' ? '24 hours' : 'not 24 hours'}</div>
                     </div>
                     <div className="w-1/5 flex justify-center items-center">
-                        <button className="bg-red-400 hover:bg-red-900 p-5 rounded-full text-white">
+                        <button id={favouriteChargerInfo[i].id}
+                            className="bg-red-400 hover:bg-red-300 p-5 rounded-full text-white"
+                            onClick={() => handleFavourite(id, 'remove')}>
                             <i className="fas fa-heart fa-xl" style={{ color: "#ffffff" }}></i>
                         </button>
                     </div>
@@ -66,6 +103,16 @@ export default function Favourites() {
                 backgroundSize: "100%",
                 backgroundRepeat: "repeat"
             }}>
+            <ToastContainer position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored" />
             <Navbar transparent />
             <main>
                 <section className="w-full h-full">

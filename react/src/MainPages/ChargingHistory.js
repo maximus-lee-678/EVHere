@@ -1,17 +1,23 @@
 import React from "react";
-
+import { Link } from 'react-router-dom';
 import Navbar from '../shared/Navbar';
 import BarChart from "./Barchart";
 
 export default function ChargingHistory() {
+    window.onclick = function (event) {
+        if (event.target == document.getElementById("my-modal")) {
+            document.getElementById("my-modal").style.display = "none";
+        }
+    }
+
     return (
         <div className="min-h-screen bg-gray-900"
-        style={{
-            backgroundImage:
-                "url('battery.png')",
-            backgroundSize: "100%",
-            backgroundRepeat: "repeat"
-        }}>
+            style={{
+                backgroundImage:
+                    "url('battery.png')",
+                backgroundSize: "100%",
+                backgroundRepeat: "repeat"
+            }}>
             <Navbar transparent />
             <div className="relative container mx-auto px-4 h-full bg-gray-900">
                 {/* Header */}
@@ -19,7 +25,7 @@ export default function ChargingHistory() {
                     <div className="flex content-center items-center justify-center h-full w-full font-semibold text-3xl text-white">Charging History</div>
                 </div>
                 <div className="px-4 md:px-10 mx-auto w-full flex flex-col items-center">
-                    <BarChart/>
+                    <BarChart />
 
 
                     <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 self-center">
@@ -68,11 +74,12 @@ export default function ChargingHistory() {
                                             <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                                 $5
                                             </td>
-                                            
+
                                             <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                                 <button
                                                     className="text-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none"
                                                     type="button"
+                                                    onClick={showModal}
                                                     style={{ transition: "all .15s ease" }}
                                                 >
                                                     Details
@@ -179,6 +186,55 @@ export default function ChargingHistory() {
 
                 </div>
             </div>
+
+
+            {/*Modal with overlay*/}
+            <div
+                className="fixed hidden inset-0 bg-gray-900 bg-opacity-50 overflow-y-auto h-full w-full"
+                id="my-modal">
+                {/*Modal content*/}
+                <div
+                    className="relative top-24 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white"
+                >
+                    <div className="mt-3 text-center">
+                        <h3 className="text-lg leading-6 font-medium text-gray-900">1/6/2023, 2pm</h3>
+                        <div className="mt-2 px-7 py-3 space-y-5">
+                            {/*Vehicle charging details*/}
+                            <div>
+                                <p>Vehicle: (Vehicle name)</p>
+                                <p>Time: 2pm - 2.25pm (25 min)</p>
+                                <p>Starting battery percentage: 50%</p>
+                                <p>Ending battery percentage: 60%</p>
+                                <p>Total price: $20.00</p>
+                            </div>
+
+                            {/*Charger details*/}
+                            <div>
+
+                                <p>Charger: (Charger name)</p>
+                                <p>Charger type: DC</p>
+                                <p>Charger connector: XX</p>
+                                <p>Location: XX</p>
+                                <p>Rate: $1.50/kWh</p>
+                            </div>
+                            <div className="flex justify-center items-center">
+                                <button className="bg-red-400 hover:bg-red-900 px-3 py-2 mr-2 rounded-full text-white">
+                                    <i className="fas fa-heart" style={{ color: "#ffffff" }}></i> Add charger to favourites
+                                </button>
+                            </div>
+                            <p className="text-gray-400 text-sm italic">Click outside to close</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     );
+
+    function showModal() {
+        let modal = document.getElementById("my-modal");
+        modal.style.display = "block";
+    }
+
+
 }
