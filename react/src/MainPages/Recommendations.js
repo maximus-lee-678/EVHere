@@ -23,7 +23,14 @@ export default function Recommendations() {
                                         <label className="block uppercase text-gray-700 text-xs font-bold mb-2">
                                             Vehicle
                                         </label>
-                                        <div>(Vehicle name)</div>
+                                        <select
+                                            id="vehicleName"
+                                            className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+                                            style={{ transition: "all .15s ease" }}
+                                        >
+                                            <option className="border-0 px-3 py-3 text-gray-700" value="Vehicle1Name">Vehicle 1 Name (S/N)</option>
+                                            <option className="border-0 px-3 py-3 text-gray-700" value="Vehicle2Name">Vehicle 2 Name (S/N)</option>
+                                        </select>
                                     </div>
                                     <div className="grid gap-4">
                                         <div className="p-2 rounded-md hover:bg-gray-200 cursor-pointer">
