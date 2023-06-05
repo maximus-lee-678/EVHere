@@ -13,6 +13,7 @@ import Recommendations from './MainPages/Recommendations.js';
 import Profile from './MainPages/Profile';
 import ChargingHistory from './MainPages/ChargingHistory';
 import Vehicles from './MainPages/Vehicles';
+import AddChargingHistory from './MainPages/AddChargingHistory';
 
 export default function App() {
   let userEmail;
@@ -49,6 +50,7 @@ export default function App() {
         <Route exact path="/Profile" element={<Profile />} />
         <Route exact path="/ChargingHistory" element={<ChargingHistory />} />
         <Route exact path="/AddNewVehicle" element={<Vehicles />} />
+        <Route exact path="/AddChargingHistory" element={<AddChargingHistory />} />
       </Routes>
     </BrowserRouter>
   );
