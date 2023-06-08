@@ -42,56 +42,74 @@ service_code_dict = {
 def create_user(input_username, input_password, input_email, input_full_name, input_phone_no):
     """
     Attempts to insert a new user into the database.\n
-    Returns dict with keys:\n
+    Returns Dictionary with keys:\n
     <result> CREATE_FAILURE or CREATE_SUCCESS.\n
-    <reason> (if <result> is CREATE_FAILURE) Reason for failure.\n
-    TODO far in future: return a list of errors instead of just first error encountered.
+    <reason> (if <result> is CREATE_FAILURE) Reason for failure. (IN ARRAY FORMAT)
     """
 
+    contains_errors = False
+    error_list = []
+
     # 1.1: input_username > check[length]
-    if len(input_username) > 64:
-        return {'result': CREATE_FAILURE, 'reason': USERNAME_INVALID_LENGTH}
+    if len(input_username) > 64 or len(input_username) == 0:
+        contains_errors = True
+        error_list.append(USERNAME_INVALID_LENGTH)
     # 1.2: sanitise username
-    username = helper_functions.string_sanitise(input_username)
+    else:
+        username = helper_functions.string_sanitise(input_username)
 
     # 2.1: password > check[length]
-    if len(input_password) > 64:
-        return {'result': CREATE_FAILURE, 'reason': PASSWORD_INVALID_LENGTH}
+    if len(input_password) > 64 or len(input_password) == 0:
+        contains_errors = True
+        error_list.append(PASSWORD_INVALID_LENGTH)
     # 2.2: password > check[security level]
-    if not helper_functions.validate_password(input_password):
-        return {'result': CREATE_FAILURE, 'reason': PASSWORD_INVALID_SYNTAX}
+    elif not helper_functions.validate_password(input_password):
+        contains_errors = True
+        error_list.append(PASSWORD_INVALID_SYNTAX)
     # 2.3: hash password
-    hashed_password = helper_functions.password_encrypt(input_password)
+    else:
+        hashed_password = helper_functions.password_encrypt(input_password)
 
     # 3.1: email > check[length]
-    if len(input_email) > 255:
-        return {'result': CREATE_FAILURE, 'reason': EMAIL_INVALID_LENGTH}
+    if len(input_email) > 255 or len(input_email) == 0:
+        contains_errors = True
+        error_list.append(EMAIL_INVALID_LENGTH)
     # 3.2: email > check[syntax]
-    if not helper_functions.validate_email(input_email):
-        return {'result': CREATE_FAILURE, 'reason': EMAIL_INVALID_SYNTAX}
-    # 3.3: sanitise email
-    email = helper_functions.string_sanitise(input_email)
-    # 3.4: email > check[already exists]
-    conn = db_methods.setup_connection()
-    cursor = conn.cursor()
-    task = (email,)
-    cursor.execute('SELECT * FROM user_info WHERE email=?', task)
-    row = cursor.fetchone()
-    db_methods.close_connection(conn)
-    if row is not None:
-        return {'result': CREATE_FAILURE, 'reason': ACCOUNT_ALREADY_EXISTS}
+    elif not helper_functions.validate_email(input_email):
+        contains_errors = True
+        error_list.append(EMAIL_INVALID_SYNTAX)
+    else:
+        # 3.3: sanitise email
+        email = helper_functions.string_sanitise(input_email)
+        # 3.4: email > check[already exists]
+        conn = db_methods.setup_connection()
+        cursor = conn.cursor()
+        task = (email,)
+        cursor.execute('SELECT * FROM user_info WHERE email=?', task)
+        row = cursor.fetchone()
+        db_methods.close_connection(conn)
+        if db_methods.check_fetchone(row):
+            contains_errors = True
+            error_list.append(ACCOUNT_ALREADY_EXISTS)
 
     # 4.1: phone_no > check[length & syntax]
     if not helper_functions.validate_phone_no(input_phone_no):
-        return {'result': CREATE_FAILURE, 'reason': PHONE_NUMBER_INVALID}
+        contains_errors = True
+        error_list.append(PHONE_NUMBER_INVALID)
     # 4.2: variable change (lol)
-    phone_no = input_phone_no
+    else:
+        phone_no = input_phone_no
 
     # 5.1: full_name > check[length]
-    if len(input_full_name) > 255:
-        return {'result': CREATE_FAILURE, 'reason': FULL_NAME_INVALID_LENGTH}
+    if len(input_full_name) > 255 or len(input_full_name) == 0:
+        contains_errors = True
+        error_list.append(FULL_NAME_INVALID_LENGTH)
     # 5.2: sanitise name
-    full_name = helper_functions.string_sanitise(input_full_name)
+    else:
+        full_name = helper_functions.string_sanitise(input_full_name)
+
+    if contains_errors:
+        return {'result': CREATE_FAILURE, 'reason': error_list}
 
     # 6: previous checks passed, generate rest of the fields
     id = helper_functions.generate_uuid()
@@ -115,10 +133,9 @@ def create_user(input_username, input_password, input_email, input_full_name, in
 def login_user(input_email, input_password):
     """
     Takes an input email and password and verifies that it exists in the database.\n
-    Returns dict with keys:\n
+    Returns Dictionary with keys:\n
     <result> LOGIN_FAILURE or LOGIN_SUCCESS.\n
-    <reason> (if <result> is LOGIN_FAILURE) Reason for failure.\n
-    TODO far in future: return a list of errors instead of just first error encountered.
+    <reason> (if <result> is LOGIN_FAILURE) Reason for failure.
     """
 
     # 1.1: email > check[length]
@@ -137,7 +154,7 @@ def login_user(input_email, input_password):
     cursor.execute('SELECT password FROM user_info WHERE email=?', task)
     row = cursor.fetchone()
     db_methods.close_connection(conn)
-    if row is None:
+    if db_methods.check_fetchone(row):
         return {'result': LOGIN_FAILURE, 'reason': EMAIL_PASSWORD_INVALID}
     # 2.2: obtain account password hash
     password_hash_string = row[0]
@@ -151,9 +168,9 @@ def login_user(input_email, input_password):
 def get_user_id_by_email(input_email):
     """
     Takes an input email verifies that it exists in the database.\n
-    Returns dict with keys:\n
+    Returns Dictionary with keys:\n
     <result> ACCOUNT_NOT_FOUND or ACCOUNT_FOUND.\n
-    <content> (if <result> is ACCOUNT_FOUND) user_id.
+    <content> (if <result> is ACCOUNT_FOUND) Value containing user_id.
     """
 
     # sanitise email

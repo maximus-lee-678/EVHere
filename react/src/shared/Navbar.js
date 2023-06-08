@@ -5,16 +5,16 @@ export default function Navbar(props) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   const [loggedIn, setLoggedIn] = useState('');
 
-    if (loggedIn === '') {
-        //not logged in
-        if (localStorage.getItem("user_email") !== "" && localStorage.getItem("user_email") == null) {
-            setLoggedIn("false");
-        }
-        //if logged in
-        else {
-            setLoggedIn("true");
-        }
+  if (loggedIn === '') {
+    //not logged in
+    if (localStorage.getItem("user_email") !== "" && localStorage.getItem("user_email") == null) {
+      setLoggedIn("false");
     }
+    //if logged in
+    else {
+      setLoggedIn("true");
+    }
+  }
 
 
   return (
@@ -115,7 +115,7 @@ export default function Navbar(props) {
                 Add Charging History
               </a>
             </li>
-            
+
           </ul>
           <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
             <li className="flex items-center">
@@ -123,7 +123,7 @@ export default function Navbar(props) {
                 className={
                   (props.transparent
                     ? "bg-white text-gray-800 hover:bg-gray-300"
-                    : "bg-pink-500 text-white hover:bg-pink-600") + (loggedIn === "true" ? " hidden" : "") + 
+                    : "bg-pink-500 text-white hover:bg-pink-600") + (loggedIn === "true" ? " hidden" : "") +
                   " text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
                 }
                 type="button"
@@ -137,7 +137,7 @@ export default function Navbar(props) {
                 className={
                   (props.transparent
                     ? "bg-white text-gray-800 hover:bg-gray-300"
-                    : "bg-pink-500 text-white hover:bg-pink-600") + (loggedIn === "true" ? " hidden" : "") + 
+                    : "bg-pink-500 text-white hover:bg-pink-600") + (loggedIn === "true" ? " hidden" : "") +
                   " text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
                 }
                 type="button"
@@ -151,7 +151,7 @@ export default function Navbar(props) {
                 className={
                   (props.transparent
                     ? "bg-white text-gray-800 active:bg-gray-100"
-                    : "bg-pink-500 text-white active:bg-pink-600") + (loggedIn === "false" ? " hidden" : "") + 
+                    : "bg-pink-500 text-white active:bg-pink-600") + (loggedIn === "false" ? " hidden" : "") +
                   " text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
                 }
                 type="button"
@@ -169,18 +169,18 @@ export default function Navbar(props) {
 }
 
 function handleLogout() {
-    console.log(localStorage.getItem("user_email"));
-    localStorage.removeItem("user_email");
+  console.log(localStorage.getItem("user_email"));
+  localStorage.removeItem("user_email");
 
-    // reload page
-    window.location.reload();
+  // reload page
+  window.location.reload();
 }
 
 function handleLogin() {
-    window.location.href = "/Login";
+  window.location.href = "/Login";
 }
 
 function handleSignup() {
-    window.location.href = "/Register";
+  window.location.href = "/Register";
 }
 

@@ -1,12 +1,88 @@
-// https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications
-
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '../shared/Navbar';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Vehicles() {
+    const userEmail = localStorage.getItem("user_email");
+
+    const [vehicleName, setVehicleName] = useState('');
+    const [vehicleModel, setVehicleModel] = useState('');
+    const [vehicleSN, setVehicleSN] = useState('');
+    const connectorRef = useRef(null);
+
+    const [connectorInfo, setConnectorInfo] = useState([]);
+
+    // Function that loads all connectors. Called on page load, populates connectorInfo.
+    // Used in connector type dropdown.
+    async function fetchAllConnectors() {
+        // Forms GET header
+        const requestOptions = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        };
+
+        // Store response
+        let response;
+        await fetch('/api/get_all_connectors', requestOptions)
+            .then(res => res.json())
+            .then(data => { response = data })
+            .catch(err => console.log(err));
+
+        // If success returned, store connector information
+        if (response.success) {
+            setConnectorInfo(response['content']);
+        } else {
+            toast.error(<div>{response.api_response}</div>);
+        }
+
+    }
+
+    useEffect(() => {
+        fetchAllConnectors()
+    }, []);
+
+    // Function that adds a new vehicle. Called upon form submission.
+    async function handleCreate(e) {
+        e.preventDefault();
+
+        // Forms POST header
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                email: userEmail, vehicle_name: vehicleName,
+                vehicle_model: vehicleModel, vehicle_sn: vehicleSN, vehicle_connector: connectorRef.current.value
+            })
+        };
+
+        // Store response
+        let response;
+        await fetch('/api/add_vehicle', requestOptions)
+            .then(res => res.json())
+            .then(data => { response = data })
+            .catch(err => console.log(err));
+
+        // result is boolean of status
+        if (response.success) {
+            toast.success(response.api_response);
+        } else {
+            toast.error(response.reason.toString());
+        }
+    }
+
+    // Component that formats connector information for display in dropdown. Reads from connectorInfo.
+    function ConnectorChoices() {
+        let options = [];
+
+        for (var i = 0; i < connectorInfo.length; i++) {
+            options.push(
+                <option className="border-0 px-3 py-3 text-gray-700" value={connectorInfo[i].name_short}>{connectorInfo[i].name_short}</option>
+            )
+        }
+        return options;
+    }
+
     return (
         <div>
             <ToastContainer position="top-center"
@@ -46,11 +122,11 @@ export default function Vehicles() {
                                                 Add a new vehicle
                                             </h6>
                                         </div>
-                                        <form>
+                                        <form onSubmit={handleCreate}>
                                             <div className="relative w-full mb-3">
                                                 <label
                                                     className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                                                    for="vNameInput"
+                                                    htmlFor="vNameInput"
                                                 >
                                                     Vehicle Name
                                                 </label>
@@ -59,13 +135,14 @@ export default function Vehicles() {
                                                     type="text"
                                                     className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                                                     style={{ transition: "all .15s ease" }}
+                                                    value={vehicleName} onChange={(event) => setVehicleName(event.target.value)}
                                                 />
                                             </div>
 
                                             <div className="relative w-full mb-3">
                                                 <label
                                                     className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                                                    for="vModelInput"
+                                                    htmlFor="vModelInput"
                                                 >
                                                     Vehicle Model
                                                 </label>
@@ -74,13 +151,14 @@ export default function Vehicles() {
                                                     type="text"
                                                     className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                                                     style={{ transition: "all .15s ease" }}
+                                                    value={vehicleModel} onChange={(event) => setVehicleModel(event.target.value)}
                                                 />
                                             </div>
 
                                             <div className="relative w-full mb-3">
                                                 <label
                                                     className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                                                    for="vSNInput"
+                                                    htmlFor="vSNInput"
                                                 >
                                                     Vehicle S/N
                                                 </label>
@@ -89,25 +167,25 @@ export default function Vehicles() {
                                                     type="text"
                                                     className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                                                     style={{ transition: "all .15s ease" }}
+                                                    value={vehicleSN} onChange={(event) => setVehicleSN(event.target.value)}
                                                 />
                                             </div>
 
                                             <div className="relative w-full mb-3">
                                                 <label
                                                     className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                                                    for="chargerTypeInput"
+                                                    htmlFor="connectorTypeInput"
                                                 >
-                                                    Charger Type (AC/DC/Dual) {/*either of these 3 answers will be accepted*/}
+                                                    Connector Type
                                                 </label>
                                                 <select
-                                                    id="chargerTypeInput"
+                                                    id="connectorTypeInput"
                                                     type="text"
                                                     className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                                                     style={{ transition: "all .15s ease" }}
+                                                    ref={connectorRef}
                                                 >
-                                                    <option className="border-0 px-3 py-3 text-gray-700" value="AC">AC</option>
-                                                    <option className="border-0 px-3 py-3 text-gray-700" value="DC">DC</option>
-                                                    <option className="border-0 px-3 py-3 text-gray-700" value="Dual">Dual (AC/DC)</option>
+                                                    <ConnectorChoices />
                                                 </select>
                                             </div>
 

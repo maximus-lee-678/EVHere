@@ -1,7 +1,6 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import { Icon, divIcon, marker } from 'leaflet'
-import { MapContainer, TileLayer, useMap, useMapEvents, Marker, Popup, GeoJSON, Tooltip } from 'react-leaflet';
+import { MapContainer, TileLayer, useMap, useMapEvents, Marker, Popup, GeoJSON } from 'react-leaflet';
 
 import "leaflet/dist/leaflet.css";
 import markerIconPng from "./marker-icon.png"
@@ -52,12 +51,11 @@ export default function Map(props) {
 
     async function handleFavourite(charger_id, operation) {
         // Ugly confirmation prompt, TODO better
-        if(!window.confirm(operation + " favourite charger?")){
+        //maybe can make a dialog that opens when button is clicked, then yes no goes to handle favourite?
+        if (!window.confirm(operation + " favourite charger?")) {
             //do nothing if cancel confirmation
             return;
         }
-        //maybe can make a dialog that opens when button is clicked, then yes no goes to handle favourite? TODO
-        
 
         // Forms POST header
         const requestOptions = {
@@ -70,12 +68,12 @@ export default function Map(props) {
         let response;
         await fetch('/api/modify_favourite_charger', requestOptions)
             .then(res => res.json())
-            .then(data => { response = data['result'] })
+            .then(data => { response = data })
             .catch(err => console.log(err));
 
         // If operation successful, reload charger information
         // Which reloads markers
-        if(response == 'Favourite modified.'){
+        if (response.success) {
             fetchAllChargers();
             if (operation === "add") {
                 toast.success("Added to favourites!")
@@ -83,7 +81,9 @@ export default function Map(props) {
             if (operation === "remove") {
                 toast.success("Removed from favourites!")
             }
-            
+        }
+        else {
+            toast.error(response.api_response);
         }
     }
 
@@ -117,7 +117,7 @@ export default function Map(props) {
 
             result.push(
                 <Marker position={[allChargerInfo[i].latitude, allChargerInfo[i].longitude]}
-                    icon={allChargerInfo[i].is_favourite == 0 ?
+                    icon={allChargerInfo[i].is_favourite === 0 ?
                         new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -30] }) :
                         new Icon({ iconUrl: markerIconFavouritePng, iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -30] })}
                     key={allChargerInfo[i].id}>
@@ -135,12 +135,12 @@ export default function Map(props) {
                         [24/7] {allChargerInfo[i].twenty_four_hours}
                         <br />
                         <button id={allChargerInfo[i].id}
-                            onClick={() => handleFavourite(id, favourite == 0 ? 'add' : 'remove')}
-                            className={(allChargerInfo[i].is_favourite == 0 ? "hover:bg-red-900" : "hover:bg-red-300")
-                            + " bg-red-400 px-3 py-2 mr-2 rounded-full text-white"}
+                            onClick={() => handleFavourite(id, favourite === 0 ? 'add' : 'remove')}
+                            className={(allChargerInfo[i].is_favourite === 0 ? "hover:bg-red-900" : "hover:bg-red-300")
+                                + " bg-red-400 px-3 py-2 mr-2 rounded-full text-white"}
                         >
                             <i className="fas fa-heart" style={{ color: "#ffffff" }}></i>
-                            {allChargerInfo[i].is_favourite == 0 ? ' Add to favourites' : ' Remove favourite'}
+                            {allChargerInfo[i].is_favourite === 0 ? ' Add to favourites' : ' Remove favourite'}
                         </button>
                     </Popup>
                 </Marker>
@@ -202,15 +202,15 @@ export default function Map(props) {
     return (
         <>
             <ToastContainer position="top-center"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="colored" />
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored" />
             <MapContainer center={singaporeCenter} zoom={props.desiredZoom || defaultZoom} scrollWheelZoom={true}
                 style={{ width: props.mapWidth || defaultWidth, height: props.mapHeight || defaultHeight }}>
                 <TileLayer

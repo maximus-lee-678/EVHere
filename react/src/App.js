@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useContext } from 'react';
+import React, { useMemo } from 'react';
 import { BrowserRouter, Routes, Route, Redirect, Navigate, useNavigate, Switch } from 'react-router-dom';
 import './App.css';
 
@@ -22,7 +22,7 @@ export default function App() {
     userEmail = localStorage.getItem("user_email");
   }, []);
 
-  if (userEmail === null && (window.location.pathname != "/Login" || window.location.pathname != "/Register")) {
+  if (userEmail === null && (window.location.pathname !== "/Login" || window.location.pathname !== "/Register")) {
     // Allow access only to register page, rest of pages lead to login
     return (
       <BrowserRouter>
@@ -39,10 +39,10 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* This route is for home element with exact path "/", in element props we passes the imported element*/}
+        {/* This route is for home element with exact path "/" */}
         <Route exact path="/" element={<Dashboard />} />
 
-        {/* If any route mismatches the upper route endpoints then, redirect triggers and redirects app to home element with to="/" */}
+        {/* If any route mismatches the upper route endpoints */}
         <Route path="*" element={<NotFound />} />
 
         <Route exact path="/Favourites" element={<Favourites />} />

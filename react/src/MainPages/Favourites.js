@@ -16,28 +16,35 @@ export default function Favourites() {
             body: JSON.stringify({ email: userEmail })
         };
 
+        // Store response
+        let response;
         // JSON returns keys 'result' & 'content'
         await fetch('/api/get_favourite_chargers', requestOptions)
             .then(res => res.json())
-            .then(data => {
-                if ('content' in data) {
-                    setFavouriteChargerInfo(data['content']);
-                }
-                else {
-                    alert("No favourites found!");
-                }
-            })
+            .then(data => { response = data })
             .catch(err => console.log(err));
+
+        // If success returned, store chargers
+        if (response.success) {
+            setFavouriteChargerInfo(response['content']);
+        }
+        else {
+            toast.error(<div>{response.api_response}</div>);
+        }
     }
 
+    useEffect(() => {
+        fetchFavouriteChargers()
+    }, []);
+
+    // Function that removes a user's favourited charger. Called when user clicks corresponding remove button.
     async function handleFavourite(charger_id, operation) {
         // Ugly confirmation prompt, TODO better
+        // maybe can make a dialog that opens when button is clicked, then yes no goes to handle favourite?
         if (!window.confirm("Remove favourite charger?")) {
             //do nothing if cancel confirmation
             return;
         }
-        //maybe can make a dialog that opens when button is clicked, then yes no goes to handle favourite? TODO
-
 
         // Forms POST header
         const requestOptions = {
@@ -46,30 +53,28 @@ export default function Favourites() {
             body: JSON.stringify({ email: userEmail, charger_id: charger_id, action: operation })
         };
 
-        // Store response (JSON returns key 'result')
+        // Store response
         let response;
         await fetch('/api/modify_favourite_charger', requestOptions)
             .then(res => res.json())
-            .then(data => { response = data['result'] })
+            .then(data => { response = data })
             .catch(err => console.log(err));
 
         // If operation successful, reload favourite charger information
-        if (response == 'Favourite modified.') {
+        if (response.success) {
             fetchFavouriteChargers();
             toast.success("Removed from favourites!")
-
+        } else {
+            toast.error(<div>{response.api_response}</div>);
         }
     }
-
-    useEffect(() => {
-        fetchFavouriteChargers()
-    }, []);
 
     // Component that formats charger information for display. Reads from favouriteChargerInfo.
     function FormatFavourites() {
         let result = [];
 
         for (var i = 0; i < favouriteChargerInfo.length; i++) {
+            console.log(favouriteChargerInfo[i]);
             let id = favouriteChargerInfo[i].id;
 
             result.push(
@@ -80,13 +85,13 @@ export default function Favourites() {
                         <div>Power: {favouriteChargerInfo[i].kilowatts || 0} kW</div>
                         <div>Connectors: {favouriteChargerInfo[i].connectors}</div>
                         <div>Location: {favouriteChargerInfo[i].address}</div>
-                        <div>Hours: {favouriteChargerInfo[i].twenty_four_hours == 'TRUE' ? '24 hours' : 'not 24 hours'}</div>
+                        <div>Hours: {favouriteChargerInfo[i].twenty_four_hours === 'TRUE' ? '24 hours' : 'not 24 hours'}</div>
                     </div>
                     <div className="w-1/5 flex justify-center items-center">
                         <button id={favouriteChargerInfo[i].id}
                             className="bg-red-400 hover:bg-red-300 p-5 rounded-full text-white"
                             onClick={() => handleFavourite(id, 'remove')}>
-                            <i className="fas fa-heart fa-xl" style={{ color: "#ffffff" }}></i>
+                            <i className="fas fa-heart-broken fa-xl" style={{ color: "#ffffff" }}></i>
                         </button>
                     </div>
                 </div>

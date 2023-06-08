@@ -41,7 +41,7 @@ export default function Recommendations() {
                                             <div className="ml-4 inline-block">
                                                 <div className="uppercase text-gray-700 font-bold">Best value for money:</div>
                                                 <div>
-                                                Shell Recharge Punggol
+                                                    Shell Recharge Punggol
                                                 </div>
                                             </div>
                                         </div>
@@ -53,7 +53,7 @@ export default function Recommendations() {
                                             <div className="ml-4 inline-block">
                                                 <div className="uppercase text-gray-700 font-bold">Nearest to me:</div>
                                                 <div>
-                                                Bukit Merah / Telok Blangah Rise / Blk 32
+                                                    Bukit Merah / Telok Blangah Rise / Blk 32
                                                 </div>
                                             </div>
                                         </div>
@@ -65,7 +65,7 @@ export default function Recommendations() {
                                             <div className="ml-4 inline-block">
                                                 <div className="uppercase text-gray-700 font-bold">Fastest charging speed:</div>
                                                 <div>
-                                                Shell Recharge Punggol
+                                                    Shell Recharge Punggol
                                                 </div>
                                             </div>
                                         </div>
@@ -75,7 +75,7 @@ export default function Recommendations() {
                             </div>
 
                             <div className="col-span-2">
-                                <Map desiredZoom={11} mapWidth={"100%"} mapHeight={"70vh"}/>
+                                <Map desiredZoom={11} mapWidth={"100%"} mapHeight={"70vh"} />
                             </div>
                         </div>
                     </div>

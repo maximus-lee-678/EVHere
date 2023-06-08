@@ -5,7 +5,7 @@ import BarChart from "./Barchart";
 
 export default function ChargingHistory() {
     window.onclick = function (event) {
-        if (event.target == document.getElementById("my-modal")) {
+        if (event.target === document.getElementById("my-modal")) {
             document.getElementById("my-modal").style.display = "none";
         }
     }
@@ -26,7 +26,6 @@ export default function ChargingHistory() {
                 </div>
                 <div className="px-4 md:px-10 mx-auto w-full flex flex-col items-center">
                     <BarChart />
-
 
                     <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 self-center">
                         <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
@@ -69,7 +68,7 @@ export default function ChargingHistory() {
                                                 Shell Recharge Punggol
                                             </td>
                                             <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                50% -> 60%
+                                                50% -&gt; 60%
                                             </td>
                                             <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                                 $5
@@ -94,7 +93,7 @@ export default function ChargingHistory() {
                                                 Jalan Kayu URA Carpark
                                             </td>
                                             <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                0% -> 75%
+                                                0% -&gt; 75%
                                             </td>
                                             <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                                 $13

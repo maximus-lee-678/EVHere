@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../shared/Navbar';
 import { ToastContainer, toast } from 'react-toastify';
@@ -31,16 +31,17 @@ export default function Register() {
       .catch(err => console.log(err));
 
     // If success, redirect
-    if (response.result == 'Account successfully created!') {
+    if (response.success) {
       toast.success(response.result);
 
-      await new Promise(resolve => setTimeout(resolve, 3000));
+      // delay 2s
+      await new Promise(resolve => setTimeout(resolve, 2000));
 
       // reload page
       window.location.replace('/Login');
     }
     else {
-      toast.error(response.result + '\n' + response.reason);
+      toast.error(<div>{response.api_response}<br />{response.reason}</div>);
     }
   };
 

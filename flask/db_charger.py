@@ -19,12 +19,12 @@ service_code_dict = {
 def get_all_chargers(input_email):
     """
     Retrieves ALL chargers from database. If email is specified, adds an additional column indicating if charger is favourited.\n
-    Returns dict with keys:\n
+    Returns Dictionary with keys:\n
     <result> CHARGER_NOT_FOUND or CHARGER_FOUND.\n
     <type> (if <result> is CHARGER_FOUND) ALL_WITH_FAVOURITE or ALL_WITHOUT_FAVOURITE.\n
-    <content> (if <result> is CHARGER_FOUND) 2d array? containing charger information.
+    <content> (if <result> is CHARGER_FOUND) Dictionary containing charger information.
     """
-        
+
     conn = db_methods.setup_connection()
     cursor = conn.cursor()
 
@@ -46,24 +46,36 @@ def get_all_chargers(input_email):
     rows = cursor.fetchall()
     db_methods.close_connection(conn)
 
-    if rows is None:
+    if db_methods.check_fetchall(rows):
         return {'result': CHARGER_NOT_FOUND}
+
+    key_values = []
+    # transforming array to key-values
+    if input_email is not None:
+        for row in rows:
+            key_values.append({"id": row[0], "name": row[1],
+                               "latitude": row[2], "longitude": row[3], "address": row[4], "provider": row[5],
+                               "connectors": row[6], "online": row[7], "kilowatts": row[8],
+                               "twenty_four_hours": row[9], "last_updated": row[10], "is_favourite": row[11]})
     else:
-        return {'result': CHARGER_FOUND,
-                'type': ALL_WITH_FAVOURITE if input_email != None else ALL_WITHOUT_FAVOURITE,
-                'content': rows}
+        for row in rows:
+            key_values.append({"id": row[0], "name": row[1],
+                               "latitude": row[2], "longitude": row[3], "address": row[4], "provider": row[5],
+                               "connectors": row[6], "online": row[7], "kilowatts": row[8],
+                               "twenty_four_hours": row[9], "last_updated": row[10]})
+
+    return {'result': CHARGER_FOUND,
+            'type': ALL_WITH_FAVOURITE if input_email != None else ALL_WITHOUT_FAVOURITE,
+            'content': key_values}
 
 
 def get_favourite_chargers(input_email):
     """
     Retrieves chargers that have been favourited by an email from the database.\n
-    Returns dict with keys:\n
+    Returns Dictionary with keys:\n
     <result> MISSING_FIELDS, CHARGER_NOT_FOUND or CHARGER_FOUND.\n
-    <content> (if <result> is CHARGER_FOUND) 2d array? containing favourite charger information.
+    <content> (if <result> is CHARGER_FOUND) Dictionary containing favourite charger information.
     """
-        
-    if input_email is None:
-        return {'result': MISSING_FIELDS}
 
     conn = db_methods.setup_connection()
     cursor = conn.cursor()
@@ -81,21 +93,29 @@ def get_favourite_chargers(input_email):
     rows = cursor.fetchall()
     db_methods.close_connection(conn)
 
-    if rows is None:
+    if db_methods.check_fetchall(rows):
         return {'result': CHARGER_NOT_FOUND}
-    else:
-        return {'result': CHARGER_FOUND, 'content': rows}
+
+    key_values = []
+    # transforming array to key-values
+    for row in rows:
+        key_values.append({"id": row[0], "name": row[1],
+                           "latitude": row[2], "longitude": row[3], "address": row[4], "provider": row[5],
+                           "connectors": row[6], "online": row[7], "kilowatts": row[8],
+                           "twenty_four_hours": row[9], "last_updated": row[10]})
+
+    return {'result': CHARGER_FOUND, 'content': key_values}
 
 
 def get_one_charger(input_charger_id):
     """
     Retrieves a charger based on id from the database.\n
-    Returns dict with keys:\n
+    Returns Dictionary with keys:\n
     <result> CHARGER_NOT_FOUND or CHARGER_FOUND.\n
-    <content> (if <result> is CHARGER_FOUND) array? containing single charger information.
+    <content> (if <result> is CHARGER_FOUND) Array containing single charger information.
     """
 
-    # sanitise input 
+    # sanitise input
     charger_id = helper_functions.string_sanitise(input_charger_id)
 
     conn = db_methods.setup_connection()
@@ -107,7 +127,7 @@ def get_one_charger(input_charger_id):
     row = cursor.fetchone()
     db_methods.close_connection(conn)
 
-    if row is None:
+    if db_methods.check_fetchone(row):
         return {'result': CHARGER_NOT_FOUND}
-    else:
-        return {'result': CHARGER_FOUND, 'content': row}
+
+    return {'result': CHARGER_FOUND, 'content': row}

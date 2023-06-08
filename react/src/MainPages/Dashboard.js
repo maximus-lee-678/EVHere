@@ -60,7 +60,7 @@ export default function Dashboard() {
           </div>
 
           {/* Three boxes - charging history, favourites, map */}
-          <div className="container mx-auto px-4">    
+          <div className="container mx-auto px-4">
             <div className="flex flex-wrap">
               <div className="pt-6 w-full md:w-4/12 px-4 text-center">
                 <Link to="/ChargingHistory" className="relative flex flex-col min-w-0 break-words bg-white hover:bg-blue-50 cursor-pointer w-full mb-8 shadow-lg rounded-lg">

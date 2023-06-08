@@ -22,12 +22,13 @@ service_code_dict = {
     MODIFY_BAD_ACTION: "Invalid operation type."
 }
 
+
 def get_favourite_charger_one(input_user_id, input_charger_id):
     """
     Attempts to retrieve one favourite charger entry from the database.\n
-    Returns dict with keys:\n
+    Returns Dictionary with keys:\n
     <result> FAVOURITE_CHARGER_NOT_FOUND or FAVOURITE_CHARGER_FOUND.\n
-    <content> (if <result> is FAVOURITE_CHARGER_FOUND) array? containing favourite charger information.
+    <content> (if <result> is FAVOURITE_CHARGER_FOUND) Array containing favourite charger information.
     """
 
     # sanitise inputs
@@ -38,25 +39,25 @@ def get_favourite_charger_one(input_user_id, input_charger_id):
     cursor = conn.cursor()
 
     task = (user_id, charger_id)
-    cursor.execute('SELECT * FROM favourited_chargers WHERE id_user_info=? AND id_charger=?', task)
+    cursor.execute(
+        'SELECT * FROM favourited_chargers WHERE id_user_info=? AND id_charger=?', task)
 
     row = cursor.fetchone()
     db_methods.close_connection(conn)
 
-    if row is None:
+    if db_methods.check_fetchone(row):
         return {'result': FAVOURITE_CHARGER_NOT_FOUND}
-    else:
-        return {'result': FAVOURITE_CHARGER_FOUND, 'content': row}
+
+    return {'result': FAVOURITE_CHARGER_FOUND, 'content': row}
 
 
 def modify_favourite_charger(input_email, input_charger_id, input_action):
     """
     Attempts to add or remove one favourite charger entry to or from the database.\n
-    Returns dict with keys:\n
-    <result> MODIFY_BAD_EMAIL, MODIFY_BAD_CHARGER_ID, MODIFY_INVALID_OPERATION,
-    MODIFY_BAD_ACTION or MODIFY_SUCCESS.
+    Returns Dictionary with keys:\n
+    <result> MODIFY_BAD_EMAIL, MODIFY_BAD_CHARGER_ID, MODIFY_INVALID_OPERATION, MODIFY_BAD_ACTION or MODIFY_SUCCESS.
     """
-    
+
     # 1.1: check if email exists
     user_response = db_user_info.get_user_id_by_email(input_email=input_email)
     if user_response['result'] == db_user_info.ACCOUNT_NOT_FOUND:
@@ -77,7 +78,7 @@ def modify_favourite_charger(input_email, input_charger_id, input_action):
         # 3a.1: ensure charger not already favourited
         if get_favourite_charger_one(user_id, charger_id)['result'] == FAVOURITE_CHARGER_FOUND:
             return {'result': MODIFY_INVALID_OPERATION}
-        
+
         # 3a.2: Insert Query / Form Parameters
         query = 'INSERT INTO favourited_chargers VALUES (?,?,?)'
         id = helper_functions.generate_uuid()
@@ -87,7 +88,7 @@ def modify_favourite_charger(input_email, input_charger_id, input_action):
         # 3b.1: ensure charger already favourited
         if get_favourite_charger_one(user_id, charger_id)['result'] == FAVOURITE_CHARGER_NOT_FOUND:
             return {'result': MODIFY_INVALID_OPERATION}
-        
+
         # 3b.2: Delete Query / Form Parameters
         query = 'DELETE FROM favourited_chargers WHERE id_user_info=? AND id_charger=?'
         task = (user_id, charger_id)

@@ -1,6 +1,6 @@
 // https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../shared/Navbar';
 import { ToastContainer, toast } from 'react-toastify';
@@ -29,16 +29,15 @@ export default function Login() {
             .then(data => { response = data })
             .catch(err => console.log(err));
 
-        // result is boolean of status
-        if (response.result == 'Login successful!') {
+        // If success returned, change pages
+        if (response.success) {
             // store the user in localStorage
             localStorage.setItem('user_email', email);
 
             // reload page
             window.location.replace('/');
         } else {
-            // setLoginError useState for use with popup error
-            toast.error(response.reason);
+            toast.error(<div>{response.api_response}<br />{response.reason}</div>);
         }
     }
 
