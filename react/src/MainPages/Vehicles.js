@@ -83,8 +83,15 @@ export default function Vehicles() {
         return options;
     }
 
+    window.onclick = function (event) {
+        if (event.target === document.getElementById("my-modal")) {
+            document.getElementById("my-modal").style.display = "none";
+        }
+    }
+
     return (
-        <div>
+        <div className="min-h-screen bg-gray-900"
+        >
             <ToastContainer position="top-center"
                 autoClose={5000}
                 hideProgressBar={false}
@@ -97,115 +104,151 @@ export default function Vehicles() {
                 theme="colored" />
             <Navbar transparent />
             <main>
-                <section className="absolute w-full h-full">
-                    <div className="absolute top-0 w-full h-full bg-gray-900 min-h-screen"></div>
-                    <div className="container mx-auto px-4 h-full">
-                        <div className="flex content-center items-center justify-center h-full">
-                            <div className="w-full lg:w-4/12 px-4">
-                                <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300 border-0">
-                                    <div className="flex-auto px-4 lg:px-10 py-10 pt-0 mt-6">
-                                        <div className="text-center mb-3">
-                                            <h6 className="text-gray-600 text-sm font-bold">
-                                                Current Vehicles
-                                            </h6>
-                                        </div>
-                                        <div className="relative w-full">
-                                            <li>Vehicle name 1 (Model - S/N)</li>
-                                            <li>Vehicle name 2 (Model - S/N)</li>
-                                        </div>
-                                    </div>
+                <section className="w-full h-full">
+                    <div className="relative container mx-auto px-4 h-full bg-gray-900 w-1/2">
+                        <div className="h-40">
+                            <div className="flex content-center items-center justify-center h-full w-full font-semibold text-3xl text-white">Vehicles</div>
+                        </div>
+
+                        <div className="space-y-4">
+                            <div className="flex justify-end">
+                                <button className="bg-green-400 hover:bg-green-500 py-2 px-5 rounded-lg"
+                                    onClick={showModal}
+                                    style={{ transition: "all .15s ease" }}>
+                                    Add new vehicle</button>
+                            </div>
+                            <div className="bg-white rounded-lg py-4 px-10">
+                                <div className="font-bold text-xl">Vehicle 1 name</div>
+                                <div>
+                                    <div>Vehicle Model: (Vehicle model)</div>
+                                    <div>S/N: (S/N)</div>
+                                    <div>Connector type: (Connector type)</div>
                                 </div>
-                                <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300 border-0">
-                                    <div className="flex-auto px-4 lg:px-10 py-10 pt-0 mt-6">
-                                        <div className="text-center mb-3">
-                                            <h6 className="text-gray-600 text-sm font-bold">
-                                                Add a new vehicle
-                                            </h6>
-                                        </div>
-                                        <form onSubmit={handleCreate}>
-                                            <div className="relative w-full mb-3">
-                                                <label
-                                                    className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                                                    htmlFor="vNameInput"
-                                                >
-                                                    Vehicle Name
-                                                </label>
-                                                <input
-                                                    id="vNameInput"
-                                                    type="text"
-                                                    className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                                                    style={{ transition: "all .15s ease" }}
-                                                    value={vehicleName} onChange={(event) => setVehicleName(event.target.value)}
-                                                />
-                                            </div>
-
-                                            <div className="relative w-full mb-3">
-                                                <label
-                                                    className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                                                    htmlFor="vModelInput"
-                                                >
-                                                    Vehicle Model
-                                                </label>
-                                                <input
-                                                    id="vModelInput"
-                                                    type="text"
-                                                    className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                                                    style={{ transition: "all .15s ease" }}
-                                                    value={vehicleModel} onChange={(event) => setVehicleModel(event.target.value)}
-                                                />
-                                            </div>
-
-                                            <div className="relative w-full mb-3">
-                                                <label
-                                                    className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                                                    htmlFor="vSNInput"
-                                                >
-                                                    Vehicle S/N
-                                                </label>
-                                                <input
-                                                    id="vSNInput"
-                                                    type="text"
-                                                    className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                                                    style={{ transition: "all .15s ease" }}
-                                                    value={vehicleSN} onChange={(event) => setVehicleSN(event.target.value)}
-                                                />
-                                            </div>
-
-                                            <div className="relative w-full mb-3">
-                                                <label
-                                                    className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                                                    htmlFor="connectorTypeInput"
-                                                >
-                                                    Connector Type
-                                                </label>
-                                                <select
-                                                    id="connectorTypeInput"
-                                                    type="text"
-                                                    className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                                                    style={{ transition: "all .15s ease" }}
-                                                    ref={connectorRef}
-                                                >
-                                                    <ConnectorChoices />
-                                                </select>
-                                            </div>
-
-                                            <div className="text-center mt-6">
-                                                <button
-                                                    className="bg-gray-900 text-white hover:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
-                                                    type="submit"
-                                                    style={{ transition: "all .15s ease" }}
-                                                >
-                                                    Add new vehicle
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
+                            </div>
+                            <div className="bg-white rounded-lg py-4 px-10">
+                                <div className="font-bold text-xl">Vehicle 1 name</div>
+                                <div>
+                                    <div>Vehicle Model: (Vehicle model)</div>
+                                    <div>S/N: (S/N)</div>
+                                    <div>Connector type: (Connector type)</div>
+                                </div>
+                            </div>
+                            <div className="bg-white rounded-lg py-4 px-10">
+                                <div className="font-bold text-xl">Vehicle 1 name</div>
+                                <div>
+                                    <div>Vehicle Model: (Vehicle model)</div>
+                                    <div>S/N: (S/N)</div>
+                                    <div>Connector type: (Connector type)</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section >
-            </main >
+                </section>
+            </main>
+
+            {/*Modal with overlay*/}
+            <div
+                className="fixed hidden inset-0 bg-gray-900 bg-opacity-50 overflow-y-auto h-full w-full"
+                id="my-modal">
+                {/*Modal content*/}
+                <div
+                    className="relative top-24 mx-auto p-5 border w-96 shadow-lg rounded-md bg-gray-200"
+                >
+
+                    <div className="flex-auto px-4 lg:px-10 py-10 pt-0 mt-6">
+                        <div className="text-center mb-3">
+                            <h6 className="text-gray-600 text-sm font-bold">
+                                Add a new vehicle
+                            </h6>
+                        </div>
+                        <form onSubmit={handleCreate}>
+                            <div className="relative w-full mb-3">
+                                <label
+                                    className="block uppercase text-gray-700 text-xs font-bold mb-2"
+                                    htmlFor="vNameInput"
+                                >
+                                    Vehicle Name
+                                </label>
+                                <input
+                                    id="vNameInput"
+                                    type="text"
+                                    className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+                                    style={{ transition: "all .15s ease" }}
+                                    value={vehicleName} onChange={(event) => setVehicleName(event.target.value)}
+                                />
+                            </div>
+
+                            <div className="relative w-full mb-3">
+                                <label
+                                    className="block uppercase text-gray-700 text-xs font-bold mb-2"
+                                    htmlFor="vModelInput"
+                                >
+                                    Vehicle Model
+                                </label>
+                                <input
+                                    id="vModelInput"
+                                    type="text"
+                                    className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+                                    style={{ transition: "all .15s ease" }}
+                                    value={vehicleModel} onChange={(event) => setVehicleModel(event.target.value)}
+                                />
+                            </div>
+
+                            <div className="relative w-full mb-3">
+                                <label
+                                    className="block uppercase text-gray-700 text-xs font-bold mb-2"
+                                    htmlFor="vSNInput"
+                                >
+                                    Vehicle S/N
+                                </label>
+                                <input
+                                    id="vSNInput"
+                                    type="text"
+                                    className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+                                    style={{ transition: "all .15s ease" }}
+                                    value={vehicleSN} onChange={(event) => setVehicleSN(event.target.value)}
+                                />
+                            </div>
+
+                            <div className="relative w-full mb-3">
+                                <label
+                                    className="block uppercase text-gray-700 text-xs font-bold mb-2"
+                                    htmlFor="connectorTypeInput"
+                                >
+                                    Connector Type
+                                </label>
+                                <select
+                                    id="connectorTypeInput"
+                                    type="text"
+                                    className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+                                    style={{ transition: "all .15s ease" }}
+                                    ref={connectorRef}
+                                >
+                                    <ConnectorChoices />
+                                </select>
+                            </div>
+
+                            <div className="text-center mt-6">
+                                <button
+                                    className="bg-gray-900 text-white hover:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
+                                    type="submit"
+                                    style={{ transition: "all .15s ease" }}
+                                >
+                                    Add new vehicle
+                                </button>
+                            </div>
+
+                        </form>
+                        <p className="mt-2 text-center text-gray-700 text-sm italic">Click outside to close</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    )
+    );
+
+    function showModal() {
+        let modal = document.getElementById("my-modal");
+        modal.style.display = "block";
+    }
 }

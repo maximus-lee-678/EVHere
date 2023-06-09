@@ -88,7 +88,7 @@ def create_user(input_username, input_password, input_email, input_full_name, in
         cursor.execute('SELECT * FROM user_info WHERE email=?', task)
         row = cursor.fetchone()
         db_methods.close_connection(conn)
-        if db_methods.check_fetchone(row):
+        if not db_methods.check_fetchone(row):
             contains_errors = True
             error_list.append(ACCOUNT_ALREADY_EXISTS)
 
