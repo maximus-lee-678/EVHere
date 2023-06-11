@@ -49,7 +49,7 @@ export default function Map(props) {
         fetchAllChargers()
     }, []);
 
-    async function handleFavourite(charger_id, operation) {
+    async function handleFavourite(chargerId, operation) {
         // Ugly confirmation prompt, TODO better
         //maybe can make a dialog that opens when button is clicked, then yes no goes to handle favourite?
         if (!window.confirm(operation + " favourite charger?")) {
@@ -61,7 +61,7 @@ export default function Map(props) {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: userEmail, charger_id: charger_id, action: operation })
+            body: JSON.stringify({ email: userEmail, charger_id: chargerId, action: operation })
         };
 
         // Store response (JSON returns key 'result')

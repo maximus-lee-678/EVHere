@@ -126,7 +126,7 @@ def get_one_charger(input_charger_id):
 
     row = cursor.fetchone()
     db_methods.close_connection(conn)
-    
+
     if db_methods.check_fetchone_has_nothing(row):
         return {'result': CHARGER_NOT_FOUND}
 

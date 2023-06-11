@@ -117,6 +117,19 @@ def get_connectors():
     return {'success': True, 'api_response': db_connector_type.service_code_dict[output['result']], 'content': output['content']}
 
 
+# Route: Get user's active vehicles
+@app.route('/api/get_user_vehicles', methods=['POST'])
+def fun_get_user_vehicles():
+    email = request.json['email']
+
+    output = db_vehicle.get_active_vehicle_by_email(input_email=email)
+
+    if output['result'] == db_vehicle.VEHICLE_NOT_FOUND:
+        return {'success': False, 'api_response': db_vehicle.service_code_dict[output['result']]}
+
+    return {'success': True, 'api_response': db_vehicle.service_code_dict[output['result']], 'content': output['content']}
+
+
 # Route: Add new vehicle
 @app.route('/api/add_vehicle', methods=['POST'])
 def fun_add_vehicle():
@@ -135,6 +148,18 @@ def fun_add_vehicle():
 
     return {'success': True, 'api_response': db_vehicle.service_code_dict[output['result']]}
 
+# Route: Remove vehicle
+@app.route('/api/remove_vehicle', methods=['POST'])
+def fun_remove_vehicle():
+    vehicle_id = request.json['vehicle_id']
+
+    output = db_vehicle.remove_vehicle(input_vehicle_id=vehicle_id)
+
+    if output['result'] == db_vehicle.REMOVE_FAILURE:
+        return {'success': False, 'api_response': db_vehicle.service_code_dict[output['result']],
+                'reason': helper_functions.join_strings(output['reason'], db_vehicle.service_code_dict)}
+
+    return {'success': True, 'api_response': db_vehicle.service_code_dict[output['result']]}
 
 # Running app
 if __name__ == '__main__':

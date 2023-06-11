@@ -74,7 +74,6 @@ export default function Favourites() {
         let result = [];
 
         for (var i = 0; i < favouriteChargerInfo.length; i++) {
-            console.log(favouriteChargerInfo[i]);
             let id = favouriteChargerInfo[i].id;
 
             result.push(
@@ -88,7 +87,7 @@ export default function Favourites() {
                         <div>Hours: {favouriteChargerInfo[i].twenty_four_hours === 'TRUE' ? '24 hours' : 'not 24 hours'}</div>
                     </div>
                     <div className="w-1/5 flex justify-center items-center">
-                        <button id={favouriteChargerInfo[i].id}
+                        <button id={id}
                             className="bg-red-400 hover:bg-red-300 p-5 rounded-full text-white"
                             onClick={() => handleFavourite(id, 'remove')}>
                             <i className="fas fa-heart-broken fa-xl" style={{ color: "#ffffff" }}></i>

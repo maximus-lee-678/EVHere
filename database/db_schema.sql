@@ -45,6 +45,7 @@ CREATE TABLE user_info (
 	model                VARCHAR(64) NOT NULL    ,
 	vehicle_sn           VARCHAR(8)     ,
 	id_connector_type    CHAR(36) NOT NULL    ,
+	active               INT NOT NULL    ,
 	FOREIGN KEY ( id_user_info ) REFERENCES user_info( id )  ,
 	FOREIGN KEY ( id_connector_type ) REFERENCES connector_type( id )
  );

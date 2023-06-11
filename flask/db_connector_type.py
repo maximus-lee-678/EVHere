@@ -23,7 +23,7 @@ def get_all_connectors():
     cursor = conn.cursor()
 
     cursor.execute(
-        'SELECT name_short, name_long, name_connector FROM connector_type')
+        'SELECT id, name_short, name_long, name_connector FROM connector_type')
 
     rows = cursor.fetchall()
     db_methods.close_connection(conn)
@@ -35,7 +35,7 @@ def get_all_connectors():
     # transforming array to key-values
     for row in rows:
         key_values.append(
-            {"name_short": row[0], "name_long": row[1], "name_connector": row[2]})
+            {"id": row[0], "name_short": row[1], "name_long": row[2], "name_connector": row[3]})
 
     return {'result': CONNECTOR_FOUND, 'content': key_values}
 
