@@ -25,7 +25,8 @@ yarn-error.log*
 
 # [flask ignores]
 /flask/venv
-/flask/__pycache__
+__pycache__
 
 # [global ignores]
+.vscode
 *.db

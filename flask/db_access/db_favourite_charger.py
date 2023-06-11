@@ -1,8 +1,8 @@
-import db_methods
-import helper_functions
+import db_access.db_helper_functions as db_helper_functions
+import db_access.db_methods as db_methods
 
-import db_user_info
-import db_charger
+import db_access.db_user_info as db_user_info
+import db_access.db_charger as db_charger
 
 FAVOURITE_CHARGER_NOT_FOUND = 100
 FAVOURITE_CHARGER_FOUND = 101
@@ -32,8 +32,8 @@ def get_favourite_charger_one(input_user_id, input_charger_id):
     """
 
     # sanitise inputs
-    user_id = helper_functions.string_sanitise(input_user_id)
-    charger_id = helper_functions.string_sanitise(input_charger_id)
+    user_id = db_helper_functions.string_sanitise(input_user_id)
+    charger_id = db_helper_functions.string_sanitise(input_charger_id)
 
     conn = db_methods.setup_connection()
     cursor = conn.cursor()
@@ -81,7 +81,7 @@ def modify_favourite_charger(input_email, input_charger_id, input_action):
 
         # 3a.2: Insert Query / Form Parameters
         query = 'INSERT INTO favourited_chargers VALUES (?,?,?)'
-        id = helper_functions.generate_uuid()
+        id = db_helper_functions.generate_uuid()
         task = (id, user_id, charger_id)
     # 3b: Remove favourite
     elif input_action == 'remove':

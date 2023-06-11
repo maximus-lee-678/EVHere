@@ -1,6 +1,5 @@
-import helper_functions
-
-import db_methods
+import db_access.db_helper_functions as db_helper_functions
+import db_access.db_methods as db_methods
 
 CONNECTOR_FOUND = 100
 CONNECTOR_NOT_FOUND = 101
@@ -49,7 +48,7 @@ def get_connector_id_by_name_short(input_name_short):
     """
 
     # sanitise name_short
-    name_short = helper_functions.string_sanitise(input_name_short)
+    name_short = db_helper_functions.string_sanitise(input_name_short)
 
     conn = db_methods.setup_connection()
     cursor = conn.cursor()

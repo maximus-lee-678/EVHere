@@ -1,9 +1,11 @@
-from __main__ import app, request
+from flask import Blueprint, request
 
-import helper_functions
-import db_user_info
+import flask_routes.flask_helper_functions as flask_helper_functions
+import db_access.db_user_info as db_user_info
 
-@app.route('/api/login', methods=['POST'])  # Route: Authenticate user login
+flask_user_info = Blueprint('flask_user_info', __name__, template_folder='flask_routes')
+
+@flask_user_info.route('/api/login', methods=['POST'])  # Route: Authenticate user login
 def fun_login():
     email = request.json['email']
     password = request.json['password']
@@ -18,7 +20,7 @@ def fun_login():
 
 
 # Route: Create new user account
-@app.route('/api/create_account', methods=['POST'])
+@flask_user_info.route('/api/create_account', methods=['POST'])
 def fun_create_account():
     username = request.json['username']
     password = request.json['password']
@@ -31,6 +33,6 @@ def fun_create_account():
 
     if output['result'] == db_user_info.CREATE_FAILURE:
         return {'success': False, 'api_response': db_user_info.service_code_dict[output['result']],
-                'reason': helper_functions.join_strings(output['reason'], db_user_info.service_code_dict)}
+                'reason': flask_helper_functions.join_strings(output['reason'], db_user_info.service_code_dict)}
 
     return {'success': True, 'api_response': db_user_info.service_code_dict[output['result']]}

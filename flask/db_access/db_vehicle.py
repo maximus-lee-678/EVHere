@@ -1,8 +1,8 @@
-import helper_functions
+import db_access.db_helper_functions as db_helper_functions
+import db_access.db_methods as db_methods
 
-import db_methods
-import db_user_info
-import db_connector_type
+import db_access.db_user_info as db_user_info
+import db_access.db_connector_type as db_connector_type
 
 VEHICLE_NAME_INVALID_LENGTH = 1
 VEHICLE_MODEL_INVALID_LENGTH = 2
@@ -58,7 +58,7 @@ def add_vehicle(input_email, input_vehicle_name, input_vehicle_model, input_vehi
         error_list.append(VEHICLE_NAME_INVALID_LENGTH)
     # 2.2: sanitise and store vehicle name
     else:
-        vehicle_name = helper_functions.string_sanitise(input_vehicle_name)
+        vehicle_name = db_helper_functions.string_sanitise(input_vehicle_name)
 
     # 3.1: input_vehicle_model > check[length]
     if len(input_vehicle_model) > 64 or len(input_vehicle_model) == 0:
@@ -66,7 +66,7 @@ def add_vehicle(input_email, input_vehicle_name, input_vehicle_model, input_vehi
         error_list.append(VEHICLE_MODEL_INVALID_LENGTH)
     # 3.2: sanitise and store vehicle model
     else:
-        vehicle_model = helper_functions.string_sanitise(input_vehicle_model)
+        vehicle_model = db_helper_functions.string_sanitise(input_vehicle_model)
 
     # 4.1: input_vehicle_sn > check[length]
     if len(input_vehicle_sn) > 8 or len(input_vehicle_sn) == 0:
@@ -74,7 +74,7 @@ def add_vehicle(input_email, input_vehicle_name, input_vehicle_model, input_vehi
         error_list.append(VEHICLE_SN_INVALID_LENGTH)
     # 4.2: sanitise and storel vehicle SN
     else:
-        vehicle_sn = helper_functions.string_sanitise(input_vehicle_sn)
+        vehicle_sn = db_helper_functions.string_sanitise(input_vehicle_sn)
 
     # 5.1: check if connector exists
     connector_response = db_connector_type.get_connector_id_by_name_short(
@@ -94,7 +94,7 @@ def add_vehicle(input_email, input_vehicle_name, input_vehicle_model, input_vehi
     cursor = conn.cursor()
 
     active = True
-    task = (helper_functions.generate_uuid(), user_id,
+    task = (db_helper_functions.generate_uuid(), user_id,
             vehicle_name, vehicle_model, vehicle_sn, connector_id, active)
     cursor.execute('INSERT INTO vehicle_info VALUES (?,?,?,?,?,?,?)', task)
 
@@ -116,7 +116,7 @@ def get_active_vehicle_by_email(input_email):
     cursor = conn.cursor()
 
     # sanitise input
-    email = helper_functions.string_sanitise(input_email)
+    email = db_helper_functions.string_sanitise(input_email)
     task = (email,)
     cursor.execute("""
     SELECT vi.id, vi.name, vi.model, vi.vehicle_sn, ct.name_short AS connector_type FROM vehicle_info AS vi
@@ -151,7 +151,7 @@ def remove_vehicle(input_vehicle_id):
     cursor = conn.cursor()
 
     # sanitise input
-    vehicle_id = helper_functions.string_sanitise(input_vehicle_id)
+    vehicle_id = db_helper_functions.string_sanitise(input_vehicle_id)
     task = (vehicle_id,)
     cursor.execute('UPDATE vehicle_info SET active=false WHERE id=?', task)
     conn.commit()

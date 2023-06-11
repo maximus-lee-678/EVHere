@@ -1,5 +1,5 @@
-import db_methods
-import helper_functions
+import db_access.db_helper_functions as db_helper_functions
+import db_access.db_methods as db_methods
 
 MISSING_FIELDS = 1
 
@@ -31,7 +31,7 @@ def get_all_chargers(input_email):
     # yes email
     if input_email is not None:
         # sanitise input
-        email = helper_functions.string_sanitise(input_email)
+        email = db_helper_functions.string_sanitise(input_email)
         task = (email,)
         cursor.execute("""
         SELECT c.*, CASE WHEN fc.id_user_info IS NULL THEN 0 ELSE 1 END AS is_favorite
@@ -81,7 +81,7 @@ def get_favourite_chargers(input_email):
     cursor = conn.cursor()
 
     # sanitise input
-    email = helper_functions.string_sanitise(input_email)
+    email = db_helper_functions.string_sanitise(input_email)
 
     task = (email,)
     cursor.execute("""
@@ -116,7 +116,7 @@ def get_one_charger(input_charger_id):
     """
 
     # sanitise input
-    charger_id = helper_functions.string_sanitise(input_charger_id)
+    charger_id = db_helper_functions.string_sanitise(input_charger_id)
 
     conn = db_methods.setup_connection()
     cursor = conn.cursor()

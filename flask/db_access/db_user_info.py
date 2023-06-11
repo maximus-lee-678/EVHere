@@ -1,6 +1,6 @@
 import datetime
-import helper_functions
-import db_methods
+import db_access.db_helper_functions as db_helper_functions
+import db_access.db_methods as db_methods
 
 # C represent
 ACCOUNT_ALREADY_EXISTS = 1
@@ -56,31 +56,31 @@ def create_user(input_username, input_password, input_email, input_full_name, in
         error_list.append(USERNAME_INVALID_LENGTH)
     # 1.2: sanitise username
     else:
-        username = helper_functions.string_sanitise(input_username)
+        username = db_helper_functions.string_sanitise(input_username)
 
     # 2.1: password > check[length]
     if len(input_password) > 64 or len(input_password) == 0:
         contains_errors = True
         error_list.append(PASSWORD_INVALID_LENGTH)
     # 2.2: password > check[security level]
-    elif not helper_functions.validate_password(input_password):
+    elif not db_helper_functions.validate_password(input_password):
         contains_errors = True
         error_list.append(PASSWORD_INVALID_SYNTAX)
     # 2.3: hash password
     else:
-        hashed_password = helper_functions.password_encrypt(input_password)
+        hashed_password = db_helper_functions.password_encrypt(input_password)
 
     # 3.1: email > check[length]
     if len(input_email) > 255 or len(input_email) == 0:
         contains_errors = True
         error_list.append(EMAIL_INVALID_LENGTH)
     # 3.2: email > check[syntax]
-    elif not helper_functions.validate_email(input_email):
+    elif not db_helper_functions.validate_email(input_email):
         contains_errors = True
         error_list.append(EMAIL_INVALID_SYNTAX)
     else:
         # 3.3: sanitise email
-        email = helper_functions.string_sanitise(input_email)
+        email = db_helper_functions.string_sanitise(input_email)
         # 3.4: email > check[already exists]
         conn = db_methods.setup_connection()
         cursor = conn.cursor()
@@ -93,7 +93,7 @@ def create_user(input_username, input_password, input_email, input_full_name, in
             error_list.append(ACCOUNT_ALREADY_EXISTS)
 
     # 4.1: phone_no > check[length & syntax]
-    if not helper_functions.validate_phone_no(input_phone_no):
+    if not db_helper_functions.validate_phone_no(input_phone_no):
         contains_errors = True
         error_list.append(PHONE_NUMBER_INVALID)
     # 4.2: variable change (lol)
@@ -106,13 +106,13 @@ def create_user(input_username, input_password, input_email, input_full_name, in
         error_list.append(FULL_NAME_INVALID_LENGTH)
     # 5.2: sanitise name
     else:
-        full_name = helper_functions.string_sanitise(input_full_name)
+        full_name = db_helper_functions.string_sanitise(input_full_name)
 
     if contains_errors:
         return {'result': CREATE_FAILURE, 'reason': error_list}
 
     # 6: previous checks passed, generate rest of the fields
-    id = helper_functions.generate_uuid()
+    id = db_helper_functions.generate_uuid()
     created_at = datetime.datetime.now()
     modified_at = datetime.datetime.now()
 
@@ -142,10 +142,10 @@ def login_user(input_email, input_password):
     if len(input_email) > 255:
         return {'result': LOGIN_FAILURE, 'reason': EMAIL_PASSWORD_INVALID}
     # 1.2: email > check[syntax]
-    if not helper_functions.validate_email(input_email):
+    if not db_helper_functions.validate_email(input_email):
         return {'result': LOGIN_FAILURE, 'reason': EMAIL_PASSWORD_INVALID}
     # 1.3: sanitise email
-    email = helper_functions.string_sanitise(input_email)
+    email = db_helper_functions.string_sanitise(input_email)
 
     # 2.1: get first row of email, if any. fields: password
     conn = db_methods.setup_connection()
@@ -159,7 +159,7 @@ def login_user(input_email, input_password):
     # 2.2: obtain account password hash
     password_hash_string = row[0]
     # 2.3: check if passwords match
-    if helper_functions.password_check(input_password, password_hash_string):
+    if db_helper_functions.password_check(input_password, password_hash_string):
         return {'result': LOGIN_SUCCESS}
     else:
         return {'result': LOGIN_FAILURE, 'reason': EMAIL_PASSWORD_INVALID}
@@ -174,7 +174,7 @@ def get_user_id_by_email(input_email):
     """
 
     # sanitise email
-    email = helper_functions.string_sanitise(input_email)
+    email = db_helper_functions.string_sanitise(input_email)
 
     # get user_id from email
     conn = db_methods.setup_connection()
