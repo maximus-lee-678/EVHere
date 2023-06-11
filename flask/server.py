@@ -101,7 +101,7 @@ def fun_modify_favourite_chargers():
         input_email=email, input_charger_id=charger_id, input_action=action)
 
     if output['result'] != db_favourite_charger.MODIFY_SUCCESS:
-        return {'success': False, 'api_response': db_charger.service_code_dict[output['result']]}
+        return {'success': False, 'api_response': db_favourite_charger.service_code_dict[output['result']]}
 
     return {'success': True, 'api_response': db_favourite_charger.service_code_dict[output['result']]}
 

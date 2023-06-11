@@ -45,7 +45,7 @@ def get_favourite_charger_one(input_user_id, input_charger_id):
     row = cursor.fetchone()
     db_methods.close_connection(conn)
 
-    if db_methods.check_fetchone(row):
+    if db_methods.check_fetchone_has_nothing(row):
         return {'result': FAVOURITE_CHARGER_NOT_FOUND}
 
     return {'result': FAVOURITE_CHARGER_FOUND, 'content': row}

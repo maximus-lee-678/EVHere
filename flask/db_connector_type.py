@@ -28,7 +28,7 @@ def get_all_connectors():
     rows = cursor.fetchall()
     db_methods.close_connection(conn)
 
-    if db_methods.check_fetchall(rows):
+    if db_methods.check_fetchall_has_nothing(rows):
         return {'result': CONNECTOR_NOT_FOUND}
 
     key_values = []
@@ -60,7 +60,7 @@ def get_connector_id_by_name_short(input_name_short):
     row = cursor.fetchone()
     db_methods.close_connection(conn)
 
-    if db_methods.check_fetchone(row):
+    if db_methods.check_fetchone_has_nothing(row):
         return {'result': CONNECTOR_NOT_FOUND}
 
     return {'result': CONNECTOR_FOUND, 'content': row[0]}

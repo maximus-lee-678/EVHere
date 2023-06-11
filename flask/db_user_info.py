@@ -88,7 +88,7 @@ def create_user(input_username, input_password, input_email, input_full_name, in
         cursor.execute('SELECT * FROM user_info WHERE email=?', task)
         row = cursor.fetchone()
         db_methods.close_connection(conn)
-        if db_methods.check_fetchone(row):
+        if not db_methods.check_fetchone_has_nothing(row):
             contains_errors = True
             error_list.append(ACCOUNT_ALREADY_EXISTS)
 
@@ -154,7 +154,7 @@ def login_user(input_email, input_password):
     cursor.execute('SELECT password FROM user_info WHERE email=?', task)
     row = cursor.fetchone()
     db_methods.close_connection(conn)
-    if db_methods.check_fetchone(row):
+    if db_methods.check_fetchone_has_nothing(row):
         return {'result': LOGIN_FAILURE, 'reason': EMAIL_PASSWORD_INVALID}
     # 2.2: obtain account password hash
     password_hash_string = row[0]

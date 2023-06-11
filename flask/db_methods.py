@@ -78,7 +78,7 @@ def close_connection(conn):
     conn.close()
 
 
-def check_fetchall(rows):
+def check_fetchall_has_nothing(rows):
     """
     Helper that checks if a fetchall returned nothing.
     """
@@ -86,7 +86,7 @@ def check_fetchall(rows):
     return len(rows) == 0
 
 
-def check_fetchone(row):
+def check_fetchone_has_nothing(row):
     """
     Helper that checks if a fetchone returned nothing.
     """
