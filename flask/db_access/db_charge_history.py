@@ -1,15 +1,10 @@
-import db_access.db_helper_functions as db_helper_functions
-import db_access.db_methods as db_methods
+# Universal imports
+import db_access.support_files.db_helper_functions as db_helper_functions
+import db_access.support_files.db_service_code_master as db_service_code_master
+import db_access.support_files.db_methods as db_methods
 
-ACCOUNT_ALREADY_EXISTS = 1
-EMAIL_INVALID_LENGTH = 2
-EMAIL_INVALID_SYNTAX = 3
-
-service_code_dict = {
-    ACCOUNT_ALREADY_EXISTS: "Account already exists in system.",
-    EMAIL_INVALID_LENGTH: "Email is of invalid length.",
-    EMAIL_INVALID_SYNTAX: "Email is not valid."
-}
+# Other db_access imports
+import db_access.db_user_info as db_user_info
 
 
 def add_charge_history_initial(input_email, input_id_vehicle_info, input_id_charger, input_battery_percentage):
@@ -17,33 +12,22 @@ def add_charge_history_initial(input_email, input_id_vehicle_info, input_id_char
     Attempts to insert a charge history into the database. This method will also add an entry to "charge current",
     as this method is called when the user starts a charge.\n
     Returns Dictionary with keys:\n
-    <result> CREATE_FAILURE or CREATE_SUCCESS.\n
-    <reason> (if <result> is CREATE_FAILURE) Reason for failure. (IN ARRAY FORMAT)
+    <result> CHARGE_HISTORY_CREATE_FAILURE or CHARGE_HISTORY_CREATE_SUCCESS.\n
+    <reason> (if <result> is CHARGE_HISTORY_CREATE_FAILURE) [Array] Reason for failure.
+    \t[reasons]:\n
+    \t[]
     """
 
     contains_errors = False
     error_list = []
 
-    # 1.1: email > check[length]
-    if len(input_email) > 255 or len(input_email) == 0:
+    # 1.1: check if email exists
+    user_response = db_user_info.get_user_id_by_email(input_email=input_email)
+    if user_response['result'] == db_service_code_master.ACCOUNT_NOT_FOUND:
         contains_errors = True
-        error_list.append(EMAIL_INVALID_LENGTH)
-    # 1.2: email > check[syntax]
-    elif not db_helper_functions.validate_email(input_email):
-        contains_errors = True
-        error_list.append(EMAIL_INVALID_SYNTAX)
+        error_list.append(user_response['result'])
+    # 1.2: store user id
     else:
-        # 1.3: sanitise email
-        email = db_helper_functions.string_sanitise(input_email)
-        # 1.4: email > check[already exists]
-        conn = db_methods.setup_connection()
-        cursor = conn.cursor()
-        task = (email,)
-        cursor.execute('SELECT * FROM user_info WHERE email=?', task)
-        row = cursor.fetchone()
-        db_methods.close_connection(conn)
-        if not db_methods.check_fetchone_has_nothing(row):
-            contains_errors = True
-            error_list.append(ACCOUNT_ALREADY_EXISTS)
+        user_id = user_response['content']
 
     

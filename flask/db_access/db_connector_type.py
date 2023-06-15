@@ -1,13 +1,10 @@
-import db_access.db_helper_functions as db_helper_functions
-import db_access.db_methods as db_methods
+# Universal imports
+import db_access.support_files.db_helper_functions as db_helper_functions
+import db_access.support_files.db_service_code_master as db_service_code_master
+import db_access.support_files.db_methods as db_methods
 
-CONNECTOR_FOUND = 100
-CONNECTOR_NOT_FOUND = 101
-
-service_code_dict = {
-    CONNECTOR_FOUND: "Found connectors.",
-    CONNECTOR_NOT_FOUND: "No matching connectors found."
-}
+# Other db_access imports
+#
 
 
 def get_all_connectors():
@@ -15,7 +12,9 @@ def get_all_connectors():
     Retrieves ALL connectors from database.\n
     Returns Dictionary with keys:\n
     <result> CONNECTOR_NOT_FOUND or CONNECTOR_FOUND.\n
-    <content> (if <result> is CONNECTOR_FOUND) Dictionary containing connector information.
+    <content> (if <result> is CONNECTOR_FOUND) [{Dictionary Array}] containing connector information.\n
+    \t"keys":\n
+    \t{"id", "name_short", "name_long", "name_connector"}
     """
 
     conn = db_methods.setup_connection()
@@ -28,7 +27,7 @@ def get_all_connectors():
     db_methods.close_connection(conn)
 
     if db_methods.check_fetchall_has_nothing(rows):
-        return {'result': CONNECTOR_NOT_FOUND}
+        return {'result': db_service_code_master.CONNECTOR_NOT_FOUND}
 
     key_values = []
     # transforming array to key-values
@@ -36,7 +35,7 @@ def get_all_connectors():
         key_values.append(
             {"id": row[0], "name_short": row[1], "name_long": row[2], "name_connector": row[3]})
 
-    return {'result': CONNECTOR_FOUND, 'content': key_values}
+    return {'result': db_service_code_master.CONNECTOR_FOUND, 'content': key_values}
 
 
 def get_connector_id_by_name_short(input_name_short):
@@ -44,7 +43,7 @@ def get_connector_id_by_name_short(input_name_short):
     Retrieves a single connector's id based on name from database.\n
     Returns Dictionary with keys:\n
     <result> CONNECTOR_NOT_FOUND or CONNECTOR_FOUND.\n
-    <content> (if <result> is CONNECTOR_FOUND) Value containing connector ID.
+    <content> (if <result> is CONNECTOR_FOUND) =Value= containing connector ID.
     """
 
     # sanitise name_short
@@ -60,6 +59,6 @@ def get_connector_id_by_name_short(input_name_short):
     db_methods.close_connection(conn)
 
     if db_methods.check_fetchone_has_nothing(row):
-        return {'result': CONNECTOR_NOT_FOUND}
+        return {'result': db_service_code_master.CONNECTOR_NOT_FOUND}
 
-    return {'result': CONNECTOR_FOUND, 'content': row[0]}
+    return {'result': db_service_code_master.CONNECTOR_FOUND, 'content': row[0]}

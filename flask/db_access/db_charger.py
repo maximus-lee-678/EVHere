@@ -1,23 +1,10 @@
-import db_access.db_helper_functions as db_helper_functions
-import db_access.db_methods as db_methods
+# Universal imports
+import db_access.support_files.db_helper_functions as db_helper_functions
+import db_access.support_files.db_service_code_master as db_service_code_master
+import db_access.support_files.db_methods as db_methods
 
-import db_access.db_charger_available_connector as db_charger_available_connector
-
-MISSING_FIELDS = 1
-
-ALL_WITH_FAVOURITE = 100
-ALL_WITHOUT_FAVOURITE = 101
-CHARGER_FOUND = 102
-CHARGER_NOT_FOUND = 103
-CONNECTOR_NOT_FOUND_UPSTREAM = 104
-
-service_code_dict = {
-    ALL_WITH_FAVOURITE: "Contains is_favourite.",
-    ALL_WITHOUT_FAVOURITE: "No favourites.",
-    CHARGER_FOUND: "Found chargers.",
-    CHARGER_NOT_FOUND: "No matching chargers found.",
-    CONNECTOR_NOT_FOUND_UPSTREAM: "Connector types could not be loaded while loading chargers."
-}
+# Other db_access imports
+#
 
 
 def get_all_chargers(input_email):
@@ -25,8 +12,11 @@ def get_all_chargers(input_email):
     Retrieves ALL chargers from database. If email is specified, adds an additional column indicating if charger is favourited.\n
     Returns Dictionary with keys:\n
     <result> CHARGER_NOT_FOUND or CHARGER_FOUND.\n
-    <type> (if <result> is CHARGER_FOUND) ALL_WITH_FAVOURITE or ALL_WITHOUT_FAVOURITE.\n
-    <content> (if <result> is CHARGER_FOUND) Dictionary containing charger information.
+    <type> (if <result> is CHARGER_FOUND) CHARGER_WITH_FAVOURITE or CHARGER_WITHOUT_FAVOURITE.\n
+    <content> (if <result> is CHARGER_FOUND) [{Dictionary Array}] containing charger information.\n
+    \t"keys":\n
+    \t{"id", "name", "latitude", "longitude", "address", "provider", "connectors", 
+    "connector_types", "online", "kilowatts", "twenty_four_hours", "last_updated", "is_favourite"}
     """
 
     conn = db_methods.setup_connection()
@@ -63,7 +53,7 @@ def get_all_chargers(input_email):
     db_methods.close_connection(conn)
 
     if db_methods.check_fetchall_has_nothing(rows):
-        return {'result': CHARGER_NOT_FOUND}
+        return {'result': db_service_code_master.CHARGER_NOT_FOUND}
 
     key_values = []
     # transforming array to key-values
@@ -78,8 +68,10 @@ def get_all_chargers(input_email):
                                "connectors": row[6], "connector_types": str(row[7]).split(sep=","), "online": row[8], "kilowatts": row[9],
                                "twenty_four_hours": row[10], "last_updated": row[11]})
 
-    return {'result': CHARGER_FOUND,
-            'type': ALL_WITH_FAVOURITE if input_email != None else ALL_WITHOUT_FAVOURITE,
+    return {'result': db_service_code_master.CHARGER_FOUND,
+            'type': db_service_code_master.CHARGER_WITH_FAVOURITE
+            if input_email != None else
+            db_service_code_master.CHARGER_WITHOUT_FAVOURITE,
             'content': key_values}
 
 
@@ -87,8 +79,11 @@ def get_favourite_chargers(input_email):
     """
     Retrieves chargers that have been favourited by an email from the database.\n
     Returns Dictionary with keys:\n
-    <result> MISSING_FIELDS, CHARGER_NOT_FOUND or CHARGER_FOUND.\n
-    <content> (if <result> is CHARGER_FOUND) Dictionary containing favourite charger information.
+    <result> CHARGER_NOT_FOUND or CHARGER_FOUND.\n
+    <content> (if <result> is CHARGER_FOUND) [{Dictionary Array}] containing favourite charger information.\n
+    \t"keys":\n
+    \t{"id", "name", "latitude", "longitude", "address", "provider", "connectors", 
+    "connector_types", "online", "kilowatts", "twenty_four_hours", "last_updated", "is_favourite"}
     """
 
     conn = db_methods.setup_connection()
@@ -108,7 +103,7 @@ def get_favourite_chargers(input_email):
     db_methods.close_connection(conn)
 
     if db_methods.check_fetchall_has_nothing(rows):
-        return {'result': CHARGER_NOT_FOUND}
+        return {'result': db_service_code_master.CHARGER_NOT_FOUND}
 
     key_values = []
     # transforming array to key-values
@@ -118,7 +113,7 @@ def get_favourite_chargers(input_email):
                            "connectors": row[6], "online": row[7], "kilowatts": row[8],
                            "twenty_four_hours": row[9], "last_updated": row[10]})
 
-    return {'result': CHARGER_FOUND, 'content': key_values}
+    return {'result': db_service_code_master.CHARGER_FOUND, 'content': key_values}
 
 
 def get_one_charger(input_charger_id):
@@ -126,7 +121,10 @@ def get_one_charger(input_charger_id):
     Retrieves a charger based on id from the database.\n
     Returns Dictionary with keys:\n
     <result> CHARGER_NOT_FOUND or CHARGER_FOUND.\n
-    <content> (if <result> is CHARGER_FOUND) Array containing single charger information.
+    <content> (if <result> is CHARGER_FOUND) {Dictionary} containing single charger information.\n
+    \t"keys":\n
+    \t{"id", "name", "latitude", "longitude", "address", "provider", "connectors", 
+    "connector_types", "online", "kilowatts", "twenty_four_hours", "last_updated", "is_favourite"}
     """
 
     # sanitise input
@@ -142,6 +140,11 @@ def get_one_charger(input_charger_id):
     db_methods.close_connection(conn)
 
     if db_methods.check_fetchone_has_nothing(row):
-        return {'result': CHARGER_NOT_FOUND}
+        return {'result': db_service_code_master.CHARGER_NOT_FOUND}
 
-    return {'result': CHARGER_FOUND, 'content': row}
+    key_values = {"id": row[0], "name": row[1],
+                  "latitude": row[2], "longitude": row[3], "address": row[4], "provider": row[5],
+                  "connectors": row[6], "online": row[7], "kilowatts": row[8],
+                  "twenty_four_hours": row[9], "last_updated": row[10]}
+
+    return {'result': db_service_code_master.CHARGER_FOUND, 'content': key_values}

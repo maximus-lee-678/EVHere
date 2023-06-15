@@ -43,6 +43,7 @@ export default function Vehicles() {
             setConnectorInfo(response['content']);
         } else {
             toast.error(<div>{response.api_response}</div>);
+            setConnectorInfo([]);
         }
 
     }
@@ -69,6 +70,7 @@ export default function Vehicles() {
             setUserVehicleInfo(response['content']);
         } else {
             toast.error(<div>{response.api_response}</div>);
+            setUserVehicleInfo([]);
         }
     }
 

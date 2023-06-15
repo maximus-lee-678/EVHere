@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 
 import flask_routes.flask_helper_functions as flask_helper_functions
+import db_access.support_files.db_service_code_master as db_service_code_master
 import db_access.db_charger as db_charger
 
 flask_charger = Blueprint('flask_charger', __name__, template_folder='flask_routes')
@@ -16,8 +17,11 @@ def fun_get_all_chargers():
     else:
         output = db_charger.get_all_chargers(input_email=None)
 
-    if output['result'] != db_charger.CHARGER_FOUND:
-        return {'success': False, 'api_response': db_charger.service_code_dict[output['result']]}
+    if output['result'] != db_service_code_master.CHARGER_FOUND:
+        return {'success': False, 
+                'api_response': db_service_code_master.service_code_dict[output['result']]}
 
-    return {'success': True, 'api_response': db_charger.service_code_dict[output['result']],
-            'type': db_charger.service_code_dict[output['type']], 'content': output['content']}
+    return {'success': True, 
+            'api_response': db_service_code_master.service_code_dict[output['result']],
+            'type': db_service_code_master.service_code_dict[output['type']], 
+            'content': output['content']}

@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 
 import flask_routes.flask_helper_functions as flask_helper_functions
+import db_access.support_files.db_service_code_master as db_service_code_master
 import db_access.db_vehicle as db_vehicle
 
 flask_vehicle = Blueprint('flask_vehicle', __name__, template_folder='flask_routes')
@@ -12,10 +13,13 @@ def fun_get_user_vehicles():
 
     output = db_vehicle.get_active_vehicle_by_email(input_email=email)
 
-    if output['result'] != db_vehicle.VEHICLE_FOUND:
-        return {'success': False, 'api_response': db_vehicle.service_code_dict[output['result']]}
+    if output['result'] != db_service_code_master.VEHICLE_FOUND:
+        return {'success': False, 
+                'api_response': db_service_code_master.service_code_dict[output['result']]}
 
-    return {'success': True, 'api_response': db_vehicle.service_code_dict[output['result']], 'content': output['content']}
+    return {'success': True, 
+            'api_response': db_service_code_master.service_code_dict[output['result']], 
+            'content': output['content']}
 
 
 # Route: Add new vehicle
@@ -30,11 +34,13 @@ def fun_add_vehicle():
     output = db_vehicle.add_vehicle(
         input_email=email, input_vehicle_name=vehicle_name, input_vehicle_model=vehicle_model, input_vehicle_sn=vehicle_sn, input_vehicle_connector=vehicle_connector)
 
-    if output['result'] != db_vehicle.ADD_SUCCESS:
-        return {'success': False, 'api_response': db_vehicle.service_code_dict[output['result']],
-                'reason': flask_helper_functions.join_strings(output['reason'], db_vehicle.service_code_dict)}
+    if output['result'] != db_service_code_master.VEHICLE_ADD_SUCCESS:
+        return {'success': False, 
+                'api_response': db_service_code_master.service_code_dict[output['result']],
+                'reason': flask_helper_functions.join_strings(output['reason'], db_service_code_master.service_code_dict)}
 
-    return {'success': True, 'api_response': db_vehicle.service_code_dict[output['result']]}
+    return {'success': True, 
+            'api_response': db_service_code_master.service_code_dict[output['result']]}
 
 # Route: Remove vehicle
 @flask_vehicle.route('/api/remove_vehicle', methods=['POST'])
@@ -43,8 +49,10 @@ def fun_remove_vehicle():
 
     output = db_vehicle.remove_vehicle(input_vehicle_id=vehicle_id)
 
-    if output['result'] != db_vehicle.REMOVE_SUCCESS:
-        return {'success': False, 'api_response': db_vehicle.service_code_dict[output['result']],
-                'reason': flask_helper_functions.join_strings(output['reason'], db_vehicle.service_code_dict)}
+    if output['result'] != db_service_code_master.VEHICLE_REMOVE_SUCCESS:
+        return {'success': False, 
+                'api_response': db_service_code_master.service_code_dict[output['result']],
+                'reason': flask_helper_functions.join_strings(output['reason'], db_service_code_master.service_code_dict)}
 
-    return {'success': True, 'api_response': db_vehicle.service_code_dict[output['result']]}
+    return {'success': True, 
+            'api_response': db_service_code_master.service_code_dict[output['result']]}

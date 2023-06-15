@@ -29,7 +29,8 @@ export default function Favourites() {
             setFavouriteChargerInfo(response['content']);
         }
         else {
-            toast.error(<div>{response.api_response}</div>);
+            toast.error(<div>{response.api_response}<br />{response.reason}</div>);
+            setFavouriteChargerInfo([]);
         }
     }
 
@@ -60,13 +61,13 @@ export default function Favourites() {
             .then(data => { response = data })
             .catch(err => console.log(err));
 
-        // If operation successful, reload favourite charger information
         if (response.success) {
-            fetchFavouriteChargers();
             toast.success("Removed from favourites!")
+            fetchFavouriteChargers();
         } else {
-            toast.error(<div>{response.api_response}</div>);
+            toast.error(<div>{response.api_response}<br />{response.reason}</div>);
         }
+
     }
 
     // Component that formats charger information for display. Reads from favouriteChargerInfo.
@@ -96,6 +97,7 @@ export default function Favourites() {
                 </div>
             )
         }
+
         return result;
     }
 
