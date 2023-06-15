@@ -70,7 +70,6 @@ export default function Vehicles() {
         } else {
             toast.error(<div>{response.api_response}</div>);
         }
-
     }
 
     // fetch all required data for population
@@ -82,7 +81,7 @@ export default function Vehicles() {
     // once connectorInfo loaded, update selectedConnector
     useEffect(() => {
         connectorInfo && setSelectedConnector(connectorInfo[0].name_short);
-      }, [connectorInfo]);
+    }, [connectorInfo]);
 
     // Component that formats vehicle information for display in main page. Reads from userVehicleInfo.
     function UserVehicles() {
@@ -121,7 +120,7 @@ export default function Vehicles() {
         for (var i = 0; i < connectorInfo.length; i++) {
             options.push(
                 <option className="border-0 px-3 py-3 text-gray-700" key={connectorInfo[i].id}
-                value={connectorInfo[i].name_short}>{connectorInfo[i].name_short}</option>
+                    value={connectorInfo[i].name_short}>{connectorInfo[i].name_short}</option>
             );
         }
         return options;

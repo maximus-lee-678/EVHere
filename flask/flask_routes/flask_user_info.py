@@ -13,7 +13,7 @@ def fun_login():
     output = db_user_info.login_user(
         input_email=email, input_password=password)
 
-    if output['result'] == db_user_info.LOGIN_FAILURE:
+    if output['result'] != db_user_info.LOGIN_SUCCESS:
         return {'success': False, 'api_response': db_user_info.service_code_dict[output['result']], 'reason': db_user_info.service_code_dict[output['reason']]}
 
     return {'success': True, 'api_response': db_user_info.service_code_dict[output['result']]}
@@ -31,7 +31,7 @@ def fun_create_account():
     output = db_user_info.create_user(input_username=username, input_password=password,
                                       input_email=email, input_full_name=full_name, input_phone_no=phone_number)
 
-    if output['result'] == db_user_info.CREATE_FAILURE:
+    if output['result'] != db_user_info.CREATE_SUCCESS:
         return {'success': False, 'api_response': db_user_info.service_code_dict[output['result']],
                 'reason': flask_helper_functions.join_strings(output['reason'], db_user_info.service_code_dict)}
 

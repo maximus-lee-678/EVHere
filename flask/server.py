@@ -19,12 +19,14 @@ from flask_routes.flask_connector_type import flask_connector_type
 from flask_routes.flask_favourite_charger import flask_favourite_charger
 from flask_routes.flask_user_info import flask_user_info
 from flask_routes.flask_vehicle import flask_vehicle
+from flask_routes.flask_charging_history import flask_charging_history
 
 app.register_blueprint(flask_user_info)
 app.register_blueprint(flask_charger)
 app.register_blueprint(flask_connector_type)
 app.register_blueprint(flask_favourite_charger)
 app.register_blueprint(flask_vehicle)
+app.register_blueprint(flask_charging_history)
 
 # Flask settings
 app.json.sort_keys = False

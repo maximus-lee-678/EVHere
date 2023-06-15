@@ -13,7 +13,7 @@ def fun_get_favourite_chargers():
 
     output = db_charger.get_favourite_chargers(input_email=email)
 
-    if output['result'] == db_charger.CHARGER_NOT_FOUND:
+    if output['result'] != db_charger.CHARGER_FOUND:
         return {'success': False, 'api_response': db_charger.service_code_dict[output['result']]}
 
     return {'success': True, 'api_response': db_charger.service_code_dict[output['result']], 'content': output['content']}

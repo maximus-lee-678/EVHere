@@ -58,17 +58,25 @@ CREATE TABLE favourited_chargers (
 	FOREIGN KEY ( id_charger ) REFERENCES charger( id )  
  );
 
+ CREATE TABLE charge_current ( 
+	id                   CHAR(36) NOT NULL  PRIMARY KEY  ,
+	id_charge_history    CHAR(36) NOT NULL    ,
+	percentage_current   INT NOT NULL    ,
+	last_updated         DATETIME NOT NULL   ,
+	FOREIGN KEY ( id_charge_history ) REFERENCES charge_history( id )  
+ );
+
 CREATE TABLE charge_history (
 	id                   CHAR(36) NOT NULL  PRIMARY KEY  ,
 	id_user_info         CHAR(36) NOT NULL    ,
 	id_vehicle_info      CHAR(36) NOT NULL    ,
 	id_charger           CHAR(36) NOT NULL    ,
-	is_charge_finished   INT NOT NULL    ,
 	time_start           DATETIME NOT NULL    ,
-	time_end             DATETIME     ,
+	time_end             DATETIME    ,
 	percentage_start     INT NOT NULL    ,
 	percentage_end       INT     ,
 	amount_payable       DECIMAL(2)     ,
+	is_charge_finished   INT NOT NULL    ,
 	FOREIGN KEY ( id_user_info ) REFERENCES user_info( id )  ,
 	FOREIGN KEY ( id_vehicle_info ) REFERENCES vehicle_info( id )  , 
 	FOREIGN KEY ( id_charger ) REFERENCES charger( id )

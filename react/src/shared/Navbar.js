@@ -101,7 +101,7 @@ export default function Navbar(props) {
                 }
                 href="/AddNewVehicle"
               >
-                Add New Vehicle
+                Vehicles
               </a>
               <a
                 className={
@@ -112,7 +112,7 @@ export default function Navbar(props) {
                 }
                 href="/AddChargingHistory"
               >
-                Add Charging History
+                Start/Stop Charging
               </a>
             </li>
 

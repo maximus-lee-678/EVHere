@@ -12,7 +12,7 @@ def fun_get_user_vehicles():
 
     output = db_vehicle.get_active_vehicle_by_email(input_email=email)
 
-    if output['result'] == db_vehicle.VEHICLE_NOT_FOUND:
+    if output['result'] != db_vehicle.VEHICLE_FOUND:
         return {'success': False, 'api_response': db_vehicle.service_code_dict[output['result']]}
 
     return {'success': True, 'api_response': db_vehicle.service_code_dict[output['result']], 'content': output['content']}
@@ -30,7 +30,7 @@ def fun_add_vehicle():
     output = db_vehicle.add_vehicle(
         input_email=email, input_vehicle_name=vehicle_name, input_vehicle_model=vehicle_model, input_vehicle_sn=vehicle_sn, input_vehicle_connector=vehicle_connector)
 
-    if output['result'] == db_vehicle.ADD_FAILURE:
+    if output['result'] != db_vehicle.ADD_SUCCESS:
         return {'success': False, 'api_response': db_vehicle.service_code_dict[output['result']],
                 'reason': flask_helper_functions.join_strings(output['reason'], db_vehicle.service_code_dict)}
 
@@ -43,7 +43,7 @@ def fun_remove_vehicle():
 
     output = db_vehicle.remove_vehicle(input_vehicle_id=vehicle_id)
 
-    if output['result'] == db_vehicle.REMOVE_FAILURE:
+    if output['result'] != db_vehicle.REMOVE_SUCCESS:
         return {'success': False, 'api_response': db_vehicle.service_code_dict[output['result']],
                 'reason': flask_helper_functions.join_strings(output['reason'], db_vehicle.service_code_dict)}
 
