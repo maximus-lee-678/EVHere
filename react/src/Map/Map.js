@@ -64,6 +64,7 @@ export default function Map(props) {
             body: JSON.stringify({ email: userEmail, id_charger: chargerId })
         };
 
+        let api_endpoint;
         // Pick API endpoint
         if (operation === "add") {
             api_endpoint = '/api/add_favourite_charger';
