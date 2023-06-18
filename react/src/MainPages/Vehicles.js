@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Navbar from '../shared/Navbar';
+import Navbar from '../Shared/Navbar';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import { ConnectorTypeGetAll, VehicleInfoGetByUser } from '../API/API';
 
 export default function Vehicles() {
     const userEmail = localStorage.getItem("user_email");
@@ -25,18 +27,7 @@ export default function Vehicles() {
     // Function that loads all connectors. Called on page load, populates connectorInfo.
     // Used in connector type dropdown.
     async function fetchAllConnectors() {
-        // Forms GET header
-        const requestOptions = {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
-        };
-
-        // Store response
-        let response;
-        await fetch('/api/get_all_connectors', requestOptions)
-            .then(res => res.json())
-            .then(data => { response = data })
-            .catch(err => console.log(err));
+        const response = await ConnectorTypeGetAll(userEmail);
 
         // If success returned, store connector information
         if (response.success) {
@@ -45,27 +36,14 @@ export default function Vehicles() {
             toast.error(<div>{response.api_response}</div>);
             setConnectorInfo([]);
         }
-
     }
 
     // Function that loads all user vehicles. Called on page load, populates userVehicleInfo.
     // Used in main page.
     async function fetchAllUserVehicles() {
-        // Forms GET header
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: userEmail })
-        };
+        const response = await VehicleInfoGetByUser(userEmail);
 
-        // Store response
-        let response;
-        await fetch('/api/get_user_vehicles', requestOptions)
-            .then(res => res.json())
-            .then(data => { response = data })
-            .catch(err => console.log(err));
-
-        // If success returned, store connector information
+        // If success returned, store vehicle information
         if (response.success) {
             setUserVehicleInfo(response['content']);
         } else {

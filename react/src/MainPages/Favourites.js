@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from "../shared/Navbar";
+import Navbar from "../Shared/Navbar";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import { FavouriteChargerGet, FavouriteChargerRemove } from '../API/API';
 
 export default function Favourites() {
     const userEmail = localStorage.getItem("user_email");
@@ -9,20 +11,7 @@ export default function Favourites() {
 
     // Function that loads user's favourited chargers. Called on page load, populates favouriteChargerInfo.
     async function fetchFavouriteChargers() {
-        // Forms POST header
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: userEmail })
-        };
-
-        // Store response
-        let response;
-        // JSON returns keys 'result' & 'content'
-        await fetch('/api/get_favourite_chargers', requestOptions)
-            .then(res => res.json())
-            .then(data => { response = data })
-            .catch(err => console.log(err));
+        const response = await FavouriteChargerGet(userEmail);
 
         // If success returned, store chargers
         if (response.success) {
@@ -39,7 +28,7 @@ export default function Favourites() {
     }, []);
 
     // Function that removes a user's favourited charger. Called when user clicks corresponding remove button.
-    async function handleFavouriteRemove(id_charger) {
+    async function handleFavouriteRemove(IDCharger) {
         // Ugly confirmation prompt, TODO better
         // maybe can make a dialog that opens when button is clicked, then yes no goes to handle favourite?
         if (!window.confirm("Remove favourite charger?")) {
@@ -47,19 +36,7 @@ export default function Favourites() {
             return;
         }
 
-        // Forms POST header
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: userEmail, id_charger: id_charger })
-        };
-
-        // Store response
-        let response;
-        await fetch('/api/remove_favourite_charger', requestOptions)
-            .then(res => res.json())
-            .then(data => { response = data })
-            .catch(err => console.log(err));
+        const response = await FavouriteChargerRemove(userEmail, IDCharger);
 
         if (response.success) {
             toast.success("Removed from favourites!")

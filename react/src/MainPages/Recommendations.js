@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import Navbar from "../shared/Navbar";
+import Navbar from "../Shared/Navbar";
 import Map from "../Map/Map";
 
 export default function Recommendations() {

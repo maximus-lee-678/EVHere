@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import Navbar from '../shared/Navbar';
+import Navbar from '../Shared/Navbar';
 import BarChart from "./Barchart";
 import PieChart from "./Piechart";
 

@@ -13,7 +13,7 @@ import Recommendations from './MainPages/Recommendations.js';
 import Profile from './MainPages/Profile';
 import ChargingHistory from './MainPages/ChargingHistory';
 import Vehicles from './MainPages/Vehicles';
-import AddChargingHistory from './MainPages/AddChargingHistory';
+import AddChargingHistory from './ChargingHistory/AddChargingHistory';
 
 export default function App() {
   let userEmail;

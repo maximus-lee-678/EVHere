@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Icon, divIcon, marker } from 'leaflet'
 import { MapContainer, TileLayer, useMap, useMapEvents, Marker, Popup, GeoJSON } from 'react-leaflet';
 
+import { ChargerGetAllWithEmail, FavouriteChargerAdd, FavouriteChargerRemove } from '../API/API';
+
 import "leaflet/dist/leaflet.css";
 import markerIconPng from "./marker-icon.png"
 import markerIconFavouritePng from "./marker-icon-favourite.png"
@@ -31,25 +33,21 @@ export default function Map(props) {
 
     // Function that loads all chargers. Called on page load, populates allChargerInfo.
     async function fetchAllChargers() {
-        // Forms POST header
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: userEmail })
-        };
+        const response = await ChargerGetAllWithEmail(userEmail);
 
-        // JSON returns keys 'result', 'type' & 'content'
-        await fetch('/api/get_all_chargers', requestOptions)
-            .then(res => res.json())
-            .then(data => { setAllChargerInfo(data['content']) })
-            .catch(err => console.log(err));
+        // If success returned, store charger information
+        if (response.success) {
+            setAllChargerInfo(response['content'])
+        } else {
+            toast.error(<div>{response.api_response}</div>);
+        }
     }
 
     useEffect(() => {
         fetchAllChargers()
     }, []);
 
-    async function handleFavourite(chargerId, operation) {
+    async function handleFavourite(IDCharger, operation) {
         // Ugly confirmation prompt, TODO better
         //maybe can make a dialog that opens when button is clicked, then yes no goes to handle favourite?
         if (!window.confirm(operation + " favourite charger?")) {
@@ -57,29 +55,15 @@ export default function Map(props) {
             return;
         }
 
-        // Forms POST header
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: userEmail, id_charger: chargerId })
-        };
-
-        let api_endpoint;
+        let response;
         // Pick API endpoint
         if (operation === "add") {
-            api_endpoint = '/api/add_favourite_charger';
+            response = await FavouriteChargerAdd(userEmail, IDCharger);
         } else if (operation === "remove") {
-            api_endpoint = '/api/remove_favourite_charger';
+            response = await FavouriteChargerRemove(userEmail, IDCharger);
         } else {
             return;
         }
-
-        // Store response (JSON returns key 'result')
-        let response;
-        await fetch(api_endpoint, requestOptions)
-            .then(res => res.json())
-            .then(data => { response = data })
-            .catch(err => console.log(err));
 
         // If operation successful, reload charger information
         // Which reloads markers

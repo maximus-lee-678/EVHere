@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { VehicleInfoGetByUser, ChargerGetAllWithEmail, ChargeHistoryAdd } from '../API/API';
+
 export default function AddCharge() {
     const userEmail = localStorage.getItem("user_email");
 
@@ -17,21 +19,9 @@ export default function AddCharge() {
     // Function that loads all user vehicles. Called on page load, populates userVehicleInfo.
     // Used in main page.
     async function fetchAllUserVehicles() {
-        // Forms GET header
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: userEmail })
-        };
+        const response = await VehicleInfoGetByUser(userEmail);
 
-        // Store response
-        let response;
-        await fetch('/api/get_user_vehicles', requestOptions)
-            .then(res => res.json())
-            .then(data => { response = data })
-            .catch(err => console.log(err));
-
-        // If success returned, store connector information
+        // If success returned, store vehicle information
         if (response.success) {
             setUserVehicleInfo(response['content']);
         } else {
@@ -41,18 +31,14 @@ export default function AddCharge() {
 
     // Function that loads all chargers. Called on page load, populates allChargerInfo.
     async function fetchAllChargers() {
-        // Forms POST header
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: userEmail })
-        };
+        const response = await ChargerGetAllWithEmail(userEmail);
 
-        // JSON returns keys 'result', 'type' & 'content'
-        await fetch('/api/get_all_chargers', requestOptions)
-            .then(res => res.json())
-            .then(data => { setAllChargerInfo(data['content']) })
-            .catch(err => console.log(err));
+        // If success returned, store charger information
+        if (response.success) {
+            setAllChargerInfo(response['content'])
+        } else {
+            toast.error(<div>{response.api_response}</div>);
+        }
     }
 
     useEffect(() => {
@@ -114,23 +100,7 @@ export default function AddCharge() {
     async function handleStart(e) {
         e.preventDefault();
 
-        // Forms POST header
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                email: userEmail, id_vehicle_info: selectedVehicleId, id_charger: selectedCharger || firstCharger,
-                battery_percentage: batteryPercentage
-            })
-        };
-
-
-        // Store response
-        let response;
-        await fetch('/api/start_charge', requestOptions)
-            .then(res => res.json())
-            .then(data => { response = data })
-            .catch(err => console.log(err));
+        const response = await ChargeHistoryAdd(userEmail, selectedVehicleId, selectedCharger || firstCharger, batteryPercentage);
 
         // result is boolean of status
         if (response.success) {

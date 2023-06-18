@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from "../shared/Navbar";
+import Navbar from "../Shared/Navbar";
 export default function Profile() {
 
 

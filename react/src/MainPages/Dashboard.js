@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from "../shared/Navbar";
+import Navbar from "../Shared/Navbar";
 import { Link } from 'react-router-dom';
 
 export default function Dashboard() {

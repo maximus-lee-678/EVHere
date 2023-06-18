@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from '../shared/Navbar';
+import Navbar from '../Shared/Navbar';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import { UserInfoRegister } from '../API/API';
 
 export default function Register() {
   const [username, setUsername] = useState('');
@@ -16,19 +18,7 @@ export default function Register() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    // Forms POST header
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username: username, password: password, email: email, phone_number: phoneNumber, full_name: fullName })
-    };
-
-    // Store response
-    let response;
-    await fetch('/api/create_account', requestOptions)
-      .then(res => res.json())
-      .then(data => { response = data })
-      .catch(err => console.log(err));
+    const response = await UserInfoRegister(username, password, email, phoneNumber, fullName);
 
     // If success, redirect
     if (response.success) {
