@@ -172,7 +172,7 @@ export default function Vehicles() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                vehicle_id: vehicleId
+                id_vehicle: vehicleId
             })
         };
 

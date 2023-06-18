@@ -39,7 +39,7 @@ export default function Favourites() {
     }, []);
 
     // Function that removes a user's favourited charger. Called when user clicks corresponding remove button.
-    async function handleFavourite(charger_id, operation) {
+    async function handleFavouriteRemove(id_charger) {
         // Ugly confirmation prompt, TODO better
         // maybe can make a dialog that opens when button is clicked, then yes no goes to handle favourite?
         if (!window.confirm("Remove favourite charger?")) {
@@ -51,12 +51,12 @@ export default function Favourites() {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: userEmail, charger_id: charger_id, action: operation })
+            body: JSON.stringify({ email: userEmail, id_charger: id_charger })
         };
 
         // Store response
         let response;
-        await fetch('/api/modify_favourite_charger', requestOptions)
+        await fetch('/api/remove_favourite_charger', requestOptions)
             .then(res => res.json())
             .then(data => { response = data })
             .catch(err => console.log(err));
@@ -90,7 +90,7 @@ export default function Favourites() {
                     <div className="w-1/5 flex justify-center items-center">
                         <button id={id}
                             className="bg-red-400 hover:bg-red-300 p-5 rounded-full text-white"
-                            onClick={() => handleFavourite(id, 'remove')}>
+                            onClick={() => handleFavouriteRemove(id)}>
                             <i className="fas fa-heart-broken fa-xl" style={{ color: "#ffffff" }}></i>
                         </button>
                     </div>

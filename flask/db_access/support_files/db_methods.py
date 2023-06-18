@@ -1,5 +1,6 @@
 import sqlite3
 import csv
+import sys
 
 DATABASE_PATH = './database/database.db'
 SCRIPT_PATH = './database/db_schema.sql'
@@ -92,3 +93,86 @@ def check_fetchone_has_nothing(row):
     """
 
     return row is None
+
+
+def safe_select(query, task, get_type):
+    """
+    (SELECT) Wrapper that ensures OperationalErrors do not cause execution termination. \n
+    task must be specified:\n
+    \t>> (Tuple), None\n
+    get_type must be specified:\n
+    \t>> 'one', 'all'\n
+    Returns Dictionary with keys:\n
+    <select_successful> True or False.\n
+    <num_rows> (if <select_successful> is True) =Value= Number of rows returned.\n
+    <content> (if <select_successful> is True) Content. (can be blank)\n
+    courtesy of: https://stackoverflow.com/questions/25371636/how-to-get-sqlite-result-error-codes-in-python
+    """
+    conn = sqlite3.connect(DATABASE_PATH)
+    cursor = conn.cursor()
+
+    try:
+        if task:
+            cursor.execute(query, task)
+        else:
+            cursor.execute(query)
+
+        if get_type == 'one':
+            content = cursor.fetchone()
+            return_dict = {'select_successful': True,
+                           'num_rows': 0 if content is None else 1,
+                           'content': content}
+
+        elif get_type == 'all':
+            content = cursor.fetchall()
+            return_dict = {'select_successful': True,
+                           'num_rows': len(content),
+                           'content': content}
+
+        else:
+            return_dict = {'select_successful': False}
+
+    except sqlite3.OperationalError as err:
+        print('SQLite error: %s' % (' '.join(err.args)), file=sys.stderr)
+        print('Exception class is: %s' % err.__class__, file=sys.stderr)
+
+        return_dict = {'select_successful': False}
+
+    finally:
+        conn.close()
+        return return_dict
+
+
+def safe_transaction(query, task):
+    """
+    (CREATE, UPDATE, DELETE) Wrapper that ensures OperationalErrors do not cause execution termination. \n
+    task must be specified:\n
+    \t>> (Tuple), None\n
+    Returns Dictionary with keys:\n
+    <transaction_successful> True or False.\n
+    <rows_affected> (if <select_successful> is True) =Value= Number of rows affected.\n
+    courtesy of: https://stackoverflow.com/questions/25371636/how-to-get-sqlite-result-error-codes-in-python
+    """
+    conn = sqlite3.connect(DATABASE_PATH)
+    cursor = conn.cursor()
+
+    try:
+        if task:
+            cursor.execute(query, task)
+        else:
+            cursor.execute(query)
+
+        conn.commit()
+
+        return_dict = {'transaction_successful': True,
+                       'rows_affected': cursor.execute('SELECT changes()').fetchone()[0]}
+
+    except sqlite3.OperationalError as err:
+        print('SQLite error: %s' % (' '.join(err.args)), file=sys.stderr)
+        print('Exception class is: %s' % err.__class__, file=sys.stderr)
+
+        return_dict = {'transaction_successful': False}
+
+    finally:
+        conn.close()
+        return return_dict

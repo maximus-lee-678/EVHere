@@ -19,6 +19,12 @@ service_code_dict = {}
 MISSING_FIELDS = 0
 ez_update(MISSING_FIELDS, "One or more fields are missing.")
 
+CONFIGURATION_ERROR = 1
+ez_update(MISSING_FIELDS, "Function not configured properly.")
+
+INTERNAL_ERROR = 2  # oh damn better call the programmers
+ez_update(INTERNAL_ERROR, "Something went wrong.")
+
 # user_info [100-199]
 USERNAME_INVALID_LENGTH = 100
 ez_update(USERNAME_INVALID_LENGTH, "Username field contains string of invalid length.")
@@ -105,6 +111,8 @@ ez_update(FAVOURITE_CHARGER_MODIFY_ILLEGAL_OPERATION, "Illegal favourite modify 
 FAVOURITE_CHARGER_MODIFY_INVALID_OPERATION = 501
 ez_update(FAVOURITE_CHARGER_MODIFY_INVALID_OPERATION, "Invalid favourite modify favourite operation specified.")
 
+FAVOURITE_CHARGER_DUPLICATE_ENTRY = 502
+ez_update(FAVOURITE_CHARGER_DUPLICATE_ENTRY, "A similar favourite charger already exists.")
 
 FAVOURITE_CHARGERS_NOT_FOUND = 599
 ez_update(FAVOURITE_CHARGERS_NOT_FOUND, "No favourite chargers found.")
@@ -150,15 +158,35 @@ ez_update(VEHICLE_NOT_FOUND, "Vehicle information could not be found.")
 #########################
 
 # charge_history [700-799]
+CHARGE_HISTORY_INVALID_CHARGE_LEVEL = 700
+ez_update(CHARGE_HISTORY_INVALID_CHARGE_LEVEL, "Invalid battery percentage specified.")
 
+CHARGE_HISTORY_ALREADY_CHARGING = 701
+ez_update(CHARGE_HISTORY_ALREADY_CHARGING, "Can't start a new charge while already charging.")
 
 CHARGE_HISTORY_CREATE_SUCCESS = 799
 ez_update(CHARGE_HISTORY_CREATE_SUCCESS, "Charge history updated - started.")
 
 CHARGE_HISTORY_CREATE_FAILURE = 798
 ez_update(CHARGE_HISTORY_CREATE_FAILURE, "Charge history could not be created.")
+
+CHARGE_HISTORY_FOUND = 797
+ez_update(CHARGE_HISTORY_FOUND, "Charge history found.")
+
+CHARGE_HISTORY_NOT_FOUND = 796
+ez_update(CHARGE_HISTORY_NOT_FOUND, "Charge history not found.")
 #########################
 
 # charge_current [800-899]
+CHARGE_CURRENT_CREATE_SUCCESS = 899
+ez_update(CHARGE_CURRENT_CREATE_SUCCESS, "Charge current created.")
 
+CHARGE_CURRENT_CREATE_FAILURE = 898
+ez_update(CHARGE_CURRENT_CREATE_FAILURE, "Charge current could not be created.")
+
+CHARGE_CURRENT_NOT_FOUND = 897
+ez_update(CHARGE_CURRENT_NOT_FOUND, "Charge current entry not found.")
+
+CHARGE_CURRENT_FOUND = 896
+ez_update(CHARGE_CURRENT_FOUND, "Charge current entry found.")
 #########################
