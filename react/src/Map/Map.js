@@ -61,12 +61,21 @@ export default function Map(props) {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: userEmail, charger_id: chargerId, action: operation })
+            body: JSON.stringify({ email: userEmail, id_charger: chargerId })
         };
+
+        // Pick API endpoint
+        if (operation === "add") {
+            api_endpoint = '/api/add_favourite_charger';
+        } else if (operation === "remove") {
+            api_endpoint = '/api/remove_favourite_charger';
+        } else {
+            return;
+        }
 
         // Store response (JSON returns key 'result')
         let response;
-        await fetch('/api/modify_favourite_charger', requestOptions)
+        await fetch(api_endpoint, requestOptions)
             .then(res => res.json())
             .then(data => { response = data })
             .catch(err => console.log(err));

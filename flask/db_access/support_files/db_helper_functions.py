@@ -1,6 +1,7 @@
 import re
 import uuid
 import bcrypt
+import datetime
 
 
 def generate_uuid():
@@ -9,6 +10,12 @@ def generate_uuid():
     """
     return str(uuid.uuid4())
 
+
+def generate_time_now():
+    """
+    Generates current epoch time
+    """
+    return datetime.datetime.now()
 
 def validate_email(email):
     """

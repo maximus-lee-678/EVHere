@@ -124,23 +124,20 @@ export default function AddCharge() {
             })
         };
 
-        console.log(requestOptions);
 
         // Store response
         let response;
-        // await fetch('/api/add_vehicle', requestOptions)
-        //     .then(res => res.json())
-        //     .then(data => { response = data })
-        //     .catch(err => console.log(err));
+        await fetch('/api/start_charge', requestOptions)
+            .then(res => res.json())
+            .then(data => { response = data })
+            .catch(err => console.log(err));
 
-        // // result is boolean of status
-        // if (response.success) {
-        //     toast.success(response.api_response);
-        //     clearFormFields();
-        //     fetchAllUserVehicles();
-        // } else {
-        //     toast.error(response.reason);
-        // }
+        // result is boolean of status
+        if (response.success) {
+            toast.success(response.api_response);
+        } else {
+            toast.error(response.reason);
+        }
     }
 
     return (
