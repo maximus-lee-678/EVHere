@@ -66,7 +66,7 @@ export default function Favourites() {
                     </div>
                     <div className="lg:w-1/5 flex justify-center lg:items-center">
                         <button id={id}
-                            className="bg-red-400 hover:bg-red-300 px-4 py-4 lg:p-5 rounded-full text-white max-h-14"
+                            className="bg-red-400 hover:bg-red-300 px-5 py-4 rounded-full text-white max-h-14"
                             onClick={() => handleFavouriteRemove(id)}>
                             <i className="fas fa-heart-broken fa-lg" style={{ color: "#ffffff" }}></i>
                         </button>
