@@ -1,11 +1,84 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import Navbar from "../Shared/Navbar";
 import Map from "../Map/Map";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Recommendations() {
+    const userEmail = localStorage.getItem("user_email");
+
+    const [userVehicleInfo, setUserVehicleInfo] = useState();
+
+    // Function that loads all user vehicles. Called on page load, populates userVehicleInfo.
+    // Used in main page.
+    async function fetchAllUserVehicles() {
+        // Forms GET header
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: userEmail })
+        };
+
+        // Store response
+        let response;
+        await fetch('/api/get_user_vehicles', requestOptions)
+            .then(res => res.json())
+            .then(data => { response = data })
+            .catch(err => console.log(err));
+
+        // If success returned, store connector information
+        if (response.success) {
+            setUserVehicleInfo(response['content']);
+        } else {
+            toast.error(<div>{response.api_response}</div>);
+            setUserVehicleInfo([]);
+            console.log("test",userVehicleInfo);
+        }
+    }
+
+    // fetch all required data for population
+    useEffect(() => {
+        fetchAllUserVehicles();
+    }, []);
+
+
+    // Component that formats vehicle information for display in main page. Reads from userVehicleInfo.
+    function UserVehicles() {
+        let options = [];
+        
+        if (userVehicleInfo.length == 0) {
+            options.push(
+                <option value="No vehicles available">No vehicles available</option>
+            )
+        }
+        else {
+            document.getElementById("vehicleName").disabled = false;
+
+            for (var i = 0; i < userVehicleInfo.length; i++) {
+                let id = userVehicleInfo[i].id;
+    
+                options.push(
+                    <option className="border-0 px-3 py-3 text-gray-700" value={userVehicleInfo[i].name}>{userVehicleInfo[i].name}</option>
+                )
+            }
+        }
+        
+        return options;
+    }
+
     return (
         <div className="min-h-screen bg-gray-900 "
         >
+            <ToastContainer position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored" />
             <Navbar transparent />
             <main>
                 <section className="w-full h-full">
@@ -25,11 +98,13 @@ export default function Recommendations() {
                                         </label>
                                         <select
                                             id="vehicleName"
-                                            className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+                                            disabled
+                                            className="border-0 px-3 py-3 text-gray-700 bg-white rounded text-sm focus:outline-none focus:ring w-full"
                                             style={{ transition: "all .15s ease" }}
+                                            defaultValue="No vehicles available"
                                         >
-                                            <option className="border-0 px-3 py-3 text-gray-700" value="Vehicle1Name">Vehicle 1 Name (S/N)</option>
-                                            <option className="border-0 px-3 py-3 text-gray-700" value="Vehicle2Name">Vehicle 2 Name (S/N)</option>
+                                            {userVehicleInfo && <UserVehicles/> }
+                                            
                                         </select>
                                     </div>
                                     <div className="grid gap-4">
