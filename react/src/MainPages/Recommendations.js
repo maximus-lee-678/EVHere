@@ -87,7 +87,7 @@ export default function Recommendations() {
                             <div className="flex content-center items-center justify-center h-full w-full font-semibold text-3xl text-white">Map</div>
                         </div>
                         <div className="grid grid-cols-3">
-                            <div className="bg-white col-span-1 px-7">
+                            <div className="bg-white col-span-1 px-7 max-h-[70vh]">
                                 <div className="h-24">
                                     <div className="flex content-center items-center justify-center h-full w-full font-semibold text-2xl">Recommended</div>
                                 </div>
@@ -107,37 +107,28 @@ export default function Recommendations() {
                                             
                                         </select>
                                     </div>
-                                    <div className="grid gap-4">
-                                        <div className="p-2 rounded-md hover:bg-gray-200 cursor-pointer">
-                                            <div className="inline-flex h-full align-middle">
+
+                                    <div className="grid lg:gap-4 gap-2">
+                                        <div className="p-2 rounded-md hover:bg-gray-200 cursor-pointer grid grid-cols-8">
+                                            <div className="h-full mt-2">
                                                 <i className="fas fa-map-marker-alt fa-2xl"></i>
                                             </div>
 
-                                            <div className="ml-4 inline-block">
-                                                <div className="uppercase text-gray-700 font-bold">Best value for money:</div>
-                                                <div>
-                                                    Shell Recharge Punggol
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="p-2 rounded-md hover:bg-gray-200 cursor-pointer">
-                                            <div className="inline-flex h-full align-middle">
-                                                <i className="fas fa-map-marker-alt fa-2xl"></i>
-                                            </div>
-
-                                            <div className="ml-4 inline-block">
+                                            <div className="ml-4 col-span-7">
                                                 <div className="uppercase text-gray-700 font-bold">Nearest to me:</div>
                                                 <div>
                                                     Bukit Merah / Telok Blangah Rise / Blk 32
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="p-2 rounded-md hover:bg-gray-200 cursor-pointer">
-                                            <div className="inline-flex h-full align-middle">
+
+
+                                        <div className="p-2 rounded-md hover:bg-gray-200 cursor-pointer grid grid-cols-8">
+                                            <div className="h-full mt-2">
                                                 <i className="fas fa-map-marker-alt fa-2xl"></i>
                                             </div>
 
-                                            <div className="ml-4 inline-block">
+                                            <div className="ml-4 col-span-7">
                                                 <div className="uppercase text-gray-700 font-bold">Fastest charging speed:</div>
                                                 <div>
                                                     Shell Recharge Punggol
