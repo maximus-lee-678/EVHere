@@ -86,13 +86,13 @@ export default function Recommendations() {
                         <div className="h-40">
                             <div className="flex content-center items-center justify-center h-full w-full font-semibold text-3xl text-white">Map</div>
                         </div>
-                        <div className="grid grid-cols-3">
-                            <div className="bg-white col-span-1 px-7 max-h-[70vh]">
-                                <div className="h-24">
-                                    <div className="flex content-center items-center justify-center h-full w-full font-semibold text-2xl">Recommended</div>
+                        <div className="grid grid-rows-3 md:grid-cols-3 gap-0">
+                            <div className="bg-white row-span-1 px-7 md:col-span-1 md:h-[70vh]">
+                                <div className="mt-6 mb-5 md:h-24">
+                                    <div className="flex content-center items-center justify-center h-full w-full font-semibold lg:text-2xl text-xl">Recommended</div>
                                 </div>
-                                <div>
-                                    <div className="mb-12">
+                                <div className="mb-2">
+                                    <div className="lg:mb-12 mb-2">
                                         <label className="block uppercase text-gray-700 text-xs font-bold mb-2">
                                             Vehicle
                                         </label>
@@ -108,7 +108,7 @@ export default function Recommendations() {
                                         </select>
                                     </div>
 
-                                    <div className="grid lg:gap-4 gap-2">
+                                    <div className="grid lg:gap-4 gap-2 lg:text-base text-sm">
                                         <div className="p-2 rounded-md hover:bg-gray-200 cursor-pointer grid grid-cols-8">
                                             <div className="h-full mt-2">
                                                 <i className="fas fa-map-marker-alt fa-2xl"></i>
@@ -140,7 +140,7 @@ export default function Recommendations() {
 
                             </div>
 
-                            <div className="col-span-2">
+                            <div className="row-span-2 md:col-span-2">
                                 <Map desiredZoom={11} mapWidth={"100%"} mapHeight={"70vh"} />
                             </div>
                         </div>
