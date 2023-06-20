@@ -86,9 +86,9 @@ export default function Vehicles() {
                     </div>
                     <div className="w-1/5 flex justify-center items-center">
                         <button id={id}
-                            className="bg-red-400 hover:bg-red-300 p-5 rounded-full text-white"
+                            className="bg-red-400 hover:bg-red-300 px-5 py-4 rounded-full text-white"
                             onClick={() => handleRemove(id)}>
-                            <i className="fas fa-trash fa-xl" style={{ color: "#ffffff" }}></i>
+                            <i className="fas fa-trash fa-lg" style={{ color: "#ffffff" }}></i>
                         </button>
                     </div>
                 </div>
@@ -153,7 +153,7 @@ export default function Vehicles() {
 
             <main>
                 <section className="w-full h-full">
-                    <div className="relative container mx-auto px-4 h-full bg-gray-900 w-1/2">
+                    <div className="relative container mx-auto px-4 h-full bg-gray-900 w-3/4 md:w-1/2">
                         <div className="h-40">
                             <div className="flex content-center items-center justify-center h-full w-full font-semibold text-3xl text-white">Vehicles</div>
                         </div>

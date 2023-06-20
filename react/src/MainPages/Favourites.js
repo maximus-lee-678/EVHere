@@ -58,20 +58,20 @@ export default function Favourites() {
             let id = favouriteChargerInfo[i].id;
 
             result.push(
-                <div className="flex py-4 px-10 bg-white rounded-lg">
-                    <div className="w-4/5">
+                <div className="lg:flex py-4 lg:px-10 px-3 bg-white rounded-lg grid grid-rows-4">
+                    <div className="lg:w-4/5 row-span-3">
                         <div className="font-bold text-xl">{favouriteChargerInfo[i].name}</div>
-                        <div>Provider: {favouriteChargerInfo[i].provider}</div>
-                        <div>Power: {favouriteChargerInfo[i].kilowatts || 0} kW</div>
-                        <div>Connectors: {favouriteChargerInfo[i].connectors}</div>
-                        <div>Location: {favouriteChargerInfo[i].address}</div>
-                        <div>Hours: {favouriteChargerInfo[i].twenty_four_hours === 'TRUE' ? '24 hours' : 'not 24 hours'}</div>
+                        <div><span className="uppercase font-semibold text-sm">Provider:</span> {favouriteChargerInfo[i].provider}</div>
+                        <div><span className="uppercase font-semibold text-sm">Power:</span> {favouriteChargerInfo[i].kilowatts || 0} kW</div>
+                        <div><span className="uppercase font-semibold text-sm">Connectors:</span> {favouriteChargerInfo[i].connectors}</div>
+                        <div><span className="uppercase font-semibold text-sm">Location:</span> {favouriteChargerInfo[i].address}</div>
+                        <div><span className="uppercase font-semibold text-sm">Hours:</span> {favouriteChargerInfo[i].twenty_four_hours === 'TRUE' ? '24 hours' : 'Not 24 hours'}</div>
                     </div>
-                    <div className="w-1/5 flex justify-center items-center">
+                    <div className="lg:w-1/5 flex justify-center lg:items-center">
                         <button id={id}
-                            className="bg-red-400 hover:bg-red-300 p-5 rounded-full text-white"
+                            className="bg-red-400 hover:bg-red-300 px-5 py-4 rounded-full text-white max-h-14"
                             onClick={() => handleFavouriteRemove(id)}>
-                            <i className="fas fa-heart-broken fa-xl" style={{ color: "#ffffff" }}></i>
+                            <i className="fas fa-heart-broken fa-lg" style={{ color: "#ffffff" }}></i>
                         </button>
                     </div>
                 </div>

@@ -140,6 +140,10 @@ export default function Map(props) {
                             {allChargerInfo[i].is_favourite === 0 ? <i className="fas fa-heart" style={{ color: "#ffffff" }}></i> : <i className="fas fa-heart-broken" style={{ color: "#ffffff" }}></i>}
                             {allChargerInfo[i].is_favourite === 0 ? ' Add to favourites' : ' Remove favourite'}
                         </button>
+                        <button className="bg-green-400 hover:bg-green-900 px-3 py-2 rounded-full text-white">
+                            Go
+                            <i className="fas fa-location-arrow pl-1"></i>
+                        </button>
                     </Popup>
                 </Marker>
             )
