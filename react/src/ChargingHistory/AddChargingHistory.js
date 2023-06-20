@@ -1,10 +1,14 @@
+// React imports
 import React, { useState, useEffect } from 'react';
-import Navbar from '../Shared/Navbar';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
+// Standard imports
+import Navbar from '../SharedComponents/Navbar';
+import Toast, { toast } from '../SharedComponents/Toast';
+
+// API endpoints imports
 import { ChargeHistoryGet } from '../API/API';
 
+// Component imports
 import AddCharge from './AddCharge';
 import FinishCharge from './FinishCharge';
 
@@ -15,8 +19,10 @@ export default function AddChargingHistory() {
 
     // Function that checks if user has a current charge. Called on page load, populates hasChargeCurrent.
     async function fetchUserCurrentCharge() {
+        const response = await ChargeHistoryGet(userEmail);
+
         // Store success status: if user has a current charge it will return success, and vice versa.
-        setHasChargeCurrent(await ChargeHistoryGet(userEmail).success);
+        setHasChargeCurrent(response.success);
     }
 
     useEffect(() => {
@@ -25,17 +31,9 @@ export default function AddChargingHistory() {
 
     return (
         <div>
-            <ToastContainer position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored" />
+            <Toast />
             <Navbar transparent />
+
             <main>
                 {hasChargeCurrent && hasChargeCurrent ? <FinishCharge /> : <AddCharge />}
             </main >

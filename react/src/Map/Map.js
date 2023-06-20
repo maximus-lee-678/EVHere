@@ -1,16 +1,20 @@
+// React imports
 import React, { useState, useEffect } from 'react';
-import { Icon, divIcon, marker } from 'leaflet'
-import { MapContainer, TileLayer, useMap, useMapEvents, Marker, Popup, GeoJSON } from 'react-leaflet';
 
+// Standard imports
+import Toast, { toast } from '../SharedComponents/Toast';
+
+// API endpoints imports
 import { ChargerGetAllWithEmail, FavouriteChargerAdd, FavouriteChargerRemove } from '../API/API';
 
+// Leaflet imports
+import { Icon, divIcon, marker } from 'leaflet'
+import { MapContainer, TileLayer, useMap, useMapEvents, Marker, Popup, GeoJSON } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
-import markerIconPng from "./marker-icon.png"
-import markerIconFavouritePng from "./marker-icon-favourite.png"
-import geoJsonSubzone from "./2-planning-area.json"
-import geoJsonRegion from "./master-plan-2019-region-boundary-no-sea-geojson.json"
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import markerIconPng from "./marker-icon.png";
+import markerIconFavouritePng from "./marker-icon-favourite.png";
+import geoJsonSubzone from "./2-planning-area.json";
+import geoJsonRegion from "./master-plan-2019-region-boundary-no-sea-geojson.json";
 
 // This component renders a map centered on singapore. Pass in properties to change the kind of returns you get.
 //
@@ -195,16 +199,8 @@ export default function Map(props) {
 
     return (
         <>
-            <ToastContainer position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored" />
+            <Toast />
+
             <MapContainer center={singaporeCenter} zoom={props.desiredZoom || defaultZoom} scrollWheelZoom={true}
                 style={{ width: props.mapWidth || defaultWidth, height: props.mapHeight || defaultHeight }}>
                 <TileLayer

@@ -1,8 +1,11 @@
+// React imports
 import React, { useState, useEffect } from 'react';
-import Navbar from "../Shared/Navbar";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
+// Standard imports
+import Navbar from '../SharedComponents/Navbar';
+import Toast, { toast } from '../SharedComponents/Toast';
+
+// API endpoints imports
 import { FavouriteChargerGet, FavouriteChargerRemove } from '../API/API';
 
 export default function Favourites() {
@@ -24,7 +27,7 @@ export default function Favourites() {
     }
 
     useEffect(() => {
-        fetchFavouriteChargers()
+        fetchFavouriteChargers();
     }, []);
 
     // Function that removes a user's favourited charger. Called when user clicks corresponding remove button.
@@ -81,22 +84,13 @@ export default function Favourites() {
     return (
         <div className="min-h-screen bg-gray-900"
             style={{
-                backgroundImage:
-                    "url('battery.png')",
+                backgroundImage: "url('battery.png')",
                 backgroundSize: "100%",
                 backgroundRepeat: "repeat"
             }}>
-            <ToastContainer position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored" />
+            <Toast />
             <Navbar transparent />
+
             <main>
                 <section className="w-full h-full">
                     <div className="relative container mx-auto px-4 h-full bg-gray-900">

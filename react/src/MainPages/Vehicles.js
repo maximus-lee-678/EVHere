@@ -1,9 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Navbar from '../Shared/Navbar';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// React imports
+import React, { useState, useEffect } from 'react';
 
-import { ConnectorTypeGetAll, VehicleInfoGetByUser } from '../API/API';
+// Standard imports
+import Navbar from '../SharedComponents/Navbar';
+import Toast, { toast } from '../SharedComponents/Toast';
+import Form, { FormButton, FormInputField, FormInputSelect } from '../SharedComponents/Form';
+
+// API endpoints imports
+import { ConnectorTypeGetAll, VehicleInfoGetByUser, VehicleInfoAdd, VehicleInfoRemove } from '../API/API';
 
 export default function Vehicles() {
     const userEmail = localStorage.getItem("user_email");
@@ -110,22 +114,7 @@ export default function Vehicles() {
     async function handleCreate(e) {
         e.preventDefault();
 
-        // Forms POST header
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                email: userEmail, vehicle_name: vehicleName,
-                vehicle_model: vehicleModel, vehicle_sn: vehicleSN, vehicle_connector: selectedConnector
-            })
-        };
-
-        // Store response
-        let response;
-        await fetch('/api/add_vehicle', requestOptions)
-            .then(res => res.json())
-            .then(data => { response = data })
-            .catch(err => console.log(err));
+        const response = await VehicleInfoAdd(userEmail, vehicleName, vehicleModel, vehicleSN, selectedConnector);
 
         // result is boolean of status
         if (response.success) {
@@ -145,21 +134,7 @@ export default function Vehicles() {
             return;
         }
 
-        // Forms POST header
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                id_vehicle: vehicleId
-            })
-        };
-
-        // Store response
-        let response;
-        await fetch('/api/remove_vehicle', requestOptions)
-            .then(res => res.json())
-            .then(data => { response = data })
-            .catch(err => console.log(err));
+        const response = await VehicleInfoRemove(vehicleId);
 
         // result is boolean of status
         if (response.success) {
@@ -173,17 +148,9 @@ export default function Vehicles() {
     return (
         <div className="min-h-screen bg-gray-900"
         >
-            <ToastContainer position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored" />
+            <Toast />
             <Navbar transparent />
+
             <main>
                 <section className="w-full h-full">
                     <div className="relative container mx-auto px-4 h-full bg-gray-900 w-1/2">
@@ -215,99 +182,33 @@ export default function Vehicles() {
                 onClick={(e) => e.currentTarget === e.target ? setDisplayPopup(!displayPopup) : undefined}
                 style={{ display: displayPopup ? "block" : "none" }}>
                 {/*Modal content*/}
-                <div
-                    className="relative top-24 mx-auto p-5 border w-96 shadow-lg rounded-md bg-gray-200"
-                >
 
-                    <div className="flex-auto px-4 lg:px-10 py-10 pt-0 mt-6">
-                        <div className="text-center mb-3">
-                            <h6 className="text-gray-600 text-sm font-bold">
-                                Add a new vehicle
-                            </h6>
-                        </div>
-                        <form onSubmit={handleCreate}>
-                            <div className="relative w-full mb-3">
-                                <label
-                                    className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                                    htmlFor="vNameInput"
-                                >
-                                    Vehicle Name
-                                </label>
-                                <input
-                                    id="vNameInput"
-                                    type="text"
-                                    className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                                    style={{ transition: "all .15s ease" }}
-                                    value={vehicleName} onChange={(event) => setVehicleName(event.target.value)}
-                                />
-                            </div>
+                <Form elementName="Sign In" onSubmit={handleCreate} popup>
+                    <FormInputField elementName="Vehicle Name" id="vehicle-name" placeholder="Enter Vehicle Name . . ."
+                        value={vehicleName}
+                        onChange={(event) => setVehicleName(event.target.value)}
+                    />
 
-                            <div className="relative w-full mb-3">
-                                <label
-                                    className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                                    htmlFor="vModelInput"
-                                >
-                                    Vehicle Model
-                                </label>
-                                <input
-                                    id="vModelInput"
-                                    type="text"
-                                    className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                                    style={{ transition: "all .15s ease" }}
-                                    value={vehicleModel} onChange={(event) => setVehicleModel(event.target.value)}
-                                />
-                            </div>
+                    <FormInputField elementName="Vehicle Model" id="vehicle-model" placeholder="Enter Vehicle Model . . ."
+                        value={vehicleModel}
+                        onChange={(event) => setVehicleModel(event.target.value)}
+                    />
 
-                            <div className="relative w-full mb-3">
-                                <label
-                                    className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                                    htmlFor="vSNInput"
-                                >
-                                    Vehicle S/N
-                                </label>
-                                <input
-                                    id="vSNInput"
-                                    type="text"
-                                    className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                                    style={{ transition: "all .15s ease" }}
-                                    value={vehicleSN} onChange={(event) => setVehicleSN(event.target.value)}
-                                />
-                            </div>
+                    <FormInputField elementName="Vehicle S/N" id="vehicle-sn" placeholder="Enter Vehicle S/N . . ."
+                        value={vehicleSN}
+                        onChange={(event) => setVehicleSN(event.target.value)}
+                    />
 
-                            <div className="relative w-full mb-3">
-                                <label
-                                    className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                                    htmlFor="connectorTypeInput"
-                                >
-                                    Connector Type
-                                </label>
-                                <select
-                                    id="connectorTypeInput"
-                                    type="text"
-                                    className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                                    style={{ transition: "all .15s ease" }}
-                                    value={(connectorInfo && selectedConnector) || ""}
-                                    onChange={(event) => setSelectedConnector(event.target.value)}
-                                >
-                                    {connectorInfo && <ConnectorChoices />}
-                                </select>
-                            </div>
+                    <FormInputSelect elementName="Connector Type" id="connector-type"
+                        value={(connectorInfo && selectedConnector) || ""}
+                        options={connectorInfo && <ConnectorChoices />}
+                        onChange={(event) => setSelectedConnector(event.target.value)}
+                    />
 
-                            <div className="text-center mt-6">
-                                <button
-                                    className="bg-gray-900 text-white hover:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
-                                    type="submit"
-                                    style={{ transition: "all .15s ease" }}
-                                >
-                                    Add new vehicle
-                                </button>
-                            </div>
+                    <FormButton elementName="Add new Vehicle" />
 
-                        </form>
-                        <p className="mt-2 text-center text-gray-700 text-sm italic">Click outside to close</p>
-                    </div>
-                </div>
-
+                    <p className="mt-2 text-center text-gray-700 text-sm italic">Click outside to close this popup.</p>
+                </Form>
             </div>
         </div>
     );
