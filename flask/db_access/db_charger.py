@@ -97,13 +97,12 @@ def get_favourite_chargers(user_id_sanitised):
     if select['num_rows'] == 0:
         return {'result': db_service_code_master.CHARGER_NOT_FOUND}
 
-    key_values = []
     # transforming array to key-values
-    for row in select['content']:
-        key_values.append({"id": row[0], "name": row[1],
+    key_values = [{"id": row[0], "name": row[1],
                            "latitude": row[2], "longitude": row[3], "address": row[4], "provider": row[5],
                            "connectors": row[6], "online": row[7], "kilowatts": row[8],
-                           "twenty_four_hours": row[9], "last_updated": row[10]})
+                           "twenty_four_hours": row[9], "last_updated": row[10]}
+                           for row in select['content']]
 
     return {'result': db_service_code_master.CHARGER_FOUND, 'content': key_values}
 
@@ -132,7 +131,8 @@ def get_one_charger(id_charger_input):
         return {'result': db_service_code_master.INTERNAL_ERROR}
     if select['num_rows'] == 0:
         return {'result': db_service_code_master.CHARGER_NOT_FOUND}
-
+    
+    # transforming row to key-values
     key_values = {"id": select['content'][0], "name": select['content'][1], "latitude": select['content'][2],
                   "longitude": select['content'][3], "address": select['content'][4], "provider": select['content'][5],
                   "connectors": select['content'][6], "online": select['content'][7], "kilowatts": select['content'][8],

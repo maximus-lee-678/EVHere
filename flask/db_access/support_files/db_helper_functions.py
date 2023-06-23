@@ -59,6 +59,12 @@ def validate_phone_no(phone_no):
     return re.match(r'^\d{8}$', phone_no)
 
 
+def validate_currency(currency):
+    """
+    Checks if a string is a number optionally followed by a decimal point and up to 2 digits.
+    """
+    return re.match(r'^(\d+(\.\d{1,2})?)$', currency)
+
 def string_sanitise(string):
     """
     Before storing to database, sanitise and return string

@@ -25,9 +25,9 @@ def get_all_charger_available_connector():
     if select['num_rows'] == 0:
         return {'result': db_service_code_master.AVAILABLE_CONNECTOR_NOT_FOUND}
 
-    key_values = []
     # transforming array to key-values
-    for row in select['content']:
-        key_values.append({"id_charger": row[0], "id_connector_type": row[1]})
+    key_values = [{"id_charger": row[0], "id_connector_type": row[1]} 
+                  for row in select['content']]
+    
 
     return {'result': db_service_code_master.AVAILABLE_CONNECTORS_FOUND, 'content': key_values}

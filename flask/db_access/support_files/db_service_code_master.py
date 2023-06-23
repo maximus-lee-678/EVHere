@@ -20,7 +20,7 @@ MISSING_FIELDS = 0
 ez_update(MISSING_FIELDS, "One or more fields are missing.")
 
 CONFIGURATION_ERROR = 1
-ez_update(MISSING_FIELDS, "Function not configured properly.")
+ez_update(CONFIGURATION_ERROR, "Function not configured properly.")
 
 INTERNAL_ERROR = 2  # oh damn better call the programmers
 ez_update(INTERNAL_ERROR, "Something went wrong.")
@@ -164,29 +164,47 @@ ez_update(CHARGE_HISTORY_INVALID_CHARGE_LEVEL, "Invalid battery percentage speci
 CHARGE_HISTORY_ALREADY_CHARGING = 701
 ez_update(CHARGE_HISTORY_ALREADY_CHARGING, "Can't start a new charge while already charging.")
 
+CHARGE_HISTORY_NOT_CHARGING = 702
+ez_update(CHARGE_HISTORY_NOT_CHARGING, "Can't finish a charge, this user does not have an unfinished entry.")
+
 CHARGE_HISTORY_CREATE_SUCCESS = 799
 ez_update(CHARGE_HISTORY_CREATE_SUCCESS, "Charge history updated - started.")
 
 CHARGE_HISTORY_CREATE_FAILURE = 798
 ez_update(CHARGE_HISTORY_CREATE_FAILURE, "Charge history could not be created.")
 
-CHARGE_HISTORY_FOUND = 797
+CHARGE_HISTORY_FINISH_FAILURE = 797
+ez_update(CHARGE_HISTORY_FINISH_FAILURE, "Charge history could not be finished.")
+
+CHARGE_HISTORY_FINISH_SUCCESS = 796
+ez_update(CHARGE_HISTORY_FINISH_SUCCESS, "Charge history updated - finished.")
+
+CHARGE_HISTORY_FOUND = 795
 ez_update(CHARGE_HISTORY_FOUND, "Charge history found.")
 
-CHARGE_HISTORY_NOT_FOUND = 796
+CHARGE_HISTORY_NOT_FOUND = 794
 ez_update(CHARGE_HISTORY_NOT_FOUND, "Charge history not found.")
 #########################
 
 # charge_current [800-899]
+CURRENCY_INVALID = 800
+ez_update(CURRENCY_INVALID, "Currency field contains string of invalid syntax.")
+
 CHARGE_CURRENT_CREATE_SUCCESS = 899
 ez_update(CHARGE_CURRENT_CREATE_SUCCESS, "Charge current created.")
 
 CHARGE_CURRENT_CREATE_FAILURE = 898
 ez_update(CHARGE_CURRENT_CREATE_FAILURE, "Charge current could not be created.")
 
-CHARGE_CURRENT_NOT_FOUND = 897
+CHARGE_CURRENT_REMOVE_SUCCESS = 897
+ez_update(CHARGE_CURRENT_REMOVE_SUCCESS, "Charge current removed.")
+
+CHARGE_CURRENT_REMOVE_FAILURE = 896
+ez_update(CHARGE_CURRENT_REMOVE_FAILURE, "Charge current could not be removed.")
+
+CHARGE_CURRENT_NOT_FOUND = 895
 ez_update(CHARGE_CURRENT_NOT_FOUND, "Charge current entry not found.")
 
-CHARGE_CURRENT_FOUND = 896
+CHARGE_CURRENT_FOUND = 894
 ez_update(CHARGE_CURRENT_FOUND, "Charge current entry found.")
 #########################

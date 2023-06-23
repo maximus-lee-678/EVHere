@@ -121,11 +121,10 @@ def get_active_vehicle_by_user_id(id_user_info_sanitised):
     if select['num_rows'] == 0:
         return {'result': db_service_code_master.VEHICLE_NOT_FOUND}
 
-    key_values = []
     # transforming array to key-values
-    for row in select['content']:
-        key_values.append({"id": row[0], "name": row[1], "model": row[2],
-                          "vehicle_sn": row[3], "connector_type": row[4]})
+    key_values = [{"id": row[0], "name": row[1], "model": row[2],
+                   "vehicle_sn": row[3], "connector_type": row[4]}
+                  for row in select['content']]
 
     return {'result': db_service_code_master.VEHICLE_FOUND,
             'content': key_values}
@@ -159,6 +158,7 @@ def get_vehicle_by_id(id_vehicle_input):
     if select['num_rows'] == 0:
         return {'result': db_service_code_master.VEHICLE_NOT_FOUND}
 
+    # transforming row to key-values
     key_values = {"id": select['content'][0], "name": select['content'][1], "model": select['content'][2],
                   "vehicle_sn": select['content'][3], "connector_type": select['content'][4]}
 

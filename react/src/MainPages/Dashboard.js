@@ -1,11 +1,46 @@
-import React from 'react';
-import Navbar from "../SharedComponents/Navbar";
+// React imports
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+// Standard imports
+import Navbar from "../SharedComponents/Navbar";
+
+// API endpoints imports
+import { ChargeCurrentGet, ChargeHistoryGet } from '../API/API';
+
 export default function Dashboard() {
+  const userEmail = localStorage.getItem("user_email");
+
+  const [chargeCurrentDetails, setChargeCurrentDetails] = useState(null);
+  const [chargeHistoryDetails, setChargeHistoryDetails] = useState(null);
+
+  // Function that gets user's current charge. Called on page load, populates chargeCurrentDetails.
+  async function fetchUserChargeCurrentAndHistory() {
+    const ResponseCurrent = await ChargeCurrentGet(userEmail);
+
+    // result is boolean of status
+    if (ResponseCurrent.success) {
+      setChargeCurrentDetails(ResponseCurrent.content);
+      console.log(ResponseCurrent.content);
+    }
+    
+    const ResponseHistory = await ChargeHistoryGet(userEmail, 'in_progress');
+
+    // result is boolean of status
+    if (ResponseHistory.success) {
+      setChargeHistoryDetails(ResponseHistory.content);
+      console.log(ResponseHistory.content);
+    }
+  }
+
+  useEffect(() => {
+    fetchUserChargeCurrentAndHistory();
+  }, []);
+
   return (
     <div className="h-screen bg-gray-300">
       <Navbar transparent />
+
       <main>
         <div className="relative pt-16 pb-32 flex content-center items-center justify-center"
           style={{

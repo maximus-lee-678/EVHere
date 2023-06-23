@@ -26,12 +26,10 @@ def get_all_connectors():
     if select['num_rows'] == 0:
         return {'result': db_service_code_master.CONNECTOR_NOT_FOUND}
 
-    key_values = []
-    # transforming array to key-values
-    for row in select['content']:
-        key_values.append(
-            {"id": row[0], "name_short": row[1], "name_long": row[2], "name_connector": row[3]})
-
+    # transforming array to key-values 
+    key_values = [{"id": row[0], "name_short": row[1], "name_long": row[2], "name_connector": row[3]}
+                  for row in select['content']]
+    
     return {'result': db_service_code_master.CONNECTOR_FOUND, 'content': key_values}
 
 

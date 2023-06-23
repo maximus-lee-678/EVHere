@@ -6,6 +6,7 @@ import Toast, { toast } from '../SharedComponents/Toast';
 import Form, { FormButton, FormInputField, FormInputSelect } from '../SharedComponents/Form';
 
 // API endpoints imports
+import { ChargeHistoryFinish } from '../API/API';
 
 export default function FinishCharge() {
   const userEmail = localStorage.getItem("user_email");
@@ -17,15 +18,20 @@ export default function FinishCharge() {
   async function handleFinish(e) {
     e.preventDefault();
 
-    // TODO lmao
-    // const response = await ChargeHistoryAdd(userEmail, selectedVehicleId, selectedCharger || firstCharger, batteryPercentage);
+    const response = await ChargeHistoryFinish(userEmail, batteryPercentage, amountPayable);
 
-    // // result is boolean of status
-    // if (response.success) {
-    //   toast.success(response.api_response);
-    // } else {
-    //   toast.error(response.reason);
-    // }
+    // result is boolean of status
+    if (response.success) {
+      toast.success(response.api_response);
+
+      // delay 2s
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      // reload page
+      window.location.replace('/');
+    } else {
+      toast.error(response.reason);
+    }
   }
 
   return (

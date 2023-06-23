@@ -6,7 +6,7 @@ import Navbar from '../SharedComponents/Navbar';
 import Toast, { toast } from '../SharedComponents/Toast';
 
 // API endpoints imports
-import { ChargeHistoryGet } from '../API/API';
+import { ChargeCurrentGet } from '../API/API';
 
 // Component imports
 import AddCharge from './AddCharge';
@@ -19,7 +19,7 @@ export default function AddChargingHistory() {
 
     // Function that checks if user has a current charge. Called on page load, populates hasChargeCurrent.
     async function fetchUserCurrentCharge() {
-        const response = await ChargeHistoryGet(userEmail);
+        const response = await ChargeCurrentGet(userEmail);
 
         // Store success status: if user has a current charge it will return success, and vice versa.
         setHasChargeCurrent(response.success);
