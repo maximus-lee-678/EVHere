@@ -24,20 +24,35 @@ def fun_get_user_vehicles():
     user_info_response = db_user_info.get_user_id_by_email(email_input=email)
     if user_info_response['result'] != db_service_code_master.ACCOUNT_FOUND:
         return flask_helper_functions.format_for_endpoint(db_dictionary=user_info_response,
-                                                        success_scenarios_array=[db_service_code_master.ACCOUNT_FOUND])
+                                                          success_scenarios_array=[db_service_code_master.ACCOUNT_FOUND])
     # store user id
     id_user_info = user_info_response['content']
 
     # get user vehicles actual
     vehicle_response = db_vehicle.get_active_vehicle_by_user_id(
         id_user_info_sanitised=id_user_info)
-    
-    return flask_helper_functions.format_for_endpoint(db_dictionary=vehicle_response,
-                                            success_scenarios_array=[db_service_code_master.VEHICLE_FOUND,
-                                                                     db_service_code_master.VEHICLE_NOT_FOUND])
 
+    return flask_helper_functions.format_for_endpoint(db_dictionary=vehicle_response,
+                                                      success_scenarios_array=[db_service_code_master.VEHICLE_FOUND,
+                                                                               db_service_code_master.VEHICLE_NOT_FOUND])
+
+
+# Route: Get vehicle by id
+@flask_vehicle.route('/api/get_vehicle_by_id', methods=['POST'])
+def fun_get_vehicle_by_id():
+    id_vehicle = request.json['id_vehicle']
+
+    # get user vehicles actual
+    vehicle_response = db_vehicle.get_vehicle_by_id(
+        id_vehicle_input=id_vehicle)
+
+    return flask_helper_functions.format_for_endpoint(db_dictionary=vehicle_response,
+                                                      success_scenarios_array=[db_service_code_master.VEHICLE_FOUND,
+                                                                               db_service_code_master.VEHICLE_NOT_FOUND])
 
 # Route: Add new vehicle
+
+
 @flask_vehicle.route('/api/add_vehicle', methods=['POST'])
 def fun_add_vehicle():
     email = request.json['email']
@@ -50,7 +65,7 @@ def fun_add_vehicle():
     user_info_response = db_user_info.get_user_id_by_email(email_input=email)
     if user_info_response['result'] != db_service_code_master.ACCOUNT_FOUND:
         return flask_helper_functions.format_for_endpoint(db_dictionary=user_info_response,
-                                                        success_scenarios_array=[db_service_code_master.ACCOUNT_FOUND])
+                                                          success_scenarios_array=[db_service_code_master.ACCOUNT_FOUND])
     # store user id
     id_user_info = user_info_response['content']
 
@@ -58,9 +73,9 @@ def fun_add_vehicle():
     vehicle_response = db_vehicle.add_vehicle(
         id_user_info_sanitised=id_user_info, name_input=vehicle_name, model_input=vehicle_model,
         sn_input=vehicle_sn, connector_input=vehicle_connector)
-    
+
     return flask_helper_functions.format_for_endpoint(db_dictionary=vehicle_response,
-                                        success_scenarios_array=[db_service_code_master.VEHICLE_ADD_SUCCESS])
+                                                      success_scenarios_array=[db_service_code_master.VEHICLE_ADD_SUCCESS])
 
 
 # Route: Remove vehicle
@@ -72,4 +87,4 @@ def fun_remove_vehicle():
     vehicle_response = db_vehicle.remove_vehicle(id_vehicle_input=id_vehicle)
 
     return flask_helper_functions.format_for_endpoint(db_dictionary=vehicle_response,
-                                        success_scenarios_array=[db_service_code_master.VEHICLE_REMOVE_SUCCESS])
+                                                      success_scenarios_array=[db_service_code_master.VEHICLE_REMOVE_SUCCESS])

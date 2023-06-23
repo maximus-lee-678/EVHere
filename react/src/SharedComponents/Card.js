@@ -20,10 +20,10 @@ export function CardButton(props) {
 
     return (
         <div className="flex justify-center items-center">
-            <button id = {id}
+            <button id={id}
                 className={"bg-" + color + "-400 hover:bg-" + color + "-300  px-5 py-4 rounded-full text-white max-h-14"}
                 onClick={() => onClick(id)}
-                >
+            >
                 <i className={"fas fa-" + icon}></i>
             </button>
         </div>
@@ -41,32 +41,16 @@ export function DashboardCard(props) {
         redBG: 'bg-red-400',
         greenHover: 'hover:bg-green-50',
         greenBG: 'bg-green-400',
-      }
+    }
 
-      console.log("wtf", colorVariants[color+"Hover"]);
+    console.log("wtf", colorVariants[color + "Hover"]);
 
-        if (lower) {
-            return (
-                <div className="pt-6 w-full md:w-4/12 px-4 text-center">
-                    <Link to={link} className={`${colorVariants[color+"Hover"]} relative flex flex-col min-w-0 break-words bg-white cursor-pointer w-full mb-8 shadow-lg rounded-lg`}>
-                    <div className="px-4 py-5 flex-auto">
-                        <div className={`${colorVariants[color+"BG"]} text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full`}>
-                            <i className={"fas fa-" + icon}></i>
-                        </div>
-                        <h6 className="text-xl font-semibold">{elementName}</h6>
-                        <p className="mt-2 mb-4 text-gray-600">
-                            {children}
-                        </p>
-                    </div>
-                    </Link>
-                </div>
-            )
-        }
+    if (lower) {
         return (
-            <div className="w-full md:w-4/12 px-4 text-center">
-                    <Link to={link} className={`${colorVariants[color+"Hover"]} relative flex flex-col min-w-0 break-words bg-white cursor-pointer w-full mb-8 shadow-lg rounded-lg`}>
+            <div className="pt-6 w-full md:w-4/12 px-4 text-center">
+                <Link to={link} className={`${colorVariants[color + "Hover"]} relative flex flex-col min-w-0 break-words bg-white cursor-pointer w-full mb-8 shadow-lg rounded-lg`}>
                     <div className="px-4 py-5 flex-auto">
-                        <div className={`${colorVariants[color+"BG"]} text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full`}>
+                        <div className={`${colorVariants[color + "BG"]} text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full`}>
                             <i className={"fas fa-" + icon}></i>
                         </div>
                         <h6 className="text-xl font-semibold">{elementName}</h6>
@@ -74,9 +58,25 @@ export function DashboardCard(props) {
                             {children}
                         </p>
                     </div>
-                    </Link>
+                </Link>
+            </div>
+        )
+    }
+    return (
+        <div className="w-full md:w-4/12 px-4 text-center">
+            <Link to={link} className={`${colorVariants[color + "Hover"]} relative flex flex-col min-w-0 break-words bg-white cursor-pointer w-full mb-8 shadow-lg rounded-lg`}>
+                <div className="px-4 py-5 flex-auto">
+                    <div className={`${colorVariants[color + "BG"]} text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full`}>
+                        <i className={"fas fa-" + icon}></i>
+                    </div>
+                    <h6 className="text-xl font-semibold">{elementName}</h6>
+                    <p className="mt-2 mb-4 text-gray-600">
+                        {children}
+                    </p>
                 </div>
-        );
+            </Link>
+        </div>
+    );
 };
 
 export function ChargingCard(props) {
@@ -84,20 +84,20 @@ export function ChargingCard(props) {
     return (
         <div className="container mx-auto px-4 -mt-52">
             <div className="flex justify-center w-full">
-            <div className="w-full md:w-1/2 px-4">
-                <div className="relative flex flex-col min-w-0 break-words bg-lime-100 mb-8 shadow-lg rounded-lg">
-                <div className="px-4 py-5 flex-auto">
-                    <h6 className="text-lg font-semibold uppercase text-center">{elementName}</h6>
+                <div className="w-full md:w-1/2 px-4">
+                    <div className="relative flex flex-col min-w-0 break-words bg-lime-100 mb-8 shadow-lg rounded-lg">
+                        <div className="px-4 py-5 flex-auto">
+                            <h6 className="text-lg font-semibold uppercase text-center">{elementName}</h6>
 
-                    <div className="space-y-1 grid grid-cols-2 text-center">
-                    <div>Vehicle: {vName} ({SN})</div>
-                    <div>Current percentage: {currPercent}</div>
-                    <div>Started at: {startTime}</div>
-                    <div>Time elapsed: {timeElapsed}</div>
+                            <div className="space-y-1 grid grid-cols-2 text-center">
+                                <div>Vehicle: {vName} ({SN})</div>
+                                <div>Current percentage: {currPercent}</div>
+                                <div>Started at: {startTime}</div>
+                                <div>Time elapsed: {timeElapsed}</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                </div>
-            </div>
             </div>
         </div>
     )

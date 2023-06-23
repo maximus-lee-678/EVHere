@@ -16,6 +16,24 @@ export const VehicleInfoGetByUser = async (Email) => {
     return response;
 }
 
+export const VehicleInfoGetById = async (VehicleId) => {
+    // Forms POST header
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id_vehicle: VehicleId })
+    };
+
+    // Store response
+    let response;
+    await fetch('/api/get_vehicle_by_id', requestOptions)
+        .then(res => res.json())
+        .then(data => { response = data })
+        .catch(err => console.log(err));
+
+    return response;
+}
+
 export const VehicleInfoAdd = async (Email, VehicleName, VehicleModel, VehicleSN, VehicleConnector) => {
     // Forms POST header
     const requestOptions = {

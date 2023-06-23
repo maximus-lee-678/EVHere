@@ -7,36 +7,52 @@ import { CardContent, CardButton, DashboardCard, ChargingCard } from '../SharedC
 import Navbar from "../SharedComponents/Navbar";
 
 // API endpoints imports
-import { ChargeCurrentGet, ChargeHistoryGet } from '../API/API';
+import { ChargeCurrentGet, ChargeHistoryGet, VehicleInfoGetById } from '../API/API';
 
 export default function Dashboard() {
   const userEmail = localStorage.getItem("user_email");
 
   const [chargeCurrentDetails, setChargeCurrentDetails] = useState(null);
   const [chargeHistoryDetails, setChargeHistoryDetails] = useState(null);
+  const [chargeCurrentVehicleDetails, setChargeCurrentVehicleDetails] = useState(null);
 
   // Function that gets user's current charge. Called on page load, populates chargeCurrentDetails.
-  async function fetchUserChargeCurrentAndHistory() {
+  async function fetchUserChargeCurrentAndHistoryAndVehicle() {
     const ResponseCurrent = await ChargeCurrentGet(userEmail);
 
     // result is boolean of status
-    if (ResponseCurrent.status == 'success') {
+    if (ResponseCurrent.status === 'success' && ResponseCurrent.data !== null) {
       setChargeCurrentDetails(ResponseCurrent.data);
       console.log(ResponseCurrent.data);
+    } else {
+      return;
     }
-    
+
     const ResponseHistory = await ChargeHistoryGet(userEmail, 'in_progress');
 
     // result is boolean of status
-    if (ResponseHistory.status == 'success') {
+    if (ResponseHistory.status === 'success') {
       setChargeHistoryDetails(ResponseHistory.data);
       console.log(ResponseHistory.data);
+    }
+
+    const ResponseVehicle = await VehicleInfoGetById(ResponseHistory.data.id_vehicle_info);
+
+    // result is boolean of status
+    if (ResponseVehicle.status === 'success') {
+      setChargeCurrentVehicleDetails(ResponseVehicle.data);
     }
   }
 
   useEffect(() => {
-    fetchUserChargeCurrentAndHistory();
+    fetchUserChargeCurrentAndHistoryAndVehicle();
   }, []);
+
+  function FormatDateTime(DateTime){
+    const Date = new Date(DateTime);
+
+    return 
+  }
 
   return (
     <div className="h-screen bg-gray-300">
@@ -71,23 +87,27 @@ export default function Dashboard() {
           </div>
         </div>
 
-
-
         <section className="bg-gray-300 -mt-24">
 
           {/* Charging status */}
-          <ChargingCard type="CurrentCharging" elementName="Current Charging Status" vName="testing veh 1" SN="SN12345" currPercent="50%" startTime="1/6/2023, 2pm" timeElapsed="50 mins"></ChargingCard>
+          {chargeCurrentDetails && chargeHistoryDetails && chargeCurrentVehicleDetails &&
+            <ChargingCard elementName="Current Charging Status"
+              vName={chargeCurrentVehicleDetails.name}
+              SN={chargeCurrentVehicleDetails.vehicle_sn}
+              currPercent={chargeCurrentDetails.percentage_current + '%'}
+              startTime={chargeHistoryDetails.time_start}
+              timeElapsed={"todo"} />}
 
           {/* Three boxes - charging history, favourites, map */}
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap">
 
               <DashboardCard lower color="blue" link="/ChargingHistory" elementName="Track your expenses" icon="dollar-sign">
-                  Tracking your charging time, location, and expenses<br></br>no matter which charger brand you use.
+                Tracking your charging time, location, and expenses<br></br>no matter which charger brand you use.
               </DashboardCard>
 
               <DashboardCard color="red" link="/Favourites" elementName="Favourite chargers" icon="heart">
-                  Save the location of your favourite EV chargers<br></br>with just a click.
+                Save the location of your favourite EV chargers<br></br>with just a click.
               </DashboardCard>
 
               <DashboardCard lower color="green" link="/Recommendations" elementName="Get recommendations on the go" icon="map-marker-alt">
