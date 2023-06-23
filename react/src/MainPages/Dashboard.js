@@ -1,6 +1,7 @@
 // React imports
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { CardContent, CardButton, DashboardCard, ChargingCard } from '../SharedComponents/Card';
 
 // Standard imports
 import Navbar from "../SharedComponents/Navbar";
@@ -75,74 +76,23 @@ export default function Dashboard() {
         <section className="bg-gray-300 -mt-24">
 
           {/* Charging status */}
-          <div className="container mx-auto px-4 -mt-52">
-            <div className="flex justify-center w-full">
-              <div className="w-full md:w-1/2 px-4">
-                <div className="relative flex flex-col min-w-0 break-words bg-lime-100 mb-8 shadow-lg rounded-lg">
-                  <div className="px-4 py-5 flex-auto">
-                    <h6 className="text-lg font-semibold uppercase text-center">Current charging status</h6>
-
-                    <div className="space-y-1 grid grid-cols-2 text-center">
-                      <div>Vehicle: Vehicle Name (S/N)</div>
-                      <div>Current percentage: 50%</div>
-                      <div>Started at: 1/6/2023, 2pm</div>
-                      <div>Time elapsed: 50 mins</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <ChargingCard type="CurrentCharging" elementName="Current Charging Status" vName="testing veh 1" SN="SN12345" currPercent="50%" startTime="1/6/2023, 2pm" timeElapsed="50 mins"></ChargingCard>
 
           {/* Three boxes - charging history, favourites, map */}
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap">
-              <div className="pt-6 w-full md:w-4/12 px-4 text-center">
-                <Link to="/ChargingHistory" className="relative flex flex-col min-w-0 break-words bg-white hover:bg-blue-50 cursor-pointer w-full mb-8 shadow-lg rounded-lg">
-                  <div className="px-4 py-5 flex-auto">
-                    <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400">
-                      <i className="fas fa-dollar-sign"></i>
-                    </div>
-                    <h6 className="text-xl font-semibold">Track your expenses</h6>
-                    <p className="mt-2 mb-4 text-gray-600">
-                      Tracking your charging time, location, and expenses<br></br>no matter which charger brand you use.
-                    </p>
-                  </div>
-                </Link>
-              </div>
 
-              <div className="w-full md:w-4/12 px-4 text-center">
-                <Link to="/Favourites" className="relative flex flex-col min-w-0 break-words bg-white hover:bg-red-50 cursor-pointer w-full mb-8 shadow-lg rounded-lg">
-                  <div className="px-4 py-5 flex-auto">
-                    <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
-                      <i class="fa-solid fa-heart" style={{ color: "#ffffff" }}></i>
-                    </div>
-                    <h6 className="text-xl font-semibold">
-                      Favourite chargers
-                    </h6>
-                    <p className="mt-2 mb-4 text-gray-600">
-                      Save the location of your favourite EV chargers<br></br>with just a click.
-                    </p>
-                  </div>
-                </Link>
-              </div>
+              <DashboardCard lower color="blue" link="/ChargingHistory" elementName="Track your expenses" icon="dollar-sign">
+                  Tracking your charging time, location, and expenses<br></br>no matter which charger brand you use.
+              </DashboardCard>
 
-              <div className="md:pt-6 w-full md:w-4/12 px-4 text-center">
-                <Link to="/Recommendations" className="relative flex flex-col min-w-0 break-words bg-white hover:bg-green-50 cursor-pointer w-full mb-8 shadow-lg rounded-lg">
-                  <div className="px-4 py-5 flex-auto">
-                    <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-green-400">
-                      <i className="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h6 className="text-xl font-semibold">
-                      Get recommendations on the go
-                    </h6>
-                    <p className="mt-2 mb-4 text-gray-600">
-                      Don't know where to find chargers? Use our map,<br></br>complete with recommendations for you!
-                    </p>
-                  </div>
+              <DashboardCard color="red" link="/Favourites" elementName="Favourite chargers" icon="heart">
+                  Save the location of your favourite EV chargers<br></br>with just a click.
+              </DashboardCard>
 
-                </Link>
-              </div>
+              <DashboardCard lower color="green" link="/Recommendations" elementName="Get recommendations on the go" icon="map-marker-alt">
+                Don't know where to find chargers? Use our map,<br></br>complete with recommendations for you!
+              </DashboardCard>
 
             </div>
           </div>

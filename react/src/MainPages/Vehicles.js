@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../SharedComponents/Navbar';
 import Toast, { toast } from '../SharedComponents/Toast';
 import Form, { FormButton, FormInputField, FormInputSelect } from '../SharedComponents/Form';
+import { CardContent, CardButton} from '../SharedComponents/Card.js';
 
 // API endpoints imports
 import { ConnectorTypeGetAll, VehicleInfoGetByUser, VehicleInfoAdd, VehicleInfoRemove } from '../API/API';
@@ -75,22 +76,17 @@ export default function Vehicles() {
             let id = userVehicleInfo[i].id;
 
             options.push(
-                <div className="flex bg-white rounded-lg py-4 px-10" key={userVehicleInfo[i].id}>
+                <div className="flex bg-white rounded-lg py-4 px-10" key={id}>
                     <div className="w-4/5">
-                        <div className="font-bold text-xl">{userVehicleInfo[i].name}</div>
-                        <div>
-                            <div>Model: {userVehicleInfo[i].model}</div>
-                            <div>S/N: {userVehicleInfo[i].vehicle_sn}</div>
-                            <div>Connector: {userVehicleInfo[i].connector_type}</div>
-                        </div>
+                        <CardContent elementName={userVehicleInfo[i].name}>
+                            <div>
+                                <div>Model: {userVehicleInfo[i].model}</div>
+                                <div>S/N: {userVehicleInfo[i].vehicle_sn}</div>
+                                <div>Connector: {userVehicleInfo[i].connector_type}</div>
+                            </div>
+                        </CardContent>
                     </div>
-                    <div className="w-1/5 flex justify-center items-center">
-                        <button id={id}
-                            className="bg-red-400 hover:bg-red-300 px-5 py-4 rounded-full text-white"
-                            onClick={() => handleRemove(id)}>
-                            <i className="fas fa-trash fa-lg" style={{ color: "#ffffff" }}></i>
-                        </button>
-                    </div>
+                    <CardButton id={id} onClick={handleRemove} icon="trash fa-lg" color="red"></CardButton>
                 </div>
             )
         }

@@ -50,7 +50,7 @@ export default function Recommendations() {
                 let id = userVehicleInfo[i].id;
 
                 options.push(
-                    <option className="border-0 px-3 py-3 text-gray-700" value={userVehicleInfo[i].name}>{userVehicleInfo[i].name}</option>
+                    <option className="border-0 px-3 py-3 text-gray-700" value={userVehicleInfo[i].name} key={id}>{userVehicleInfo[i].name}</option>
                 )
             }
         }
