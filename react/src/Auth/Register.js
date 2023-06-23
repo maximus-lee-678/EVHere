@@ -25,7 +25,7 @@ export default function Register() {
     const response = await UserInfoRegister(username, password, email, phoneNumber, fullName);
 
     // If success, redirect
-    if (response.success) {
+    if (response.status == 'success') {
       toast.success(response.api_response);
 
       // delay 2s
@@ -35,7 +35,7 @@ export default function Register() {
       window.location.replace('/Login');
     }
     else {
-      toast.error(<div>{response.api_response}<br />{response.reason}</div>);
+      toast.error(<div>{response.message}<br />{response.reason}</div>);
     }
   };
 

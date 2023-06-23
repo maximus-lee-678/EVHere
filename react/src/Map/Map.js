@@ -40,10 +40,10 @@ export default function Map(props) {
         const response = await ChargerGetAllWithEmail(userEmail);
 
         // If success returned, store charger information
-        if (response.success) {
-            setAllChargerInfo(response['content'])
+        if (response.status == 'success') {
+            setAllChargerInfo(response['data'])
         } else {
-            toast.error(<div>{response.api_response}</div>);
+            toast.error(<div>{response.message}<br />{response.reason}</div>);
         }
     }
 
@@ -71,7 +71,7 @@ export default function Map(props) {
 
         // If operation successful, reload charger information
         // Which reloads markers
-        if (response.success) {
+        if (response.status == 'success') {
             fetchAllChargers();
             if (operation === "add") {
                 toast.success("Added to favourites!")
@@ -81,7 +81,7 @@ export default function Map(props) {
             }
         }
         else {
-            toast.error(response.api_response);
+            toast.error(<div>{response.message}<br />{response.reason}</div>);
         }
     }
 

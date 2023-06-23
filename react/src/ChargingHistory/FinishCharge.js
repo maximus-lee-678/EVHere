@@ -21,8 +21,8 @@ export default function FinishCharge() {
     const response = await ChargeHistoryFinish(userEmail, batteryPercentage, amountPayable);
 
     // result is boolean of status
-    if (response.success) {
-      toast.success(response.api_response);
+    if (response.status == 'success') {
+      toast.success(response.message);
 
       // delay 2s
       await new Promise(resolve => setTimeout(resolve, 2000));
@@ -30,7 +30,7 @@ export default function FinishCharge() {
       // reload page
       window.location.replace('/');
     } else {
-      toast.error(response.reason);
+      toast.error(<div>{response.message}<br />{response.reason}</div>);
     }
   }
 

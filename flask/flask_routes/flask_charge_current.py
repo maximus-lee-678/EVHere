@@ -23,8 +23,8 @@ def fun_get_charge_current():
     # get user id
     user_info_response = db_user_info.get_user_id_by_email(email_input=email)
     if user_info_response['result'] != db_service_code_master.ACCOUNT_FOUND:
-        return {'success': False,
-                'api_response': db_service_code_master.service_code_dict[user_info_response['result']]}
+        return flask_helper_functions.format_for_endpoint(db_dictionary=user_info_response,
+                                                          success_scenarios_array=[db_service_code_master.ACCOUNT_FOUND])
     # store user id
     id_user_info = user_info_response['content']
 
@@ -32,12 +32,6 @@ def fun_get_charge_current():
     charge_current_response = db_charge_current.get_charge_current_by_user_id(
         id_user_info_sanitised=id_user_info)
 
-    # [FAILURE]
-    if charge_current_response['result'] != db_service_code_master.CHARGE_CURRENT_FOUND:
-        return {'success': False,
-                'api_response': db_service_code_master.service_code_dict[charge_current_response['result']]}
-
-    # [SUCCESS]
-    return {'success': True,
-            'api_response': db_service_code_master.service_code_dict[charge_current_response['result']],
-            'content': charge_current_response['content']}
+    return flask_helper_functions.format_for_endpoint(db_dictionary=charge_current_response,
+                                                      success_scenarios_array=[db_service_code_master.CHARGE_CURRENT_FOUND,
+                                                                               db_service_code_master.CHARGE_CURRENT_NOT_FOUND])

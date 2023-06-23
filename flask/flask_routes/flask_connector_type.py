@@ -21,12 +21,5 @@ def fun_get_connectors():
     # retrieve connector types actual
     connector_type_response = db_connector_type.get_all_connectors()
 
-    # [FAILURE]
-    if connector_type_response['result'] != db_service_code_master.CONNECTOR_FOUND:
-        return {'success': False,
-                'api_response': db_service_code_master.service_code_dict[connector_type_response['result']]}
-
-    # [SUCCESS]
-    return {'success': True,
-            'api_response': db_service_code_master.service_code_dict[connector_type_response['result']],
-            'content': connector_type_response['content']}
+    return flask_helper_functions.format_for_endpoint(db_dictionary=connector_type_response,
+                                                    success_scenarios_array=[db_service_code_master.CONNECTOR_FOUND])

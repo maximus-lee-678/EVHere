@@ -17,11 +17,11 @@ export default function Favourites() {
         const response = await FavouriteChargerGet(userEmail);
 
         // If success returned, store chargers
-        if (response.success) {
-            setFavouriteChargerInfo(response['content']);
+        if (response.status == 'success') {
+            setFavouriteChargerInfo(response['data']);
         }
         else {
-            toast.error(<div>{response.api_response}<br />{response.reason}</div>);
+            toast.error(<div>{response.message}<br />{response.reason}</div>);
             setFavouriteChargerInfo([]);
         }
     }
@@ -41,11 +41,11 @@ export default function Favourites() {
 
         const response = await FavouriteChargerRemove(userEmail, IDCharger);
 
-        if (response.success) {
+        if (response.status == 'success') {
             toast.success("Removed from favourites!")
             fetchFavouriteChargers();
         } else {
-            toast.error(<div>{response.api_response}<br />{response.reason}</div>);
+            toast.error(<div>{response.message}<br />{response.reason}</div>);
         }
 
     }

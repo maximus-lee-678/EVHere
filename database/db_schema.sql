@@ -12,9 +12,9 @@ CREATE TABLE charger (
 	longitude            DECIMAL(7) NOT NULL    ,
 	address              VARCHAR(512) NOT NULL    ,
 	provider             VARCHAR(64) NOT NULL    ,
-	connectors           BIGINT NOT NULL    ,
+	connectors           INT NOT NULL    ,
 	online               INT NOT NULL    ,
-	kilowatts            BIGINT NOT NULL    ,
+	kilowatts            INT NOT NULL    ,
 	twenty_four_hours    INT NOT NULL    ,       
 	last_updated         DATETIME NOT NULL    
  );
@@ -43,7 +43,7 @@ CREATE TABLE user_info (
 	id_user_info         CHAR(36) NOT NULL    ,
 	name                 VARCHAR(64) NOT NULL    ,
 	model                VARCHAR(64) NOT NULL    ,
-	vehicle_sn           VARCHAR(8)     ,
+	vehicle_sn           VARCHAR(8) NOT NULL    ,
 	id_connector_type    CHAR(36) NOT NULL    ,
 	active               INT NOT NULL    ,
 	FOREIGN KEY ( id_user_info ) REFERENCES user_info( id )  ,

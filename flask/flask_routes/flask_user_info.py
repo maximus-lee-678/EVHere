@@ -25,14 +25,8 @@ def fun_login():
     user_info_response = db_user_info.login_user(
         email_input=email, password_input=password)
 
-    # [FAILURE]
-    if user_info_response['result'] != db_service_code_master.LOGIN_SUCCESS:
-        return {'success': False,
-                'api_response': db_service_code_master.service_code_dict[user_info_response['result']],
-                'reason': flask_helper_functions.join_strings(user_info_response['reason'], db_service_code_master.service_code_dict)}
-    # [SUCCESS]
-    return {'success': True,
-            'api_response': db_service_code_master.service_code_dict[user_info_response['result']]}
+    return flask_helper_functions.format_for_endpoint(db_dictionary=user_info_response,
+                                                      success_scenarios_array=[db_service_code_master.LOGIN_SUCCESS])
 
 
 # Route: Create new user account
@@ -45,15 +39,8 @@ def fun_create_account():
     phone_number = request.json['phone_number']
 
     # create user actual
-    output = db_user_info.create_user(username_input=username, password_input=password,
+    user_info_response = db_user_info.create_user(username_input=username, password_input=password,
                                       email_input=email, full_name_input=full_name, phone_no_input=phone_number)
-
-    # [FAILURE]
-    if output['result'] != db_service_code_master.USER_INFO_CREATE_SUCCESS:
-        return {'success': False,
-                'api_response': db_service_code_master.service_code_dict[output['result']],
-                'reason': flask_helper_functions.join_strings(output['reason'], db_service_code_master.service_code_dict)}
-
-    # [SUCCESS]
-    return {'success': True,
-            'api_response': db_service_code_master.service_code_dict[output['result']]}
+    
+    return flask_helper_functions.format_for_endpoint(db_dictionary=user_info_response,
+                                                      success_scenarios_array=[db_service_code_master.USER_INFO_CREATE_SUCCESS])

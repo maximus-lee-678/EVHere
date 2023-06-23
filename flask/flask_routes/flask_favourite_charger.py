@@ -24,20 +24,17 @@ def fun_get_favourite_chargers():
     # get user id
     user_info_response = db_user_info.get_user_id_by_email(email_input=email)
     if user_info_response['result'] != db_service_code_master.ACCOUNT_FOUND:
-        return {'success': False,
-                'api_response': db_service_code_master.service_code_dict[user_info_response['result']]}
+        return flask_helper_functions.format_for_endpoint(db_dictionary=user_info_response,
+                                                        success_scenarios_array=[db_service_code_master.ACCOUNT_FOUND])
     # store user id
     id_user_info = user_info_response['content']
 
     # retrieve favourite chargers actual
     favourite_charger_response = db_charger.get_favourite_chargers(user_id_sanitised=id_user_info)
-    if favourite_charger_response['result'] != db_service_code_master.CHARGER_FOUND:
-        return {'success': False,
-                'api_response': db_service_code_master.service_code_dict[favourite_charger_response['result']]}
-    # deliver success payload
-    return {'success': True,
-            'api_response': db_service_code_master.service_code_dict[favourite_charger_response['result']],
-            'content': favourite_charger_response['content']}
+
+    return flask_helper_functions.format_for_endpoint(db_dictionary=favourite_charger_response,
+                                                    success_scenarios_array=[db_service_code_master.CHARGER_FOUND,
+                                                                             db_service_code_master.CHARGER_NOT_FOUND])
 
 
 # Route: Add favourite charger
@@ -49,24 +46,17 @@ def fun_add_favourite_charger():
     # get user id
     user_info_response = db_user_info.get_user_id_by_email(email_input=email)
     if user_info_response['result'] != db_service_code_master.ACCOUNT_FOUND:
-        return {'success': False,
-                'api_response': db_service_code_master.service_code_dict[user_info_response['result']]}
+        return flask_helper_functions.format_for_endpoint(db_dictionary=user_info_response,
+                                                        success_scenarios_array=[db_service_code_master.ACCOUNT_FOUND])
     # store user id
     id_user_info = user_info_response['content']
 
     # add favourite charger actual
     favourite_charger_response = db_favourite_charger.add_favourite_charger(
         id_user_info_sanitised=id_user_info, id_charger_input=id_charger)
-
-    # [FAILURE]
-    if favourite_charger_response['result'] != db_service_code_master.FAVOURITE_CHARGER_MODIFY_SUCCESS:
-        return {'success': False,
-                'api_response': db_service_code_master.service_code_dict[favourite_charger_response['result']],
-                'reason': flask_helper_functions.join_strings(favourite_charger_response['reason'], db_service_code_master.service_code_dict)}
-
-    # [SUCCESS]
-    return {'success': True,
-            'api_response': db_service_code_master.service_code_dict[favourite_charger_response['result']]}
+    
+    return flask_helper_functions.format_for_endpoint(db_dictionary=favourite_charger_response,
+                                                success_scenarios_array=[db_service_code_master.FAVOURITE_CHARGER_MODIFY_SUCCESS])
 
 
 # Route: Remove favourite charger
@@ -78,21 +68,14 @@ def fun_remove_favourite_charger():
     # get user id
     user_info_response = db_user_info.get_user_id_by_email(email_input=email)
     if user_info_response['result'] != db_service_code_master.ACCOUNT_FOUND:
-        return {'success': False,
-                'api_response': db_service_code_master.service_code_dict[user_info_response['result']]}
+        return flask_helper_functions.format_for_endpoint(db_dictionary=user_info_response,
+                                                        success_scenarios_array=[db_service_code_master.ACCOUNT_FOUND])
     # store user id
     id_user_info = user_info_response['content']
 
     # add favourite charger actual
     favourite_charger_response = db_favourite_charger.remove_favourite_charger(
         id_user_info_sanitised=id_user_info, id_charger_input=id_charger)
-
-    # [FAILURE]
-    if favourite_charger_response['result'] != db_service_code_master.FAVOURITE_CHARGER_MODIFY_SUCCESS:
-        return {'success': False,
-                'api_response': db_service_code_master.service_code_dict[favourite_charger_response['result']],
-                'reason': flask_helper_functions.join_strings(favourite_charger_response['reason'], db_service_code_master.service_code_dict)}
-
-    # [SUCCESS]
-    return {'success': True,
-            'api_response': db_service_code_master.service_code_dict[favourite_charger_response['result']]}
+    
+    return flask_helper_functions.format_for_endpoint(db_dictionary=favourite_charger_response,
+                                                success_scenarios_array=[db_service_code_master.FAVOURITE_CHARGER_MODIFY_SUCCESS])

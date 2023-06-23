@@ -11,7 +11,7 @@ def get_all_charger_available_connector():
     """
     Retrieves ALL chargers' connectors from database.\n
     Returns Dictionary with keys:\n
-    <result> AVAILABLE_CONNECTOR_NOT_FOUND or AVAILABLE_CONNECTORS_FOUND.\n
+    <result> INTERNAL_ERROR, AVAILABLE_CONNECTOR_NOT_FOUND or AVAILABLE_CONNECTORS_FOUND.\n
     <content> (if <result> is AVAILABLE_CONNECTORS_FOUND) [{Dictionary Array}] containing chargers' available connector(s) information.\n
     \t"keys":\n
     \t{"id_charger", "id_connector_type"}

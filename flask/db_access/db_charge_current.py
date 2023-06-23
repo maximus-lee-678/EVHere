@@ -11,9 +11,7 @@ def add_charge_current(id_charge_history, percentage_current):
     """
     Inserts a charge current entry into the database. This function assumes input is legal, as it cannot be called directly.\n
     Returns Dictionary with keys:\n
-    <result> CHARGE_CURRENT_CREATE_FAILURE or CHARGE_CURRENT_CREATE_SUCCESS.\n
-    <reason> (if <result> is CHARGE_CURRENT_CREATE_FAILURE) [Array] Reason for failure.
-    \t[INTERNAL_ERROR]
+    <result> INTERNAL_ERROR or CHARGE_CURRENT_CREATE_SUCCESS.
     """
 
     # generate rest of the fields
@@ -25,27 +23,9 @@ def add_charge_current(id_charge_history, percentage_current):
 
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:
-        return {'result': db_service_code_master.CHARGE_CURRENT_CREATE_FAILURE, 'reason': [db_service_code_master.INTERNAL_ERROR]}
+        return {'result':db_service_code_master.INTERNAL_ERROR}
 
     return {'result': db_service_code_master.CHARGE_CURRENT_CREATE_SUCCESS}
-
-
-def remove_charge_current(id_charge_history):
-    """
-    Removes a charge current entry from the database. This function assumes input is legal, as it cannot be called directly.\n
-    Returns Dictionary with keys:\n
-    <result> CHARGE_CURRENT_REMOVE_FAILURE or CHARGE_CURRENT_REMOVE_SUCCESS.\n
-    <reason> (if <result> is CHARGE_CURRENT_REMOVE_FAILURE) [Array] Reason for failure.
-    \t[INTERNAL_ERROR]
-    """
-    query = 'DELETE FROM charge_current WHERE id_charge_history=?'
-    task = (id_charge_history,)
-
-    transaction = db_methods.safe_transaction(query=query, task=task)
-    if not transaction['transaction_successful']:
-        return {'result': db_service_code_master.CHARGE_CURRENT_REMOVE_FAILURE, 'reason': [db_service_code_master.INTERNAL_ERROR]}
-
-    return {'result': db_service_code_master.CHARGE_CURRENT_REMOVE_SUCCESS}
 
 
 def get_charge_current_by_user_id(id_user_info_sanitised):
@@ -61,21 +41,18 @@ def get_charge_current_by_user_id(id_user_info_sanitised):
     charge_history_response = db_charge_history.get_charge_history_by_user_id(
         id_user_info_sanitised=id_user_info_sanitised, filter_by='in_progress')
     if charge_history_response['result'] != db_service_code_master.CHARGE_HISTORY_FOUND:
-        return {'result': charge_history_response['result']}
+        return {'result': db_service_code_master.CHARGE_CURRENT_NOT_FOUND}
 
     # store charge history id
     id_charge_history = charge_history_response['content']['id']
 
     query = 'SELECT * FROM charge_current WHERE id_charge_history=?'
     task = (id_charge_history,)
-
+    
     select = db_methods.safe_select(query=query, task=task, get_type='one')
     if not select['select_successful']:
         return {'result': db_service_code_master.INTERNAL_ERROR}
-    if select['num_rows'] == 0:
-        return {'result': db_service_code_master.CHARGER_NOT_FOUND}
     
-    # transforming row to key-values
     key_values = {"id": select['content'][0], "id_charge_history": select['content'][1],
                   "percentage_current": select['content'][2], "last_updated": select['content'][3]}
 
@@ -84,3 +61,19 @@ def get_charge_current_by_user_id(id_user_info_sanitised):
 
 def update_charge_current(id_charge_history, percentage_current):
     pass
+
+
+def remove_charge_current(id_charge_history):
+    """
+    Removes a charge current entry from the database. This function assumes input is legal, as it cannot be called directly.\n
+    Returns Dictionary with keys:\n
+    <result> INTERNAL_ERROR or CHARGE_CURRENT_REMOVE_SUCCESS.
+    """
+    query = 'DELETE FROM charge_current WHERE id_charge_history=?'
+    task = (id_charge_history,)
+
+    transaction = db_methods.safe_transaction(query=query, task=task)
+    if not transaction['transaction_successful']:
+        return {'result': db_service_code_master.INTERNAL_ERROR}
+
+    return {'result': db_service_code_master.CHARGE_CURRENT_REMOVE_SUCCESS}

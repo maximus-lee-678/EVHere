@@ -21,8 +21,7 @@ export default function AddChargingHistory() {
     async function fetchUserCurrentCharge() {
         const response = await ChargeCurrentGet(userEmail);
 
-        // Store success status: if user has a current charge it will return success, and vice versa.
-        setHasChargeCurrent(response.success);
+        response['data'] ? setHasChargeCurrent(true) : setHasChargeCurrent(false);
     }
 
     useEffect(() => {

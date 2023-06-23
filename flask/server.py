@@ -1,3 +1,20 @@
+"""
+API endpoints ALWAYS follow this format:\n
+[status] success, fail, error
+\tsuccess: very good, contains [content] (nullable)
+\tfail: could not finish request, [reason] will be given
+\terror: server blew up
+[message] always included, request outcome.
+[content] when [status==success] (nullable)
+[reason] when [status==fail], why it failed.
+"""
+from flask_routes.flask_charge_current import flask_charge_current
+from flask_routes.flask_charge_history import flask_charge_history
+from flask_routes.flask_vehicle import flask_vehicle
+from flask_routes.flask_user_info import flask_user_info
+from flask_routes.flask_favourite_charger import flask_favourite_charger
+from flask_routes.flask_connector_type import flask_connector_type
+from flask_routes.flask_charger import flask_charger
 from flask import Flask
 from flask_cors import CORS
 import os
@@ -14,13 +31,6 @@ if not os.path.exists(db_methods.DATABASE_PATH):
 app = Flask(__name__)
 
 # Registering paths
-from flask_routes.flask_charger import flask_charger
-from flask_routes.flask_connector_type import flask_connector_type
-from flask_routes.flask_favourite_charger import flask_favourite_charger
-from flask_routes.flask_user_info import flask_user_info
-from flask_routes.flask_vehicle import flask_vehicle
-from flask_routes.flask_charge_history import flask_charge_history
-from flask_routes.flask_charge_current import flask_charge_current
 
 app.register_blueprint(flask_user_info)
 app.register_blueprint(flask_charger)

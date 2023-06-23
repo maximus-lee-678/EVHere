@@ -11,9 +11,9 @@ def create_user(username_input, password_input, email_input, full_name_input, ph
     """
     Attempts to insert a new user into the database.\n
     Returns Dictionary with keys:\n
-    <result> USER_INFO_CREATE_FAILURE or USER_INFO_CREATE_SUCCESS.\n
+    <result> INTERNAL_ERROR, USER_INFO_CREATE_FAILURE or USER_INFO_CREATE_SUCCESS.\n
     <reason> (if <result> is USER_INFO_CREATE_FAILURE) [Array] Reason for failure.
-    \t[INTERNAL_ERROR, USERNAME_INVALID_LENGTH, PASSWORD_INVALID_LENGTH, PASSWORD_INVALID_SYNTAX, 
+    \t[USERNAME_INVALID_LENGTH, PASSWORD_INVALID_LENGTH, PASSWORD_INVALID_SYNTAX, 
     EMAIL_INVALID_LENGTH, EMAIL_INVALID_SYNTAX, ACCOUNT_ALREADY_EXISTS, PHONE_NUMBER_INVALID, FULL_NAME_INVALID_LENGTH]
     """
 
@@ -90,7 +90,7 @@ def create_user(username_input, password_input, email_input, full_name_input, ph
 
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:
-        return {'result': db_service_code_master.USER_INFO_CREATE_FAILURE, 'reason': [db_service_code_master.INTERNAL_ERROR]}
+        return {'result': db_service_code_master.INTERNAL_ERROR}
 
     return {'result': db_service_code_master.USER_INFO_CREATE_SUCCESS}
 

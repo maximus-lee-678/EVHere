@@ -86,9 +86,9 @@ def add_charge_history_initial(id_user_info_sanitised, id_vehicle_info_input, id
     Attempts to insert a charge history into the database. This method will also add an entry to "charge current",
     as this method is called when the user starts a charge.\n
     Returns Dictionary with keys:\n
-    <result> CHARGE_HISTORY_CREATE_FAILURE or CHARGE_HISTORY_CREATE_SUCCESS.\n
+    <result> INTERNAL_ERROR, CHARGE_HISTORY_CREATE_FAILURE or CHARGE_HISTORY_CREATE_SUCCESS.\n
     <reason> (if <result> is CHARGE_HISTORY_CREATE_FAILURE) [Array] Reason for failure.
-    \t[INTERNAL_ERROR, CHARGE_HISTORY_ALREADY_CHARGING, VEHICLE_NOT_FOUND, CHARGER_NOT_FOUND, CHARGE_HISTORY_INVALID_CHARGE_LEVEL]
+    \t[ACCOUNT_NOT_FOUND, CHARGE_HISTORY_ALREADY_CHARGING, VEHICLE_NOT_FOUND, CHARGER_NOT_FOUND, CHARGE_HISTORY_INVALID_CHARGE_LEVEL]
     """
 
     contains_errors = False
@@ -153,16 +153,15 @@ def add_charge_history_initial(id_user_info_sanitised, id_vehicle_info_input, id
 
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:
-        return {'result': db_service_code_master.CHARGE_CURRENT_CREATE_FAILURE, 'reason': [db_service_code_master.INTERNAL_ERROR]}
+        return {'result': db_service_code_master.INTERNAL_ERROR}
 
     # 7: insert new charge current entry
     charge_current_response = db_charge_current.add_charge_current(
         id_charge_history, percentage_start)
-    if charge_current_response['result'] != db_service_code_master.CHARGE_CURRENT_CREATE_SUCCESS:
+    if charge_current_response['result'] == db_service_code_master.INTERNAL_ERROR:
         # destroy charge history entry
         # TODO
-        return {'result': db_service_code_master.CHARGE_HISTORY_CREATE_FAILURE,
-                'reason': [charge_current_response['reason']]}
+        return {'result': charge_current_response['result']}
 
     return {'result': db_service_code_master.CHARGE_HISTORY_CREATE_SUCCESS}
 
@@ -171,9 +170,9 @@ def finish_charge_history(id_user_info_sanitised, battery_percentage_input, amou
     """
     Attempts to finish an unfinished charge history. This method will also remove the corresponding "charge current" entry.\n
     Returns Dictionary with keys:\n
-    <result> CHARGE_HISTORY_FINISH_FAILURE or CHARGE_HISTORY_FINISH_SUCCESS.\n
+    <result> INTERNAL_ERROR, CHARGE_HISTORY_FINISH_FAILURE or CHARGE_HISTORY_FINISH_SUCCESS.\n
     <reason> (if <result> is CHARGE_HISTORY_FINISH_FAILURE) [Array] Reason for failure.
-    \t[INTERNAL_ERROR, CHARGE_HISTORY_NOT_CHARGING, CURRENCY_INVALID, CHARGE_HISTORY_INVALID_CHARGE_LEVEL]
+    \t[CHARGE_HISTORY_NOT_CHARGING, CURRENCY_INVALID, CHARGE_HISTORY_INVALID_CHARGE_LEVEL]
     """
 
     contains_errors = False
@@ -220,9 +219,8 @@ def finish_charge_history(id_user_info_sanitised, battery_percentage_input, amou
     # 5: remove charge current entry
     charge_current_response = db_charge_current.remove_charge_current(
         id_charge_history_sanitised)
-    if charge_current_response['result'] != db_service_code_master.CHARGE_CURRENT_REMOVE_SUCCESS:
-        return {'result': db_service_code_master.CHARGE_HISTORY_FINISH_FAILURE,
-                'reason': [charge_current_response['reason']]}
+    if charge_current_response['result'] == db_service_code_master.INTERNAL_ERROR:
+        return {'result': charge_current_response['result']}
 
     # 6: update charge history entry
     query = 'UPDATE charge_history SET percentage_end=?, amount_payable=?, time_end=?, is_charge_finished=True WHERE id=?'
@@ -231,7 +229,6 @@ def finish_charge_history(id_user_info_sanitised, battery_percentage_input, amou
 
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:
-        return {'result': db_service_code_master.CHARGE_HISTORY_FINISH_FAILURE,
-                'reason': [db_service_code_master.INTERNAL_ERROR]}
+        return {'result': db_service_code_master.INTERNAL_ERROR}
 
     return {'result': db_service_code_master.CHARGE_HISTORY_FINISH_SUCCESS}

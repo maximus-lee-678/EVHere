@@ -25,8 +25,8 @@ def fun_get_all_chargers():
         # get user id
         user_info_response = db_user_info.get_user_id_by_email(email_input=email)
         if user_info_response['result'] != db_service_code_master.ACCOUNT_FOUND:
-            return {'success': False,
-                    'api_response': db_service_code_master.service_code_dict[user_info_response['result']]}
+            return flask_helper_functions.format_for_endpoint(db_dictionary=user_info_response,
+                                                            success_scenarios_array=[db_service_code_master.ACCOUNT_FOUND])
         # store user id
         id_user_info = user_info_response['content']
 
@@ -39,13 +39,6 @@ def fun_get_all_chargers():
         # retrieve charger actual 2
         charger_response = db_charger.get_all_chargers(user_id_sanitised=None)
 
-    # [FAILURE]
-    if charger_response['result'] != db_service_code_master.CHARGER_FOUND:
-        return {'success': False,
-                'api_response': db_service_code_master.service_code_dict[charger_response['result']]}
-
-    # [SUCCESS]
-    return {'success': True,
-            'api_response': db_service_code_master.service_code_dict[charger_response['result']],
-            'type': db_service_code_master.service_code_dict[charger_response['type']],
-            'content': charger_response['content']}
+    return flask_helper_functions.format_for_endpoint(db_dictionary=charger_response,
+                                                    success_scenarios_array=[db_service_code_master.CHARGER_FOUND,
+                                                                             db_service_code_master.CHARGER_NOT_FOUND])

@@ -11,10 +11,10 @@ def add_vehicle(id_user_info_sanitised, name_input, model_input, sn_input, conne
     """
     Attempts to insert a new vehicle into the database.\n
     Returns Dictionary with keys:\n
-    <result> VEHICLE_ADD_FAILURE or VEHICLE_ADD_SUCCESS.\n
+    <result> INTERNAL_ERROR, VEHICLE_ADD_FAILURE or VEHICLE_ADD_SUCCESS.\n
     <reason> (if <result> is VEHICLE_ADD_FAILURE) [Array] Reason for failure.
     \t[reasons]:\n
-    \t[INTERNAL_ERROR, VEHICLE_NAME_INVALID_LENGTH, VEHICLE_MODEL_INVALID_LENGTH, VEHICLE_SN_INVALID_LENGTH, CONNECTOR_NOT_FOUND]
+    \t[VEHICLE_NAME_INVALID_LENGTH, VEHICLE_MODEL_INVALID_LENGTH, VEHICLE_SN_INVALID_LENGTH, CONNECTOR_NOT_FOUND]
     """
 
     contains_errors = False
@@ -66,7 +66,7 @@ def add_vehicle(id_user_info_sanitised, name_input, model_input, sn_input, conne
 
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:
-        return {'result': db_service_code_master.VEHICLE_ADD_FAILURE, 'reason': [db_service_code_master.INTERNAL_ERROR]}
+        return {'result': db_service_code_master.INTERNAL_ERROR}
 
     return {'result': db_service_code_master.VEHICLE_ADD_SUCCESS}
 
@@ -75,10 +75,10 @@ def remove_vehicle(id_vehicle_input):
     """
     Attempts to set a specific vehicle's active state to false.\n
     Returns Dictionary with keys:\n
-    <result> VEHICLE_REMOVE_FAILURE or VEHICLE_REMOVE_SUCCESS.\n
+    <result> INTERNAL_ERROR, VEHICLE_REMOVE_FAILURE or VEHICLE_REMOVE_SUCCESS.\n
     <reason> (if <result> is VEHICLE_REMOVE_FAILURE) [Array] Reason for failure.
     \t[reasons]:\n
-    \t[INTERNAL_ERROR, VEHICLE_NOT_FOUND]
+    \t[VEHICLE_NOT_FOUND]
     """
 
     # sanitise input
@@ -90,7 +90,7 @@ def remove_vehicle(id_vehicle_input):
 
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:
-        return {'result': db_service_code_master.VEHICLE_REMOVE_FAILURE, 'reason': [db_service_code_master.INTERNAL_ERROR]}
+        return {'result': db_service_code_master.INTERNAL_ERROR}
     if transaction['rows_affected'] != 1:
         return {'result': db_service_code_master.VEHICLE_REMOVE_FAILURE, 'reason': [db_service_code_master.VEHICLE_NOT_FOUND]}
 
@@ -134,7 +134,7 @@ def get_vehicle_by_id(id_vehicle_input):
     """
     Attempts to get an ACTIVE vehicle for a given vehicle id.\n
     Returns Dictionary with keys:\n
-    <result> VEHICLE_NOT_FOUND or VEHICLE_FOUND.\n
+    <result> INTERNAL_ERROR, VEHICLE_NOT_FOUND or VEHICLE_FOUND.\n
     <content> (if <result> is VEHICLE_FOUND) {Dictionary} containing vehicle information.\n
     \t"keys":\n
     \t{"id", "name", "model", "vehicle_sn", "connector_type"}

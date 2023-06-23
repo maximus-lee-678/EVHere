@@ -36,10 +36,10 @@ def add_favourite_charger(id_user_info_sanitised, id_charger_input):
     """
     Attempts to add one favourite charger entry to the database.\n
     Returns Dictionary with keys:\n
-    <result> FAVOURITE_CHARGER_MODIFY_SUCCESS or FAVOURITE_CHARGER_MODIFY_FAILURE.\n
+    <result> INTERNAL_ERROR, FAVOURITE_CHARGER_MODIFY_SUCCESS or FAVOURITE_CHARGER_MODIFY_FAILURE.\n
     <reason> (if <result> is FAVOURITE_CHARGER_MODIFY_FAILURE) [Array] Reason for failure.
     \t[reasons]:\n
-    [INTERNAL_ERROR, CHARGER_NOT_FOUND, FAVOURITE_CHARGER_DUPLICATE_ENTRY]
+    [CHARGER_NOT_FOUND, FAVOURITE_CHARGER_DUPLICATE_ENTRY]
     """
 
     contains_errors = False
@@ -71,7 +71,7 @@ def add_favourite_charger(id_user_info_sanitised, id_charger_input):
     # 3: add entry
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:
-        return {'result': db_service_code_master.FAVOURITE_CHARGER_MODIFY_FAILURE, 'reason': [db_service_code_master.INTERNAL_ERROR]}
+        return {'result': db_service_code_master.INTERNAL_ERROR}
 
     return {'result': db_service_code_master.FAVOURITE_CHARGER_MODIFY_SUCCESS}
 
@@ -80,10 +80,10 @@ def remove_favourite_charger(id_user_info_sanitised, id_charger_input):
     """
     Attempts to remove one favourite charger entry from the database. A lot less stringent than add, as it affects nothing if entry isn't found.\n
     Returns Dictionary with keys:\n
-    <result> FAVOURITE_CHARGER_MODIFY_SUCCESS or FAVOURITE_CHARGER_MODIFY_FAILURE.\n
+    <result> INTERNAL_ERROR, FAVOURITE_CHARGER_MODIFY_SUCCESS or FAVOURITE_CHARGER_MODIFY_FAILURE.\n
     <reason> (if <result> is FAVOURITE_CHARGER_MODIFY_FAILURE) [Array] Reason for failure.
     \t[reasons]:\n
-    [INTERNAL_ERROR, FAVOURITE_CHARGERS_NOT_FOUND]
+    [FAVOURITE_CHARGERS_NOT_FOUND]
     """
 
     id_charger_sanitised = db_helper_functions.string_sanitise(
@@ -94,7 +94,7 @@ def remove_favourite_charger(id_user_info_sanitised, id_charger_input):
 
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:
-        return {'result': db_service_code_master.FAVOURITE_CHARGER_MODIFY_FAILURE, 'reason': [db_service_code_master.INTERNAL_ERROR]}
+        return {'result': db_service_code_master.INTERNAL_ERROR}
     if transaction['rows_affected'] != 1:
         return {'result': db_service_code_master.FAVOURITE_CHARGER_MODIFY_FAILURE, 'reason': [db_service_code_master.FAVOURITE_CHARGERS_NOT_FOUND]}
 

@@ -19,17 +19,17 @@ export default function Dashboard() {
     const ResponseCurrent = await ChargeCurrentGet(userEmail);
 
     // result is boolean of status
-    if (ResponseCurrent.success) {
-      setChargeCurrentDetails(ResponseCurrent.content);
-      console.log(ResponseCurrent.content);
+    if (ResponseCurrent.status == 'success') {
+      setChargeCurrentDetails(ResponseCurrent.data);
+      console.log(ResponseCurrent.data);
     }
     
     const ResponseHistory = await ChargeHistoryGet(userEmail, 'in_progress');
 
     // result is boolean of status
-    if (ResponseHistory.success) {
-      setChargeHistoryDetails(ResponseHistory.content);
-      console.log(ResponseHistory.content);
+    if (ResponseHistory.status == 'success') {
+      setChargeHistoryDetails(ResponseHistory.data);
+      console.log(ResponseHistory.data);
     }
   }
 

@@ -10,6 +10,10 @@ NO ASSIGNMENTS CAN HAVE THE SAME VALUE!
 "Like the good old days of C, eh?"
 """
 
+API_SUCCESS_STRING = 'success'
+API_FAILURE_STRING = 'fail'
+API_ERROR_STRING = 'error'
+
 def ez_update(code, code_def):
     service_code_dict.update({code: code_def})
 

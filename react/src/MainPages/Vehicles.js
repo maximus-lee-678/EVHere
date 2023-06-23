@@ -34,10 +34,10 @@ export default function Vehicles() {
         const response = await ConnectorTypeGetAll(userEmail);
 
         // If success returned, store connector information
-        if (response.success) {
-            setConnectorInfo(response['content']);
+        if (response.status == 'success') {
+            setConnectorInfo(response['data']);
         } else {
-            toast.error(<div>{response.api_response}</div>);
+            toast.error(<div>{response.message}<br />{response.reason}</div>);
             setConnectorInfo([]);
         }
     }
@@ -48,10 +48,10 @@ export default function Vehicles() {
         const response = await VehicleInfoGetByUser(userEmail);
 
         // If success returned, store vehicle information
-        if (response.success) {
-            setUserVehicleInfo(response['content']);
+        if (response.status == 'success') {
+            setUserVehicleInfo(response['data']);
         } else {
-            toast.error(<div>{response.api_response}</div>);
+            toast.error(<div>{response.message}<br />{response.reason}</div>);
             setUserVehicleInfo([]);
         }
     }
@@ -117,13 +117,13 @@ export default function Vehicles() {
         const response = await VehicleInfoAdd(userEmail, vehicleName, vehicleModel, vehicleSN, selectedConnector);
 
         // result is boolean of status
-        if (response.success) {
-            toast.success(response.api_response);
+        if (response.status == 'success') {
+            toast.success(response.message);
             setDisplayPopup(!displayPopup);
             clearFormFields();
             fetchAllUserVehicles();
         } else {
-            toast.error(response.reason);
+            toast.error(<div>{response.message}<br />{response.reason}</div>);
         }
     }
 
@@ -137,11 +137,11 @@ export default function Vehicles() {
         const response = await VehicleInfoRemove(vehicleId);
 
         // result is boolean of status
-        if (response.success) {
-            toast.success(response.api_response);
+        if (response.status == 'success') {
+            toast.success(response.message);
             fetchAllUserVehicles();
         } else {
-            toast.error(response.reason);
+            toast.error(<div>{response.message}<br />{response.reason}</div>);
         }
     }
 

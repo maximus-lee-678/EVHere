@@ -22,14 +22,14 @@ export default function Login() {
         const response = await UserInfoLogin(email, password);
 
         // If success returned, change pages
-        if (response.success) {
+        if (response.status == 'success') {
             // store the user in localStorage
             localStorage.setItem('user_email', email);
 
             // reload page
             window.location.replace('/');
         } else {
-            toast.error(<div>{response.api_response}<br />{response.reason}</div>);
+            toast.error(<div>{response.message}<br />{response.reason}</div>);
         }
     }
 

@@ -26,10 +26,10 @@ export default function AddCharge() {
         const response = await VehicleInfoGetByUser(userEmail);
 
         // If success returned, store vehicle information
-        if (response.success) {
-            setUserVehicleInfo(response['content']);
+        if (response.status == 'success') {
+            setUserVehicleInfo(response['data']);
         } else {
-            toast.error(<div>{response.api_response}</div>);
+            toast.error(<div>{response.message}<br />{response.reason}</div>);
         }
     }
 
@@ -38,10 +38,10 @@ export default function AddCharge() {
         const response = await ChargerGetAllWithEmail(userEmail);
 
         // If success returned, store charger information
-        if (response.success) {
-            setAllChargerInfo(response['content'])
+        if (response.status == 'success') {
+            setAllChargerInfo(response['data'])
         } else {
-            toast.error(<div>{response.api_response}</div>);
+            toast.error(<div>{response.message}<br />{response.reason}</div>);
         }
     }
 
@@ -107,15 +107,15 @@ export default function AddCharge() {
         const response = await ChargeHistoryAdd(userEmail, selectedVehicleId, selectedCharger || firstCharger, batteryPercentage);
 
         // result is boolean of status
-        if (response.success) {
-            toast.success(response.api_response);
+        if (response.status == 'success') {
+            toast.success(response.message);
             // delay 2s
             await new Promise(resolve => setTimeout(resolve, 2000));
 
             // reload page
             window.location.replace('/');
         } else {
-            toast.error(response.reason);
+            toast.error(<div>{response.message}<br />{response.reason}</div>);
         }
     }
 

@@ -1,8 +1,13 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import Navbar from "../SharedComponents/Navbar";
+// React imports
+import React, { useState, useEffect } from 'react';
+
+// Standard imports
+import Navbar from '../SharedComponents/Navbar';
+import Toast, { toast } from '../SharedComponents/Toast';
 import Map from "../Map/Map";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
+// API endpoints imports
+import { VehicleInfoGetByUser } from '../API/API';
 
 export default function Recommendations() {
     const userEmail = localStorage.getItem("user_email");
@@ -12,27 +17,14 @@ export default function Recommendations() {
     // Function that loads all user vehicles. Called on page load, populates userVehicleInfo.
     // Used in main page.
     async function fetchAllUserVehicles() {
-        // Forms GET header
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: userEmail })
-        };
+        const response = await VehicleInfoGetByUser(userEmail);
 
-        // Store response
-        let response;
-        await fetch('/api/get_user_vehicles', requestOptions)
-            .then(res => res.json())
-            .then(data => { response = data })
-            .catch(err => console.log(err));
-
-        // If success returned, store connector information
-        if (response.success) {
-            setUserVehicleInfo(response['content']);
+        // If success returned, store vehicle information
+        if (response.status == 'success') {
+            setUserVehicleInfo(response['data']);
         } else {
-            toast.error(<div>{response.api_response}</div>);
+            toast.error(<div>{response.message}<br />{response.reason}</div>);
             setUserVehicleInfo([]);
-            console.log("test",userVehicleInfo);
         }
     }
 
@@ -45,7 +37,7 @@ export default function Recommendations() {
     // Component that formats vehicle information for display in main page. Reads from userVehicleInfo.
     function UserVehicles() {
         let options = [];
-        
+
         if (userVehicleInfo.length == 0) {
             options.push(
                 <option value="No vehicles available">No vehicles available</option>
@@ -56,30 +48,22 @@ export default function Recommendations() {
 
             for (var i = 0; i < userVehicleInfo.length; i++) {
                 let id = userVehicleInfo[i].id;
-    
+
                 options.push(
                     <option className="border-0 px-3 py-3 text-gray-700" value={userVehicleInfo[i].name}>{userVehicleInfo[i].name}</option>
                 )
             }
         }
-        
+
         return options;
     }
 
     return (
         <div className="min-h-screen bg-gray-900 "
         >
-            <ToastContainer position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored" />
+            <Toast />
             <Navbar transparent />
+            
             <main>
                 <section className="w-full h-full">
                     <div className="relative container mx-auto px-4 h-full bg-gray-900">
@@ -103,8 +87,8 @@ export default function Recommendations() {
                                             style={{ transition: "all .15s ease" }}
                                             defaultValue="No vehicles available"
                                         >
-                                            {userVehicleInfo && <UserVehicles/> }
-                                            
+                                            {userVehicleInfo && <UserVehicles />}
+
                                         </select>
                                     </div>
 
