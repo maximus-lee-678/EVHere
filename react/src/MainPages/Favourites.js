@@ -60,14 +60,16 @@ export default function Favourites() {
 
             result.push(
                 <div className="lg:flex py-4 lg:px-10 px-3 bg-white rounded-lg grid grid-rows-4" key={id}>
-                    <CardContent type="Charger" elementName={favouriteChargerInfo[i].name}>
+                    <div className="w-4/5 row-span-3">
+                    <CardContent elementName={favouriteChargerInfo[i].name}>
                         <div><span className="uppercase font-semibold text-sm">Provider:</span> {favouriteChargerInfo[i].provider}</div>
                         <div><span className="uppercase font-semibold text-sm">Power:</span> {favouriteChargerInfo[i].kilowatts || 0} kW</div>
                         <div><span className="uppercase font-semibold text-sm">Connectors:</span> {favouriteChargerInfo[i].connectors}</div>
                         <div><span className="uppercase font-semibold text-sm">Location:</span> {favouriteChargerInfo[i].address}</div>
                         <div><span className="uppercase font-semibold text-sm">Hours:</span> {favouriteChargerInfo[i].twenty_four_hours === 'TRUE' ? '24 hours' : 'Not 24 hours'}</div>
                     </CardContent>
-                    <CardButton type="Charger" id={id} onClick={handleFavouriteRemove}></CardButton>
+                    </div>
+                    <CardButton id={id} onClick={handleFavouriteRemove} icon="heart-broken fa-lg" color="red"></CardButton>
                 </div>
             )
         }

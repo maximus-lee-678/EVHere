@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from "../SharedComponents/Navbar";
 import { Link } from 'react-router-dom';
-import { CardContent, CardButton } from '../SharedComponents/Card';
+import { CardContent, CardButton, DashboardCard, ChargingCard } from '../SharedComponents/Card';
 
 export default function Dashboard() {
   return (
@@ -41,23 +41,23 @@ export default function Dashboard() {
         <section className="bg-gray-300 -mt-24">
 
           {/* Charging status */}
-          <CardContent type="CurrentCharging" elementName="Current Charging Status" vName="testing veh 1" SN="SN12345" currPercent="50%" startTime="1/6/2023, 2pm" timeElapsed="50 mins"></CardContent>
+          <ChargingCard type="CurrentCharging" elementName="Current Charging Status" vName="testing veh 1" SN="SN12345" currPercent="50%" startTime="1/6/2023, 2pm" timeElapsed="50 mins"></ChargingCard>
 
           {/* Three boxes - charging history, favourites, map */}
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap">
 
-              <CardContent lower type="Info" color="blue" link="/ChargingHistory" elementName="Track your expenses" icon="dollar-sign">
+              <DashboardCard lower color="blue" link="/ChargingHistory" elementName="Track your expenses" icon="dollar-sign">
                   Tracking your charging time, location, and expenses<br></br>no matter which charger brand you use.
-              </CardContent>
+              </DashboardCard>
 
-              <CardContent type="Info" color="red" link="/Favourites" elementName="Favourite chargers" icon="heart">
+              <DashboardCard color="red" link="/Favourites" elementName="Favourite chargers" icon="heart">
                   Save the location of your favourite EV chargers<br></br>with just a click.
-              </CardContent>
+              </DashboardCard>
 
-              <CardContent lower type="Info" color="green" link="/Recommendations" elementName="Get recommendations on the go" icon="map-marker-alt">
+              <DashboardCard lower color="green" link="/Recommendations" elementName="Get recommendations on the go" icon="map-marker-alt">
                 Don't know where to find chargers? Use our map,<br></br>complete with recommendations for you!
-              </CardContent>
+              </DashboardCard>
 
             </div>
           </div>

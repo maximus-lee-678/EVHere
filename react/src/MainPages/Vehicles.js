@@ -77,14 +77,16 @@ export default function Vehicles() {
 
             options.push(
                 <div className="flex bg-white rounded-lg py-4 px-10" key={id}>
-                    <CardContent type="Vehicle" elementName={userVehicleInfo[i].name} className="w-4/5">
-                        <div>
-                            <div>Model: {userVehicleInfo[i].model}</div>
-                            <div>S/N: {userVehicleInfo[i].vehicle_sn}</div>
-                            <div>Connector: {userVehicleInfo[i].connector_type}</div>
-                        </div>
-                    </CardContent>
-                    <CardButton type="Vehicle" id={id} onClick={handleRemove}></CardButton>
+                    <div className="w-4/5">
+                        <CardContent elementName={userVehicleInfo[i].name}>
+                            <div>
+                                <div>Model: {userVehicleInfo[i].model}</div>
+                                <div>S/N: {userVehicleInfo[i].vehicle_sn}</div>
+                                <div>Connector: {userVehicleInfo[i].connector_type}</div>
+                            </div>
+                        </CardContent>
+                    </div>
+                    <CardButton id={id} onClick={handleRemove} icon="trash fa-lg" color="red"></CardButton>
                 </div>
             )
         }
