@@ -29,7 +29,7 @@ def fun_get_charge_current():
     id_user_info = user_info_response['content']
 
     # get charge current actual
-    charge_current_response = db_charge_current.get_charge_current_by_user_id(
+    charge_current_response = db_charge_current.get_charge_current_by_user_id_verbose(
         id_user_info_sanitised=id_user_info)
 
     return flask_helper_functions.format_for_endpoint(db_dictionary=charge_current_response,

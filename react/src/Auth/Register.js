@@ -25,7 +25,7 @@ export default function Register() {
     const response = await UserInfoRegister(username, password, email, phoneNumber, fullName);
 
     // If success, redirect
-    if (response.status == 'success') {
+    if (response.status === 'success') {
       toast.success(response.api_response);
 
       // delay 2s

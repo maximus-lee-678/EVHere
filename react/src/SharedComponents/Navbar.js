@@ -7,7 +7,7 @@ export default function Navbar(props) {
 
   if (loggedIn === '') {
     //not logged in
-    if (localStorage.getItem("user_email") !== "" && localStorage.getItem("user_email") == null) {
+    if (localStorage.getItem("user_email") !== "" && localStorage.getItem("user_email") === null) {
       setLoggedIn("false");
     }
     //if logged in
@@ -16,6 +16,13 @@ export default function Navbar(props) {
     }
   }
 
+  function handleLogout() {
+    console.log(localStorage.getItem("user_email"));
+    localStorage.removeItem("user_email");
+
+    // reload page
+    window.location.reload();
+  }
 
   return (
     <nav
@@ -167,20 +174,3 @@ export default function Navbar(props) {
     </nav>
   );
 }
-
-function handleLogout() {
-  console.log(localStorage.getItem("user_email"));
-  localStorage.removeItem("user_email");
-
-  // reload page
-  window.location.reload();
-}
-
-function handleLogin() {
-  window.location.href = "/Login";
-}
-
-function handleSignup() {
-  window.location.href = "/Register";
-}
-

@@ -1,10 +1,37 @@
-import React from "react";
+// React imports
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from '../SharedComponents/Navbar';
+import { DateTime } from 'luxon';
+
+// Standard imports
+import Navbar from "../SharedComponents/Navbar";
 import BarChart from "./Barchart";
 import PieChart from "./Piechart";
+import { FormatDateTime, GetDateDiffString } from '../Utils/Time';
+
+// API endpoints imports
+import { ChargeHistoryGet } from '../API/API';
 
 export default function ChargingHistory() {
+    const userEmail = localStorage.getItem("user_email");
+
+    const [chargeHistoryDetails, setChargeHistoryDetails] = useState(null);
+
+    // Function that gets user's historical charges. Called on page load, populates chargeHistoryDetails.
+    const fetchUserChargeHistory = useCallback(async () => {
+        const Response = await ChargeHistoryGet(userEmail, 'complete');
+
+        // result is boolean of status
+        if (Response.status === 'success' && Response.data !== null) {
+            setChargeHistoryDetails(Response.data);
+        }
+    }, [userEmail]);
+
+    useEffect(() => {
+        fetchUserChargeHistory();
+    }, [fetchUserChargeHistory]);
+
+
     window.onclick = function (event) {
         if (event.target === document.getElementById("charge-details")) {
             document.getElementById("charge-details").style.display = "none";
@@ -27,21 +54,21 @@ export default function ChargingHistory() {
                 </div>
                 <div className="w-fit flex flex-row">
                     <button className="bg-white rounded-t-md px-4 py-4"
-                    id="overview-tab-btn"
-                    onClick={showOverview}
+                        id="overview-tab-btn"
+                        onClick={showOverview}
                     >Overview</button>
 
                     <button className="bg-gray-300 rounded-t-md px-4 py-4"
-                    id="history-tab-btn"
-                    onClick={showHistory}
+                        id="history-tab-btn"
+                        onClick={showHistory}
                     >History</button>
                 </div>
 
 
                 <div className="px-4 py-2 md:px-10 mx-auto w-full flex flex-col items-center bg-white">
                     <div id="overview-tab-content" className="w-full block">
-                        <BarChart/>
-                        <PieChart/>
+                        <BarChart />
+                        <PieChart />
                     </div>
 
                     <div id="history-tab-content" className="hidden w-full xl:w-8/12 mb-12 xl:mb-0 px-4 self-center">
@@ -415,19 +442,19 @@ export default function ChargingHistory() {
     function showOverview() {
         let overviewTab = document.getElementById("overview-tab-content")
         let historyTab = document.getElementById("history-tab-content")
-        overviewTab.classList.replace("hidden", "block"); 
-        historyTab.classList.replace("block", "hidden"); 
-        document.getElementById("overview-tab-btn").classList.replace("bg-gray-300", "bg-white")   
-        document.getElementById("history-tab-btn").classList.replace("bg-white", "bg-gray-300")   
+        overviewTab.classList.replace("hidden", "block");
+        historyTab.classList.replace("block", "hidden");
+        document.getElementById("overview-tab-btn").classList.replace("bg-gray-300", "bg-white")
+        document.getElementById("history-tab-btn").classList.replace("bg-white", "bg-gray-300")
     }
 
     function showHistory() {
         let overviewTab = document.getElementById("overview-tab-content")
         let historyTab = document.getElementById("history-tab-content")
-        overviewTab.classList.replace("block", "hidden"); 
-        historyTab.classList.replace("hidden", "block"); 
-        document.getElementById("overview-tab-btn").classList.replace("bg-white", "bg-gray-300")   
-        document.getElementById("history-tab-btn").classList.replace("bg-gray-300", "bg-white")          
+        overviewTab.classList.replace("block", "hidden");
+        historyTab.classList.replace("hidden", "block");
+        document.getElementById("overview-tab-btn").classList.replace("bg-white", "bg-gray-300")
+        document.getElementById("history-tab-btn").classList.replace("bg-gray-300", "bg-white")
     }
 
     function increaseYear() {

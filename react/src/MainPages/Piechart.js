@@ -95,7 +95,7 @@ export default function PieChart() {
     };
     
     let chartStatus = Chart.getChart("pie-chart"); // <canvas> id
-    if (chartStatus != undefined) {
+    if (chartStatus !== undefined) {
         chartStatus.destroy();
     }
 

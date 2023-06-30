@@ -1,5 +1,5 @@
 // React imports
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 // Standard imports
 import Navbar from '../SharedComponents/Navbar';
@@ -18,15 +18,15 @@ export default function AddChargingHistory() {
     const [hasChargeCurrent, setHasChargeCurrent] = useState();
 
     // Function that checks if user has a current charge. Called on page load, populates hasChargeCurrent.
-    async function fetchUserCurrentCharge() {
+    const fetchUserCurrentCharge = useCallback(async () => {
         const response = await ChargeCurrentGet(userEmail);
 
         response['data'] ? setHasChargeCurrent(true) : setHasChargeCurrent(false);
-    }
+    }, [userEmail]);
 
     useEffect(() => {
-        fetchUserCurrentCharge();
-    }, []);
+        fetchUserCurrentCharge()
+    }, [fetchUserCurrentCharge]);
 
     return (
         <div>

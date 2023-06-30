@@ -21,7 +21,7 @@ export default function FinishCharge() {
     const response = await ChargeHistoryFinish(userEmail, batteryPercentage, amountPayable);
 
     // result is boolean of status
-    if (response.status == 'success') {
+    if (response.status === 'success') {
       toast.success(response.message);
 
       // delay 2s

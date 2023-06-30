@@ -16,11 +16,7 @@ import Vehicles from './MainPages/Vehicles';
 import AddChargingHistory from './ChargingHistory/AddChargingHistory';
 
 export default function App() {
-  let userEmail;
-
-  useMemo(() => {
-    userEmail = localStorage.getItem("user_email");
-  }, []);
+  const userEmail = localStorage.getItem("user_email");
 
   if (userEmail === null && (window.location.pathname !== "/Login" || window.location.pathname !== "/Register")) {
     // Allow access only to register page, rest of pages lead to login

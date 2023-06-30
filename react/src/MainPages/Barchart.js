@@ -102,7 +102,7 @@ export default function Barchart() {
     };
     
     let chartStatus = Chart.getChart("bar-chart"); // <canvas> id
-    if (chartStatus != undefined) {
+    if (chartStatus !== undefined) {
         chartStatus.destroy();
     }
 

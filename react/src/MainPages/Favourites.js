@@ -1,10 +1,10 @@
 // React imports
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 // Standard imports
 import Navbar from '../SharedComponents/Navbar';
 import Toast, { toast } from '../SharedComponents/Toast';
-import { CardContent, CardButton} from '../SharedComponents/Card.js';
+import { CardContent, CardButton } from '../SharedComponents/Card.js';
 
 // API endpoints imports
 import { FavouriteChargerGet, FavouriteChargerRemove } from '../API/API';
@@ -14,22 +14,22 @@ export default function Favourites() {
     const [favouriteChargerInfo, setFavouriteChargerInfo] = useState();
 
     // Function that loads user's favourited chargers. Called on page load, populates favouriteChargerInfo.
-    async function fetchFavouriteChargers() {
+    const fetchFavouriteChargers = useCallback(async () => {
         const response = await FavouriteChargerGet(userEmail);
 
         // If success returned, store chargers
-        if (response.status == 'success') {
+        if (response.status === 'success') {
             setFavouriteChargerInfo(response['data']);
         }
         else {
             toast.error(<div>{response.message}<br />{response.reason}</div>);
             setFavouriteChargerInfo([]);
         }
-    }
+    }, [userEmail]);
 
     useEffect(() => {
         fetchFavouriteChargers();
-    }, []);
+    }, [fetchFavouriteChargers]);
 
     // Function that removes a user's favourited charger. Called when user clicks corresponding remove button.
     async function handleFavouriteRemove(IDCharger) {
@@ -42,7 +42,7 @@ export default function Favourites() {
 
         const response = await FavouriteChargerRemove(userEmail, IDCharger);
 
-        if (response.status == 'success') {
+        if (response.status === 'success') {
             toast.success("Removed from favourites!")
             fetchFavouriteChargers();
         } else {
@@ -61,13 +61,13 @@ export default function Favourites() {
             result.push(
                 <div className="lg:flex py-4 lg:px-10 px-3 bg-white rounded-lg grid grid-rows-4" key={id}>
                     <div className="w-4/5 row-span-3">
-                    <CardContent elementName={favouriteChargerInfo[i].name}>
-                        <div><span className="uppercase font-semibold text-sm">Provider:</span> {favouriteChargerInfo[i].provider}</div>
-                        <div><span className="uppercase font-semibold text-sm">Power:</span> {favouriteChargerInfo[i].kilowatts || 0} kW</div>
-                        <div><span className="uppercase font-semibold text-sm">Connectors:</span> {favouriteChargerInfo[i].connectors}</div>
-                        <div><span className="uppercase font-semibold text-sm">Location:</span> {favouriteChargerInfo[i].address}</div>
-                        <div><span className="uppercase font-semibold text-sm">Hours:</span> {favouriteChargerInfo[i].twenty_four_hours === 'TRUE' ? '24 hours' : 'Not 24 hours'}</div>
-                    </CardContent>
+                        <CardContent elementName={favouriteChargerInfo[i].name}>
+                            <div><span className="uppercase font-semibold text-sm">Provider:</span> {favouriteChargerInfo[i].provider}</div>
+                            <div><span className="uppercase font-semibold text-sm">Power:</span> {favouriteChargerInfo[i].kilowatts || 0} kW</div>
+                            <div><span className="uppercase font-semibold text-sm">Connectors:</span> {favouriteChargerInfo[i].connectors}</div>
+                            <div><span className="uppercase font-semibold text-sm">Location:</span> {favouriteChargerInfo[i].address}</div>
+                            <div><span className="uppercase font-semibold text-sm">Hours:</span> {favouriteChargerInfo[i].twenty_four_hours === 'TRUE' ? '24 hours' : 'Not 24 hours'}</div>
+                        </CardContent>
                     </div>
                     <CardButton id={id} onClick={handleFavouriteRemove} icon="heart-broken fa-lg" color="red"></CardButton>
                 </div>

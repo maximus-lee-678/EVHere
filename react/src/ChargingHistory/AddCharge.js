@@ -1,5 +1,5 @@
 // React imports
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 // Standard imports
 import Toast, { toast } from '../SharedComponents/Toast';
@@ -22,33 +22,34 @@ export default function AddCharge() {
 
     // Function that loads all user vehicles. Called on page load, populates userVehicleInfo.
     // Used in main page.
-    async function fetchAllUserVehicles() {
+    const fetchAllUserVehicles = useCallback(async () => {
         const response = await VehicleInfoGetByUser(userEmail);
 
         // If success returned, store vehicle information
-        if (response.status == 'success') {
+        if (response.status === 'success') {
             setUserVehicleInfo(response['data']);
         } else {
             toast.error(<div>{response.message}<br />{response.reason}</div>);
+            setUserVehicleInfo([]);
         }
-    }
+    }, [userEmail]);
 
     // Function that loads all chargers. Called on page load, populates allChargerInfo.
-    async function fetchAllChargers() {
+    const fetchAllChargers = useCallback(async () => {
         const response = await ChargerGetAllWithEmail(userEmail);
 
         // If success returned, store charger information
-        if (response.status == 'success') {
+        if (response.status === 'success') {
             setAllChargerInfo(response['data'])
         } else {
             toast.error(<div>{response.message}<br />{response.reason}</div>);
         }
-    }
+    }, [userEmail]);
 
     useEffect(() => {
         fetchAllUserVehicles();
         fetchAllChargers();
-    }, []);
+    }, [fetchAllUserVehicles, fetchAllChargers]);
 
     // once userVehicleInfo loaded, update selectedConnector and Id
     useEffect(() => {
@@ -107,7 +108,7 @@ export default function AddCharge() {
         const response = await ChargeHistoryAdd(userEmail, selectedVehicleId, selectedCharger || firstCharger, batteryPercentage);
 
         // result is boolean of status
-        if (response.status == 'success') {
+        if (response.status === 'success') {
             toast.success(response.message);
             // delay 2s
             await new Promise(resolve => setTimeout(resolve, 2000));

@@ -1,5 +1,5 @@
 // React imports
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 // Standard imports
 import Toast, { toast } from '../SharedComponents/Toast';
@@ -36,20 +36,20 @@ export default function Map(props) {
     const [allChargerInfo, setAllChargerInfo] = useState();
 
     // Function that loads all chargers. Called on page load, populates allChargerInfo.
-    async function fetchAllChargers() {
+    const fetchAllChargers = useCallback(async () => {
         const response = await ChargerGetAllWithEmail(userEmail);
 
         // If success returned, store charger information
-        if (response.status == 'success') {
+        if (response.status === 'success') {
             setAllChargerInfo(response['data'])
         } else {
             toast.error(<div>{response.message}<br />{response.reason}</div>);
         }
-    }
+    }, [userEmail]);
 
     useEffect(() => {
-        fetchAllChargers()
-    }, []);
+        fetchAllChargers();
+    }, [fetchAllChargers]);
 
     async function handleFavourite(IDCharger, operation) {
         // Ugly confirmation prompt, TODO better
@@ -71,7 +71,7 @@ export default function Map(props) {
 
         // If operation successful, reload charger information
         // Which reloads markers
-        if (response.status == 'success') {
+        if (response.status === 'success') {
             fetchAllChargers();
             if (operation === "add") {
                 toast.success("Added to favourites!")

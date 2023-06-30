@@ -33,17 +33,18 @@ def get_charge_history_by_user_id(id_user_info_sanitised, filter_by):
 
     task = (id_user_info_sanitised,)
 
-    select = db_methods.safe_select(query=query, task=task, get_type='one')
+    select = db_methods.safe_select(query=query, task=task, get_type='all')
     if not select['select_successful']:
         return {'result': db_service_code_master.INTERNAL_ERROR}
     if select['num_rows'] == 0:
         return {'result': db_service_code_master.CHARGE_HISTORY_NOT_FOUND}
 
     # transforming row to key-values
-    key_values = {"id": select['content'][0], "id_user_info": select['content'][1], "id_vehicle_info": select['content'][2],
-                  "id_charger": select['content'][3], "time_start": select['content'][4], "time_end": select['content'][5],
-                  "percentage_start": select['content'][6], "percentage_end": select['content'][7],
-                  "amount_payable": select['content'][8], "is_charge_finished": False if select['content'][9] == 0 else True}
+    key_values = [{"id": row[0], "id_user_info": row[1], "id_vehicle_info": row[2],
+                  "id_charger": row[3], "time_start": row[4], "time_end": row[5],
+                   "percentage_start": row[6], "percentage_end": row[7],
+                   "amount_payable": row[8], "is_charge_finished": False if row[9] == 0 else True}
+                  for row in select['content']]
 
     return {'result': db_service_code_master.CHARGE_HISTORY_FOUND,
             'content': key_values}
@@ -186,7 +187,7 @@ def finish_charge_history(id_user_info_sanitised, battery_percentage_input, amou
         error_list.append(
             db_service_code_master.CHARGE_HISTORY_NOT_CHARGING)
     else:
-        id_charge_history_sanitised = charger_response['content']['id']
+        id_charge_history_sanitised = charger_response['content'][0]['id']
 
      # 2.1: check if battery percentage is digit
     if battery_percentage_input.isdigit():

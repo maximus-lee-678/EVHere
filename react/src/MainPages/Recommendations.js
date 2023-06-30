@@ -1,5 +1,5 @@
 // React imports
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 // Standard imports
 import Navbar from '../SharedComponents/Navbar';
@@ -16,32 +16,28 @@ export default function Recommendations() {
 
     // Function that loads all user vehicles. Called on page load, populates userVehicleInfo.
     // Used in main page.
-    async function fetchAllUserVehicles() {
+    const fetchAllUserVehicles = useCallback(async () => {
         const response = await VehicleInfoGetByUser(userEmail);
 
         // If success returned, store vehicle information
-        if (response.status == 'success') {
+        if (response.status === 'success') {
             setUserVehicleInfo(response['data']);
         } else {
             toast.error(<div>{response.message}<br />{response.reason}</div>);
             setUserVehicleInfo([]);
         }
-    }
+    }, [userEmail]);
 
-    // fetch all required data for population
     useEffect(() => {
         fetchAllUserVehicles();
-    }, []);
-
+    }, [fetchAllUserVehicles]);
 
     // Component that formats vehicle information for display in main page. Reads from userVehicleInfo.
     function UserVehicles() {
         let options = [];
 
-        if (userVehicleInfo.length == 0) {
-            options.push(
-                <option value="No vehicles available">No vehicles available</option>
-            )
+        if (userVehicleInfo.length === 0) {
+            options.push(<option value="No vehicles available">No vehicles available</option>)
         }
         else {
             document.getElementById("vehicleName").disabled = false;
@@ -49,9 +45,7 @@ export default function Recommendations() {
             for (var i = 0; i < userVehicleInfo.length; i++) {
                 let id = userVehicleInfo[i].id;
 
-                options.push(
-                    <option className="border-0 px-3 py-3 text-gray-700" value={userVehicleInfo[i].name} key={id}>{userVehicleInfo[i].name}</option>
-                )
+                options.push(<option className="border-0 px-3 py-3 text-gray-700" value={userVehicleInfo[i].name} key={id}>{userVehicleInfo[i].name}</option>)
             }
         }
 
@@ -63,7 +57,7 @@ export default function Recommendations() {
         >
             <Toast />
             <Navbar transparent />
-            
+
             <main>
                 <section className="w-full h-full">
                     <div className="relative container mx-auto px-4 h-full bg-gray-900">

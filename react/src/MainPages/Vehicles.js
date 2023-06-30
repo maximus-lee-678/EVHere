@@ -1,11 +1,11 @@
 // React imports
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 // Standard imports
 import Navbar from '../SharedComponents/Navbar';
 import Toast, { toast } from '../SharedComponents/Toast';
 import Form, { FormButton, FormInputField, FormInputSelect } from '../SharedComponents/Form';
-import { CardContent, CardButton} from '../SharedComponents/Card.js';
+import { CardContent, CardButton } from '../SharedComponents/Card.js';
 
 // API endpoints imports
 import { ConnectorTypeGetAll, VehicleInfoGetByUser, VehicleInfoAdd, VehicleInfoRemove } from '../API/API';
@@ -31,37 +31,37 @@ export default function Vehicles() {
 
     // Function that loads all connectors. Called on page load, populates connectorInfo.
     // Used in connector type dropdown.
-    async function fetchAllConnectors() {
+    const fetchAllConnectors = useCallback(async () => {
         const response = await ConnectorTypeGetAll(userEmail);
 
         // If success returned, store connector information
-        if (response.status == 'success') {
+        if (response.status === 'success') {
             setConnectorInfo(response['data']);
         } else {
             toast.error(<div>{response.message}<br />{response.reason}</div>);
             setConnectorInfo([]);
         }
-    }
+    }, [userEmail]);
 
     // Function that loads all user vehicles. Called on page load, populates userVehicleInfo.
     // Used in main page.
-    async function fetchAllUserVehicles() {
+    const fetchAllUserVehicles = useCallback(async () => {
         const response = await VehicleInfoGetByUser(userEmail);
 
         // If success returned, store vehicle information
-        if (response.status == 'success') {
+        if (response.status === 'success') {
             setUserVehicleInfo(response['data']);
         } else {
             toast.error(<div>{response.message}<br />{response.reason}</div>);
             setUserVehicleInfo([]);
         }
-    }
+    }, [userEmail]);
 
     // fetch all required data for population
     useEffect(() => {
         fetchAllConnectors();
         fetchAllUserVehicles();
-    }, []);
+    }, [fetchAllConnectors, fetchAllUserVehicles]);
 
     // once connectorInfo loaded, update selectedConnector
     useEffect(() => {
@@ -113,7 +113,7 @@ export default function Vehicles() {
         const response = await VehicleInfoAdd(userEmail, vehicleName, vehicleModel, vehicleSN, selectedConnector);
 
         // result is boolean of status
-        if (response.status == 'success') {
+        if (response.status === 'success') {
             toast.success(response.message);
             setDisplayPopup(!displayPopup);
             clearFormFields();
@@ -133,7 +133,7 @@ export default function Vehicles() {
         const response = await VehicleInfoRemove(vehicleId);
 
         // result is boolean of status
-        if (response.status == 'success') {
+        if (response.status === 'success') {
             toast.success(response.message);
             fetchAllUserVehicles();
         } else {

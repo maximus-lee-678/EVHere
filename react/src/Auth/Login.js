@@ -16,13 +16,13 @@ export default function Login() {
 
     // Handler for login form submission. Transforms email and password from useStates into POST fields
     // and sends it to backend. Receives a JSON and acts based on response result.
-    async function handleLogin(e) {
+    async function HandleLogin(e) {
         e.preventDefault();
 
         const response = await UserInfoLogin(email, password);
 
         // If success returned, change pages
-        if (response.status == 'success') {
+        if (response.status === 'success') {
             // store the user in localStorage
             localStorage.setItem('user_email', email);
 
@@ -38,7 +38,7 @@ export default function Login() {
             <Toast />
             <Navbar transparent />
 
-            <Form elementName="Sign In" onSubmit={handleLogin} backgroundImageURL="login-register.png">
+            <Form elementName="Sign In" onSubmit={HandleLogin} backgroundImageURL="login-register.png">
                 <FormInputField elementName="Email" id="email" placeholder="Enter Email . . ."
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
