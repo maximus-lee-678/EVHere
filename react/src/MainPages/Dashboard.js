@@ -1,10 +1,12 @@
 // React imports
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { CardContent, CardButton, DashboardCard, ChargingCard } from '../SharedComponents/Card';
+import { DateTime } from 'luxon';
 
 // Standard imports
 import Navbar from "../SharedComponents/Navbar";
+import { FormatDateTime, GetDateDiffString } from '../Utils/Time';
+import { CardContent, CardButton, DashboardCard, ChargingCard } from '../SharedComponents/Card';
 
 // API endpoints imports
 import { ChargeCurrentGet, ChargeHistoryGet, VehicleInfoGetById } from '../API/API';
@@ -15,6 +17,7 @@ export default function Dashboard() {
   const [chargeCurrentDetails, setChargeCurrentDetails] = useState(null);
   const [chargeHistoryDetails, setChargeHistoryDetails] = useState(null);
   const [chargeCurrentVehicleDetails, setChargeCurrentVehicleDetails] = useState(null);
+  const [timeElapsedString, setTimeElapsedString] = useState('');
 
   // Function that gets user's current charge. Called on page load, populates chargeCurrentDetails.
   async function fetchUserChargeCurrentAndHistoryAndVehicle() {
@@ -23,7 +26,6 @@ export default function Dashboard() {
     // result is boolean of status
     if (ResponseCurrent.status === 'success' && ResponseCurrent.data !== null) {
       setChargeCurrentDetails(ResponseCurrent.data);
-      console.log(ResponseCurrent.data);
     } else {
       return;
     }
@@ -33,7 +35,7 @@ export default function Dashboard() {
     // result is boolean of status
     if (ResponseHistory.status === 'success') {
       setChargeHistoryDetails(ResponseHistory.data);
-      console.log(ResponseHistory.data);
+      setTimeElapsedString(GetDateDiffString(ResponseHistory.data.time_start, DateTime.now().toISO()));
     }
 
     const ResponseVehicle = await VehicleInfoGetById(ResponseHistory.data.id_vehicle_info);
@@ -48,11 +50,12 @@ export default function Dashboard() {
     fetchUserChargeCurrentAndHistoryAndVehicle();
   }, []);
 
-  function FormatDateTime(DateTime){
-    const Date = new Date(DateTime);
-
-    return 
-  }
+  // Refresh timer every second (1 * 1000) ms
+  useEffect(() => {
+    setInterval(function () {
+      chargeHistoryDetails && setTimeElapsedString(GetDateDiffString(chargeHistoryDetails.time_start, DateTime.now().toISO()));
+    }, 1 * 1000);
+  }, [chargeHistoryDetails]);
 
   return (
     <div className="h-screen bg-gray-300">
@@ -95,8 +98,8 @@ export default function Dashboard() {
               vName={chargeCurrentVehicleDetails.name}
               SN={chargeCurrentVehicleDetails.vehicle_sn}
               currPercent={chargeCurrentDetails.percentage_current + '%'}
-              startTime={chargeHistoryDetails.time_start}
-              timeElapsed={"todo"} />}
+              startTime={FormatDateTime(chargeHistoryDetails.time_start)}
+              timeElapsed={timeElapsedString} />}
 
           {/* Three boxes - charging history, favourites, map */}
           <div className="container mx-auto px-4">

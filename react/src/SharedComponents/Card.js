@@ -43,7 +43,7 @@ export function DashboardCard(props) {
         greenBG: 'bg-green-400',
     }
 
-    console.log("wtf", colorVariants[color + "Hover"]);
+    // console.log("wtf", colorVariants[color + "Hover"]);
 
     if (lower) {
         return (

@@ -15,7 +15,7 @@ def generate_time_now():
     """
     Generates current epoch time
     """
-    return datetime.datetime.now()
+    return datetime.datetime.now().isoformat(sep='T', timespec='auto')
 
 def validate_email(email):
     """
