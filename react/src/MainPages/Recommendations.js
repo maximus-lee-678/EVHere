@@ -36,10 +36,7 @@ export default function Recommendations() {
     function UserVehicles() {
         let options = [];
 
-        if (userVehicleInfo.length === 0) {
-            options.push(<option value="No vehicles available">No vehicles available</option>)
-        }
-        else {
+        if (userVehicleInfo != null || userVehicleInfo != undefined || userVehicleInfo.length !== 0) {
             document.getElementById("vehicleName").disabled = false;
 
             for (var i = 0; i < userVehicleInfo.length; i++) {
@@ -48,7 +45,6 @@ export default function Recommendations() {
                 options.push(<option className="border-0 px-3 py-3 text-gray-700" value={userVehicleInfo[i].name} key={id}>{userVehicleInfo[i].name}</option>)
             }
         }
-
         return options;
     }
 
@@ -80,8 +76,12 @@ export default function Recommendations() {
                                             className="border-0 px-3 py-3 text-gray-700 bg-white rounded text-sm focus:outline-none focus:ring w-full"
                                             style={{ transition: "all .15s ease" }}
                                             defaultValue="No vehicles available"
-                                        >
-                                            {userVehicleInfo && <UserVehicles />}
+                                        >                                            
+                                            {/*{userVehicleInfo && <UserVehicles />}*/}
+                                            {userVehicleInfo != null
+                                                ? <UserVehicles/>
+                                                : <option value="No vehicles available">No vehicles available</option>
+                                            }
 
                                         </select>
                                     </div>

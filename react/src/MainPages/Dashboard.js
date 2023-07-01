@@ -40,7 +40,7 @@ export default function Dashboard() {
   }, [chargeCurrentDetails]);
 
   return (
-    <div className="h-screen bg-gray-300">
+    <div className="h-screen bg-black">
       <Navbar transparent />
 
       <main>
@@ -58,21 +58,19 @@ export default function Dashboard() {
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                <div className="pr-12">
-                  <h1 className="text-white font-semibold text-5xl">
+                  <h1 className="text-white font-semibold text-3xl md:text-5xl">
                     The best EV charging experience.
                   </h1>
-                  <p className="mt-4 text-lg text-gray-300">
+                  <p className="mt-4 md:text-lg text-gray-300">
                     All your expenses in one place. Mark your favourite chargers, and get recommended charging locations while you're on the go.
                   </p>
-                </div>
               </div>
 
             </div>
           </div>
         </div>
 
-        <section className="bg-gray-300 -mt-24">
+        <section className="bg-black -mt-24">
 
           {/* Charging status */}
           {chargeCurrentDetails &&

@@ -62,10 +62,9 @@ export default function Navbar(props) {
             "lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none" +
             (navbarOpen ? " block rounded shadow-lg" : " hidden")
           }
-          id="example-navbar-warning"
         >
           <ul className="flex flex-col lg:flex-row list-none mr-auto">
-            <li className="flex items-center">
+            <li>
               <a
                 className={
                   (props.transparent
@@ -77,6 +76,8 @@ export default function Navbar(props) {
               >
                 Charging History
               </a>
+            </li>
+            <li>
               <a
                 className={
                   (props.transparent
@@ -88,6 +89,8 @@ export default function Navbar(props) {
               >
                 Favourites
               </a>
+            </li>
+            <li>
               <a
                 className={
                   (props.transparent
@@ -99,6 +102,8 @@ export default function Navbar(props) {
               >
                 Map
               </a>
+            </li>
+            <li>
               <a
                 className={
                   (props.transparent
@@ -110,6 +115,8 @@ export default function Navbar(props) {
               >
                 Vehicles
               </a>
+            </li>
+            <li>
               <a
                 className={
                   (props.transparent
