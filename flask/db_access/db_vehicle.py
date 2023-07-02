@@ -4,7 +4,30 @@ import db_access.support_files.db_service_code_master as db_service_code_master
 import db_access.support_files.db_methods as db_methods
 
 # Other db_access imports
+import db_access.db_universal as db_universal
 import db_access.db_connector_type as db_connector_type
+
+
+def get_all_vehicles_hash_map(
+    column_names=['name', 'model', 'vehicle_sn', 'connector_type']
+):
+    """
+    Full:
+    SELECT vi.id, vi.name, vi.model, vi.vehicle_sn, ct.name_short AS connector_type 
+    FROM vehicle_info AS vi
+    LEFT JOIN connector_type AS ct ON vi.id_connector_type = ct.id
+    """
+    column_sql_translations = {'id': 'vi.id', 'name': 'vi.name', 'model': 'vi.model',
+                               'vehicle_sn': 'vi.vehicle_sn', 'connector_type': 'ct.name_short AS connector_type'}
+
+    trailing_query = """
+    FROM vehicle_info AS vi
+    LEFT JOIN connector_type AS ct ON vi.id_connector_type = ct.id
+    """
+
+    return db_universal.get_all_universal_hash_map(column_names=column_names,
+                                                   column_sql_translations=column_sql_translations,
+                                                   trailing_query=trailing_query)
 
 
 def add_vehicle(id_user_info_sanitised, name_input, model_input, sn_input, connector_input):

@@ -4,9 +4,33 @@ import db_access.support_files.db_service_code_master as db_service_code_master
 import db_access.support_files.db_methods as db_methods
 
 # Other db_access imports
+import db_access.db_universal as db_universal
 import db_access.db_vehicle as db_vehicle
 import db_access.db_charger as db_charger
 import db_access.db_charge_current as db_charge_current
+
+
+def get_all_charge_history_hash_map(
+    column_names=['id_vehicle_info', 'id_charger', 'time_start', 'time_end', 'percentage_start',
+                  'percentage_end', 'amount_payable', 'is_charge_finished']
+):
+    """
+    Full:
+    SELECT id, id_vehicle_info, id_charger, time_start, time_end,
+    percentage_start, percentage_end, amount_payable, is_charge_finished 
+    FROM charge_history
+    """
+    column_sql_translations = {'id': 'id', 'id_vehicle_info': 'id_vehicle_info', 'id_charger': 'id_charger', 'time_start': 'time_start',
+                               'time_end': 'time_end', 'percentage_start': 'percentage_start', 'percentage_end': 'percentage_end',
+                               'amount_payable': 'amount_payable', 'is_charge_finished': 'is_charge_finished'}
+
+    trailing_query = """
+    FROM charge_history
+    """
+
+    return db_universal.get_all_universal_hash_map(column_names=column_names,
+                                                   column_sql_translations=column_sql_translations,
+                                                   trailing_query=trailing_query)
 
 
 def get_charge_history_by_user_id(id_user_info_sanitised, filter_by):
@@ -16,17 +40,29 @@ def get_charge_history_by_user_id(id_user_info_sanitised, filter_by):
     Returns Dictionary with keys:\n
     <result> INTERNAL_ERROR, CHARGE_HISTORY_NOT_FOUND, CHARGE_HISTORY_FOUND or CONFIGURATION_ERROR.\n
     <content> (if <result> is CHARGE_HISTORY_FOUND) [{Array Dictionary}] containing charge history information.
-    \t{"id", "id_user_info", "id_vehicle_info", "id_charger", "time_start",
-    \t"time_end", "percentage_start", "percentage_end", "amount_payable", "is_charge_finished"}
+    \tin_progress: {"id", "vehicle", "id_vehicle_info", "charger", "time_start", "percentage_start"}
+    \complete: {"id", "vehicle", "id_vehicle_info", "charger", "time_start", "time_end", "percentage_start", "percentage_end", "amount_payable"}
+    \all: {"id", "vehicle", "id_vehicle_info", "charger", "time_start", "time_end", "percentage_start", "percentage_end", "amount_payable", "is_charge_finished"}
     """
 
     ##### Query formation START #####
     if filter_by == 'in_progress':
-        query = 'SELECT * FROM charge_history WHERE id_user_info=? AND is_charge_finished=False'
+        query = """
+        SELECT id, id_vehicle_info, id_charger, time_start, percentage_start
+        FROM charge_history WHERE id_user_info=? AND is_charge_finished=False
+        """
     elif filter_by == 'complete':
-        query = 'SELECT * FROM charge_history WHERE id_user_info=? AND is_charge_finished=True'
+        query = """
+        SELECT id, id_vehicle_info, id_charger, time_start, time_end,
+        percentage_start, percentage_end, amount_payable
+        FROM charge_history WHERE id_user_info=? AND is_charge_finished=True
+        """
     elif filter_by == 'all':
-        query = 'SELECT * FROM charge_history WHERE id_user_info=?'
+        query = """
+        SELECT id, id_vehicle_info, id_charger, time_start, time_end,
+        percentage_start, percentage_end, amount_payable, is_charge_finished 
+        FROM charge_history WHERE id_user_info=?
+        """
     else:
         return {'result': db_service_code_master.CONFIGURATION_ERROR}
     ##### Query formation END #####
@@ -39,12 +75,35 @@ def get_charge_history_by_user_id(id_user_info_sanitised, filter_by):
     if select['num_rows'] == 0:
         return {'result': db_service_code_master.CHARGE_HISTORY_NOT_FOUND}
 
-    # transforming row to key-values
-    key_values = [{"id": row[0], "id_user_info": row[1], "id_vehicle_info": row[2],
-                  "id_charger": row[3], "time_start": row[4], "time_end": row[5],
-                   "percentage_start": row[6], "percentage_end": row[7],
-                   "amount_payable": row[8], "is_charge_finished": False if row[9] == 0 else True}
-                  for row in select['content']]
+    # get all vehicles hash map
+    vehicle_hash_map_response = db_vehicle.get_all_vehicles_hash_map()
+    if vehicle_hash_map_response['result'] != db_service_code_master.HASHMAP_SUCCESS:
+        return vehicle_hash_map_response
+
+    # get all chargers hash map
+    charger_hash_map_response = db_charger.get_all_chargers_hash_map()
+    if charger_hash_map_response['result'] != db_service_code_master.HASHMAP_SUCCESS:
+        return charger_hash_map_response
+
+    if filter_by == 'in_progress':
+        key_values = [{"id": row[0],
+                       "vehicle": vehicle_hash_map_response['content'][row[1]],
+                       "charger": charger_hash_map_response['content'][row[2]],
+                       "time_start": row[3], "percentage_start": row[4]}
+                      for row in select['content']]
+    elif filter_by == 'complete':
+        key_values = [{"id": row[0],
+                       "vehicle": vehicle_hash_map_response['content'][row[1]],
+                       "charger": charger_hash_map_response['content'][row[2]], "time_start": row[3], "time_end": row[4],
+                       "percentage_start": row[5], "percentage_end": row[6], "amount_payable": row[7]}
+                      for row in select['content']]
+    elif filter_by == 'all':
+        key_values = [{"id": row[0],
+                       "vehicle": vehicle_hash_map_response['content'][row[1]],
+                       "charger": charger_hash_map_response['content'][row[2]], "time_start": row[3], "time_end": row[4],
+                       "percentage_start": row[5], "percentage_end": row[6], "amount_payable": row[7],
+                       "is_charge_finished": False if row[8] == 0 else True}
+                      for row in select['content']]
 
     return {'result': db_service_code_master.CHARGE_HISTORY_FOUND,
             'content': key_values}
@@ -95,10 +154,9 @@ def add_charge_history_initial(id_user_info_sanitised, id_vehicle_info_input, id
     contains_errors = False
     error_list = []
 
-    # 1: check if user is already charging a vehicle
-    charger_response = get_charge_history_by_user_id(
+    charge_history_response = get_charge_history_by_user_id(
         id_user_info_sanitised=id_user_info_sanitised, filter_by="in_progress")
-    if charger_response['result'] != db_service_code_master.CHARGE_HISTORY_NOT_FOUND:
+    if charge_history_response['result'] != db_service_code_master.CHARGE_HISTORY_NOT_FOUND:
         contains_errors = True
         error_list.append(
             db_service_code_master.CHARGE_HISTORY_ALREADY_CHARGING)
@@ -180,14 +238,14 @@ def finish_charge_history(id_user_info_sanitised, battery_percentage_input, amou
     error_list = []
 
     # 1: check if user is already charging a vehicle
-    charger_response = get_charge_history_by_user_id(
+    charge_history_response = get_charge_history_by_user_id(
         id_user_info_sanitised=id_user_info_sanitised, filter_by="in_progress")
-    if charger_response['result'] != db_service_code_master.CHARGE_HISTORY_FOUND:
+    if charge_history_response['result'] != db_service_code_master.CHARGE_HISTORY_FOUND:
         contains_errors = True
         error_list.append(
             db_service_code_master.CHARGE_HISTORY_NOT_CHARGING)
     else:
-        id_charge_history_sanitised = charger_response['content'][0]['id']
+        id_charge_history_sanitised = charge_history_response['content'][0]['id']
 
      # 2.1: check if battery percentage is digit
     if battery_percentage_input.isdigit():

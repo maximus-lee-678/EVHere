@@ -4,6 +4,8 @@ import db_access.support_files.db_service_code_master as db_service_code_master
 import db_access.support_files.db_methods as db_methods
 
 # Other db_access imports
+import db_access.db_vehicle as db_vehicle
+import db_access.db_charger as db_charger
 import db_access.db_charge_history as db_charge_history
 
 
@@ -23,7 +25,7 @@ def add_charge_current(id_charge_history, percentage_current):
 
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:
-        return {'result':db_service_code_master.INTERNAL_ERROR}
+        return {'result': db_service_code_master.INTERNAL_ERROR}
 
     return {'result': db_service_code_master.CHARGE_CURRENT_CREATE_SUCCESS}
 
@@ -35,15 +37,11 @@ def get_charge_current_by_user_id_verbose(id_user_info_sanitised):
     Returns Dictionary with keys:\n
     <result> INTERNAL_ERROR, CHARGE_CURRENT_NOT_FOUND or CHARGE_CURRENT_FOUND.\n
     <content> (if <result> is CHARGE_CURRENT_FOUND) {Dictionary} containing charge current information.
-    \t{"vehicle_name", "vehicle_sn", "percentage_start", "percentage_current", "charger_name", 
-    \t"charger_latitude", "charger_longitude", "time_start", "last_updated"}
+    \t{"vehicle", "charger", "charge_history", "percentage_current"}
     """
 
     query = """
-    SELECT vi.name AS vehicle_name, vi.vehicle_sn,
-    ch.percentage_start, cc.percentage_current, 
-    c.name AS charger_name, c.latitude AS charger_latitude, c.longitude AS charger_longitude,
-    ch.time_start, cc.last_updated
+    SELECT cc.id, vi.id AS id_vehicle_info, c.id AS id_charger, ch.id AS id_charge_history, cc.percentage_current
     FROM charge_current AS cc
     LEFT JOIN charge_history AS ch ON ch.id=cc.id_charge_history
     LEFT JOIN vehicle_info AS vi ON vi.id=ch.id_vehicle_info
@@ -51,16 +49,34 @@ def get_charge_current_by_user_id_verbose(id_user_info_sanitised):
     WHERE ch.id_user_info=?
     """
     task = (id_user_info_sanitised,)
-    
+
     select = db_methods.safe_select(query=query, task=task, get_type='one')
     if not select['select_successful']:
         return {'result': db_service_code_master.INTERNAL_ERROR}
     if select['num_rows'] == 0:
         return {'result': db_service_code_master.CHARGE_CURRENT_NOT_FOUND}
-    
-    key_values = {"vehicle_name": select['content'][0], "vehicle_sn": select['content'][1], "percentage_start": select['content'][2],
-                   "percentage_current": select['content'][3], "charger_name": select['content'][4], "charger_latitude": select['content'][5],
-                   "charger_longitude": select['content'][6], "time_start": select['content'][7], "last_updated": select['content'][8]}
+
+    # get all vehicles hash map
+    vehicle_hash_map_response = db_vehicle.get_all_vehicles_hash_map()
+    if vehicle_hash_map_response['result'] != db_service_code_master.HASHMAP_SUCCESS:
+        return vehicle_hash_map_response
+
+    # get all chargers hash map
+    charger_hash_map_response = db_charger.get_all_chargers_hash_map()
+    if charger_hash_map_response['result'] != db_service_code_master.HASHMAP_SUCCESS:
+        return charger_hash_map_response
+
+    # get all charge history hash map
+    charge_history_hash_map_response = db_charge_history.get_all_charge_history_hash_map(
+        column_names=['time_start', 'percentage_start'])
+    if charge_history_hash_map_response['result'] != db_service_code_master.HASHMAP_SUCCESS:
+        return charge_history_hash_map_response
+
+    key_values = {"id": select['content'][0],
+                  "vehicle": vehicle_hash_map_response['content'][select['content'][1]],
+                  "charger": charger_hash_map_response['content'][select['content'][2]],
+                  "charge_history": charge_history_hash_map_response['content'][select['content'][3]],
+                  "percentage_current": select['content'][4]}
 
     return {'result': db_service_code_master.CHARGE_CURRENT_FOUND, 'content': key_values}
 

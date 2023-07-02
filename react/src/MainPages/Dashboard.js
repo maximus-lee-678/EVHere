@@ -18,13 +18,13 @@ export default function Dashboard() {
   const [timeElapsedString, setTimeElapsedString] = useState('');
 
   // Function that gets user's current charge. Called on page load, populates chargeCurrentDetails.
-  const fetchUserChargeCurrent = useCallback(async () =>  {
+  const fetchUserChargeCurrent = useCallback(async () => {
     const ResponseCurrent = await ChargeCurrentGet(userEmail);
 
     // result is boolean of status
     if (ResponseCurrent.status === 'success' && ResponseCurrent.data !== null) {
       setChargeCurrentDetails(ResponseCurrent.data);
-      setTimeElapsedString(GetDateDiffString(ResponseCurrent.data.time_start, DateTime.now().toISO()));
+      setTimeElapsedString(GetDateDiffString(ResponseCurrent.data.charge_history.time_start, DateTime.now().toISO()));
     }
   }, [userEmail]);
 
@@ -35,7 +35,7 @@ export default function Dashboard() {
   // Refresh timer every second (1 * 1000) ms
   useEffect(() => {
     setInterval(function () {
-      chargeCurrentDetails && setTimeElapsedString(GetDateDiffString(chargeCurrentDetails.time_start, DateTime.now().toISO()));
+      chargeCurrentDetails && setTimeElapsedString(GetDateDiffString(chargeCurrentDetails.charge_history.time_start, DateTime.now().toISO()));
     }, 1 * 1000);
   }, [chargeCurrentDetails]);
 
@@ -75,10 +75,10 @@ export default function Dashboard() {
           {/* Charging status */}
           {chargeCurrentDetails &&
             <ChargingCard elementName="Current Charging Status"
-              vName={chargeCurrentDetails.vehicle_name}
-              SN={chargeCurrentDetails.vehicle_sn}
+              vName={chargeCurrentDetails.vehicle.name}
+              SN={chargeCurrentDetails.vehicle.vehicle_sn}
               currPercent={chargeCurrentDetails.percentage_current + '%'}
-              startTime={FormatDateTime(chargeCurrentDetails.time_start)}
+              startTime={FormatDateTime(chargeCurrentDetails.charge_history.time_start)}
               timeElapsed={timeElapsedString} />}
 
           {/* Three boxes - charging history, favourites, map */}

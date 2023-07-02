@@ -29,6 +29,12 @@ ez_update(CONFIGURATION_ERROR, "Function not configured properly.")
 INTERNAL_ERROR = 2  # oh damn better call the programmers
 ez_update(INTERNAL_ERROR, "Something went wrong.")
 
+HASHMAP_SUCCESS = 99
+ez_update(HASHMAP_SUCCESS, "Loaded contents into hashmap.")
+
+HASHMAP_FAILURE = 98
+ez_update(HASHMAP_FAILURE, "Nothing to load into hashmap.")
+
 # user_info [100-199]
 USERNAME_INVALID_LENGTH = 100
 ez_update(USERNAME_INVALID_LENGTH, "Username field contains string of invalid length.")

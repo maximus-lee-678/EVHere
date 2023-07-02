@@ -4,7 +4,38 @@ import db_access.support_files.db_service_code_master as db_service_code_master
 import db_access.support_files.db_methods as db_methods
 
 # Other db_access imports
-#
+import db_access.db_universal as db_universal
+
+
+def get_all_chargers_hash_map(
+    column_names=['name', 'latitude', 'longitude', 'address', 'provider',
+                           'connectors', 'connector_types', 'online', 'kilowatts', 'twenty_four_hours', 'last_updated']
+):
+    """
+    Full:
+    SELECT c.id, c.name, c.latitude, c.longitude, c.address, c.provider, c.connectors,
+    GROUP_CONCAT(ct.name_short) AS connector_types, c.online, c.kilowatts, c.twenty_four_hours, c.last_updated
+    FROM charger AS c
+    LEFT JOIN charger_available_connector AS cac ON c.id=cac.id_charger
+    LEFT JOIN connector_type AS ct ON ct.id=cac.id_connector_type
+    GROUP BY c.id
+    """
+    column_sql_translations = {'id': 'c.id', 'name': 'c.name', 'latitude': 'c.latitude', 'longitude': 'c.longitude',
+                               'address': 'c.address', 'provider': 'c.provider', 'connectors': 'c.connectors',
+                               'connector_types': 'GROUP_CONCAT(ct.name_short) AS connector_types', 'online': 'c.online',
+                               'kilowatts': 'c.kilowatts', 'twenty_four_hours': 'c.twenty_four_hours', 'last_updated': 'c.last_updated'}
+
+    trailing_query = """
+    FROM charger AS c
+    LEFT JOIN charger_available_connector AS cac ON c.id=cac.id_charger
+    LEFT JOIN connector_type AS ct ON ct.id=cac.id_connector_type
+    LEFT JOIN favourited_chargers AS fc ON c.id=fc.id_charger
+    GROUP BY c.id
+    """
+
+    return db_universal.get_all_universal_hash_map(column_names=column_names,
+                                                   column_sql_translations=column_sql_translations,
+                                                   trailing_query=trailing_query)
 
 
 def get_all_chargers(user_id_sanitised):
@@ -18,6 +49,8 @@ def get_all_chargers(user_id_sanitised):
     \t{"id", "name", "latitude", "longitude", "address", "provider", "connectors", 
     "connector_types", "online", "kilowatts", "twenty_four_hours", "last_updated", "is_favourite"}
     """
+
+    get_all_chargers_hash_map()
 
     if user_id_sanitised is not None:
         query = """
@@ -53,18 +86,17 @@ def get_all_chargers(user_id_sanitised):
     if select['num_rows'] == 0:
         return {'result': db_service_code_master.CHARGER_NOT_FOUND}
 
-    key_values = []
     # transforming array to key-values
     if user_id_sanitised is not None:
-        for row in select['content']:
-            key_values.append({"id": row[0], "name": row[1], "latitude": row[2], "longitude": row[3], "address": row[4], "provider": row[5],
-                               "connectors": row[6], "connector_types": str(row[7]).split(sep=","), "online": row[8], "kilowatts": row[9],
-                               "twenty_four_hours": row[10], "last_updated": row[11], "is_favourite": row[12]})
+        key_values = [{"id": row[0], "name": row[1], "latitude": row[2], "longitude": row[3], "address": row[4], "provider": row[5],
+                       "connectors": row[6], "connector_types": str(row[7]).split(sep=","), "online": row[8], "kilowatts": row[9],
+                       "twenty_four_hours": row[10], "last_updated": row[11], "is_favourite": row[12]}
+                      for row in select['content']]
     else:
-        for row in select['content']:
-            key_values.append({"id": row[0], "name": row[1], "latitude": row[2], "longitude": row[3], "address": row[4], "provider": row[5],
-                               "connectors": row[6], "connector_types": str(row[7]).split(sep=","), "online": row[8], "kilowatts": row[9],
-                               "twenty_four_hours": row[10], "last_updated": row[11]})
+        key_values = [{"id": row[0], "name": row[1], "latitude": row[2], "longitude": row[3], "address": row[4], "provider": row[5],
+                       "connectors": row[6], "connector_types": str(row[7]).split(sep=","), "online": row[8], "kilowatts": row[9],
+                       "twenty_four_hours": row[10], "last_updated": row[11]}
+                      for row in select['content']]
 
     return {'result': db_service_code_master.CHARGER_FOUND,
             'type': db_service_code_master.CHARGER_WITH_FAVOURITE
@@ -99,10 +131,10 @@ def get_favourite_chargers(user_id_sanitised):
 
     # transforming array to key-values
     key_values = [{"id": row[0], "name": row[1],
-                           "latitude": row[2], "longitude": row[3], "address": row[4], "provider": row[5],
-                           "connectors": row[6], "online": row[7], "kilowatts": row[8],
-                           "twenty_four_hours": row[9], "last_updated": row[10]}
-                           for row in select['content']]
+                   "latitude": row[2], "longitude": row[3], "address": row[4], "provider": row[5],
+                   "connectors": row[6], "online": row[7], "kilowatts": row[8],
+                   "twenty_four_hours": row[9], "last_updated": row[10]}
+                  for row in select['content']]
 
     return {'result': db_service_code_master.CHARGER_FOUND, 'content': key_values}
 
@@ -131,7 +163,7 @@ def get_one_charger(id_charger_input):
         return {'result': db_service_code_master.INTERNAL_ERROR}
     if select['num_rows'] == 0:
         return {'result': db_service_code_master.CHARGER_NOT_FOUND}
-    
+
     # transforming row to key-values
     key_values = {"id": select['content'][0], "name": select['content'][1], "latitude": select['content'][2],
                   "longitude": select['content'][3], "address": select['content'][4], "provider": select['content'][5],

@@ -1,7 +1,8 @@
 import db_access.support_files.db_service_code_master as db_service_code_master
 
 error_scenarios = [db_service_code_master.CONFIGURATION_ERROR,
-                   db_service_code_master.INTERNAL_ERROR
+                   db_service_code_master.INTERNAL_ERROR,
+                   db_service_code_master.HASHMAP_FAILURE
                    ]
 
 
