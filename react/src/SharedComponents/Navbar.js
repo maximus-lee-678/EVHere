@@ -124,6 +124,19 @@ export default function Navbar(props) {
                     : "text-gray-800 hover:text-gray-600") +
                   " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                 }
+                href="/Profile"
+              >
+                Profile
+              </a>
+            </li>
+            <li>
+              <a
+                className={
+                  (props.transparent
+                    ? "lg:text-white lg:hover:text-gray-300 text-gray-800"
+                    : "text-gray-800 hover:text-gray-600") +
+                  " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                }
                 href="/AddChargingHistory"
               >
                 Start/Stop Charging

@@ -47,6 +47,7 @@ export default function App() {
         <Route exact path="/ChargingHistory" element={<ChargingHistory />} />
         <Route exact path="/AddNewVehicle" element={<Vehicles />} />
         <Route exact path="/AddChargingHistory" element={<AddChargingHistory />} />
+        <Route exact path="/Profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );

@@ -16,7 +16,7 @@ export function CardContent(props) {
 };
 
 export function CardButton(props) {
-    const { id, onClick, color, icon } = props;
+    const { id, onClick, color, icon, text } = props;
 
     return (
         <div className="flex justify-center items-center">
@@ -25,6 +25,7 @@ export function CardButton(props) {
                 onClick={() => onClick(id)}
             >
                 <i className={"fas fa-" + icon}></i>
+                <span className="ml-2">{text}</span>
             </button>
         </div>
     );
