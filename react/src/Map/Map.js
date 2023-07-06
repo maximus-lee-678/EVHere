@@ -8,13 +8,17 @@ import Toast, { toast } from '../SharedComponents/Toast';
 import { ChargerGetAllWithEmail, FavouriteChargerAdd, FavouriteChargerRemove } from '../API/API';
 
 // Leaflet imports
-import { Icon, divIcon, marker } from 'leaflet'
+import { Icon, LatLng, divIcon, icon, marker } from 'leaflet'
 import { MapContainer, TileLayer, useMap, useMapEvents, Marker, Popup, GeoJSON } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import markerIconPng from "./marker-icon.png";
 import markerIconFavouritePng from "./marker-icon-favourite.png";
 import geoJsonSubzone from "./2-planning-area.json";
 import geoJsonRegion from "./master-plan-2019-region-boundary-no-sea-geojson.json";
+
+//navigation import
+import Route from "./Route";
+import routeIconPng from "./route-icon.png"
 
 // This component renders a map centered on singapore. Pass in properties to change the kind of returns you get.
 //
@@ -34,6 +38,10 @@ export default function Map(props) {
 
     const userEmail = localStorage.getItem("user_email");
     const [allChargerInfo, setAllChargerInfo] = useState();
+
+    //const for navigation
+    const [sourceLocation, setSourceLocation] = useState({});
+    const [destinationLocation, setDestinationLocation] = useState({});
 
     // Function that loads all chargers. Called on page load, populates allChargerInfo.
     const fetchAllChargers = useCallback(async () => {
@@ -112,6 +120,8 @@ export default function Map(props) {
             // this is necessary for event handler to work, using allChargerInfo[i] directly causes it to go out of bound for some reason
             let id = allChargerInfo[i].id;
             let favourite = allChargerInfo[i].is_favourite;
+            let lat = allChargerInfo[i].latitude;
+            let lng = allChargerInfo[i].longitude;
 
             result.push(
                 <Marker position={[allChargerInfo[i].latitude, allChargerInfo[i].longitude]}
@@ -140,7 +150,9 @@ export default function Map(props) {
                             {allChargerInfo[i].is_favourite === 0 ? <i className="fas fa-heart" style={{ color: "#ffffff" }}></i> : <i className="fas fa-heart-broken" style={{ color: "#ffffff" }}></i>}
                             {allChargerInfo[i].is_favourite === 0 ? ' Add to favourites' : ' Remove favourite'}
                         </button>
-                        <button className="bg-green-400 hover:bg-green-900 px-3 py-2 rounded-full text-white">
+                        <button id={allChargerInfo[i].id}
+                            onClick={() => navigate(lat, lng)}
+                            className="bg-green-400 hover:bg-green-900 px-3 py-2 rounded-full text-white">
                             Go
                             <i className="fas fa-location-arrow pl-1"></i>
                         </button>
@@ -197,8 +209,44 @@ export default function Map(props) {
             return allChargerInfo && <div><GeoJSON data={geoJsonSubzone} key={Date.now()} /></div>;
         }
         else {                                     // Region Level
+            //if location allowed, set view as current location
+            navigator.geolocation.getCurrentPosition((position) => location(map, position.coords.latitude, position.coords.longitude));
+
             return <GeoJSON data={geoJsonRegion} key={Date.now()} />;
         }
+    }
+
+
+    function location(map, lat, lng) {
+
+        const center = new LatLng(lat, lng);
+
+        map.setView(center, 24);
+
+        console.log(center);
+
+        if (sourceLocation.lat != center.lat && sourceLocation.lng != center.lng) {
+            setSourceLocation(center);
+
+            //remove markers, then add new
+            for (var i = 0; i < mapMarkers.length; i++) {
+                map.removeLayer(mapMarkers[i]);
+            }
+
+            const newMarker = marker(center, {icon: new Icon({iconUrl: routeIconPng})});
+
+            mapMarkers.push(newMarker);
+            newMarker.addTo(map);
+        }   
+        
+    }
+
+    function navigate(destinationLat, destinationLng) {
+        console.log(destinationLat);
+        console.log(destinationLng);
+
+        setDestinationLocation(new LatLng(destinationLat, destinationLng));
+        console.log(destinationLocation);
     }
 
     return (
@@ -212,6 +260,7 @@ export default function Map(props) {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 {<OverlayRender />  /* Must be rendered as a component to be a considered descendant of MapContainer */}
+                <Route source={sourceLocation} destination={destinationLocation}/>
             </MapContainer>
         </>
     );
