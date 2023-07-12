@@ -48,6 +48,8 @@ export default function Recommendations() {
         return options;
     }
 
+    const [recommendationsOpen, setRecommendationsOpen] = React.useState(false);
+
     return (
         <div className="min-h-screen bg-gray-900 "
         >
@@ -57,15 +59,21 @@ export default function Recommendations() {
             <main>
                 <section className="w-full h-full">
                     <div className="relative container mx-auto px-4 h-full bg-gray-900">
-                        <div className="h-40">
+                        <div className="md:h-40 pt-16 pb-8">
                             <div className="flex content-center items-center justify-center h-full w-full font-semibold text-3xl text-white">Map</div>
                         </div>
-                        <div className="grid grid-rows-3 md:grid-cols-3 gap-0">
-                            <div className="bg-white row-span-1 px-7 md:col-span-1 md:h-[70vh]">
-                                <div className="mt-6 mb-5 md:h-24">
+                        <div className="md:grid md:grid-cols-3">
+                            <div className="bg-white px-7 md:col-span-1 md:h-[70vh] h-min py-3">
+                                <div className="md:mt-6 md:h-24 flex">
                                     <div className="flex content-center items-center justify-center h-full w-full font-semibold lg:text-2xl text-xl">Recommended</div>
+                                    <button className="md:hidden"
+                                    onClick={() => setRecommendationsOpen(!recommendationsOpen)}>
+                                        {
+                                            recommendationsOpen == true ? "Hide" : "Show"
+                                        }
+                                    </button>
                                 </div>
-                                <div className="mb-2">
+                                <div className={"mb-2 mt-6 md:block" + (recommendationsOpen ? " block rounded" : " hidden")}>
                                     <div className="lg:mb-12 mb-2">
                                         <label className="block uppercase text-gray-700 text-xs font-bold mb-2">
                                             Vehicle
