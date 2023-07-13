@@ -1,33 +1,77 @@
 # Universal imports
+import copy
 import db_access.support_files.db_helper_functions as db_helper_functions
 import db_access.support_files.db_service_code_master as db_service_code_master
 import db_access.support_files.db_methods as db_methods
+import db_access.db_universal as db_universal
 
 # Other db_access imports
-import db_access.db_universal as db_universal
 import db_access.db_connector_type as db_connector_type
 
+# Generics:
+column_sql_translations = {'id': 'id', 'id_user_info': 'id_user_info', 'name': 'name', 'model': 'model',
+                           'vehicle_sn': 'vehicle_sn', 'connector': 'id_connector_type', 'active': 'active'}
+column_names_all = ['id', 'id_user_info', 'name',
+                    'model', 'vehicle_sn', 'connector', 'active']
+trailing_query = """
+FROM vehicle_info
+"""
 
-def get_all_vehicles_hash_map(
-    column_names=['name', 'model', 'vehicle_sn', 'connector_type']
-):
-    """
-    Full:
-    SELECT vi.id, vi.name, vi.model, vi.vehicle_sn, ct.name_short AS connector_type 
-    FROM vehicle_info AS vi
-    LEFT JOIN connector_type AS ct ON vi.id_connector_type = ct.id
-    """
-    column_sql_translations = {'id': 'vi.id', 'name': 'vi.name', 'model': 'vi.model',
-                               'vehicle_sn': 'vi.vehicle_sn', 'connector_type': 'ct.name_short AS connector_type'}
 
-    trailing_query = """
-    FROM vehicle_info AS vi
-    LEFT JOIN connector_type AS ct ON vi.id_connector_type = ct.id
+def get_vehicle_hash_map(column_names=None, where_array=None):
+    """
+    \tcolumn_names >> any combination of ['id', 'id_user_info', 'name', 'model', 'vehicle_sn', 'connector', 'active']\n
+    \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
+    Returns Dictionary with keys:\n
+    <result> INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY or HASHMAP_GENERIC_SUCCESS.\n
+    <content> (if <result> is HASHMAP_GENERIC_SUCCESS) {Dictionary} containing table information.\n
+    \t{"id": {...key-values...}}
     """
 
-    return db_universal.get_all_universal_hash_map(column_names=column_names,
-                                                   column_sql_translations=column_sql_translations,
-                                                   trailing_query=trailing_query)
+    if column_names == None:
+        column_names = copy.deepcopy(column_names_all)
+
+    vehicle_hash_map_out = db_universal.get_universal_hash_map(column_names=column_names,
+                                               column_sql_translations=column_sql_translations,
+                                               trailing_query=trailing_query,
+                                               where_array=where_array)
+    
+    if 'connector' in column_names:
+        connector_type_hash_map_out = db_connector_type.get_connector_type_hash_map()
+
+        for value in vehicle_hash_map_out['content'].values():
+            db_helper_functions.update_dict_key(
+                dict=value, key_to_update='connector', new_key_name=None, new_key_value=connector_type_hash_map_out['content'][value['connector']])
+    
+    return vehicle_hash_map_out
+
+
+def get_vehicle_dict(column_names=None, where_array=None):
+    """
+    \tcolumn_names >> any combination of ['id', 'id_user_info', 'name', 'model', 'vehicle_sn', 'connector', 'active']\n
+    \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
+    Returns Dictionary with keys:\n
+    <result> INTERNAL_ERROR, SELECT_GENERIC_EMPTY or SELECT_GENERIC_SUCCESS.\n
+    <content> (if <result> is SELECT_GENERIC_SUCCESS) {Dictionary} containing table information.\n
+    \t{{...key-values...}}
+    """
+
+    if column_names == None:
+        column_names = copy.deepcopy(column_names_all)
+
+    vehicle_dict_out = db_universal.get_universal_dict(column_names=column_names,
+                                                       column_sql_translations=column_sql_translations,
+                                                       trailing_query=trailing_query,
+                                                       where_array=where_array)
+
+    if 'connector' in column_names:
+        connector_type_hash_map_out = db_connector_type.get_connector_type_hash_map()
+
+        for row in vehicle_dict_out['content']:
+            db_helper_functions.update_dict_key(
+                dict=row, key_to_update='connector', new_key_name=None, new_key_value=connector_type_hash_map_out['content'][row['connector']])
+
+    return vehicle_dict_out
 
 
 def add_vehicle(id_user_info_sanitised, name_input, model_input, sn_input, connector_input):
@@ -69,14 +113,18 @@ def add_vehicle(id_user_info_sanitised, name_input, model_input, sn_input, conne
         sn_sanitised = db_helper_functions.string_sanitise(sn_input)
 
     # 4.1: check if connector exists
-    connector_response = db_connector_type.get_connector_id_by_name_short(
-        connector_input)
-    if connector_response['result'] != db_service_code_master.CONNECTOR_FOUND:
+    connector_type_dict_out = db_connector_type.get_connector_type_dict(column_names=['id'],
+                                                                        where_array=[['id', connector_input]])
+    # check if empty or error
+    if connector_type_dict_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
         contains_errors = True
-        error_list.append(connector_response['result'])
-    # 4.2: store connector id
+        error_list.append(db_service_code_master.CONNECTOR_NOT_FOUND)
+    elif connector_type_dict_out['result'] == db_service_code_master.INTERNAL_ERROR:
+        contains_errors = True
+        error_list.append(connector_type_dict_out['result'])
+    # 4.2: store connector id (sanitised)
     else:
-        connector_id = connector_response['content']
+        connector_id = connector_type_dict_out['content'][0]['id']
 
     if contains_errors:
         return {'result': db_service_code_master.VEHICLE_ADD_FAILURE, 'reason': error_list}
@@ -130,60 +178,13 @@ def get_active_vehicle_by_user_id(id_user_info_sanitised):
     \t{"id", "name", "model", "vehicle_sn", "connector_type"}
     """
 
-    query = """
-    SELECT vi.id, vi.name, vi.model, vi.vehicle_sn, ct.name_short AS connector_type FROM vehicle_info AS vi
-    LEFT JOIN connector_type AS ct ON vi.id_connector_type = ct.id
-    WHERE vi.id_user_info=? AND vi.active=1
-    """
-    task = (id_user_info_sanitised,)
-
-    select = db_methods.safe_select(
-        query=query, task=task, get_type='all')
-    if not select['select_successful']:
-        return {'result': db_service_code_master.INTERNAL_ERROR}
-    if select['num_rows'] == 0:
+    vehicle_dict_out = get_vehicle_dict(column_names=['id', 'name', 'model', 'vehicle_sn', 'connector'],
+                                        where_array=[['id_user_info', id_user_info_sanitised], ['active', '1']])
+    # check if empty or error
+    if vehicle_dict_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
         return {'result': db_service_code_master.VEHICLE_NOT_FOUND}
-
-    # transforming array to key-values
-    key_values = [{"id": row[0], "name": row[1], "model": row[2],
-                   "vehicle_sn": row[3], "connector_type": row[4]}
-                  for row in select['content']]
+    if vehicle_dict_out['result'] == db_service_code_master.INTERNAL_ERROR:
+        return vehicle_dict_out
 
     return {'result': db_service_code_master.VEHICLE_FOUND,
-            'content': key_values}
-
-
-def get_vehicle_by_id(id_vehicle_input):
-    """
-    Attempts to get an ACTIVE vehicle for a given vehicle id.\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, VEHICLE_NOT_FOUND or VEHICLE_FOUND.\n
-    <content> (if <result> is VEHICLE_FOUND) {Dictionary} containing vehicle information.\n
-    \t"keys":\n
-    \t{"id", "name", "model", "vehicle_sn", "connector_type"}
-    """
-
-    # sanitise input
-    vehicle_id_sanitised = db_helper_functions.string_sanitise(
-        id_vehicle_input)
-
-    query = """
-    SELECT vi.id, vi.name, vi.model, vi.vehicle_sn, ct.name_short AS connector_type FROM vehicle_info AS vi
-    LEFT JOIN connector_type AS ct ON vi.id_connector_type = ct.id
-    WHERE vi.id=? AND vi.active=1
-    """
-    task = (vehicle_id_sanitised,)
-
-    select = db_methods.safe_select(
-        query=query, task=task, get_type='one')
-    if not select['select_successful']:
-        return {'result': db_service_code_master.INTERNAL_ERROR}
-    if select['num_rows'] == 0:
-        return {'result': db_service_code_master.VEHICLE_NOT_FOUND}
-
-    # transforming row to key-values
-    key_values = {"id": select['content'][0], "name": select['content'][1], "model": select['content'][2],
-                  "vehicle_sn": select['content'][3], "connector_type": select['content'][4]}
-
-    return {'result': db_service_code_master.VEHICLE_FOUND,
-            'content': key_values}
+            'content': vehicle_dict_out['content']}

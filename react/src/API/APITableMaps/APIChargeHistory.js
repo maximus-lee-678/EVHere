@@ -22,3 +22,8 @@ export const ChargeHistoryGet = async (email, filter) => {
     return GetResponse('/api/get_charge_history',
         GenerateHeader({ email: email, filter: filter }));
 }
+
+export const ChargeHistoryActiveGet = async (email) => {
+    return GetResponse('/api/get_charge_history_active',
+        GenerateHeader({ email: email }));
+}

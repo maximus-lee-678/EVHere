@@ -12,7 +12,7 @@ export default function AddCharge() {
     const userEmail = localStorage.getItem("user_email");
 
     const [selectedVehicleId, setSelectedVehicleId] = useState(null);
-    const [selectedVehicleConnector, setSelectedVehicleConnector] = useState(null);
+    const [selectedVehicleConnectorId, setSelectedVehicleConnectorId] = useState(null);
     const [selectedCharger, setSelectedCharger] = useState('');
     let firstCharger;
     const [batteryPercentage, setBatteryPercentage] = useState('');
@@ -54,7 +54,7 @@ export default function AddCharge() {
     // once userVehicleInfo loaded, update selectedConnector and Id
     useEffect(() => {
         userVehicleInfo && setSelectedVehicleId(userVehicleInfo[0].id);
-        userVehicleInfo && setSelectedVehicleConnector(userVehicleInfo[0].connector_type);
+        userVehicleInfo && setSelectedVehicleConnectorId(userVehicleInfo[0].connector.id);
     }, [userVehicleInfo]);
 
     // Component that formats vehicle information for display in dropdown. Reads from userVehicleInfo.
@@ -65,7 +65,7 @@ export default function AddCharge() {
         for (var i = 0; i < userVehicleInfo.length; i++) {
             options.push(
                 <option className="border-0 px-3 py-3 text-gray-700" key={userVehicleInfo[i].id}
-                    value={userVehicleInfo[i].id} data-connector-type={userVehicleInfo[i].connector_type}>
+                    value={userVehicleInfo[i].id} data-connector-id={userVehicleInfo[i].connector.id}>
                     {userVehicleInfo[i].name} ({userVehicleInfo[i].vehicle_sn})
                 </option>
             );
@@ -81,9 +81,18 @@ export default function AddCharge() {
         let options = [], hasSetInitial = false;
 
         for (var i = 0; i < allChargerInfo.length; i++) {
-            let connector_types_array = allChargerInfo[i].connector_types;
+            let connectors_json = allChargerInfo[i].connector_info;
 
-            if (!connector_types_array.includes(selectedVehicleConnector)) {
+            let flag;
+            for (var j = 0; j < connectors_json.length; j++) {
+                flag = false;
+
+                if (connectors_json[j].id === selectedVehicleConnectorId) {
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag) {
                 continue;
             }
 
@@ -130,7 +139,7 @@ export default function AddCharge() {
                     options={userVehicleInfo && <VehicleChoices />}
                     onChange={(event) => {
                         setSelectedVehicleId(event.target.value);
-                        setSelectedVehicleConnector(event.target.selectedOptions[0].getAttribute('data-connector-type'));
+                        setSelectedVehicleConnectorId(event.target.selectedOptions[0].getAttribute('data-connector-id'));
                     }}
                 />
 

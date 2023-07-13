@@ -5,11 +5,6 @@ export const VehicleInfoGetByUser = async (email) => {
         GenerateHeader({ email: email }));
 }
 
-export const VehicleInfoGetById = async (IDVehicle) => {
-    return GetResponse('/api/get_vehicle_by_id',
-        GenerateHeader({ id_vehicle: IDVehicle }));
-}
-
 export const VehicleInfoAdd = async (email, vehicleName, vehicleModel, vehicleSN, vehicleConnector) => {
     return GetResponse('/api/add_vehicle',
         GenerateHeader({

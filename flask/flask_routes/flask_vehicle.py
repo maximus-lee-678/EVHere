@@ -37,22 +37,7 @@ def fun_get_user_vehicles():
                                                                                db_service_code_master.VEHICLE_NOT_FOUND])
 
 
-# Route: Get vehicle by id
-@flask_vehicle.route('/api/get_vehicle_by_id', methods=['POST'])
-def fun_get_vehicle_by_id():
-    id_vehicle = request.json['id_vehicle']
-
-    # get user vehicles actual
-    vehicle_response = db_vehicle.get_vehicle_by_id(
-        id_vehicle_input=id_vehicle)
-
-    return flask_helper_functions.format_for_endpoint(db_dictionary=vehicle_response,
-                                                      success_scenarios_array=[db_service_code_master.VEHICLE_FOUND,
-                                                                               db_service_code_master.VEHICLE_NOT_FOUND])
-
 # Route: Add new vehicle
-
-
 @flask_vehicle.route('/api/add_vehicle', methods=['POST'])
 def fun_add_vehicle():
     email = request.json['email']

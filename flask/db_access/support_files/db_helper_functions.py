@@ -138,3 +138,17 @@ def password_check(password, password_hashed):
     password_bytes = password.encode('utf-8')
 
     return bcrypt.checkpw(password_bytes, password_hashed)
+
+
+def update_dict_key(dict, key_to_update, new_key_name, new_key_value):
+    """
+    Updates a dictionary's key and value.\n
+    No return because dictionaries are pass by reference.
+    """
+
+    # update key value
+    dict.update({key_to_update: new_key_value})
+
+    # update key name (if needed)
+    if new_key_name != None:
+        dict[new_key_name] = dict.pop(key_to_update)

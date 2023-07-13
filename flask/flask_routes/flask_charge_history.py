@@ -62,7 +62,7 @@ def fun_finish_charge_history():
                                                       success_scenarios_array=[db_service_code_master.CHARGE_HISTORY_FINISH_SUCCESS])
 
 
-# Route: Get charge history
+# Route: Get charge history (all)
 @flask_charge_history.route('/api/get_charge_history', methods=['POST'])
 def fun_get_charge_history():
     email = request.json['email']
@@ -80,5 +80,28 @@ def fun_get_charge_history():
     charge_history_response = db_charge_history.get_charge_history_by_user_id(id_user_info_sanitised=id_user_info, filter_by=filter)
 
     return flask_helper_functions.format_for_endpoint(db_dictionary=charge_history_response,
+                                                      success_scenarios_array=[db_service_code_master.CHARGE_HISTORY_FOUND,
+                                                                               db_service_code_master.CHARGE_HISTORY_NOT_FOUND])
+
+
+
+# Route: Get charge history (currently charging)
+@flask_charge_history.route('/api/get_charge_history_active', methods=['POST'])
+def fun_get_charge_current():
+    email = request.json['email']
+
+    # get user id
+    user_info_response = db_user_info.get_user_id_by_email(email_input=email)
+    if user_info_response['result'] != db_service_code_master.ACCOUNT_FOUND:
+        return flask_helper_functions.format_for_endpoint(db_dictionary=user_info_response,
+                                                          success_scenarios_array=[db_service_code_master.ACCOUNT_FOUND])
+    # store user id
+    id_user_info = user_info_response['content']
+
+    # get charge current actual
+    charge_current_response = db_charge_history.get_charge_history_active(
+        id_user_info_sanitised=id_user_info)
+
+    return flask_helper_functions.format_for_endpoint(db_dictionary=charge_current_response,
                                                       success_scenarios_array=[db_service_code_master.CHARGE_HISTORY_FOUND,
                                                                                db_service_code_master.CHARGE_HISTORY_NOT_FOUND])

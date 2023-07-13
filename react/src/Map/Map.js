@@ -115,7 +115,7 @@ export default function Map(props) {
 
             result.push(
                 <Marker position={[allChargerInfo[i].latitude, allChargerInfo[i].longitude]}
-                    icon={allChargerInfo[i].is_favourite === 0 ?
+                    icon={allChargerInfo[i].is_favourite === false ?
                         new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -30] }) :
                         new Icon({ iconUrl: markerIconFavouritePng, iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -30] })}
                     key={allChargerInfo[i].id}>
@@ -133,12 +133,12 @@ export default function Map(props) {
                         [24/7] {allChargerInfo[i].twenty_four_hours}
                         <br />
                         <button id={allChargerInfo[i].id}
-                            onClick={() => handleFavourite(id, favourite === 0 ? 'add' : 'remove')}
-                            className={(allChargerInfo[i].is_favourite === 0 ? "hover:bg-red-900" : "hover:bg-red-300")
+                            onClick={() => handleFavourite(id, favourite === false ? 'add' : 'remove')}
+                            className={(allChargerInfo[i].is_favourite === false ? "hover:bg-red-900" : "hover:bg-red-300")
                                 + " bg-red-400 px-3 py-2 mr-2 rounded-full text-white"}
                         >
-                            {allChargerInfo[i].is_favourite === 0 ? <i className="fas fa-heart" style={{ color: "#ffffff" }}></i> : <i className="fas fa-heart-broken" style={{ color: "#ffffff" }}></i>}
-                            {allChargerInfo[i].is_favourite === 0 ? ' Add to favourites' : ' Remove favourite'}
+                            {allChargerInfo[i].is_favourite === false ? <i className="fas fa-heart" style={{ color: "#ffffff" }}></i> : <i className="fas fa-heart-broken" style={{ color: "#ffffff" }}></i>}
+                            {allChargerInfo[i].is_favourite === false ? ' Add to favourites' : ' Remove favourite'}
                         </button>
                         <button className="bg-green-400 hover:bg-green-900 px-3 py-2 rounded-full text-white">
                             Go

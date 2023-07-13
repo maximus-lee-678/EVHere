@@ -132,9 +132,11 @@ def safe_select(query, task, get_type):
         else:
             return_dict = {'select_successful': False}
 
-    except sqlite3.OperationalError as err:
+        # print('Query is: %s' % query, file=sys.stderr)
+    except sqlite3.Error as err:
         print('SQLite error: %s' % (' '.join(err.args)), file=sys.stderr)
         print('Exception class is: %s' % err.__class__, file=sys.stderr)
+        # print('Query is: %s' % query, file=sys.stderr)
 
         return_dict = {'select_successful': False}
 
@@ -170,7 +172,8 @@ def safe_transaction(query, task):
     except sqlite3.OperationalError as err:
         print('SQLite error: %s' % (' '.join(err.args)), file=sys.stderr)
         print('Exception class is: %s' % err.__class__, file=sys.stderr)
-
+        print('Query is: %s' % query, file=sys.stderr)
+        
         return_dict = {'transaction_successful': False}
 
     finally:

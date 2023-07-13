@@ -16,12 +16,12 @@ export default function Vehicles() {
     const [vehicleName, setVehicleName] = useState('');
     const [vehicleModel, setVehicleModel] = useState('');
     const [vehicleSN, setVehicleSN] = useState('');
-    const [selectedConnector, setSelectedConnector] = useState(null);
+    const [selectedConnectorId, setSelectedConnectorId] = useState(null);
     function clearFormFields() {
         setVehicleName('');
         setVehicleModel('');
         setVehicleSN('');
-        setSelectedConnector(connectorInfo[0].name_short);
+        setSelectedConnectorId(connectorInfo[0].id);
     }
 
     const [connectorInfo, setConnectorInfo] = useState();
@@ -65,7 +65,7 @@ export default function Vehicles() {
 
     // once connectorInfo loaded, update selectedConnector
     useEffect(() => {
-        connectorInfo && setSelectedConnector(connectorInfo[0].name_short);
+        connectorInfo && setSelectedConnectorId(connectorInfo[0].id);
     }, [connectorInfo]);
 
     // Component that formats vehicle information for display in main page. Reads from userVehicleInfo.
@@ -82,7 +82,7 @@ export default function Vehicles() {
                             <div>
                                 <div>Model: {userVehicleInfo[i].model}</div>
                                 <div>S/N: {userVehicleInfo[i].vehicle_sn}</div>
-                                <div>Connector: {userVehicleInfo[i].connector_type}</div>
+                                <div>Connector: {userVehicleInfo[i].connector.name_connector} ({userVehicleInfo[i].connector.name_short})</div>
                             </div>
                         </CardContent>
                     </div>
@@ -110,7 +110,7 @@ export default function Vehicles() {
     async function handleCreate(e) {
         e.preventDefault();
 
-        const response = await VehicleInfoAdd(userEmail, vehicleName, vehicleModel, vehicleSN, selectedConnector);
+        const response = await VehicleInfoAdd(userEmail, vehicleName, vehicleModel, vehicleSN, selectedConnectorId);
 
         // result is boolean of status
         if (response.status === 'success') {
@@ -196,9 +196,9 @@ export default function Vehicles() {
                     />
 
                     <FormInputSelect elementName="Connector Type" id="connector-type"
-                        value={(connectorInfo && selectedConnector) || ""}
+                        value={(connectorInfo && selectedConnectorId) || ""}
                         options={connectorInfo && <ConnectorChoices />}
-                        onChange={(event) => setSelectedConnector(event.target.value)}
+                        onChange={(event) => setSelectedConnectorId(event.target.key)}
                     />
 
                     <FormButton elementName="Add new Vehicle" />

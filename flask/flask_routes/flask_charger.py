@@ -32,12 +32,12 @@ def fun_get_all_chargers():
 
         # retrieve charger actual
         charger_response = db_charger.get_all_chargers(
-            user_id_sanitised=id_user_info)
+            id_user_info_sanitised=id_user_info)
     
     # if GET, no email, and by extension user id, is specified
     else:
         # retrieve charger actual 2
-        charger_response = db_charger.get_all_chargers(user_id_sanitised=None)
+        charger_response = db_charger.get_all_chargers(id_user_info_sanitised=None)
 
     return flask_helper_functions.format_for_endpoint(db_dictionary=charger_response,
                                                     success_scenarios_array=[db_service_code_master.CHARGER_FOUND,

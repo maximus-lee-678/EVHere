@@ -9,7 +9,6 @@ import db_access.db_favourite_charger as db_favourite_charger
 
 # Other db_access imports
 import db_access.db_user_info as db_user_info
-import db_access.db_charger as db_charger
 
 
 flask_favourite_charger = Blueprint(
@@ -30,11 +29,11 @@ def fun_get_favourite_chargers():
     id_user_info = user_info_response['content']
 
     # retrieve favourite chargers actual
-    favourite_charger_response = db_charger.get_favourite_chargers(user_id_sanitised=id_user_info)
+    favourite_charger_response = db_favourite_charger.get_user_favourite_chargers(id_user_info_sanitised=id_user_info)
 
     return flask_helper_functions.format_for_endpoint(db_dictionary=favourite_charger_response,
-                                                    success_scenarios_array=[db_service_code_master.CHARGER_FOUND,
-                                                                             db_service_code_master.CHARGER_NOT_FOUND])
+                                                    success_scenarios_array=[db_service_code_master.FAVOURITE_CHARGERS_NOT_FOUND,
+                                                                             db_service_code_master.FAVOURITE_CHARGERS_FOUND])
 
 
 # Route: Add favourite charger

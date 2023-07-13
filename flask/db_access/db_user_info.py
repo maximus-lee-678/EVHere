@@ -1,10 +1,59 @@
 # Universal imports
+import copy
 import db_access.support_files.db_helper_functions as db_helper_functions
 import db_access.support_files.db_service_code_master as db_service_code_master
 import db_access.support_files.db_methods as db_methods
+import db_access.db_universal as db_universal
 
 # Other db_access imports
 #
+
+# Generics:
+column_sql_translations = {'id': 'id', 'username': 'username', 'password': 'password', 'email': 'email',
+                           'full_name': 'full_name', 'phone_no': 'phone_no', 'created_at': 'created_at', 'modified_at': 'modified_at'}
+column_names_all = ['id', 'username', 'password', 'email',
+                'full_name', 'phone_no', 'created_at', 'modified_at']
+trailing_query = """
+FROM user_info
+"""
+
+
+def get_user_info_hash_map(column_names=None, where_array=None):
+    """
+    \tcolumn_names >> any combination of ['id', 'username', 'password', 'email', 'full_name', 'phone_no', 'created_at', 'modified_at']\n
+    \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
+    Returns Dictionary with keys:\n
+    <result> INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY or HASHMAP_GENERIC_SUCCESS.\n
+    <content> (if <result> is HASHMAP_GENERIC_SUCCESS) {Dictionary} containing table information.\n
+    \t{"id": {...key-values...}}
+    """
+
+    if column_names == None:
+        column_names = copy.deepcopy(column_names_all)
+
+    return db_universal.get_universal_hash_map(column_names=column_names,
+                                               column_sql_translations=column_sql_translations,
+                                               trailing_query=trailing_query,
+                                               where_array=where_array)
+
+
+def get_user_info_dict(column_names=None, where_array=None):
+    """
+    \tcolumn_names >> any combination of ['id', 'username', 'password', 'email', 'full_name', 'phone_no', 'created_at', 'modified_at']\n
+    \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
+    Returns Dictionary with keys:\n
+    <result> INTERNAL_ERROR, SELECT_GENERIC_EMPTY or SELECT_GENERIC_SUCCESS.\n
+    <content> (if <result> is SELECT_GENERIC_SUCCESS) {Dictionary} containing table information.\n
+    \t{{...key-values...}}
+    """
+
+    if column_names == None:
+        column_names = copy.deepcopy(column_names_all)
+
+    return db_universal.get_universal_dict(column_names=column_names,
+                                           column_sql_translations=column_sql_translations,
+                                           trailing_query=trailing_query,
+                                           where_array=where_array)
 
 
 def create_user(username_input, password_input, email_input, full_name_input, phone_no_input):
@@ -114,26 +163,25 @@ def login_user(email_input, password_input):
     email_sanitised = db_helper_functions.string_sanitise(email_input)
 
     # 2.1: get first row of email, if any.
-    query = 'SELECT password FROM user_info WHERE email=?'
-    task = (email_sanitised,)
-
-    select = db_methods.safe_select(query=query, task=task, get_type='one')
-    if not select['select_successful']:
-        return {'result': db_service_code_master.INTERNAL_ERROR}
-    if select['num_rows'] == 0:
+    user_info_dict_out = get_user_info_dict(column_names=['password'],
+                                            where_array=[['email', email_sanitised]])
+    # check if error
+    if user_info_dict_out['result'] == db_service_code_master.INTERNAL_ERROR:
+        return user_info_dict_out
+    # check if empty
+    if user_info_dict_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
         return {'result': db_service_code_master.LOGIN_FAILURE, 'reason': [db_service_code_master.EMAIL_PASSWORD_INVALID]}
     # 2.2: obtain account password hash
-    password_hash_string = select['content'][0]
+    password_hash_string = user_info_dict_out['content'][0]['password']
     # 2.3: check if passwords match
     if db_helper_functions.password_check(password_input, password_hash_string):
         return {'result': db_service_code_master.LOGIN_SUCCESS}
     else:
         return {'result': db_service_code_master.LOGIN_FAILURE, 'reason': [db_service_code_master.EMAIL_PASSWORD_INVALID]}
 
-
 def get_user_id_by_email(email_input):
     """
-    Takes an input email verifies that it exists in the database.\n
+    Takes an input email and verifies that it exists in the database.\n
     Returns Dictionary with keys:\n
     <result> INTERNAL_ERROR, ACCOUNT_NOT_FOUND or ACCOUNT_FOUND.\n
     <content> (if <result> is ACCOUNT_FOUND) =Value= containing user_id.
@@ -143,13 +191,13 @@ def get_user_id_by_email(email_input):
     email_sanitised = db_helper_functions.string_sanitise(email_input)
 
     # get user_id from email
-    query = 'SELECT id FROM user_info WHERE email=?'
-    task = (email_sanitised,)
-
-    select = db_methods.safe_select(query=query, task=task, get_type='one')
-    if not select['select_successful']:
-        return {'result': db_service_code_master.INTERNAL_ERROR}
-    if select['num_rows'] == 0:
+    user_info_dict_out = get_user_info_dict(column_names=['id'],
+                                            where_array=[['email', email_sanitised]])
+    # check if error
+    if user_info_dict_out['result'] == db_service_code_master.INTERNAL_ERROR:
+        return user_info_dict_out
+    # check if empty
+    if user_info_dict_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
         return {'result': db_service_code_master.ACCOUNT_NOT_FOUND}
 
-    return {"result": db_service_code_master.ACCOUNT_FOUND, "content": select['content'][0]}
+    return {"result": db_service_code_master.ACCOUNT_FOUND, "content": user_info_dict_out['content'][0]['id']}
