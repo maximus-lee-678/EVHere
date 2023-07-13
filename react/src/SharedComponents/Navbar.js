@@ -28,8 +28,8 @@ export default function Navbar(props) {
     <nav
       className={
         (props.transparent
-          ? "top-0 absolute z-50 w-full"
-          : "relative shadow-lg bg-white shadow-lg") +
+          ? "top-0 absolute z-[1001] w-full" //z index 1001 to make navbar above map controls
+          : "relative shadow-lg bg-white") +
         " flex flex-wrap items-center justify-between px-2 py-3 "
       }
     >
@@ -59,7 +59,7 @@ export default function Navbar(props) {
         </div>
         <div
           className={
-            "lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none" +
+            "lg:flex flex-grow items-center bg-red-100 lg:bg-transparent lg:shadow-none" +
             (navbarOpen ? " block rounded shadow-lg" : " hidden")
           }
         >

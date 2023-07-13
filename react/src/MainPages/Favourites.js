@@ -60,7 +60,7 @@ export default function Favourites() {
 
             result.push(
                 <div className="lg:flex py-4 lg:px-10 px-3 bg-white rounded-lg grid grid-rows-4" key={id}>
-                    <div className="w-4/5 row-span-3">
+                    <div className="w-full md:w-4/5 row-span-3">
                         <CardContent elementName={favouriteChargerInfo[i].name}>
                             <div><span className="uppercase font-semibold text-sm">Provider:</span> {favouriteChargerInfo[i].provider}</div>
                             <div><span className="uppercase font-semibold text-sm">Power:</span> {favouriteChargerInfo[i].kilowatts || 0} kW</div>
@@ -93,7 +93,7 @@ export default function Favourites() {
                         <div className="h-40">
                             <div className="flex content-center items-center justify-center h-full w-full font-semibold text-3xl text-white">Your Favourite Chargers</div>
                         </div>
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid md:grid-cols-2 gap-4">
                             {favouriteChargerInfo && <FormatFavourites />}
                         </div>
                     </div>
