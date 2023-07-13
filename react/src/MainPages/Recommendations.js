@@ -69,7 +69,9 @@ export default function Recommendations() {
                                     <button className="md:hidden"
                                     onClick={() => setRecommendationsOpen(!recommendationsOpen)}>
                                         {
-                                            recommendationsOpen == true ? "Hide" : "Show"
+                                            
+                                            //recommendationsOpen == true ? "Hide" : "Show"
+                                             <i className="fas fa-angle-down"></i>
                                         }
                                     </button>
                                 </div>

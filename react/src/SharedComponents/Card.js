@@ -25,7 +25,7 @@ export function CardButton(props) {
                 onClick={() => onClick(id)}
             >
                 <i className={"fas fa-" + icon}></i>
-                <span className="ml-2">{text}</span>
+                <span className={text != null ? "ml-2" : ""}>{text}</span>
             </button>
         </div>
     );
