@@ -1,0 +1,4 @@
+name_short,name_long,name_connector
+AC,Alternating Current,J1772
+DC,Direct Current,Type 2
+Dual,AC/DC,CCS

@@ -13,8 +13,11 @@ http-proxy-middleware
 tailwindcss
 leaflet 
 react-leaflet
+leaflet-routing-machine
 react-toastify
 chart.js
+luxon
+
 <recommended to run if new packages added>
 npm update
 

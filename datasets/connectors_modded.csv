@@ -1,4 +1,4 @@
 id,name_short,name_long,name_connector
-fd4d83a8-4f1f-4143-ae90-5c4cc2c913d9,AC,Alternating Current,J1772
-278328f8-570f-4c7d-ae38-dfd3b10a5664,DC,Direct Current,Type 2
-26cfd98e-eeac-41e8-94a4-0b577e95c592,Dual,AC/DC,CCS
+42ad1d26-5f9e-40a3-a136-0c601ea749c8,AC,Alternating Current,J1772
+b61c896b-fa08-4cd9-b197-3b761fea353e,DC,Direct Current,Type 2
+806bd892-8348-4ac0-bf85-783cfdfa04ce,Dual,AC/DC,CCS

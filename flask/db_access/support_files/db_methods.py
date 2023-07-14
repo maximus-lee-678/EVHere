@@ -32,9 +32,17 @@ def touch_database():
         to_db = [(i['id'], i['name'], i['latitude'], i['longitude'], i['address'], i['provider'],
                   i['connectors'], i['online'], i['kilowatts'], i['twenty_four_hours'], i['last_updated']) for i in dict_reader]
 
+        # upcoming
+        # to_db = [(i['id'], i['name'], i['latitude'], i['longitude'], i['address'], i['currently_open'],
+        #           i['pv_current_in'], i['pv_energy_level'], i['rate_current'], i['rate_predicted'], i['active'], i['last_updated']) for i in dict_reader]
+
     # Write charger details to database
     cursor.executemany(
         "INSERT INTO charger VALUES (?,?,?,?,?,?,?,?,?,?,?)", to_db)
+
+    # upcoming
+    # cursor.executemany(
+    #     "INSERT INTO charger VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", to_db)
 
     # Read connector data, write to variable
     with open(DEFAULT_CONNECTOR_PATH, 'r', encoding='UTF-8') as file:
@@ -53,9 +61,17 @@ def touch_database():
         to_db = [(i['id'], i['id_charger'], i['id_connector_type'])
                  for i in dict_reader]
 
+        # upcoming
+        # to_db = [(i['id'], i['id_charger'], i['id_connector_type'], i['in_use'], i['output_current'])
+        #          for i in dict_reader]
+
     # Write connector details to database
     cursor.executemany(
         "INSERT INTO charger_available_connector VALUES (?,?,?)", to_db)
+
+    # upcoming
+    # cursor.executemany(
+    #     "INSERT INTO charger_available_connector VALUES (?,?,?,?,?)", to_db)
 
     conn.commit()
     close_connection(conn)
@@ -173,7 +189,7 @@ def safe_transaction(query, task):
         print('SQLite error: %s' % (' '.join(err.args)), file=sys.stderr)
         print('Exception class is: %s' % err.__class__, file=sys.stderr)
         print('Query is: %s' % query, file=sys.stderr)
-        
+
         return_dict = {'transaction_successful': False}
 
     finally:
