@@ -223,8 +223,6 @@ export default function Map(props) {
 
         map.setView(center, 24);
 
-        console.log(center);
-
         if (sourceLocation.lat != center.lat && sourceLocation.lng != center.lng) {
             setSourceLocation(center);
 
@@ -233,7 +231,7 @@ export default function Map(props) {
                 map.removeLayer(mapMarkers[i]);
             }
 
-            const newMarker = marker(center, {icon: new Icon({iconUrl: routeIconPng})});
+            const newMarker = marker(center, {icon: new Icon({ iconUrl: routeIconPng, iconSize: [41, 41], iconAnchor: [20, 41] })});
 
             mapMarkers.push(newMarker);
             newMarker.addTo(map);
