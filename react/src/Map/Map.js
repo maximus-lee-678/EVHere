@@ -134,13 +134,11 @@ export default function Map(props) {
                         <br />
                         [Address] {allChargerInfo[i].address}
                         <br />
-                        [Provider] {allChargerInfo[i].provider}
+                        [Solar Current In] {allChargerInfo[i].pv_current_in} A
                         <br />
-                        [Connectors] {allChargerInfo[i].connectors}
+                        [Solar Stored Charge] {allChargerInfo[i].pv_energy_level} kWh
                         <br />
-                        [Power] {allChargerInfo[i].kilowatts || 0} kW
-                        <br />
-                        [24/7] {allChargerInfo[i].twenty_four_hours}
+                        [Price Rate] ${allChargerInfo[i].rate_current} / kWh
                         <br />
                         <button id={allChargerInfo[i].id}
                             onClick={() => handleFavourite(id, favourite === false ? 'add' : 'remove')}

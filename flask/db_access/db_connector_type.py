@@ -9,9 +9,9 @@ import db_access.db_universal as db_universal
 #
 
 # Generics:
-column_sql_translations = {'id': 'id', 'name_short': 'name_short',
-                           'name_long': 'name_long', 'name_connector': 'name_connector'}
-column_names_all = ['id', 'name_short', 'name_long', 'name_connector']
+column_sql_translations = {'id': 'id', 'current_type': 'current_type', 'name_connector': 'name_connector',
+                           'output_voltage_max': 'output_voltage_max', 'output_current_max': 'output_current_max'}
+column_names_all = ['id', 'current_type', 'name_connector', 'output_voltage_max', 'output_current_max']
 trailing_query = """
 FROM connector_type
 """
@@ -19,7 +19,7 @@ FROM connector_type
 
 def get_connector_type_hash_map(column_names=None,where_array=None):
     """
-    \tcolumn_names >> any combination of ['id', 'name_short', 'name_long', 'name_connector']\n
+    \tcolumn_names >> any combination of ['id', 'current_type', 'name_connector', 'output_voltage_max', 'output_current_max']\n
     \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
     Returns Dictionary with keys:\n
     <result> INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY or HASHMAP_GENERIC_SUCCESS.\n
@@ -38,7 +38,7 @@ def get_connector_type_hash_map(column_names=None,where_array=None):
 
 def get_connector_type_dict(column_names=None,where_array=None):
     """
-    \tcolumn_names >> any combination of ['id', 'name_short', 'name_long', 'name_connector']\n
+    \tcolumn_names >> any combination of ['id', 'current_type', 'name_connector', 'output_voltage_max', 'output_current_max']\n
     \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
     Returns Dictionary with keys:\n
     <result> INTERNAL_ERROR, SELECT_GENERIC_EMPTY or SELECT_GENERIC_SUCCESS.\n

@@ -32,17 +32,20 @@ def get_vehicle_hash_map(column_names=None, where_array=None):
         column_names = copy.deepcopy(column_names_all)
 
     vehicle_hash_map_out = db_universal.get_universal_hash_map(column_names=column_names,
-                                               column_sql_translations=column_sql_translations,
-                                               trailing_query=trailing_query,
-                                               where_array=where_array)
+                                                               column_sql_translations=column_sql_translations,
+                                                               trailing_query=trailing_query,
+                                                               where_array=where_array)
     
+    if vehicle_hash_map_out['result'] == db_service_code_master.HASHMAP_GENERIC_EMPTY:
+        return vehicle_hash_map_out
+
     if 'connector' in column_names:
         connector_type_hash_map_out = db_connector_type.get_connector_type_hash_map()
 
         for value in vehicle_hash_map_out['content'].values():
             db_helper_functions.update_dict_key(
                 dict=value, key_to_update='connector', new_key_name=None, new_key_value=connector_type_hash_map_out['content'][value['connector']])
-    
+
     return vehicle_hash_map_out
 
 
@@ -63,6 +66,9 @@ def get_vehicle_dict(column_names=None, where_array=None):
                                                        column_sql_translations=column_sql_translations,
                                                        trailing_query=trailing_query,
                                                        where_array=where_array)
+
+    if vehicle_dict_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
+        return vehicle_dict_out
 
     if 'connector' in column_names:
         connector_type_hash_map_out = db_connector_type.get_connector_type_hash_map()

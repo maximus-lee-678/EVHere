@@ -31,7 +31,6 @@ if not os.path.exists(db_methods.DATABASE_PATH):
 app = Flask(__name__)
 
 # Registering paths
-
 app.register_blueprint(flask_user_info)
 app.register_blueprint(flask_charger)
 app.register_blueprint(flask_connector_type)
@@ -46,6 +45,9 @@ app.json.sort_keys = False
 # Cross-Origin Resource Sharing
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
+
+# TODO
+# loop thru current charges and update power consumption based on connector out
 
 # Running app
 if __name__ == '__main__':

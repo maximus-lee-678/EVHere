@@ -77,7 +77,7 @@ export default function Dashboard() {
             <ChargingCard elementName="Current Charging Status"
               vName={chargeCurrentDetails.vehicle.name}
               SN={chargeCurrentDetails.vehicle.vehicle_sn}
-              currPercent={chargeCurrentDetails.charge_current.percentage_current + '%'}
+              currEnergyDrawn={chargeCurrentDetails.charge_current.current_energy_drawn + ' kWh'}
               startTime={FormatDateTime(chargeCurrentDetails.time_start)}
               timeElapsed={timeElapsedString} />}
 

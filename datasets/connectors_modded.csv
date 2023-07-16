@@ -1,4 +1,9 @@
-id,name_short,name_long,name_connector
-42ad1d26-5f9e-40a3-a136-0c601ea749c8,AC,Alternating Current,J1772
-b61c896b-fa08-4cd9-b197-3b761fea353e,DC,Direct Current,Type 2
-806bd892-8348-4ac0-bf85-783cfdfa04ce,Dual,AC/DC,CCS
+id,current_type,name_connector,output_voltage_max,output_current_max
+f9cf50c3-4830-4bf9-bc8b-4fcf9589e169,AC,SAE J1772 (Type 1),240,80
+376107d4-df0e-4075-b722-ab952930189c,AC,Mennekes (Type 2),400,32
+5192f1a5-4cdd-45b3-892f-e7e47dae4255,DC,CCS (Type 1),1000,500
+0515c680-a1bb-4a8a-8e58-4a1e890b632f,DC,CCS (Type 2),1000,500
+eda510df-627a-4f89-940c-aa31ac17d13d,DC,CHAdeMO,1000,400
+f3afdbdf-7145-43d3-a02b-341722984d69,AC,GB/T (AC),230,32
+2242344c-a4e9-4407-93f4-1cf31248c922,DC,GB/T (DC),950,250
+8f8156e0-dfad-4fb6-8add-cb677f0c4d4a,AC/DC,Tesla NACS,625,400

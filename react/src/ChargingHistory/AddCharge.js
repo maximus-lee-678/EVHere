@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 
 // Standard imports
 import Toast, { toast } from '../SharedComponents/Toast';
-import Form, { FormButton, FormInputField, FormInputSelect } from '../SharedComponents/Form';
+import Form, { FormButton, FormInputSelect } from '../SharedComponents/Form';
 
 // API endpoints imports
 import { VehicleInfoGetByUser, ChargerGetAllWithEmail, ChargeHistoryAdd } from '../API/API';
@@ -13,9 +13,9 @@ export default function AddCharge() {
 
     const [selectedVehicleId, setSelectedVehicleId] = useState(null);
     const [selectedVehicleConnectorId, setSelectedVehicleConnectorId] = useState(null);
-    const [selectedCharger, setSelectedCharger] = useState('');
-    let firstCharger;
-    const [batteryPercentage, setBatteryPercentage] = useState('');
+    const [selectedChargerId, setSelectedCharger] = useState(null);
+    const [selectedChargerConnectorId, setSelectedChargerConnectorId] = useState(null);
+    let defaultChargerId, defaultChargerConnectorId;
 
     const [userVehicleInfo, setUserVehicleInfo] = useState();
     const [allChargerInfo, setAllChargerInfo] = useState();
@@ -51,7 +51,7 @@ export default function AddCharge() {
         fetchAllChargers();
     }, [fetchAllUserVehicles, fetchAllChargers]);
 
-    // once userVehicleInfo loaded, update selectedConnector and Id
+    // once userVehicleInfo loaded, update selectedVehicleId and selectedVehicleConnectorId
     useEffect(() => {
         userVehicleInfo && setSelectedVehicleId(userVehicleInfo[0].id);
         userVehicleInfo && setSelectedVehicleConnectorId(userVehicleInfo[0].connector.id);
@@ -81,13 +81,14 @@ export default function AddCharge() {
         let options = [], hasSetInitial = false;
 
         for (var i = 0; i < allChargerInfo.length; i++) {
-            let connectors_json = allChargerInfo[i].connector_info;
+            let connectors_json = allChargerInfo[i].available_connector;
 
             let flag;
             for (var j = 0; j < connectors_json.length; j++) {
                 flag = false;
 
-                if (connectors_json[j].id === selectedVehicleConnectorId) {
+                // matching connector_type ids
+                if (connectors_json[j].connector_type.id === selectedVehicleConnectorId) {
                     flag = true;
                     break;
                 }
@@ -98,7 +99,7 @@ export default function AddCharge() {
 
             if (!hasSetInitial) {
                 hasSetInitial = true;
-                firstCharger = allChargerInfo[i].id;
+                defaultChargerId = allChargerInfo[i].id;
             }
 
             options.push(
@@ -110,11 +111,42 @@ export default function AddCharge() {
         return options;
     }
 
+    // Component that formats charger connector information for display in dropdown. Reads from allChargerInfo.
+    // When value is read, charger connector id (not connector type id) is returned.
+    function ConnectorChoices() {
+        let options = [], hasSetInitial = false, connectors;
+
+        if (selectedChargerId) {
+            connectors = allChargerInfo.filter(obj => { return obj.id === selectedChargerId })[0].available_connector;
+        } else {
+            connectors = allChargerInfo[0].available_connector;
+        }
+
+        for (var i = 0; i < connectors.length; i++) {
+            if (connectors[i].connector_type.id !== selectedVehicleConnectorId) {
+                continue;
+            }
+
+            if (!hasSetInitial) {
+                hasSetInitial = true;
+                defaultChargerConnectorId = connectors[i].id;
+            }
+
+            options.push(
+                <option className="border-0 px-3 py-3 text-gray-700" key={connectors[i].id}
+                    value={connectors[i].id}>{connectors[i].connector_type.name_connector} {'<' + connectors[i].id + '>'}</option>
+            );
+        }
+
+        return options;
+    }
+
     // Function that starts a charge. Called upon form submission.
     async function handleStart(e) {
         e.preventDefault();
 
-        const response = await ChargeHistoryAdd(userEmail, selectedVehicleId, selectedCharger || firstCharger, batteryPercentage);
+        const response = await ChargeHistoryAdd(userEmail, selectedVehicleId,
+            selectedChargerId || defaultChargerId, selectedChargerConnectorId || defaultChargerConnectorId);
 
         // result is boolean of status
         if (response.status === 'success') {
@@ -143,15 +175,18 @@ export default function AddCharge() {
                     }}
                 />
 
-                <FormInputField elementName="Starting battery percentage" id="battery-start" placeholder="Select Battery Level . . ."
-                    type="number" value={batteryPercentage}
-                    onChange={(event) => setBatteryPercentage(event.target.value)}
+                <FormInputSelect elementName="Charger Name" id="charger"
+                    value={(allChargerInfo && selectedChargerId) || ""}
+                    options={allChargerInfo && <ChargerChoices />}
+                    onChange={(event) => {
+                        setSelectedCharger(event.target.value);
+                    }}
                 />
 
-                <FormInputSelect elementName="Charger Name" id="charger"
-                    value={(allChargerInfo && selectedCharger) || ""}
-                    options={allChargerInfo && <ChargerChoices />}
-                    onChange={(event) => setSelectedCharger(event.target.value)}
+                <FormInputSelect elementName="Charger Connector" id="charger-connector"
+                    value={(allChargerInfo && selectedChargerConnectorId) || ""}
+                    options={(allChargerInfo && <ConnectorChoices />)}
+                    onChange={(event) => setSelectedChargerConnectorId(event.target.value)}
                 />
 
                 <FormButton elementName={"\"Start\" Charge"} />

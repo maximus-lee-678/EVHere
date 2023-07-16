@@ -11,14 +11,13 @@ import { ChargeHistoryFinish } from '../API/API';
 export default function FinishCharge() {
   const userEmail = localStorage.getItem("user_email");
 
-  const [batteryPercentage, setBatteryPercentage] = useState('');
-  const [amountPayable, setAmountPayable] = useState('');
+  const [inputKwh, setInputKwh] = useState(0);
 
-  // Function that starts a charge. Called upon form submission.
+  // Function that finishes a charge. Called upon form submission.
   async function handleFinish(e) {
     e.preventDefault();
 
-    const response = await ChargeHistoryFinish(userEmail, batteryPercentage, amountPayable);
+    const response = await ChargeHistoryFinish(userEmail, inputKwh);
 
     // result is boolean of status
     if (response.status === 'success') {
@@ -39,14 +38,9 @@ export default function FinishCharge() {
       <Toast />
 
       <Form elementName="Finish Charging History" onSubmit={handleFinish} backgroundImageURL="battery.png">
-        <FormInputField elementName="Ending battery percentage" id="battery-end" placeholder="Enter Battery Level . . ."
-          type="number" value={batteryPercentage}
-          onChange={(event) => setBatteryPercentage(event.target.value)}
-        />
-
-        <FormInputField elementName="Amount Payable" id="amount-payable" placeholder="Enter Amount Payable . . ."
-          type="number" value={amountPayable}
-          onChange={(event) => setAmountPayable(event.target.value)}
+        <FormInputField elementName="kWh Final (WiP!)" id="kwh-set" placeholder="Enter kWh . . ."
+          type="number" value={inputKwh}
+          onChange={(event) => setInputKwh(event.target.value)}
         />
 
         <FormButton elementName={"\"Finish\" Charge"} />

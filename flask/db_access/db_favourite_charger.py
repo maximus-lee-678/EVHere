@@ -71,8 +71,7 @@ def get_user_favourite_chargers(id_user_info_sanitised):
     if favourites_array_out['result'] == db_service_code_master.FAVOURITE_CHARGERS_NOT_FOUND:
         return favourites_array_out
 
-    charger_hash_map_out = db_charger.get_charger_hash_map(column_names=['id', 'name', 'latitude', 'longitude', 'address', 'provider',
-                                                                         'connectors', 'online', 'kilowatts', 'twenty_four_hours', 'last_updated', 'connector_info'])
+    charger_hash_map_out = db_charger.get_charger_hash_map(where_array=[['active', True]])
 
     # check if empty or error (empty -> internal error)
     if charger_hash_map_out['result'] != db_service_code_master.HASHMAP_GENERIC_SUCCESS:
@@ -100,7 +99,7 @@ def add_favourite_charger(id_user_info_sanitised, id_charger_input):
 
     # 1.1: check if charger exists
     charger_dict_out = db_charger.get_charger_dict(column_names=['id'],
-                                                   where_array=[['id', id_charger_input]])
+                                                   where_array=[['id', id_charger_input], ['active', True]])
     if charger_dict_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
         contains_errors = True
         error_list.append(db_service_code_master.CHARGER_NOT_FOUND)

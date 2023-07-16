@@ -62,11 +62,10 @@ export default function Favourites() {
                 <div className="lg:flex py-4 lg:px-10 px-3 bg-white rounded-lg grid grid-rows-4" key={id}>
                     <div className="w-full md:w-4/5 row-span-3">
                         <CardContent elementName={favouriteChargerInfo[i].name}>
-                            <div><span className="uppercase font-semibold text-sm">Provider:</span> {favouriteChargerInfo[i].provider}</div>
-                            <div><span className="uppercase font-semibold text-sm">Power:</span> {favouriteChargerInfo[i].kilowatts || 0} kW</div>
-                            <div><span className="uppercase font-semibold text-sm">Connectors:</span> {favouriteChargerInfo[i].connectors}</div>
                             <div><span className="uppercase font-semibold text-sm">Location:</span> {favouriteChargerInfo[i].address}</div>
-                            <div><span className="uppercase font-semibold text-sm">Hours:</span> {favouriteChargerInfo[i].twenty_four_hours === 'TRUE' ? '24 hours' : 'Not 24 hours'}</div>
+                            <div><span className="uppercase font-semibold text-sm">Solar Current In:</span> {favouriteChargerInfo[i].pv_current_in} A</div>
+                            <div><span className="uppercase font-semibold text-sm">Solar Stored Charge:</span> {favouriteChargerInfo[i].pv_energy_level} kWh</div>
+                            <div><span className="uppercase font-semibold text-sm">Price Rate:</span> ${favouriteChargerInfo[i].rate_current} / kWh</div>
                         </CardContent>
                     </div>
                     <CardButton id={id} onClick={handleFavouriteRemove} icon="heart-broken fa-lg" color="red"></CardButton>

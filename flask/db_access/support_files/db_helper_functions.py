@@ -152,3 +152,10 @@ def update_dict_key(dict, key_to_update, new_key_name, new_key_value):
     # update key name (if needed)
     if new_key_name != None:
         dict[new_key_name] = dict.pop(key_to_update)
+
+
+def calculate_charge_cost(energy_drawn, rate):
+    """
+    Returns calculated charge cost price to 2 decimal places. (string)
+    """
+    return '{price:.2f}'.format(price = energy_drawn * rate)

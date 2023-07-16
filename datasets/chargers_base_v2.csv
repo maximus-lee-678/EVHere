@@ -1,545 +1,545 @@
 name,latitude,longitude,address,currently_open,pv_current_in,pv_energy_level,rate_current,rate_predicted,active
-Queenstown/Science Park Dr/DNV GL/Lobby,1.29014253616333,103.786895751953,"16, Science Park Dr",true,0,0,0.39,,true
-Central/Claymore Rd/21,1.3077385,103.8301985,Claymore Road 21,true,0,0,0.22,,true
-Queenstown/Holland Dr/Blk 18/Deck 1A,1.3118,103.79207,18 Holland Drive,true,0,0,0.36,,true
-Central/Mohamed Sultan Rd/28,1.29288,103.8413,28 Mohamed Sultan Road,true,0,0,0.28,,true
-Yishun/Yishun St 22/Blk265,1.4369706,103.8383619,265 Yishun Street 22,true,0,0,0.26,,true
-Tampines/Simei St 1/Blk 108,1.343322,103.951077,108 Simei Street 1,true,0,0,0.27,,true
-Ang Mo Kio/Ang Mo Kio Av 4/Blk 157,1.3751449,103.839079,157 Ang Mo Kio Avenue 4,true,0,0,0.34,,true
-Tampines/Tampines St 41/Blk 420,1.357537,103.947125,420 Tampines Street 41,true,0,0,0.31,,true
-Queenstown/Fusionopolis Pl/1/Deck B4,1.29866,103.78748,1 Fusionopolis Place,true,0,0,0.36,,true
-Tampines/Simei Street 1/Blk 132,1.3472048,103.9562201,132 Simei Street 1,true,0,0,0.31,,true
-Tampines/Tampines Avenue 4/Blk 902,1.351249,103.939541,902 Tampines Avenue 4,true,0,0,0.34,,true
-Queenstown/11 Biopolis Way/Helios/Deck B2,1.304152,103.791778,11 Biopolis Way,true,0,0,0.41,,true
-Yishun/Yishun Ring Road/Blk 853,1.416593,103.836526,850 to 855 Yishun Ring Road,true,0,0,0.31,,true
-Geylang/Haig Road/Blk 8,1.31379,103.896451,8 Haig Road,true,0,0,0.23,,true
-Clementi/Clementi West Street 1/Blk 602,1.304373,103.766838,Blk 602 Clementi West Street 1,true,0,0,0.39,,true
-Jurong West/Boon Lay Drive/Blk 188,1.344062,103.711245,188 Boon Lay Drive,true,0,0,0.34,,true
-Bedok/Chai Chee Avenue/Blk 37,1.325325,103.925817,37 Chai Chee Avenue,true,0,0,0.29,,true
-Tampines/Tampines Street 22/Blk 274,1.348438,103.950524,Blk 272/275 Tampines Street 22,true,0,0,0.35,,true
-Bukit Merah/Bukit Merah View/Blk 129A/Deck 2A,1.283532,103.823372,129A Bukit Merah View,true,0,0,0.45,,true
-Bukit Timah/Queens Road/Blk 4/Deck 1A,1.318738,103.808169,4 Queen's Road,true,0,0,0.37,,true
-Hougang/Hougang Street 61/Blk 688,1.37595,103.885492,Blk 685/691 Hougang Street 61,true,0,0,0.33,,true
-Yishun/Yishun Avenue 3/Blk 769,1.424284,103.833346,773 Yishun Avenue 3,true,0,0,0.3,,true
-Yishun/Yishun Ring Road/Blk 809,1.416833,103.83048,800-812 Yishun Ring Road,true,0,0,0.31,,true
-Geylang/Eunos Crescent/Blk 31A/Deck 1A,1.320225,103.9017609,31A Eunos Crescent,true,0,0,0.38,,true
-Clementi/West Coast Road/Blk 708,1.306052,103.761812,704-714 West Coast Road,true,0,0,0.32,,true
-Bedok/Bedok South Avenue 3/Behind Blk 69,1.319455,103.943098,69 Bedok South Avenue 3,true,0,0,0.4,,true
-Kembangan/21 Jalan Masjid/Beside Kembangan Plaza,1.320397,103.912296,21 Jalan Masjid,true,0,0,0.48,,true
-Bukit Batok/Bukit Batok Street 52/Blk 537,1.355013,103.751187,537 Bukit Batok Street 52,true,0,0,0.41,,true
-Jurong East/8 Jurong Town Hall Road/JTC Summit/Deck B2,1.33115,103.74184,8 Jurong Town Hall Road,true,0,0,0.54,,true
-Ang Mo Kio/Ang Mo Kio Avenue 9/Blk 627,1.382052,103.841393,627 Ang Mo Kio Avenue 9,true,0,0,0.38,,true
-Punggol/Punggol Place/Blk 273/Deck 1,1.402703,103.901963,273 Punggol Place,true,0,0,0.36,,true
-Tampines/Tampines Street 91/Blk 921A/Deck 1A,1.347284,103.941371,921A Tampines Street 91,true,0,0,0.44,,true
-Jurong East/Jurong East Street 21/Blk 230,1.341813,103.737565,215-230 Jurong East Street 21,true,0,0,0.41,,true
-Ang Mo Kio/Ang Mo Kio Avenue 6/Blk 123,1.370392,103.844376,123 Ang Mo Kio Avenue 6,true,0,0,0.38,,true
-Jurong West/Jurong West Street 81/Blk 854A/Deck 1A,1.347775,103.696495,854A Jurong West Street 81,true,0,0,0.5,,true
-Clementi/Clementi Avenue 2/Blk 334/Beside Caltex,1.314724,103.768296,334 Clementi Avenue 2,true,0,0,0.48,,true
-Bukit Batok/Bukit Batok Street 34/Blk 346,1.362466,103.750963,346 Bukit Batok Street 34,true,0,0,0.41,,true
-Tampines/Tampines Street 83/Blk 851,1.353051,103.935061,851 Tampines Street 83,true,0,0,0.35,,true
-Serangoon/Upper Serangoon View/Blk 476/Deck 3,1.37738,103.903721,476 Upper Serangoon View,true,0,0,0.45,,true
-Bishan/Bishan Street 13/Blk 186,1.349585,103.852838,186 Bishan Street 13,true,0,0,0.31,,true
-Geylang/Ubi Avenue 1/Blk 326,1.327319,103.904146,326 Ubi Avenue 1,true,0,0,0.28,,true
-Geylang/52 Sims Place/Along Sims Place,1.316531,103.880106,52 Sims Place,true,0,0,0.38,,true
-Marine Parade/Across 343 Telok Karau Road/Beside St'Patrick's Court,1.308605,103.912432,Across 343 Telok Kurau Road,true,0,0,0.67,,true
-Hougang/Hougang Street 92/Blk 941A/Deck 1A,1.374287,103.87912,941A Hougang Street 92,true,0,0,0.42,,true
-Jurong West/Jurong West Street 91/Blk 903,1.339625,103.686256,903 Jurong West Street 91,true,0,0,0.41,,true
-Toa Payoh/Potong Pasir Avenue 1/Blk 117,1.336558,103.863104,117 Potong Pasir Avenue 1,true,0,0,0.39,,true
-Yishun/Yishun Ring Road/Blk 165,1.4355487,103.8320274,165 Yishun Ring Road,true,0,0,0.31,,true
-Punggol/Punggol Walk/Blk 213/Deck 1A,1.400134,103.898428,213 Punggol Walk,true,0,0,0.36,,true
-Hougang/Hougang Avenue 2/Blk 707,1.366507,103.888389,707 Hougang Avenue 2,true,0,0,0.32,,true
-Bedok/Bedok Reservoir Road/Blk 609,1.33135,103.912391,609 Bedok Reservoir Road,true,0,0,0.34,,true
-Jurong East/Jurong East Street 13/Blk 116,1.339583,103.734451,116 Jurong East Street 13,true,0,0,0.41,,true
-Bukit Batok/Bukit Batok East Avenue 5/Blk 241A/Deck 1A,1.350931,103.755227,241A Bukit Batok East Avenue 5,true,0,0,0.54,,true
-Hougang/Hougang Street 31/Blk 373A/Deck B1B,1.362366,103.890053,373A Hougang Street 31,true,0,0,0.43,,true
-Pasir Ris/Pasir Ris Drive 6/Blk 417,1.372102,103.955033,417 Pasir Ris Drive 6,true,0,0,0.35,,true
-Serangoon/Serangoon Avenue 4/Blk 212,1.356934,103.873229,212 Serangoon Avenue 4,true,0,0,0.36,,true
-Hougang/Hougang Avenue 9/Blk 966A/Deck 1A,1.377891,103.877869,966A Hougang Avenue 9,true,0,0,0.41,,true
-Sengkang/Anchorvale Street/Blk 329/Deck 1A,1.39634,103.889296,329 Anchorvale Street,true,0,0,0.42,,true
-Choa Chu Kang/Choa Chu Kang Crescent/Blk 678A/Deck 1B,1.401978,103.74481,678A Choa Chu Kang Crescent,true,0,0,0.53,,true
-Ang Mo Kio/Ang Mo Kio Avenue 4/Blk 114,1.372293,103.836312,114 Ang Mo Kio Avenue 4,true,0,0,0.38,,true
-Kallang/Bendemeer Road/Blk 10/Deck 1A,1.315203,103.860333,10 Bendemeer Road,true,0,0,0.37,,true
-Ang Mo Kio/Ang Mo Kio Avenue 6/Blk 647,1.378898,103.843833,647 Ang Mo Kio Avenue 6,true,0,0,0.38,,true
-Bedok/Bedok North Street 3/Blk 534,1.333285,103.92394,534 Bedok North Street 3,true,0,0,0.34,,true
-Queenstown/Commonwealth Drive/Blk 117 (Beside Blk 117 Open Space Carpark),1.306972,103.799566,117 Commonwealth Drive,true,0,0,0.73,,true
-Kallang/Jalan Rajah/Blk 103,1.327411,103.852514,103 Jalan Rajah,true,0,0,0.27,,true
-Bukit Batok/Bukit Batok Street 33/Blk 319,1.361125,103.746545,319 Bukit Batok Street 33,true,0,0,0.41,,true
-Bishan/Bishan Street 12/Blk 112,1.346756,103.848871,112 Bishan Street 12,true,0,0,0.31,,true
-Sengkang/Fernvale Street/Blk 472/Deck 1A,1.396952,103.881727,472 Fernvale Street,true,0,0,0.4,,true
-Yishun/Yishun Street 51/Blk 513/Deck 2,1.415984,103.844221,513 Yishun Street 51,true,0,0,0.38,,true
-Sengkang/Compassvale Road/Blk 203/Deck 1A,1.387328,103.895393,203 Compassvale Road,true,0,0,0.41,,true
-Serangoon/Serangoon North Avenue 4/Blk 512A/Deck 1B,1.371005,103.8751,512A Serangoon North Avenue 4,true,0,0,0.51,,true
-Ang Mo Kio/Ang Mo Kio Street 51/Blk 590/Deck 1A,1.371634,103.853064,590 Ang Mo Kio Street 51,true,0,0,0.47,,true
-Sengkang/Compassvale Walk/Blk 236A/Deck 1B,1.390343,103.900021,236A Compassvale Walk,true,0,0,0.42,,true
-Queenstown/Ghim Moh Road/Blk 2A/Deck 1,1.312774,103.787393,2A Ghim Moh Road,true,0,0,0.38,,true
-Central/9 Raffles Place/Republic Plaza/Level 4,1.283658,103.850455,"9 Raffles Place, Republic Plaza",true,0,0,0.46,,true
-Choa Chu Kang/Choa Chu Kang Avenue 4/Lot one/Deck B2,1.38525,103.744922,21 Choa Chu Kang Avenue 4,true,0,0,0.52,,true
-Sentosa/50 Beach View/Basement/Beach Station(Near Beach Station Escalator),1.251171,103.819188,50 Beach View,true,0,0,0.74,,true
-Central/1 Esplanade Drive/Basement 1/Lift Lobby B,1.289691,103.85577,1 Esplanade Drive,true,0,0,0.49,,true
-Sentosa/1 Cove Avenue/Sentosa Cove/Blk B/Level 2,1.247741,103.840256,"1 Cove Avenue, Sentosa Cove",true,0,0,0.48,,true
-Central/3E River Valley Road/Clark Quay Blk E/Level 3,1.290715,103.846146,3E River Valley Road,true,0,0,0.53,,true
-Kallang/Cambridge Road/Blk 43 (Opposite NTUC),1.314899,103.849479,43 Cambridge Road,true,0,0,0.45,,true
-Ang Mo Kio/Ang Mo Kio Avenue 4/Blk 110,1.370557,103.837923,110 Ang Mo Kio Avenue 4,true,0,0,0.38,,true
-Yishun/Yishun Ring Road/Blk 781,1.422343,103.832121,781 Yishun Ring Road,true,0,0,0.31,,true
-Tampines/Simei Road/Blk 155,1.344756,103.958393,155 Simei Road,true,0,0,0.27,,true
-Bukit Timah/170 Upper Bukit Timah Road (Infront Bukit Timah Shopping Centre),1.343312,103.775637,170 Upper Bukit Timah Road,true,0,0,0.76,,true
-Hougang/Hougang Avenue 6/Blk 524,1.373931,103.890352,524 Hougang Avenue 6,true,0,0,0.32,,true
-Ang Mo Kio/Ang Mo Kio Avenue 10/Blk 449,1.36805,103.8558,449 Ang Mo Kio Avenue 10,true,0,0,0.39,,true
-Tampines/Tampines Street 72/Blk 742A/Deck 1A,1.359905,103.934176,742A Tampines Street 72,true,0,0,0.44,,true
-Novena/Tan Tock Seng Hospital/Basement 4/Near Lift Lobby D,1.321282,103.84588,11 Jalan Tan Tock Seng,true,0,0,0.58,,true
-Ang Mo Kio/Ang Mo Kio Avenue 8/Blk 510,1.373288,103.849485,510 Ang Mo Kio Avenue 8,true,0,0,0.38,,true
-Ang Mo Kio/Ang Mo Kio Avenue 10/Blk 559,1.371022,103.857277,559 Ang Mo Kio Avenue 10,true,0,0,0.39,,true
-Pasir Ris/Pasir Ris Street 12/Blk 108A/Deck 1A,1.367987,103.956949,108A Pasir Ris Street 12,true,0,0,0.46,,true
-Woodlands/Woodlands Circle/Blk 747A/Deck 1A,1.443332,103.795599,747A Woodlands Circle,true,0,0,0.43,,true
-Kallang/Saint George's Road/Blk 22,1.32537,103.862659,22 Saint George's Road,true,0,0,0.34,,true
-Punggol/Edgedale Plains/Blk 172/Deck 1A,1.39557,103.911788,172 Edgedale Plains,true,0,0,0.39,,true
-Bukit Panjang/Petir Road/Blk 140,1.375471,103.769068,140 Petir Road,true,0,0,0.32,,true
-Jurong East/Jurong East Street 32/Blk 307,1.346612,103.734402,307 Jurong East Street 32,true,0,0,0.41,,true
-Bedok/Chai Chee Street/Blk 53,1.328941,103.921295,53 Chai Chee Street,true,0,0,0.29,,true
-Bedok/Bedok North Road/Blk 425,1.329159,103.92944,425 Bedok North Road,true,0,0,0.3,,true
-Tampines/Tampines Street 11/Blk 107,1.348142,103.947926,107 Tampines Street 11,true,0,0,0.35,,true
-Queenstown/Ghim Moh Link/Blk 24/Deck 1B,1.308908,103.785607,24 Ghim Moh Link,true,0,0,0.39,,true
-Jurong West/Yung An Road/Blk 364/Deck 1A,1.337184,103.720457,364 Yung An Road,true,0,0,0.4,,true
-Clementi/Clementi Avenue 3/Blk 440/Deck 1A,1.31642,103.76392,440 Clementi Avenue 3,true,0,0,0.42,,true
-Yishun/Yishun Street 31/Blk 333/Deck 1A,1.43154,103.844951,333 Yishun Street 31,true,0,0,0.39,,true
-Pasir Ris/Pasir Ris Street 71/Blk 762A/Deck 1A,1.376083,103.9333,762A Pasir Ris Street 71,true,0,0,0.46,,true
-Bukit Merah/Bukit Purmei Road/Blk 109,1.273803,103.8258,109 Bukit Purmei Road,true,0,0,0.37,,true
-Toa Payoh/Lorong 8 Toa Payoh/Blk 213,1.341068,103.8551,213 Lorong 8 Toa Payoh,true,0,0,0.36,,true
-Choa Chu Kang/Choa Chu Kang Central/Blk 205,1.381051,103.7481,205 Choa Chu Kang Central,true,0,0,0.43,,true
-Tampines/Tampines Street 22/Blk 299A,1.350399,103.95424,299A Tampines Street 22,true,0,0,0.36,,true
-Clementi/Clementi West Street 2/Blk 727,1.304208,103.763558,727 Clementi West Street 2,true,0,0,0.39,,true
-Bukit Merah/Henderson Road/Blk 96/Deck 1A,1.287793,103.821375,96 Henderson Road,true,0,0,0.41,,true
-Bukit Batok/Bukit Batok West Avenue 5/Blk 436/Deck 1A,1.358769,103.739499,436 Bukit Batok West Avenue 5,true,0,0,0.53,,true
-Tampines/Tampines Avenue 8/Blk 879C/Deck 1A,1.351144,103.928663,879C Tampines Avenue 8,true,0,0,0.43,,true
-Punggol/Punggol Field/Blk 204/Deck B1,1.398494,103.90305,204 Punggol Field,true,0,0,0.37,,true
-Bukit Merah/Telok Blangah Rise/Blk 32,1.273125,103.82106,32 Telok Blangah Rise,true,0,0,0.37,,true
-Bedok/Bedok North Street 2/Blk 129,1.327761,103.93846,124 Bedok North Street 2,true,0,0,0.34,,true
-Marine Parade/Marine Terrace/Blk 59,1.305782,103.914158,59 Marine Terrace,true,0,0,0.35,,true
-Central/109 North Bridge Road/Funan Mall/Basement 3/Lift Lobby B,1.291599,103.849823,109 North Bridge Road,true,0,0,0.64,,true
-Central/252 North Bridge Road/Raffles City/Deck B3,1.2939583,103.8526163,252 North Bridge Road,true,0,0,0.5,,true
-Orchard Central Supercharger,1.3007,103.83978,"181 Orchard Rd, Singapore, Singapore, 238896",true,0,0,0.28,,true
-"Nissan Showroom, Johor Jaya",1.529448,103.816505,"1, Jalan Johor Jaya, Taman Perindustrian Plentong, 81750‎ Masai, ‎Johor, Malaysia",true,0,0,0.27,,true
-Hard Rock Hotel Desaru Coast,1.540211,104.264246,"Jln Pantai 3, 81930 Bandar Penawar, Johor, Malaysia",true,0,0,0.28,,true
-Jade Garden Seafood Corner,1.348106,104.224009,"Lot 4785, 1 Jalan Siakap, Kampung Sungai Rengit, 81620, Pengerang, Johor",true,0,0,0.26,,true
-Causeway Point Supercharger,1.436111,103.786496,"1 Woodlands Square, Singapore 738099",true,0,0,0.27,,true
-"seri negeri (government building, public carpark)",1.545174,103.55988,"seri negeri (government building, public carpark)",true,0,0,0.49,,true
-"Gentari @ XPark Sunway Iskandar (22 kW AC, 60 kW DC)",1.3953,103.62577,"Jalan Medini Selatan 2 Medini Zone F, Bandar Medini Iskandar, 79250 Nusajaya, Johor, Malaysia",true,0,0,0.52,,true
-Waterway Point Supercharger,1.406303,103.901878,"83 Punggol Central, Singapore, Singapore, 828761",true,0,0,0.27,,true
-Century Square Supercharger,1.35235,103.943846,"2 Tampines Central 5, Singapore, Singapore, 529509",true,0,0,0.27,,true
-Volvo Pekin Auto,1.516984,103.674438,"PTD 144228, Taman Sutera Utama, 81300 Skudai, Johor, Malaysia",true,0,0,0.16,,true
-Block 15 Woodlands Loop,1.449289,103.809175,"15 Woodlands Loop, Woodlands‎ 738322, Singapore",true,0,0,0.23,,true
-Goldbell Tuas,1.321866,103.639587,"8 Tuas Avenue 18, Singapore 638892",true,0,0,0.13,,true
-Four Points By Sheraton Desaru (22 kW AC),1.5761964123956436,104.20566692948341,"Jalan Kempas 2, Taman Desaru Utama, Bandar Penawar, Malaysia, 81930",true,0,0,0.41,,true
-Katong V Supercharger,1.302678,103.903352,"30 East Coast Road, Singapore, Singapore, 428751",true,0,0,0.21,,true
-Carros Centre,1.43148,103.75279,"60 Jln Lam Huat, Singapore 737869",true,0,0,0.13,,true
-Setia Eco Garden Sales Gallery [22kWAC],1.4917392359298465,103.58541109090933,"Persiaran Lam Setia Utama, Setia Eco Garden, Gelang Patah, Johor, Malaysia",true,0,0,0.39,,true
-Shell Choa Chua Kang,1.385636,103.746452,"20 Choa Chu Kang Dr, Singapore 689717",true,0,0,0.2,,true
-Eikoh Roller International (S) Pte Ltd,1.290889,103.624422,45 Tuas View Loop Singapore 637699,true,0,0,0.38,,true
-Petronas R&R Gelang Patah Southbound (22 kW AC),1.386627,103.593256,"LINKEDUA Malaysia - Singapura, 81550, Gelang Patah",true,0,0,0.47,,true
-Hyundai Skudai Kiri,1.48965,103.711027,"Kampung Skudai Kiri, 81200 Johor Bahru, Johor, Malaysia",true,0,0,0.19,,true
-Renaissance Hotel JB,1.4944408897944281,103.81149817047027,"No. 53-01 & 55, 01, Jalan Permas 10/1, Bandar Baru Permas Jaya, 81750 Masai, Johor, Malaysia",true,0,0,0.2,,true
-Zenith Lifestyle Mall (11 kW AC; 50 kW DC),1.4635729,103.7622119,"82C, Jalan Trus, Bandar Johor Bahru, 80000 Johor Bahru, Johor, Malaysia",true,0,0,0.42,,true
-"EcoWorld Gallery (1 x 22 kW, 1 x 3.7 kW)",1.578823,103.722933,"81100‎ Tebrau‎ Johor, Malaysia",true,0,0,0.4,,true
-Singapore Zoo,1.404922,103.78798,"Mandai Lake Road 80, 729826 Singapore",true,0,0,0.13,,true
-Bedok Point,1.324702,103.932418,799 Upper Changi Road ,true,0,0,0.11,,true
-ACO HQ Johor Bahru (180kW),1.535961,103.75342,"14, Jalan Firma 3, Kawasan Perindustrian Tebrau 4, 81100 Johor Bahru, Johor, Malaysia",true,0,0,0.26,,true
-NTU Research Techno Plaza,1.343423,103.679373,"50 Nanyang Ave, Singapore 639798",true,0,0,0.25,,true
-Petronas Pasir Gudang Highway 3 (1 x 22 kW),1.522925,103.731079,"81800‎ Kota Tinggi‎ Johore, Malaysia",true,0,0,0.43,,true
-Juice+: Changi Airport Terminal 2,1.352961,103.988037,9X3Q+56 Singapore,true,0,0,0.33,,true
-Tagore 23,1.386026,103.828227,"23 Tagore Ln, Singapore 787601",true,0,0,0.9,,true
-Jen Johor Puteri Harbour (2 x 22 kW),1.417565,103.656614,"Persiaran Puteri Selatan, 79000 Perkampungan (Felcra) Tebing Runtuh, Johore, Malaysia",true,0,0,0.36,,true
-Harvest@Woodlands by EVone Charging,1.4514023,103.7914704,"280 Woodlands Industrial Park E5, Singapore 757322",true,0,0,0.35,,true
-BMW Auto Bavaria Tebrau,1.54998,103.792759,"3B, Persiaran Desa Tebrau, Taman Desa Tebrau, 81100 Johor Bahru, Johor, Malaysia",true,0,0,0.23,,true
-Palkom Motors,1.530922,103.780719,"No. 1, Jalan Kota Tinggi, Batu 7 1/4, Taman Pandan, Johor, Kawasan Perindustrian Pandan, 81100 Johor Bahru, Johor, Malaysia",true,0,0,0.13,,true
-Shell Dunearn University,1.323543,103.817429,"288 Dunearn Rd, Singapore 299557",true,0,0,0.24,,true
-Petronas Kawasan Perindustrian Kota Puteri (22 kW AC),1.506207,103.842717,"Petronas, Kawasan Perindustrian Kota Puteri, 81750 Masai, Johor, Malaysia",true,0,0,0.53,,true
-home,1.493149,103.860469,Taman Bukit Rinting ,true,0,0,0.4,,true
-West Coast Plaza Supercharger,1.303732,103.76663,"154 West Coast Road, Singapore, 127371",true,0,0,0.29,,true
-The Star Vista Supercharger,1.306932,103.788222,"1 Vista Exchange Green, Singapore 138617",true,0,0,0.27,,true
-HSL Waterfront @ Penjuru,1.305972,103.730418,"42D Penjuru Road, Singapore 609162",true,0,0,0.24,,true
-Nordcom One,1.444324,103.814023,"5a Gambas Cres, Singapore",true,0,0,0.11,,true
-SICC Island SP Charger,1.35895,103.819354,"180 Island Club Rd, Singapore 578774",true,0,0,0.22,,true
-Millenia Walk Supercharger,1.292254,103.859707,"9 Raffles Blvd, Singapore 039596",true,0,0,0.26,,true
-Shell Boon Lay,1.343959,103.707764,"2 Boon Lay Ave, Singapore 649960",true,0,0,0.14,,true
-"Sand & Sandals Resort, Desaru (MyEVOC 1x 22 kW)",1.560694,104.253109,"29, Jalan Desaru, Desaru, 82200 Bandar Penawar, Johor, Malaysia",true,0,0,0.47,,true
-Shell Yishun,1.430866,103.833008,"1 Yishun Street 11, Singapore 768642",true,0,0,0.12,,true
-Orchid Country Club,1.41139,103.84436,"Orchid Club Road 1, 769162 Singapore",true,0,0,0.19,,true
-Shell 648 Dunearn Rd,1.3309944,103.7991123,648 Dunearn Road,true,0,0,0.2,,true
-Juice+: Gain City Sungei Kadut,1.412927,103.7459779,"71 Sungei Kadut Dr, Level 2, Singapore 729577",true,0,0,0.3,,true
-Biopolis,1.303518,103.792513,31 Biopolis Way Singapore 138668,true,0,0,0.8,,true
-City Square Mall (2),1.3113234941054386,103.8563217359124,"180 Kitchener Rd, Singapore 208539",true,0,0,0.2,,true
-Republic Plaza,1.283519,103.850595,"9 Raffles Place, Singapore 048619",true,0,0,0.14,,true
-Business Aviation Complex,1.417807,103.863333,"700 West Camp Road, Singapore",true,0,0,0.25,,true
-Bukit Panjang Plaza,1.379987,103.764397,"1 Jelebu Rd, Singapore 677743",true,0,0,0.19,,true
-CDG Engie - Singapore University Of Social Sciences (SUSS/SIM),1.329017,103.776129,"Singapore, Clementi Rd, #463号SG",true,0,0,0.62,,true
-Sembawang Country Club,1.418225,103.815461,"249 Sembawang Rd, Singapore 758352",true,0,0,0.22,,true
-KSL City Mall,1.485534,103.762308,"Jalan Beruang, 80250 Taman Tasek, Johore, Malaysia",true,0,0,0.13,,true
-SP Group: CSC Changi,1.3915290769316817,103.98520262309323,"2 Netheravon Rd, Singapore 508503",true,0,0,0.2,,true
-BlueSG open to EVs: BLK 476 Upp Serangoon View,1.377267,103.903628,"476 Upper Serangoon View, Singapore 530476",true,0,0,0.46,,true
-Penjuru Close #01-11by EVone Charging,1.313091,103.731755,28F Penjuru Close #01-11,true,0,0,0.37,,true
-Corporation Place,1.32602,103.719828,"2 Corporation Rd, Singapore 618494",true,0,0,0.17,,true
-Shell Bukit Batok,1.350191,103.738495,"11 Bukit Batok West Ave 3, Singapore 659166",true,0,0,0.17,,true
-"BlueSG open to EVs: Blk 212, Serangoon Ave 4",1.356931,103.873222,"212 Serangoon Ave 4, Singapore 550212",true,0,0,0.44,,true
-Johor Premium Outlets (3.7 kW AC),1.60292,103.622421,"Jalan Premium Outlets, 81400 Senai, Johore, Malaysia",true,0,0,0.33,,true
-Marina Bay Cruise Center Singapore,1.266151,103.860488,"Marina Coastal Drive, Singapore",true,0,0,0.34,,true
-Thistle Hotel Multi Level Car Park (3 pin),1.462316,103.74322,"Jalan Sungai Chat, Sri Gelam, 80100 Johor Bahru, Johor, Malaysia",true,0,0,0.42,,true
-"BlueSG open to EVs: Blk 678A, Choa Chu Kang Crescent",1.401979,103.745077,"678A Choa Chu Kang Cres, Singapore 681678",true,0,0,0.52,,true
-Shell Bukit Batok,1.347825,103.764854,"28 Bukit Batok East Ave 6, Singapore 659760",true,0,0,0.17,,true
-Temasek Club,1.346985,103.780824,"131 Rifle Range Rd, #04-04, Singapore 588406",true,0,0,0.12,,true
-Eco Spring,1.588156,103.757771,"2, Jalan Ekoflora Utama, 81100 Johor Bahru, Johor, Malaysia",true,0,0,0.1,,true
-Starbucks Seri Austin DT,1.575883,103.747829,"Jalan Seri Austin 1, Taman Seri Austin, 81100 Johor Bahru, Johor",true,0,0,0.24,,true
-Starbucks Shell Seri Alam DT (22 kW AC),1.5107954893126725,103.87764133102405,"Bandar Baru Seri Alam, 81750 Masai, Johor, Malaysia",true,0,0,0.39,,true
-MEDINI 7 CORPORATE OFFICE (1 x 3.7 kW),1.413718,103.628348,"Jalan Medini Sentral 5, Bandar Medini Iskandar Malaysia, 79250, Iskandar Puteri",true,0,0,0.38,,true
-WATT - The Rochelle,1.332928,103.790957,"188 Keng Lee Rd, Singapore 308414",true,0,0,0.19,,true
-Tanah Merah Country Club Garden Course,1.328246,103.979775,"25 Changi Coast Road, Singapore 499803",true,0,0,0.38,,true
-MYDIN Mutiara Rini (3 x 22 kW AC),1.5151474195350636,103.6353126168251,"7, Persiaran Jaya 1, Mutiara Rini, 81300 Johor Bahru, Johor, Malaysia",true,0,0,0.33,,true
-Petronas Toll Skudai Northbound,1.579332,103.650349,"81400 Tampoi, Johore, Malaysia",true,0,0,0.31,,true
-Charge+: Ci Yuan Community Club Basement Carpark,1.375239,103.882883,51 Hougang Avenue 9 Singapore 538776,true,0,0,0.48,,true
-Singapore Polytechnic,1.309943,103.777368,"500 Dover Rd, Singapore 139651",true,0,0,0.21,,true
-West Park BizCentral,1.315185,103.695214,"32 Pioneer Cres, Singapore 628561",true,0,0,0.2,,true
-MapleTree Pionner Logistics Hub,1.3177871878172338,103.65339044017435,76 Pionner Road ,true,0,0,0.31,,true
-SP Group: Techplace II,1.377181,103.866439,"5012 Ang Mo Kio Ave 5, Singapore 569872",true,0,0,0.22,,true
-Tanah Merah Ferry Terminal,1.31412,103.9876,"50 Tanah Merah Ferry Rd, Singapore 498833",true,0,0,0.26,,true
-DC Fast Charger @JEGS (Coming Soon),1.303421,103.686712,"45 Shipyard Rd, 45, Singapore 628136",true,0,0,0.35,,true
-Sunway Citrine Hub (3 pin),1.390931,103.639452,"Persiaran Medini 3, Sunway City Iskandar Puteri, 79250 Iskandar Puteri, Johor, Malaysia",true,0,0,0.26,,true
-Shell Ang Mo Kio,1.367883,103.844826,"3535 Ang Mo Kio Ave 6, Singapore 569839",true,0,0,0.16,,true
-SP Group: Temasek Polytechnic Carpark E,1.347611,103.930455,"33 Tampines Ave 1, Singapore",true,0,0,0.39,,true
-Gardens by the Bay - Main Entrance Carpark,1.281584,103.866253,18 Marina Gardens Dr,true,0,0,0.42,,true
-Woodlands Industrial Park,1.451869,103.796326,"158 Woodlands Industrial Park E5, Singapore 757867",true,0,0,0.25,,true
-Shell Punggol,1.404761,103.906631,"821 Punggol Rd, Singapore 829169",true,0,0,0.13,,true
-"BlueSG open to EVs: Blk 346, Bt Batok St 34",1.362406,103.750959,"347 Bukit Batok Street 34, Singapore 650347",true,0,0,0.43,,true
-"BlueSG open to EVs: Blk 472, Fernvale Street",1.397119,103.881632,"472 Fernvale St, Singapore 792472",true,0,0,0.44,,true
-BlueSG open to EVs: 417 Pasir Ris Dr 6,1.372044,103.955051,"417 Pasir Ris Drive 6, Singapore 510417",true,0,0,0.38,,true
-Tada Station,1.359834,103.833595,"40 Sin Ming Lane, Midview City, Singapore 573958",true,0,0,0.12,,true
-BlueSG Charger (4.8kW AC),1.31248,103.874478,"114A Lor 3 Geylang, Singapore 382114 Lor 3 Geylang, Singapore 382114",true,0,0,0.25,,true
-Shell Telok Blangah,1.270457,103.812772,"450 Telok Blangah Road, Singapore 098857",true,0,0,0.19,,true
-Shell Recharge Geylang Rd,1.3119747225104634,103.87556815916649,203 Geylang Road ,true,0,0,0.25,,true
-BlueSG open to EVs: 21 Jalan Masjid,1.320339,103.912298,"21 Jln Masjid, Singapore 418946",true,0,0,0.35,,true
-Starbucks Bandar Seri Alam DT (22 kW AC),1.496464,103.871663,"8, Jln Suria, Bandar Baru Seri Alam, 81750 Masai, Johor",true,0,0,0.4,,true
-Aste Global -1 Tuas Link 1 by EVone Charging,1.3334408689452686,103.63838921925968,"1 Tuas Link 1, Singapore 638583",true,0,0,0.44,,true
-Shell Sengkang,1.391564,103.892738,"61 Sengkang E Rd, Singapore 545015",true,0,0,0.14,,true
-Shell Serangoon Gardens,1.363386,103.867302,"49 Serangoon Garden Way, Singapore 555944",true,0,0,0.23,,true
-Techplace I,1.360599,103.856128,"4008 Ang Mo Kio Ave 10, Singapore 569625",true,0,0,0.11,,true
-Paradigm Mall JB,1.515891,103.685631,"Lot no. 4FK-12, 4th floor, Paradigm Mall, Taman Bukit Mewah, 81200 Johor Bahru, Johor, Malaysia",true,0,0,0.16,,true
-Hougang Mall,1.3725894,103.8937225,90 Hougang Avenue 10,true,0,0,0.12,,true
-"BlueSG open to EVs: Blk 129A, Bt Merah View",1.283617,103.823466,"129A Bukit Merah View, Singapore 151129",true,0,0,0.43,,true
-Charge+: Woodlands Waterfront Carpark,1.451662,103.778802,FQ2H+MG Singapore,true,0,0,0.37,,true
-Charge+: 29A Marsiling Drive,1.442634,103.772981,"29A Marsiling Dr, Singapore 731029",true,0,0,0.28,,true
-Great World Supercharger,1.293346,103.832078,"1 Kim Seng Promenade, Singapore 237994",true,0,0,0.24,,true
-"BlueSG open to EVs: Blk 512A, Serangoon North Ave 4",1.370763,103.875194,"512A Serangoon North Ave 4, Singapore 551512",true,0,0,0.51,,true
-Shell Dunman,1.309945,103.901031,"No. 743 Dunman Rd, Singapore 439241",true,0,0,0.12,,true
-Pioneer Centre,1.3326227,103.6969065,"1 Soon Lee St, Singapore 627605",true,0,0,0.14,,true
-National Service Resort & Country Club,1.317674999999999,103.974319,"10 Changi Coast Walk, Singapore 499739",true,0,0,0.38,,true
-"BlueSG open to EVs: Blk 31A, Eunos Crescent",1.320107,103.901609,"31A Eunos Cres, Singapore 401031",true,0,0,0.43,,true
-"BlueSG open to EVs: BLK 241A, Bt Batok East Ave 5",1.350628,103.755377,"239 Bukit Batok East Ave 5, Block 239, Singapore 650239",true,0,0,0.49,,true
-Juice+: Marina Country Club,1.415565,103.899791,11 Northshore Drive Singapore 828670,true,0,0,0.27,,true
-CDG 455A Segar Rd,1.3876904485472563,103.77133410158996,"455A Segar Rd, 新加坡 671455",true,0,0,0.17,,true
-CDGE: 57A Teban Gardens Road,1.322502,103.737148,"57A Teban Gardens Rd, Singapore 601057",true,0,0,0.28,,true
-BlueSG open to EVs: Blk 4 Queens Road,1.319338,103.808723,"4 Queen's Rd, Singapore 260004",true,0,0,0.37,,true
-"BlueSG open to EVs: Blk 112, Bishan Street 12",1.346635,103.848961,"112 Bishan Street 12, Singapore 570112",true,0,0,0.45,,true
-Charge+: Les Mains Patisserie,1.315606,103.925587,47 Jalan Tua Kong Singapore 457247,true,0,0,0.29,,true
-Shell Newton Hooper,1.311417,103.843102,"150 Bukit Timah Rd, Singapore 229846",true,0,0,0.19,,true
-Upper Bukit Timah Shell Recharge,1.3384474506674329,103.7769100419015,"35 Upper Bukit Timah Rd, Singapore 588166",true,0,0,0.32,,true
-Charge+ (in operation) (Coming Soon),1.437431,103.801205,"644A Woodlands Ring Rd, Singapore 731644",true,0,0,0.36,,true
-Techlink,1.33594,103.905571,"31 Kaki Bukit Rd 3, Singapore 417818",true,0,0,0.8,,true
-Sengkang Grand Mall,1.3818507,103.8927293,70 Compassvale Bow Singapore 544692,true,0,0,0.19,,true
-Up@Robertson Quay,1.290676,103.837616,"75 Robertson Quay, Singapore 238238",true,0,0,0.17,,true
-SP Group: Rivervale Mall,1.392337,103.904346,"11 Rivervale Crescent, Singapore 545082",true,0,0,0.24,,true
-"BlueSG open to EVs: Blk 334, Clementi Ave 2",1.314714,103.768249,"334 Clementi Ave 2, Singapore 120334",true,0,0,0.43,,true
-700A Pasir Ris Drive 10,1.3807763343736783,103.93853976322937,511700,true,0,0,0.23,,true
-Caltex Jurong spring,1.349641,103.71487,"100 Jurong West Ave 1, Singapore 649519",true,0,0,0.2,,true
-LHN Energy Phoenix Park,1.29804,103.816568,"318 Tanglin Rd, Singapore 247979",true,0,0,0.23,,true
-National Heart Center,1.281513,103.836831,"17 Third Hospital Avenue, Singapore",true,0,0,0.21,,true
-BlueSG open to EVs: Across 343 Telok Kurau Road,1.308638,103.912318,"21A St. Patrick's Road, Singapore 424143",true,0,0,0.47,,true
-"BlueSG open to EVs: Blk 230, Jurong East St 21",1.341795,103.737547,"230 Jurong East Street 21, Singapore 600231",true,0,0,0.46,,true
-Resorts World Sentosa,1.257043,103.820353,"8 Sentosa Gateway, Singapore 098269",true,0,0,0.21,,true
-SP: Vivocity,1.264843,103.823285,"1 HarbourFront Walk, Singapore 098585",true,0,0,0.12,,true
-Connexion,1.312553,103.854282,"1 Farrer Park Station Rd, Singapore 217562",true,0,0,0.9,,true
-GoParkin: Union Gas building,1.350622,103.89087,"89 Defu Lane 10, Singapore 539220",true,0,0,0.28,,true
-Charge+: Defu Industrial City,1.3448827324526693,103.89675123010906,2 Defu South Street 1,true,0,0,0.29,,true
-ESSO Pioneer,1.312940252173984,103.68734506001852,19 Pioneer Road S628499,true,0,0,0.12,,true
-The Concourse,1.30136,103.862236,"300 Beach Rd, Singapore 199555",true,0,0,0.13,,true
-"BlueSG open to EVs: Blk 854A, Jurong West St 81",1.347799,103.696657,"854A Jurong West Street 81, Singapore 641854",true,0,0,0.47,,true
-BlueSG open to EVs: Blk 265 Yishun St 22,1.436903,103.838345,"266 Yishun Street 22, Singapore 760266",true,0,0,0.4,,true
-Singapore Polytechnic MSCP,1.311246,103.776681,"Dover Road, Commonwealth‎ 13, Singapore",true,0,0,0.26,,true
-Autobacs Ubi,1.33314,103.896672,"10 Ubi View, Singapore 408543",true,0,0,0.12,,true
-KED ENERGY PTE LTD,1.3363712654194329,103.75465851277113,"48 Toh Guan Rd E, Singapore 608586",true,0,0,0.18,,true
-CDG Engie: West Coast Park (McDonald’s),1.297562,103.763779,"71 W Coast Hwy, Singapore 126844",true,0,0,0.39,,true
-Shell,1.331795,103.888855,"255 Paya Lebar Rd, Singapore 409037",true,0,0,0.5,,true
-CDGE: Esso Upper Aljunied,1.3322678261427052,103.8790348300666,"373 Upper Aljunied Rd, Singapore 367859",true,0,0,0.25,,true
-"BlueSG open to EVs: Blk 903, Jurong West St 91",1.33961,103.686232,"903 Jurong West Street 91, Singapore 640903",true,0,0,0.46,,true
-"BlueSG open to EVs: Blk 117, Commonwealth Drive",1.306944,103.799533,"117 Commonwealth Cres, Singapore",true,0,0,0.47,,true
-UE Square Tower (red zone),1.293274,103.84234,"205 River Valley Rd, Singapore 238274",true,0,0,0.26,,true
-"BlueSG open to EVs: Blk 966A, Hougang Ave 9",1.377945,103.877754,"966A Hougang Avenue 9, Singapore 531966",true,0,0,0.43,,true
-"BlueSG open to EVs: Blk 326, Ubi Ave 1",1.32726,103.904208,"327 Ubi Ave 1, Block 327, Singapore 400327",true,0,0,0.38,,true
-BlueSG open to EVs: BLK 853 Yishun Ring Road,1.416467,103.836745,"853 Yishun Ring Road, Singapore 760853",true,0,0,0.44,,true
-BlueSG open to EVs: Blk 513 Yishun Street 51,1.415948,103.8442,"513c Yishun Street 51, Singapore 760513",true,0,0,0.44,,true
-LHN Energy Raeburn Park,1.273106,103.833155,"10 Raeburn Park, Singapore 088702",true,0,0,0.23,,true
-135A Pasir Ris Street 11,1.364802,103.956863,135A Pasir Ris Street 11,true,0,0,0.24,,true
-SP Group: Jewel Changi Airport,1.360699,103.989603,78 Airport Boulevard Singapore 819666,true,0,0,0.3,,true
-Tanah Merah Country Club Tampines Course,1.3270196096163687,103.96994161767903,151 Xilin Avenue,true,0,0,0.4,,true
-Mapletree,1.319214800107794,103.6882628000002,21 benoi sector,true,0,0,0.9,,true
-SPC Bukit Batok,1.3432427908352402,103.75834370192821,"50 Bukit Batok East Ave 3, Singapore 659879",true,0,0,0.15,,true
-Expo Carpark D,1.3339762545044767,103.95838708806289,1 Expo drive ,true,0,0,0.14,,true
-CDG 787A Choa Chu Kang Dr,1.3951133955580453,103.74766113446626,"787A Choa Chu Kang Dr, 新加坡 680787",true,0,0,0.25,,true
-LHN Energy,1.372804,103.763206,794 Upper Bukit Timah Road,true,0,0,0.1,,true
-CDGE: 117 Alkaff Crescent,1.3368648834995271,103.87302016909817,"117 Alkaff Cres, Singapore 341115",true,0,0,0.25,,true
-IKEA Tampines,1.373907,103.932551,"60 Tampines North Drive 2, Singapore 528764",true,0,0,0.13,,true
-BlueSG open to EVs: Blk 157 Ang Mo Kio Ave 4,1.375126,103.839276,"157 Ang Mo Kio Avenue 4, Singapore 56",true,0,0,0.44,,true
-Charge+: 220 Hougang Street 21,1.356983,103.884404,220 Hougang St 21,true,0,0,0.3,,true
-BlueSG open to EVs: 52 Sims Place,1.316535,103.880084,"52 Sims Pl, Singapore 380052",true,0,0,0.33,,true
-bluecharge@senja link 651,1.3868954434701355,103.76439869962157,senja link 651 carpark,true,0,0,0.25,,true
-Jit Poh Building,1.272962,103.842388,"19 Keppel Road, Singapore",true,0,0,0.16,,true
-"BlueSG open to EVs: Blk 602, Clementi West St 1",1.305137,103.766255,"602 Clementi West Street 1, Singapore 120602",true,0,0,0.47,,true
-CDGEG: Blk 146A Lorong 2 Toa Payoh,1.334501,103.845655,"146A Lor 2 Toa Payoh, Singapore 311146",true,0,0,0.34,,true
-"BlueSG open to EVs: Blk 117, Potong Pasir Ave 1",1.336562,103.863076,"114 Potong Pasir Ave 1, Singapore 350114",true,0,0,0.47,,true
-Molek Pine 4 (3.7 kW AC),1.525273,103.784371,"Jalan Molek 1/27, 81750‎ Pasir Gudang‎ Johor, Maleisië",true,0,0,0.24,,true
-Sheraton Towers,1.311664,103.83638,"39 Scotts Rd, Singapore 228230",true,0,0,0.15,,true
-CDG EV Charger,1.35583,103.844308,290A Bishan St 24,true,0,0,0.14,,true
-"BlueSG open to EVs: Bedok South Ave 3, behind blk 69",1.319527,103.942997,"behind blk 69, bedok south ave 3",true,0,0,0.52,,true
-D'Arena@Upper Jurong by EVone Charging,1.3294741,103.6822694,"511 Upper Jurong Rd, Singapore 638366",true,0,0,0.38,,true
-BlueSG open to EVs: 37 Chai Chee Street,1.325191,103.925778,"36 Chai Chee Avenue, Singapore 461037",true,0,0,0.39,,true
-CDG Engie - 274A Toh Guan Road,1.341565,103.747455,"274A Toh Guan Rd, Singapore 600276",true,0,0,0.3,,true
-BlueSG open to EVs: 420 Tampines St 41,1.357784,103.947142,"419 Tampines Street 41, Singapore 529204",true,0,0,0.38,,true
-CDGE: Singapore Botanic Gardens Botany Centre,1.3084224,103.8182032,"1 Cluny Rd, Singapore 259569",true,0,0,0.45,,true
-Charge+: 633 Punggol Drive,1.400696,103.913915,"633 Punggol Dr, Singapore 820633",true,0,0,0.26,,true
-"BlueSG open to EVs: Blk 688, Hougang St 61",1.375892,103.885486,"688 Hougang Street 61, Block 688, Singapore 530688",true,0,0,0.42,,true
-Shell Recharge Tanglin Mall,1.305026,103.823851,"163, Tanglin Road, 247933",true,0,0,0.27,,true
-BlueSG open to EVs: Blk 769 Yishun Ave 3,1.424279,103.833275,"769 Yishun Avenue 3, Singapore 760769",true,0,0,0.4,,true
-Gardens By The Bay - Bayfront Plaza,1.279198,103.860073,"Unnamed Road, Singapore",true,0,0,0.35,,true
-ChargEco: Block 80 HDB Car Park,1.274012010646763,103.80735956132412,"80 Telok Blangah Street 31, Singapore 102080",true,0,0,0.31,,true
-NUS Stephen Riady Center,1.304036,103.77304,"2 College Ave West, Singapore",true,0,0,0.24,,true
-Willing Hearts,1.3142482784278031,103.90704547618223,1 LorJ Telok Kurau,true,0,0,0.14,,true
-Shell Tampines,1.349178,103.948016,"9 Tampines Ave 2, Singapore 529731",true,0,0,0.14,,true
-Marina Bay Sands,1.285604,103.861107,"10 Bayfront Ave, Singapore 018956",true,0,0,0.16,,true
-Bluecharge: Blk 32 Telok Blangah Rise,1.2731828240010936,103.82100548832092,"Telok Blangah Rise, Mount Faber Grace Park, Singapore",true,0,0,0.37,,true
-Shell Braddell,1.3449,103.864464,"110 Braddell Rd, Singapore 359914",true,0,0,0.14,,true
-"BlueSG open to EVs: Blk 809, Yishun Ring Road",1.416877,103.83055,"809 Yishun Ring Rd, Singapore 760809",true,0,0,0.45,,true
-SP Group: Marina Square,1.29179,103.857758,"Raffles Blvd, Singapore",true,0,0,0.23,,true
-Tampines Plaza,1.353142,103.943078,"3 Tampines Central 1, Singapore 529540",true,0,0,0.14,,true
-"BlueSG open to EVs: Blk 103, Jalan Rajah",1.327412,103.852496,"103 Jln Rajah, Block 103, Singapore 321103",true,0,0,0.4,,true
-Lee Kong Chian School of Medicine,1.321851,103.848984,"11 Mandalay Rd, Singapore",true,0,0,0.33,,true
-Charge+: 519A Woodlands Drive 14,1.4344276124617934,103.79231706261635,"519A Woodlands Drive 14, Singapore 731519",true,0,0,0.32,,true
-Shell Recharge Pasir Ris,1.365821,103.966996,"1 New Loyang Link, Singapore 506931",true,0,0,0.24,,true
-Tiong Bahru Plaza,1.2862842,103.8277824,"355 Jln Bukit Ho Swee, Singapore 169567",true,0,0,0.17,,true
-Charge+: 226 Sumang Lane,1.4029418,103.8934653,"226 Sumang Lane, Singapore 820226",true,0,0,0.24,,true
-"BlueSG open to EVs: Blk 537, Bt Batok St 52",1.354886,103.751171,"539 Bukit Batok Street 52, Block 539, Singapore 650539",true,0,0,0.43,,true
-65A Kallang Bahru MSCP,1.3198411,103.8690631,65A Kallang Bahru S(331065),true,0,0,0.22,,true
-"Bluecharge: 50 Beach View, Basement",1.251294,103.818745,"50 Beach View, Singapore 098604",true,0,0,0.35,,true
-"BlueSG open to EVs: Blk 329, Anchorvale St",1.396432,103.88939,"329 Anchorvale St, Singapore 540329",true,0,0,0.42,,true
-CDGE: Autobay @ Kakit Bukit,1.3416647,103.9125865,1 Kakit Bukit Ave 6 ,true,0,0,0.27,,true
-CDGE: 635A Jurong West Street Car Park,1.342288,103.69866,"635A Jurong West Street 65, Singapore 641635",true,0,0,0.38,,true
-Storhub Toa Payoh,1.333221,103.852334,"615 Lrg. 5 Toa Payoh, Singapore 319457",true,0,0,0.17,,true
-Capella Hotel Solacharge,1.2496291,103.8243003,"1 The Knolls, Sentosa Island, 098297",true,0,0,0.24,,true
-Shell Paya Lebar,1.322042,103.891624,"98 Paya Lebar Rd, Singapore 409008",true,0,0,0.16,,true
-"Bluecharge: 534, Bedok North St 3",1.334142,103.927754,"534 Bedok North Street 3, Singapore 460534",true,0,0,0.33,,true
-The Siemens Center,1.328057,103.870776,"62 MacPherson Rd, Singapore",true,0,0,0.18,,true
-AA CENTRE,1.289876,103.812956,"2 Kung Chong Rd, Singapore 159140",true,0,0,0.9,,true
-CDGE: Sin Ming Autocity,1.3592956,103.8392412,160 Sin Ming Drive,true,0,0,0.23,,true
-CDG Engie- Blk 451 Bukit Batok West Ave 6,1.353007,103.743458,Blk 451 Bukit Batok West Ave 6,true,0,0,0.41,,true
-"BlueSG open to EVs: Blk 609, Bedok Reservoir Road",1.33138,103.912313,"610 Bedok Reservoir Rd, Block 610, Singapore 470610",true,0,0,0.49,,true
-BlueSG open to EVs: Blk 108 Simei St 1,1.343233,103.950837,"108 Simei Street 1, Singapore 520108",true,0,0,0.38,,true
-SP Group: Caltex Changi,1.316149,103.900084,"78 Changi Rd, Singapore 419714",true,0,0,0.23,,true
-Charge+: BLK 315 MSCP Y65M,1.432573,103.841762,"315 Yishun Ave 9, Block 315 Carpark, Singapore",true,0,0,0.26,,true
-"Charge+: 431 Yishun Ave 1, Deck 5",1.420133,103.847638,"431c Yishun Ave 1, Singapore",true,0,0,0.33,,true
-CDG: 183 Boon Lay MSCP,1.349273760519521,103.70946689980984,"183 Boon Lay Ave, Singapore 641183",true,0,0,0.22,,true
-"CDG Engie - 311, Clementi Ave 4",1.319082,103.765158,"311 Clementi Ave 4, Singapore 120311",true,0,0,0.31,,true
-BlueSG open to EVs: Blk 590 Ang Mo Kio St 51,1.371474,103.853217,"590 Ang Mo Kio Street 51, Singapore",true,0,0,0.44,,true
-CDG Engie - 85 Dawson Road,1.29541,103.809262,85 Dawson Road,true,0,0,0.26,,true
-116 Jalan Tenteram MSCP,1.3277547,103.8611462,116 Jalan Tenteram,true,0,0,0.23,,true
-"BlueSG open to EVs: Blk 203, Compassvale Road",1.387004,103.895935,"Blk 203, Singapore",true,0,0,0.45,,true
-Zhongshan Mall,1.327329,103.846394,"20 Ah Hood Rd, Singapore",true,0,0,0.14,,true
-Shell,1.324259,103.842094,"324 Thomson Rd, Singapore 307672",true,0,0,0.5,,true
-CDG Blk 289H Bukit Batok Street 25,1.344397052573844,103.76003090089257,"Blk 289H Bukit Batok Street 25, 新加坡 657289",true,0,0,0.34,,true
-BlueCharge: 425 Bedok North Road,1.329215,103.929551,425 Bedok Road Singapore 460425 ,true,0,0,0.32,,true
-CDG Engie - Blk 810 Choa Chu Kang Ave 7,1.373813,103.746674,"810 Choa Chu Kang Ave 7, Singapore 681810",true,0,0,0.39,,true
-870B Tampines St 86 (MSCP),1.356331,103.931039,"870B Tampines Street 86, Singapore 522870",true,0,0,0.26,,true
-Charge+: Blk 440 (MSCP) Fernvale Link,1.392986,103.878422,"440 Fernvale Link, Singapore 790440",true,0,0,0.37,,true
-Jurong Point,1.339342,103.705387,"1 Jurong West Central 2, Jurong Point, Singapore 648886",true,0,0,0.12,,true
-"20 Ayer Rajah Crescent, Technopreneur Centre",1.295231,103.789842,"20 Ayer Rajah Crescent, Singapore",true,0,0,0.44,,true
-The Capricorn Underground Car Park,1.289639,103.778957,"1 Science Park Rd, Singapore 117528",true,0,0,0.34,,true
-Storhub Jurong East by EVone Charging,1.3392365,103.7493724,3C Toh Guan Road East,true,0,0,0.37,,true
-PE Drive Charging Station,1.331391,103.89573,"52 Ubi Avenue 3, Singapore 408867",true,0,0,0.25,,true
-"BlueSG open to EVs: Blk 269, Tampines St 21",1.350668,103.947558,"269 Tampines Street 21, Singapore 520269",true,0,0,0.43,,true
-One@Redhill Centre,1.284876,103.808552,"1 Jln Kilang Barat, Singapore 159345",true,0,0,0.18,,true
-Millenia Walk,1.291826,103.860199,9 Raffles Boulevard ,true,0,0,0.13,,true
-CDG Teck Whye Ln Blk 118A Carpark,1.379520435889066,103.74993425995183,"118A Teck Whye Ln, Singapore 681118",true,0,0,0.33,,true
-Kim Chuan-Tai Seng by EVone Charging,1.33778,103.891319,"1005 Tai Seng Ave, #01-2576",true,0,0,0.36,,true
-"BlueSG open to EVs: Blk 165, Yishun Ring Road",1.435556,103.831963,"165 Yishun Ring Rd, Singapore 760165",true,0,0,0.45,,true
-Pan Pacific Serviced Suites Beach Road,1.299576,103.860151,7500B Beach Road,true,0,0,0.38,,true
-MILLENIA PRIVATE LIMITED,1.291937,103.859741,"#B1-01 MILLENIA TOWER SINGAPORE Singapore, 039192",true,0,0,0.24,,true
-SHELL TELOK BLANGAH 621_01,1.270383,103.812867,"450 TELOK BLANGAH ROAD SINGAPORE Singapore, 098857",true,0,0,0.26,,true
-SUNTEC CITY (6 ZONES),1.29448,103.858305,"3 TEMASEK BOULEVARD SINGAPORE Singapore, 038983",true,0,0,0.21,,true
-SHELL 305 OUTRAM 661_01.,1.28774,103.835,"305 OUTRAM ROAD SINGAPORE Singapore, 169072",true,0,0,0.24,,true
-SHELL HAVELOCK 669_01.,1.290006,103.832466,"548 HAVELOCK ROAD SINGAPORE Singapore, 169637",true,0,0,0.22,,true
-SHELL EAST COAST 631_01,1.308193,103.909796,"338 EAST COAST ROAD SINGAPORE Singapore, 428961",true,0,0,0.23,,true
-SHELL DUNMAN 639_01,1.309721,103.900959,"743 DUNMAN ROAD SINGAPORE Singapore, 439241",true,0,0,0.19,,true
-SHELL TANJONG KATONG 650_01,1.310955,103.894427,"191 TANJONG KATONG ROAD SINGAPORE Singapore, 436993",true,0,0,0.27,,true
-SHELL GUILLEMARD 662_01,1.310577,103.883834,"132 GUILLEMARD ROAD SINGAPORE Singapore, 399720",true,0,0,0.23,,true
-SHELL TIONG BAHRU 629_01,1.288301,103.819613,"603 TIONG BAHRU ROAD SINGAPORE Singapore, 158788",true,0,0,0.24,,true
-SHELL SIGLAP 602_01,1.312499,103.926555,"40 UPPER EAST COAST ROAD SINGAPORE Singapore, 455212",true,0,0,0.19,,true
-SHELL GEYLANG LOR 7 668_01,1.311984,103.875625,"203 GEYLANG ROAD SINGAPORE Singapore, 389266",true,0,0,0.26,,true
-SHELL CHANGI KEMBANGAN 601_01,1.318787,103.912929,"460 CHANGI ROAD SINGAPORE Singapore, 419883",true,0,0,0.29,,true
-KOMOCO MOTORS - EV,1.291688,103.810306,"253 ALEXANDRA ROAD #01-01 SINGAPORE Singapore, 159936",true,0,0,0.18,,true
-SHELL ALEXANDRA 651_01,1.290666,103.806853,"358 ALEXANDRA ROAD SINGAPORE Singapore, 159950",true,0,0,0.22,,true
-SHELL SERANGOON RD 645_01,1.314435,103.857134,"509 SERANGOON ROAD SINGAPORE Singapore, 218152",true,0,0,0.25,,true
-SHELL 168 PASIR PANJANG 635_01,1.277511,103.789709,"168 PASIR PANJANG ROAD SINGAPORE Singapore, 118556",true,0,0,0.3,,true
-SHELL Q'WAY ANCHORAGE 640_01,1.289379,103.802905,"260 QUEENSWAY SINGAPORE Singapore, 149060",true,0,0,0.28,,true
-SHELL PAYA LEBAR PIE 627_01,1.321708,103.891643,"98 PAYA LEBAR ROAD SINGAPORE Singapore, 409008",true,0,0,0.27,,true
-SHELL NEWTON HOOPER RD 643_01,1.311378,103.843095,"150 BUKIT TIMAH ROAD SINGAPORE Singapore, 229846",true,0,0,0.29,,true
-SHELL NEWTON CIRCUS 655_01,1.311142,103.842285,"143 BUKIT TIMAH RD SINGAPORE Singapore, 229843",true,0,0,0.26,,true
-CUSCADEN TANGLIN MALL,1.304805,103.823901,"163 TANGLIN ROAD B2-01 TANGLIN MALL SINGAPORE Singapore, 247933",true,0,0,0.21,,true
-SHELL MOULMEIN 632_01,1.318876,103.849692,"103 MOULMEIN ROAD SINGAPORE Singapore, 308080",true,0,0,0.21,,true
-SHELL CWEALTH/STIRLING 612_01,1.297515,103.803366,"355 COMMONWEALTH AVENUE SINGAPORE Singapore, 149731",true,0,0,0.29,,true
-SHELL P.LEBAR M'PHERSON 638_01,1.331822,103.888725,"255 PAYA LEBAR ROAD SINGAPORE Singapore, 409037",true,0,0,0.3,,true
-SHELL MACPHERSON 617_01,1.331146,103.877749,"259 MACPHERSON ROAD SINGAPORE Singapore, 348584",true,0,0,0.23,,true
-SHELL THOMSON NOVENA 665_01,1.324175,103.842151,"324 THOMSON ROAD SINGAPORE Singapore, 307672",true,0,0,0.27,,true
-SHELL SIMPANG BEDOK 623_01,1.330835,103.947557,"331 BEDOK ROAD SINGAPORE Singapore, 469504",true,0,0,0.26,,true
-SHELL 328 PASIR PANJANG 646_01,1.289315,103.777853,"328 PASIR PANJANG ROAD SINGAPORE Singapore, 118654",true,0,0,0.3,,true
-SINGAPORE EXPO,1.3341,103.959,"02-01 SINGAPORE EXPO SINGAPORE Singapore, 486150",true,0,0,0.14,,true
-SHELL EASTERN PETROLEUM (PTE) LTD,1.305927,103.791651,"9 NORTH BOUNA VISTA DRI, BASEMENT 1 SINGAPORE Singapore, 138588",true,0,0,0.33,,true
-SHELL DUNEARN UNI 658_01,1.323306,103.817319,"314 DUNEARN ROAD SINGAPORE Singapore, 299551",true,0,0,0.24,,true
-SHELL BRADDELL 642_01,1.344578,103.864639,"110 BRADDELL ROAD SINGAPORE Singapore, 359914",true,0,0,0.21,,true
-SHELL TOA PAYOH 663_01,1.341095,103.848894,"248 LORONG 1 TOA PAYOH SINGAPORE Singapore, 319755",true,0,0,0.22,,true
-SHELL HOUGANG 675_01.,1.349386,103.889993,"600 HOUGANG AVE 3 SINGAPORE Singapore, 538846",true,0,0,0.21,,true
-SHELL TAMPINES AVE 2,1.349153,103.947705,"9 TAMPINES AVENUE 2 SINGAPORE Singapore, 529731",true,0,0,0.2,,true
-SHELL LAKEVIEW 657_01,1.347975,103.838557,"80 UPPER THOMSON ROAD SINGAPORE Singapore, 574326",true,0,0,0.21,,true
-SHELL DUNEARN ENG NEO 666_01,1.331007,103.798941,"648 DUNEARN ROAD SINGAPORE Singapore, 289629",true,0,0,0.28,,true
-SHELL SIN MING 625_01,1.351306,103.835411,"183A UPPER THOMSON ROAD SINGAPORE Singapore, 574332",true,0,0,0.21,,true
-SHELL YIO CHU KANG 633_01,1.360672,103.873902,"158 YIO CHU KANG ROAD SINGAPORE Singapore, 545612",true,0,0,0.25,,true
-SHELL SGN GDN 606_01,1.363303,103.867444,"49 SERANGOON GARDEN WAY SINGAPORE Singapore, 555944",true,0,0,0.2,,true
-EV LUMENS AUTO PTE LTD,1.359432,103.839865,"300 Sin Ming Road SINGAPORE Singapore, 575626",true,0,0,0.22,,true
-SHELL PASIR RIS 607_01,1.365855,103.967185,"1 NEW LOYANG LINK SINGAPORE Singapore, 506931",true,0,0,0.22,,true
-SHELL ANG MO KIO AVE 6 670_01,1.367955,103.844734,"3535 ANG MO KIO, AVENUE 6 SINGAPORE Singapore, 569839",true,0,0,0.29,,true
-SHELL UPP BT TIMAH PIE 659_01,1.338636,103.776808,"35 UPPER BUKIT TIMAH ROAD SINGAPORE Singapore, 588166",true,0,0,0.29,,true
-SHELL PIERCE RESERVOIR 636_01,1.369931,103.828086,"551 UPPER THOMSON ROAD SINGAPORE Singapore, 574415",true,0,0,0.29,,true
-SHELL SELETAR HILLS 613_01,1.383614,103.877004,"298 YIO CHU KANG ROAD SINGAPORE Singapore, 805908",true,0,0,0.26,,true
-SHELL BT TIMAH HILL 667_01,1.345916,103.772113,"219 UPPER BUKIT TIMAH ROAD SINGAPORE Singapore, 588186",true,0,0,0.26,,true
-EV SINGAPORE AERO ENGINE,1.373256,103.982242,"11 CALSHOT ROAD SINGAPORE Singapore, 509932",true,0,0,0.24,,true
-SHELL BT BATOK NP 630_01,1.347664,103.764828,"28 BUKIT BATOK EAST AVENUE 6 SINGAPORE Singapore, 659760",true,0,0,0.24,,true
-Changi Airport Terminal 3,1.3564573010308,103.9865063972240,"65 Airport Boulevard, Singapore 819663",true,0,0,0.25,,true
-Asia Green,1.3562110282663,103.9416687460270,"7 Tampines Grande, Singapore 528736",true,0,0,0.1,,true
-I12 Katong,1.3060013193201,103.9050740693140,"112 East Coast Road, Singapore 428802",true,0,0,0.1,,true
-Marina Collection,1.2444116410724,103.8398206112710,13-17 Cove Drive Singapore 098327,true,0,0,0.17,,true
-Riverplace,1.2899955997604,103.8408744689420,60 Havelock Road Singapore 169658,true,0,0,0.1,,true
-Martin Place Residences,1.2943866708972,103.8382968266140,2 Martin Place Singapore 237988,true,0,0,0.23,,true
-South Beach Commercial,1.2944563644357,103.8561695333600,38 Beach Road Singapore 189762,true,0,0,0.22,,true
-South Beach Residential,1.2944563644357,103.8561695333600,38 Beach Road Singapore 189762,true,0,0,0.23,,true
-Asia Square Tower 2,1.2783544668131,103.8511218477630,"12 Marina View, Singapore 018961",true,0,0,0.19,,true
-Park Royal Kitchener,1.3106927935985,103.8556902422200,"181 Kitchener Road, Singapore 208533",true,0,0,0.2,,true
-Pan Pacific Serviced Suites Beach Road,1.2997782248776,103.8599838247640,"7500B Beach Road, Singapore 199592",true,0,0,0.38,,true
-Capitaspring,1.2841932206467814,103.85021626832763,"88 Market St, Singapore 048948",true,0,0,0.12,,true
-One Degree 15 (Private access only),1.2459096091904216,103.8397942,"11 Cove Drive, #01-01, Sentosa Cove, Singapore 098497",true,0,0,0.35,,true
-Caltex Dunearn,1.3190290968874914,103.83317511338463,"130 Dunearn Rd, Singapore 309436",true,0,0,0.14,,true
-Tampines Plaza 2,1.3535029001494643,103.94274972687707,"5 Tampines Central 1, Singapore 529541",true,0,0,0.16,,true
-Zhongshan Mall,1.3273092460580298,103.84636673878806,"20 Ah Hood Rd, Singapore 329984",true,0,0,0.14,,true
-Tekka Place,1.3053312503538694,103.8514153692055,"2 Serangoon Rd, Singapore 218227",true,0,0,0.11,,true
-Sheraton Towers,1.3120496455347723,103.83654047105618,"39 Scotts Rd, Singapore 228230",true,0,0,0.15,,true
-Mapletree Business City,1.2746046179753079,103.79967479804148,"10 Pasir Panjang Rd, Singapore 117438",true,0,0,0.23,,true
-Marina Square,1.2914322779500189,103.85759196735496,"6 Raffles Blvd, Marina Square, Singapore 039594",true,0,0,0.13,,true
-Vantage,1.289876243058258,103.8069890673551,"305 Alexandra Road, Singapore 159942",true,0,0,0.7,,true
-Caltex Changi,1.3166082011470479,103.90020161338465,"78 Changi Rd, Singapore 419714",true,0,0,0.13,,true
-Jewel Changi Airport,1.360433441062898,103.9897485692055,"78 Airport Blvd., Singapore 819666",true,0,0,0.2,,true
-Techlink,1.3358881915101088,103.90562568454875,"31 Kaki Bukit Rd 3, Singapore 417818",true,0,0,0.8,,true
-Shaw Centre,1.3065506241753113,103.83186865571309,"1 Scotts Rd, Singapore 228208",true,0,0,0.11,,true
-Caltex Jurong Spring,1.3495935507350258,103.71475718269808,"100 Jurong West Ave 1, Singapore 649519",true,0,0,0.2,,true
-Eightrium @ Changi Business Park,1.338116865412567,103.9644189096832,"15A Changi Business Park Central 1, Singapore 486035",true,0,0,0.32,,true
-PLQ Mall,1.3176785630259229,103.89277151153401,"10 Paya Lebar Road, PLQ Mall, Paya Lebar Quarter, 409057",true,0,0,0.8,,true
-Grand Park City Hall,1.2926194733919862,103.85017532687716,"10 Coleman St, Singapore 179809",true,0,0,0.2,,true
-Chinese Swimming Club,1.3004596333918585,103.90055332687734,"21 Amber Rd, Singapore 439870",true,0,0,0.21,,true
-IMM,1.3350942730466588,103.7467214808474,"2 Jurong East Street 21, Singapore 609601",true,0,0,0.3,,true
-Tanah Merah Ferry Terminal,1.3144999932854695,103.98847049804131,"50 Tanah Merah Ferry Rd, Singapore 498833",true,0,0,0.26,,true
-Caltex Chong Pang,1.4305366924935019,103.82984068095544,"3700 Yishun Ring Rd, Singapore 768690",true,0,0,0.17,,true
-Kinex,1.3149258932504018,103.89485195756366,"11 Tanjong Katong Rd, Singapore 437157",true,0,0,0.5,,true
-Paya Lebar Square,1.3194165488335265,103.89260719989211,"60 Paya Lebar Rd, Singapore 409051",true,0,0,0.17,,true
-Techview,1.3363751660197996,103.9097351863994,"1 Kaki Bukit View, Singapore 415941",true,0,0,0.8,,true
-Autobacs Ubi,1.3323478102542938,103.896064582698,"10 Ubi View, Singapore 408543",true,0,0,0.12,,true
-Plaza 8 CBP,1.3338697844844987,103.9654734329671,"1 Changi Business Park Crescent, Changi Business Park, 486025",true,0,0,0.11,,true
-Tampines Plaza 1,1.3535029001494643,103.94274972687707,"5 Tampines Central 1, Singapore 529541",true,0,0,0.16,,true
-PLQ 3,1.3161169272111835,103.89372179989206,"2 Tanjong Katong Rd, PLQ 3, Quarter 437161",true,0,0,0.5,,true
-Pan Pacific Serviced Suites Orchard,1.3010475118933178,103.83770512502662,"96 Somerset Rd, Singapore 238163",true,0,0,0.35,,true
-UIC Building,1.2780904439075123,103.84967042687718,"5 Shenton Way, Singapore 068808",true,0,0,0.12,,true
-Citibank Changi (Private access only),1.3339668879548907,103.96608103851919,"3 Changi Business Park Cres, Level 1, Singapore 486026",true,0,0,0.37,,true
-The Alpha,1.2886510170237973,103.77965674407113,"10 Science Park Rd, Singapore 117684",true,0,0,0.9,,true
-Connexion,1.3142882629925259,103.8537759399965,"1 Farrer Park Station Rd, Singapore 217562",true,0,0,0.9,,true
-Nordcom One,1.4458785697971703,103.81418965571275,"3 Gambas Cres, Singapore 757041",true,0,0,0.11,,true
-Rivervale Mall,1.3925894111071226,103.90444325833823,"11 Rivervale Cres, Singapore 545082",true,0,0,0.14,,true
-Hyflux Innovation Centre,1.3176494310264406,103.86336202317587,"80 Bendemeer Rd, Singapore 339949",true,0,0,0.24,,true
-3 Changi Business Park Vista,1.3369826136710221,103.96712331153395,"3 Changi Business Park Vista, Singapore 486051",true,0,0,0.28,,true
-Aperia Mall,1.3107261497734806,103.86429564407108,"12 Kallang Ave, Singapore 339511",true,0,0,0.11,,true
-Singapore Zoo,1.4045951880674357,103.79306591338417,"80 Mandai Lake Rd, 729826",true,0,0,0.13,,true
-Entrepreneur Business Centre,1.3376000103709433,103.90278751393072,"18 Kaki Bukit Rd 3, Singapore 415978",true,0,0,0.28,,true
-Techplace I,1.3606523410422908,103.85676749804132,"4008/ 4009/ 4010, 4012 Ang Mo Kio Ave 10, 569628",true,0,0,0.11,,true
-Orchid Country Club,1.4120004063294185,103.84434333666816,"1 Orchid Club Rd, Singapore 769162",true,0,0,0.19,,true
-United Square,1.319627713599663,103.84376251989039,"101 Thomson Rd, Singapore 307591",true,0,0,0.13,,true
-Novena Square,1.3201042993444796,103.84397966311558,"238 Thomson Rd, Singapore 307683",true,0,0,0.13,,true
-Sembawang Country Club,1.417491347776572,103.81561037105588,"249 Sembawang Rd, Singapore 758352",true,0,0,0.22,,true
-"Resorts World Sentosa B2, East B1, West B1",1.2553405988367123,103.82180542979668,"8 Sentosa Gateway, 098269",true,0,0,0.42,,true
-SGX Centre 2,1.2789176171246806,103.84925469672876,"4 Shenton Way, Singapore 068807",true,0,0,0.12,,true
-Resorts World Sentosa B2 (VIP),1.255335497272778,103.8216869448591,"8 Sentosa Gateway, 098269",true,0,0,0.3,,true
-Tagore 23 Warehouse,1.3855520727816606,103.82808762502624,"23 Tagore Ln, Singapore 787601",true,0,0,0.19,,true
-Park Royal Pickering,1.2860015694725884,103.84601569619078,"3 Upper Pickering St, Singapore 058289",true,0,0,0.2,,true
-Vivocity,1.2646499022068751,103.82221782687743,"1 HarbourFront Walk, Singapore 098585",true,0,0,0.8,,true
-Tan Chin Tuan Mansion (Private access only),1.3055208503335103,103.83738408269816,"42 Cairnhill Rd, Singapore 229661",true,0,0,0.43,,true
-Odeon Towers,1.296507751298007,103.85321882502662,"331 North Bridge Road Odeon Towers, Singapore 188720",true,0,0,0.12,,true
-Techplace II,1.377471459295966,103.86510913851887,"5012 Ang Mo Kio Ave 5, Singapore 569876",true,0,0,0.12,,true
-Temasek Club,1.3474006050675817,103.78038188454853,"131 Rifle Range Rd, Singapore 588406",true,0,0,0.12,,true
-Republic Plaza,1.2833620958193959,103.85087783851912,"9 Raffles Pl, Singapore 048619",true,0,0,0.14,,true
-Great World,1.2938454949730043,103.8318863826982,"1 Kim Seng Promenade, Singapore 237994",true,0,0,0.11,,true
-Meissa,1.2764820010683784,103.79596175386249,"100D Pasir Panjang Rd, Singapore 118520",true,0,0,0.6,,true
-West Park BizCentral,1.3136185714094601,103.69497577105612,"20 Pioneer Cres, Singapore 628555",true,0,0,0.2,,true
-Liat Towers,1.3054713763910522,103.83052612502659,"541 Orchard Rd, Singapore 238881",true,0,0,0.11,,true
-Alexandra Technopark Block A,1.2777054888149257,103.8008662250265,"438A &, 438B Alexandra Rd, 119967",true,0,0,0.28,,true
-The Galen,1.2865030262283659,103.7841566863995,"61 Science Park Road, Singapore 117525",true,0,0,0.9,,true
-HSL Waterfront@Penjuru,1.3062450377488148,103.7306316183668,"42D Penjuru Rd, Singapore 609162",true,0,0,0.22,,true
-Ascent,1.2912954920855881,103.78585655491173,"2 Science Park Dr, Singapore 118222",true,0,0,0.6,,true
-The Kendall,1.2864051569033701,103.78361656920569,"50 Science Park Rd, Singapore 117406",true,0,0,0.11,,true
-ALICE@MEDIAPOLIS,1.2941353037515957,103.79345738454887,"29 Media Cir., Singapore 138565",true,0,0,0.16,,true
-ICON@IBP,1.3275697739032384,103.74899823481773,"3A International Business Park Rd, Singapore 609935",true,0,0,0.8,,true
-The Capricorn,1.2901137609182913,103.77884600968341,"1 Science Park Road Singapore Science Park 2, 117528",true,0,0,0.13,,true
-Solaris@One-North,1.2984315640818178,103.78986636180299,"1 Fusionopolis Walk, Singapore 138628",true,0,0,0.17,,true
-Galaxis,1.3001244944627985,103.78833167105627,"1 Fusionopolis Pl, Singapore 138522",true,0,0,0.7,,true
-Goldbell Tuas,1.3207750549499142,103.63918377317582,"8 Tuas Ave 18, level 3, Singapore 638892",true,0,0,0.13,,true
-Singapore Polytechnic,1.3100545758784998,103.77753876920555,"500 Dover Rd, Singapore 139651",true,0,0,0.21,,true
-Infinite Studios,1.292845267658751,103.79484774633238,"23 Media Cir., #02-15, Singapore 138563",true,0,0,0.16,,true
-Corporation Place,1.3256525520174542,103.7199526961907,"2 Corporation Rd, Singapore 618494",true,0,0,0.17,,true
-Nordic European Centre,1.327590092202289,103.74840188084745,"3 International Business Park Rd, Singapore 609927",true,0,0,0.22,,true
-31 International Business Park,1.3289139920921229,103.74610266920557,"31 International Business Park Rd, Singapore 609921",true,0,0,0.3,,true
-5 Science Park Drive,1.2925926472878033,103.78651842687725,"5 Science Park Dr, Singapore 118265",true,0,0,0.2,,true
-Bukit Panjang Plaza,1.3803291935196855,103.76408369433989,"1 Jelebu Rd, Singapore 677743",true,0,0,0.19,,true
-Carros Centre,1.4308853577902021,103.7525576826979,"60 Jln Lam Huat, Singapore 737869",true,0,0,0.13,,true
-Singapore Polytechnic T11A ,1.3101508617401123,103.77915954589844,500 Dover Road Singapore 139651,true,0,0,0.27,,true
-Westgate,1.3343783617019653,103.74278259277344,3 Gateway Drive Singapore 608532,true,0,0,0.8,,true
-Six Battery Road,1.2853877544403076,103.8516616821289,6 Battery Road Singapore 049909,true,0,0,0.16,,true
-21 Collyer Quay,1.2851792573928833,103.85275268554688,21 Collyer Quay Singapore 049320,true,0,0,0.15,,true
-CapitaSky,1.2770323753356934,103.84796142578125,79 Robinson Road Singapore 068897,true,0,0,0.9,,true
-Capital Tower,1.2777024507522583,103.8475341796875,168 Robinson Road Singapore 068912,true,0,0,0.13,,true
-CapitaGreen,1.2824146747589111,103.85028076171875,138 Market Street Singapore 048946,true,0,0,0.11,,true
-Copthorne King’s Hotel,1.2882884740829468,103.83661651611328,403 Havelock Road Singapore 169632,true,0,0,0.22,,true
-Gardens by the Bay - Bayfront Plaza,1.2792644500732422,103.86003875732422,18 Marina Gardens Drive Singapore 018953,true,0,0,0.35,,true
-Gardens by the Bay - Main Entrance Carpark,1.2811683416366577,103.86572265625,18 Marina Gardens Drive Singapore 018953,true,0,0,0.42,,true
-Fortune Centre,1.3002822399139404,103.85269927978516,190 Middle Road Singapore 188979,true,0,0,0.14,,true
-M Hotel,1.2737669944763184,103.84503936767578,81 Anson Road Singapore 079908,true,0,0,0.7,,true
-Orchard Building,1.3014488220214844,103.83724975585938,1 Grange Road Singapore 239693,true,0,0,0.16,,true
-Studio M Hotel,1.2908153533935547,103.83917236328125,3 Nanson Road Singapore 238910,true,0,0,0.14,,true
-Quayside Isle,1.247928261756897,103.84172821044922,31 Ocean Way Singapore 098375,true,0,0,0.13,,true
-UOB Plaza 1,1.285383939743042,103.8505630493164,80 Raffles Place Singapore 048624,true,0,0,0.11,,true
-Novena Square,1.3199315071105957,103.84430694580078,238 Thomson Road Singapore 307683,true,0,0,0.13,,true
-Sentosa Cove,1.2487763166427612,103.8405532836914,1 Cove Avenue Singapore 098537,true,0,0,0.12,,true
-Waterfront Plaza,1.2905162572860718,103.83502960205078,390A Havelock Road,true,0,0,0.16,,true
-Orchard Hotel,1.3075321912765503,103.82859802246094,442 Orchard Road Singapore 238879,true,0,0,0.13,,true
-King’s Centre,1.2896087169647217,103.83589172363281,390 Havelock Road Singapore 169662,true,0,0,0.13,,true
-Marina One,1.2773464918136597,103.85360717773438,23 Marina Way Singapore 018979,true,0,0,0.1,,true
-Palais Renaissance,1.3066492080688477,103.82950592041016,390 Orchard Road Singapore 238871,true,0,0,0.18,,true
-Funan,1.2911354303359985,103.85015106201172,107 North Bridge Road Singapore 179105,true,0,0,0.5,,true
-The Atrium Orchard,1.2999743223190308,103.84535217285156,60A Orchard Road Singapore 238890,true,0,0,0.18,,true
-Raffles City Singapore,1.293506145477295,103.8528060913086,252 North Bridge Road Singapore 179103,true,0,0,0.22,,true
-Clarke Quay Central,1.2890251874923706,103.84661102294922,6 Eu Tong Sen Street Singapore 059817,true,0,0,0.19,,true
-Compass One,1.3919039964675903,103.8946304321289,1 Sengkang Square Singapore 545078,true,0,0,0.11,,true
-NSRCC Kranji,1.4241323471069336,103.72830200195312,50 Neo Tiew Lane 3,true,0,0,0.12,,true
-351 on Braddell,1.3434840440750122,103.84548950195312,351 Braddell Road Singapore 579713,true,0,0,0.15,,true
-Singapore Island Country Club,1.3589462041854858,103.81898498535156,180 Island Club Road Singapore 578774,true,0,0,0.29,,true
-City Square Mall,1.3113981485366821,103.8565902709961,180 Kitchener Road Singapore 208539,true,0,0,0.16,,true
-Edward Boustead Centre,1.332878589630127,103.89225006103516,82 Ubi Avenue 4 Singapore 408832,true,0,0,0.22,,true
-Temasek Polytechnic Carpark E,1.3475483655929565,103.93012237548828,21 Tampines Avenue 1 Singapore 529757,true,0,0,0.29,,true
-NSRCC Changi,1.318152666091919,103.97529602050781,10 Changi Coast Walk,true,0,0,0.12,,true
+Queenstown/Science Park Dr/DNV GL/Lobby,1.29014253616333,103.786895751953,"16, Science Park Dr",1,0,0,0.39,,1
+Central/Claymore Rd/21,1.3077385,103.8301985,Claymore Road 21,1,0,0,0.22,,1
+Queenstown/Holland Dr/Blk 18/Deck 1A,1.3118,103.79207,18 Holland Drive,1,0,0,0.36,,1
+Central/Mohamed Sultan Rd/28,1.29288,103.8413,28 Mohamed Sultan Road,1,0,0,0.28,,1
+Yishun/Yishun St 22/Blk265,1.4369706,103.8383619,265 Yishun Street 22,1,0,0,0.26,,1
+Tampines/Simei St 1/Blk 108,1.343322,103.951077,108 Simei Street 1,1,0,0,0.27,,1
+Ang Mo Kio/Ang Mo Kio Av 4/Blk 157,1.3751449,103.839079,157 Ang Mo Kio Avenue 4,1,0,0,0.34,,1
+Tampines/Tampines St 41/Blk 420,1.357537,103.947125,420 Tampines Street 41,1,0,0,0.31,,1
+Queenstown/Fusionopolis Pl/1/Deck B4,1.29866,103.78748,1 Fusionopolis Place,1,0,0,0.36,,1
+Tampines/Simei Street 1/Blk 132,1.3472048,103.9562201,132 Simei Street 1,1,0,0,0.31,,1
+Tampines/Tampines Avenue 4/Blk 902,1.351249,103.939541,902 Tampines Avenue 4,1,0,0,0.34,,1
+Queenstown/11 Biopolis Way/Helios/Deck B2,1.304152,103.791778,11 Biopolis Way,1,0,0,0.41,,1
+Yishun/Yishun Ring Road/Blk 853,1.416593,103.836526,850 to 855 Yishun Ring Road,1,0,0,0.31,,1
+Geylang/Haig Road/Blk 8,1.31379,103.896451,8 Haig Road,1,0,0,0.23,,1
+Clementi/Clementi West Street 1/Blk 602,1.304373,103.766838,Blk 602 Clementi West Street 1,1,0,0,0.39,,1
+Jurong West/Boon Lay Drive/Blk 188,1.344062,103.711245,188 Boon Lay Drive,1,0,0,0.34,,1
+Bedok/Chai Chee Avenue/Blk 37,1.325325,103.925817,37 Chai Chee Avenue,1,0,0,0.29,,1
+Tampines/Tampines Street 22/Blk 274,1.348438,103.950524,Blk 272/275 Tampines Street 22,1,0,0,0.35,,1
+Bukit Merah/Bukit Merah View/Blk 129A/Deck 2A,1.283532,103.823372,129A Bukit Merah View,1,0,0,0.45,,1
+Bukit Timah/Queens Road/Blk 4/Deck 1A,1.318738,103.808169,4 Queen's Road,1,0,0,0.37,,1
+Hougang/Hougang Street 61/Blk 688,1.37595,103.885492,Blk 685/691 Hougang Street 61,1,0,0,0.33,,1
+Yishun/Yishun Avenue 3/Blk 769,1.424284,103.833346,773 Yishun Avenue 3,1,0,0,0.3,,1
+Yishun/Yishun Ring Road/Blk 809,1.416833,103.83048,800-812 Yishun Ring Road,1,0,0,0.31,,1
+Geylang/Eunos Crescent/Blk 31A/Deck 1A,1.320225,103.9017609,31A Eunos Crescent,1,0,0,0.38,,1
+Clementi/West Coast Road/Blk 708,1.306052,103.761812,704-714 West Coast Road,1,0,0,0.32,,1
+Bedok/Bedok South Avenue 3/Behind Blk 69,1.319455,103.943098,69 Bedok South Avenue 3,1,0,0,0.4,,1
+Kembangan/21 Jalan Masjid/Beside Kembangan Plaza,1.320397,103.912296,21 Jalan Masjid,1,0,0,0.48,,1
+Bukit Batok/Bukit Batok Street 52/Blk 537,1.355013,103.751187,537 Bukit Batok Street 52,1,0,0,0.41,,1
+Jurong East/8 Jurong Town Hall Road/JTC Summit/Deck B2,1.33115,103.74184,8 Jurong Town Hall Road,1,0,0,0.54,,1
+Ang Mo Kio/Ang Mo Kio Avenue 9/Blk 627,1.382052,103.841393,627 Ang Mo Kio Avenue 9,1,0,0,0.38,,1
+Punggol/Punggol Place/Blk 273/Deck 1,1.402703,103.901963,273 Punggol Place,1,0,0,0.36,,1
+Tampines/Tampines Street 91/Blk 921A/Deck 1A,1.347284,103.941371,921A Tampines Street 91,1,0,0,0.44,,1
+Jurong East/Jurong East Street 21/Blk 230,1.341813,103.737565,215-230 Jurong East Street 21,1,0,0,0.41,,1
+Ang Mo Kio/Ang Mo Kio Avenue 6/Blk 123,1.370392,103.844376,123 Ang Mo Kio Avenue 6,1,0,0,0.38,,1
+Jurong West/Jurong West Street 81/Blk 854A/Deck 1A,1.347775,103.696495,854A Jurong West Street 81,1,0,0,0.5,,1
+Clementi/Clementi Avenue 2/Blk 334/Beside Caltex,1.314724,103.768296,334 Clementi Avenue 2,1,0,0,0.48,,1
+Bukit Batok/Bukit Batok Street 34/Blk 346,1.362466,103.750963,346 Bukit Batok Street 34,1,0,0,0.41,,1
+Tampines/Tampines Street 83/Blk 851,1.353051,103.935061,851 Tampines Street 83,1,0,0,0.35,,1
+Serangoon/Upper Serangoon View/Blk 476/Deck 3,1.37738,103.903721,476 Upper Serangoon View,1,0,0,0.45,,1
+Bishan/Bishan Street 13/Blk 186,1.349585,103.852838,186 Bishan Street 13,1,0,0,0.31,,1
+Geylang/Ubi Avenue 1/Blk 326,1.327319,103.904146,326 Ubi Avenue 1,1,0,0,0.28,,1
+Geylang/52 Sims Place/Along Sims Place,1.316531,103.880106,52 Sims Place,1,0,0,0.38,,1
+Marine Parade/Across 343 Telok Karau Road/Beside St'Patrick's Court,1.308605,103.912432,Across 343 Telok Kurau Road,1,0,0,0.67,,1
+Hougang/Hougang Street 92/Blk 941A/Deck 1A,1.374287,103.87912,941A Hougang Street 92,1,0,0,0.42,,1
+Jurong West/Jurong West Street 91/Blk 903,1.339625,103.686256,903 Jurong West Street 91,1,0,0,0.41,,1
+Toa Payoh/Potong Pasir Avenue 1/Blk 117,1.336558,103.863104,117 Potong Pasir Avenue 1,1,0,0,0.39,,1
+Yishun/Yishun Ring Road/Blk 165,1.4355487,103.8320274,165 Yishun Ring Road,1,0,0,0.31,,1
+Punggol/Punggol Walk/Blk 213/Deck 1A,1.400134,103.898428,213 Punggol Walk,1,0,0,0.36,,1
+Hougang/Hougang Avenue 2/Blk 707,1.366507,103.888389,707 Hougang Avenue 2,1,0,0,0.32,,1
+Bedok/Bedok Reservoir Road/Blk 609,1.33135,103.912391,609 Bedok Reservoir Road,1,0,0,0.34,,1
+Jurong East/Jurong East Street 13/Blk 116,1.339583,103.734451,116 Jurong East Street 13,1,0,0,0.41,,1
+Bukit Batok/Bukit Batok East Avenue 5/Blk 241A/Deck 1A,1.350931,103.755227,241A Bukit Batok East Avenue 5,1,0,0,0.54,,1
+Hougang/Hougang Street 31/Blk 373A/Deck B1B,1.362366,103.890053,373A Hougang Street 31,1,0,0,0.43,,1
+Pasir Ris/Pasir Ris Drive 6/Blk 417,1.372102,103.955033,417 Pasir Ris Drive 6,1,0,0,0.35,,1
+Serangoon/Serangoon Avenue 4/Blk 212,1.356934,103.873229,212 Serangoon Avenue 4,1,0,0,0.36,,1
+Hougang/Hougang Avenue 9/Blk 966A/Deck 1A,1.377891,103.877869,966A Hougang Avenue 9,1,0,0,0.41,,1
+Sengkang/Anchorvale Street/Blk 329/Deck 1A,1.39634,103.889296,329 Anchorvale Street,1,0,0,0.42,,1
+Choa Chu Kang/Choa Chu Kang Crescent/Blk 678A/Deck 1B,1.401978,103.74481,678A Choa Chu Kang Crescent,1,0,0,0.53,,1
+Ang Mo Kio/Ang Mo Kio Avenue 4/Blk 114,1.372293,103.836312,114 Ang Mo Kio Avenue 4,1,0,0,0.38,,1
+Kallang/Bendemeer Road/Blk 10/Deck 1A,1.315203,103.860333,10 Bendemeer Road,1,0,0,0.37,,1
+Ang Mo Kio/Ang Mo Kio Avenue 6/Blk 647,1.378898,103.843833,647 Ang Mo Kio Avenue 6,1,0,0,0.38,,1
+Bedok/Bedok North Street 3/Blk 534,1.333285,103.92394,534 Bedok North Street 3,1,0,0,0.34,,1
+Queenstown/Commonwealth Drive/Blk 117 (Beside Blk 117 Open Space Carpark),1.306972,103.799566,117 Commonwealth Drive,1,0,0,0.73,,1
+Kallang/Jalan Rajah/Blk 103,1.327411,103.852514,103 Jalan Rajah,1,0,0,0.27,,1
+Bukit Batok/Bukit Batok Street 33/Blk 319,1.361125,103.746545,319 Bukit Batok Street 33,1,0,0,0.41,,1
+Bishan/Bishan Street 12/Blk 112,1.346756,103.848871,112 Bishan Street 12,1,0,0,0.31,,1
+Sengkang/Fernvale Street/Blk 472/Deck 1A,1.396952,103.881727,472 Fernvale Street,1,0,0,0.4,,1
+Yishun/Yishun Street 51/Blk 513/Deck 2,1.415984,103.844221,513 Yishun Street 51,1,0,0,0.38,,1
+Sengkang/Compassvale Road/Blk 203/Deck 1A,1.387328,103.895393,203 Compassvale Road,1,0,0,0.41,,1
+Serangoon/Serangoon North Avenue 4/Blk 512A/Deck 1B,1.371005,103.8751,512A Serangoon North Avenue 4,1,0,0,0.51,,1
+Ang Mo Kio/Ang Mo Kio Street 51/Blk 590/Deck 1A,1.371634,103.853064,590 Ang Mo Kio Street 51,1,0,0,0.47,,1
+Sengkang/Compassvale Walk/Blk 236A/Deck 1B,1.390343,103.900021,236A Compassvale Walk,1,0,0,0.42,,1
+Queenstown/Ghim Moh Road/Blk 2A/Deck 1,1.312774,103.787393,2A Ghim Moh Road,1,0,0,0.38,,1
+Central/9 Raffles Place/Republic Plaza/Level 4,1.283658,103.850455,"9 Raffles Place, Republic Plaza",1,0,0,0.46,,1
+Choa Chu Kang/Choa Chu Kang Avenue 4/Lot one/Deck B2,1.38525,103.744922,21 Choa Chu Kang Avenue 4,1,0,0,0.52,,1
+Sentosa/50 Beach View/Basement/Beach Station(Near Beach Station Escalator),1.251171,103.819188,50 Beach View,1,0,0,0.74,,1
+Central/1 Esplanade Drive/Basement 1/Lift Lobby B,1.289691,103.85577,1 Esplanade Drive,1,0,0,0.49,,1
+Sentosa/1 Cove Avenue/Sentosa Cove/Blk B/Level 2,1.247741,103.840256,"1 Cove Avenue, Sentosa Cove",1,0,0,0.48,,1
+Central/3E River Valley Road/Clark Quay Blk E/Level 3,1.290715,103.846146,3E River Valley Road,1,0,0,0.53,,1
+Kallang/Cambridge Road/Blk 43 (Opposite NTUC),1.314899,103.849479,43 Cambridge Road,1,0,0,0.45,,1
+Ang Mo Kio/Ang Mo Kio Avenue 4/Blk 110,1.370557,103.837923,110 Ang Mo Kio Avenue 4,1,0,0,0.38,,1
+Yishun/Yishun Ring Road/Blk 781,1.422343,103.832121,781 Yishun Ring Road,1,0,0,0.31,,1
+Tampines/Simei Road/Blk 155,1.344756,103.958393,155 Simei Road,1,0,0,0.27,,1
+Bukit Timah/170 Upper Bukit Timah Road (Infront Bukit Timah Shopping Centre),1.343312,103.775637,170 Upper Bukit Timah Road,1,0,0,0.76,,1
+Hougang/Hougang Avenue 6/Blk 524,1.373931,103.890352,524 Hougang Avenue 6,1,0,0,0.32,,1
+Ang Mo Kio/Ang Mo Kio Avenue 10/Blk 449,1.36805,103.8558,449 Ang Mo Kio Avenue 10,1,0,0,0.39,,1
+Tampines/Tampines Street 72/Blk 742A/Deck 1A,1.359905,103.934176,742A Tampines Street 72,1,0,0,0.44,,1
+Novena/Tan Tock Seng Hospital/Basement 4/Near Lift Lobby D,1.321282,103.84588,11 Jalan Tan Tock Seng,1,0,0,0.58,,1
+Ang Mo Kio/Ang Mo Kio Avenue 8/Blk 510,1.373288,103.849485,510 Ang Mo Kio Avenue 8,1,0,0,0.38,,1
+Ang Mo Kio/Ang Mo Kio Avenue 10/Blk 559,1.371022,103.857277,559 Ang Mo Kio Avenue 10,1,0,0,0.39,,1
+Pasir Ris/Pasir Ris Street 12/Blk 108A/Deck 1A,1.367987,103.956949,108A Pasir Ris Street 12,1,0,0,0.46,,1
+Woodlands/Woodlands Circle/Blk 747A/Deck 1A,1.443332,103.795599,747A Woodlands Circle,1,0,0,0.43,,1
+Kallang/Saint George's Road/Blk 22,1.32537,103.862659,22 Saint George's Road,1,0,0,0.34,,1
+Punggol/Edgedale Plains/Blk 172/Deck 1A,1.39557,103.911788,172 Edgedale Plains,1,0,0,0.39,,1
+Bukit Panjang/Petir Road/Blk 140,1.375471,103.769068,140 Petir Road,1,0,0,0.32,,1
+Jurong East/Jurong East Street 32/Blk 307,1.346612,103.734402,307 Jurong East Street 32,1,0,0,0.41,,1
+Bedok/Chai Chee Street/Blk 53,1.328941,103.921295,53 Chai Chee Street,1,0,0,0.29,,1
+Bedok/Bedok North Road/Blk 425,1.329159,103.92944,425 Bedok North Road,1,0,0,0.3,,1
+Tampines/Tampines Street 11/Blk 107,1.348142,103.947926,107 Tampines Street 11,1,0,0,0.35,,1
+Queenstown/Ghim Moh Link/Blk 24/Deck 1B,1.308908,103.785607,24 Ghim Moh Link,1,0,0,0.39,,1
+Jurong West/Yung An Road/Blk 364/Deck 1A,1.337184,103.720457,364 Yung An Road,1,0,0,0.4,,1
+Clementi/Clementi Avenue 3/Blk 440/Deck 1A,1.31642,103.76392,440 Clementi Avenue 3,1,0,0,0.42,,1
+Yishun/Yishun Street 31/Blk 333/Deck 1A,1.43154,103.844951,333 Yishun Street 31,1,0,0,0.39,,1
+Pasir Ris/Pasir Ris Street 71/Blk 762A/Deck 1A,1.376083,103.9333,762A Pasir Ris Street 71,1,0,0,0.46,,1
+Bukit Merah/Bukit Purmei Road/Blk 109,1.273803,103.8258,109 Bukit Purmei Road,1,0,0,0.37,,1
+Toa Payoh/Lorong 8 Toa Payoh/Blk 213,1.341068,103.8551,213 Lorong 8 Toa Payoh,1,0,0,0.36,,1
+Choa Chu Kang/Choa Chu Kang Central/Blk 205,1.381051,103.7481,205 Choa Chu Kang Central,1,0,0,0.43,,1
+Tampines/Tampines Street 22/Blk 299A,1.350399,103.95424,299A Tampines Street 22,1,0,0,0.36,,1
+Clementi/Clementi West Street 2/Blk 727,1.304208,103.763558,727 Clementi West Street 2,1,0,0,0.39,,1
+Bukit Merah/Henderson Road/Blk 96/Deck 1A,1.287793,103.821375,96 Henderson Road,1,0,0,0.41,,1
+Bukit Batok/Bukit Batok West Avenue 5/Blk 436/Deck 1A,1.358769,103.739499,436 Bukit Batok West Avenue 5,1,0,0,0.53,,1
+Tampines/Tampines Avenue 8/Blk 879C/Deck 1A,1.351144,103.928663,879C Tampines Avenue 8,1,0,0,0.43,,1
+Punggol/Punggol Field/Blk 204/Deck B1,1.398494,103.90305,204 Punggol Field,1,0,0,0.37,,1
+Bukit Merah/Telok Blangah Rise/Blk 32,1.273125,103.82106,32 Telok Blangah Rise,1,0,0,0.37,,1
+Bedok/Bedok North Street 2/Blk 129,1.327761,103.93846,124 Bedok North Street 2,1,0,0,0.34,,1
+Marine Parade/Marine Terrace/Blk 59,1.305782,103.914158,59 Marine Terrace,1,0,0,0.35,,1
+Central/109 North Bridge Road/Funan Mall/Basement 3/Lift Lobby B,1.291599,103.849823,109 North Bridge Road,1,0,0,0.64,,1
+Central/252 North Bridge Road/Raffles City/Deck B3,1.2939583,103.8526163,252 North Bridge Road,1,0,0,0.5,,1
+Orchard Central Supercharger,1.3007,103.83978,"181 Orchard Rd, Singapore, Singapore, 238896",1,0,0,0.28,,1
+"Nissan Showroom, Johor Jaya",1.529448,103.816505,"1, Jalan Johor Jaya, Taman Perindustrian Plentong, 81750‎ Masai, ‎Johor, Malaysia",1,0,0,0.27,,1
+Hard Rock Hotel Desaru Coast,1.540211,104.264246,"Jln Pantai 3, 81930 Bandar Penawar, Johor, Malaysia",1,0,0,0.28,,1
+Jade Garden Seafood Corner,1.348106,104.224009,"Lot 4785, 1 Jalan Siakap, Kampung Sungai Rengit, 81620, Pengerang, Johor",1,0,0,0.26,,1
+Causeway Point Supercharger,1.436111,103.786496,"1 Woodlands Square, Singapore 738099",1,0,0,0.27,,1
+"seri negeri (government building, public carpark)",1.545174,103.55988,"seri negeri (government building, public carpark)",1,0,0,0.49,,1
+"Gentari @ XPark Sunway Iskandar (22 kW AC, 60 kW DC)",1.3953,103.62577,"Jalan Medini Selatan 2 Medini Zone F, Bandar Medini Iskandar, 79250 Nusajaya, Johor, Malaysia",1,0,0,0.52,,1
+Waterway Point Supercharger,1.406303,103.901878,"83 Punggol Central, Singapore, Singapore, 828761",1,0,0,0.27,,1
+Century Square Supercharger,1.35235,103.943846,"2 Tampines Central 5, Singapore, Singapore, 529509",1,0,0,0.27,,1
+Volvo Pekin Auto,1.516984,103.674438,"PTD 144228, Taman Sutera Utama, 81300 Skudai, Johor, Malaysia",1,0,0,0.16,,1
+Block 15 Woodlands Loop,1.449289,103.809175,"15 Woodlands Loop, Woodlands‎ 738322, Singapore",1,0,0,0.23,,1
+Goldbell Tuas,1.321866,103.639587,"8 Tuas Avenue 18, Singapore 638892",1,0,0,0.13,,1
+Four Points By Sheraton Desaru (22 kW AC),1.5761964123956436,104.20566692948341,"Jalan Kempas 2, Taman Desaru Utama, Bandar Penawar, Malaysia, 81930",1,0,0,0.41,,1
+Katong V Supercharger,1.302678,103.903352,"30 East Coast Road, Singapore, Singapore, 428751",1,0,0,0.21,,1
+Carros Centre,1.43148,103.75279,"60 Jln Lam Huat, Singapore 737869",1,0,0,0.13,,1
+Setia Eco Garden Sales Gallery [22kWAC],1.4917392359298465,103.58541109090933,"Persiaran Lam Setia Utama, Setia Eco Garden, Gelang Patah, Johor, Malaysia",1,0,0,0.39,,1
+Shell Choa Chua Kang,1.385636,103.746452,"20 Choa Chu Kang Dr, Singapore 689717",1,0,0,0.2,,1
+Eikoh Roller International (S) Pte Ltd,1.290889,103.624422,45 Tuas View Loop Singapore 637699,1,0,0,0.38,,1
+Petronas R&R Gelang Patah Southbound (22 kW AC),1.386627,103.593256,"LINKEDUA Malaysia - Singapura, 81550, Gelang Patah",1,0,0,0.47,,1
+Hyundai Skudai Kiri,1.48965,103.711027,"Kampung Skudai Kiri, 81200 Johor Bahru, Johor, Malaysia",1,0,0,0.19,,1
+Renaissance Hotel JB,1.4944408897944281,103.81149817047027,"No. 53-01 & 55, 01, Jalan Permas 10/1, Bandar Baru Permas Jaya, 81750 Masai, Johor, Malaysia",1,0,0,0.2,,1
+Zenith Lifestyle Mall (11 kW AC; 50 kW DC),1.4635729,103.7622119,"82C, Jalan Trus, Bandar Johor Bahru, 80000 Johor Bahru, Johor, Malaysia",1,0,0,0.42,,1
+"EcoWorld Gallery (1 x 22 kW, 1 x 3.7 kW)",1.578823,103.722933,"81100‎ Tebrau‎ Johor, Malaysia",1,0,0,0.4,,1
+Singapore Zoo,1.404922,103.78798,"Mandai Lake Road 80, 729826 Singapore",1,0,0,0.13,,1
+Bedok Point,1.324702,103.932418,799 Upper Changi Road ,1,0,0,0.11,,1
+ACO HQ Johor Bahru (180kW),1.535961,103.75342,"14, Jalan Firma 3, Kawasan Perindustrian Tebrau 4, 81100 Johor Bahru, Johor, Malaysia",1,0,0,0.26,,1
+NTU Research Techno Plaza,1.343423,103.679373,"50 Nanyang Ave, Singapore 639798",1,0,0,0.25,,1
+Petronas Pasir Gudang Highway 3 (1 x 22 kW),1.522925,103.731079,"81800‎ Kota Tinggi‎ Johore, Malaysia",1,0,0,0.43,,1
+Juice+: Changi Airport Terminal 2,1.352961,103.988037,9X3Q+56 Singapore,1,0,0,0.33,,1
+Tagore 23,1.386026,103.828227,"23 Tagore Ln, Singapore 787601",1,0,0,0.9,,1
+Jen Johor Puteri Harbour (2 x 22 kW),1.417565,103.656614,"Persiaran Puteri Selatan, 79000 Perkampungan (Felcra) Tebing Runtuh, Johore, Malaysia",1,0,0,0.36,,1
+Harvest@Woodlands by EVone Charging,1.4514023,103.7914704,"280 Woodlands Industrial Park E5, Singapore 757322",1,0,0,0.35,,1
+BMW Auto Bavaria Tebrau,1.54998,103.792759,"3B, Persiaran Desa Tebrau, Taman Desa Tebrau, 81100 Johor Bahru, Johor, Malaysia",1,0,0,0.23,,1
+Palkom Motors,1.530922,103.780719,"No. 1, Jalan Kota Tinggi, Batu 7 1/4, Taman Pandan, Johor, Kawasan Perindustrian Pandan, 81100 Johor Bahru, Johor, Malaysia",1,0,0,0.13,,1
+Shell Dunearn University,1.323543,103.817429,"288 Dunearn Rd, Singapore 299557",1,0,0,0.24,,1
+Petronas Kawasan Perindustrian Kota Puteri (22 kW AC),1.506207,103.842717,"Petronas, Kawasan Perindustrian Kota Puteri, 81750 Masai, Johor, Malaysia",1,0,0,0.53,,1
+home,1.493149,103.860469,Taman Bukit Rinting ,1,0,0,0.4,,1
+West Coast Plaza Supercharger,1.303732,103.76663,"154 West Coast Road, Singapore, 127371",1,0,0,0.29,,1
+The Star Vista Supercharger,1.306932,103.788222,"1 Vista Exchange Green, Singapore 138617",1,0,0,0.27,,1
+HSL Waterfront @ Penjuru,1.305972,103.730418,"42D Penjuru Road, Singapore 609162",1,0,0,0.24,,1
+Nordcom One,1.444324,103.814023,"5a Gambas Cres, Singapore",1,0,0,0.11,,1
+SICC Island SP Charger,1.35895,103.819354,"180 Island Club Rd, Singapore 578774",1,0,0,0.22,,1
+Millenia Walk Supercharger,1.292254,103.859707,"9 Raffles Blvd, Singapore 039596",1,0,0,0.26,,1
+Shell Boon Lay,1.343959,103.707764,"2 Boon Lay Ave, Singapore 649960",1,0,0,0.14,,1
+"Sand & Sandals Resort, Desaru (MyEVOC 1x 22 kW)",1.560694,104.253109,"29, Jalan Desaru, Desaru, 82200 Bandar Penawar, Johor, Malaysia",1,0,0,0.47,,1
+Shell Yishun,1.430866,103.833008,"1 Yishun Street 11, Singapore 768642",1,0,0,0.12,,1
+Orchid Country Club,1.41139,103.84436,"Orchid Club Road 1, 769162 Singapore",1,0,0,0.19,,1
+Shell 648 Dunearn Rd,1.3309944,103.7991123,648 Dunearn Road,1,0,0,0.2,,1
+Juice+: Gain City Sungei Kadut,1.412927,103.7459779,"71 Sungei Kadut Dr, Level 2, Singapore 729577",1,0,0,0.3,,1
+Biopolis,1.303518,103.792513,31 Biopolis Way Singapore 138668,1,0,0,0.8,,1
+City Square Mall (2),1.3113234941054386,103.8563217359124,"180 Kitchener Rd, Singapore 208539",1,0,0,0.2,,1
+Republic Plaza,1.283519,103.850595,"9 Raffles Place, Singapore 048619",1,0,0,0.14,,1
+Business Aviation Complex,1.417807,103.863333,"700 West Camp Road, Singapore",1,0,0,0.25,,1
+Bukit Panjang Plaza,1.379987,103.764397,"1 Jelebu Rd, Singapore 677743",1,0,0,0.19,,1
+CDG Engie - Singapore University Of Social Sciences (SUSS/SIM),1.329017,103.776129,"Singapore, Clementi Rd, #463号SG",1,0,0,0.62,,1
+Sembawang Country Club,1.418225,103.815461,"249 Sembawang Rd, Singapore 758352",1,0,0,0.22,,1
+KSL City Mall,1.485534,103.762308,"Jalan Beruang, 80250 Taman Tasek, Johore, Malaysia",1,0,0,0.13,,1
+SP Group: CSC Changi,1.3915290769316817,103.98520262309323,"2 Netheravon Rd, Singapore 508503",1,0,0,0.2,,1
+BlueSG open to EVs: BLK 476 Upp Serangoon View,1.377267,103.903628,"476 Upper Serangoon View, Singapore 530476",1,0,0,0.46,,1
+Penjuru Close #01-11by EVone Charging,1.313091,103.731755,28F Penjuru Close #01-11,1,0,0,0.37,,1
+Corporation Place,1.32602,103.719828,"2 Corporation Rd, Singapore 618494",1,0,0,0.17,,1
+Shell Bukit Batok,1.350191,103.738495,"11 Bukit Batok West Ave 3, Singapore 659166",1,0,0,0.17,,1
+"BlueSG open to EVs: Blk 212, Serangoon Ave 4",1.356931,103.873222,"212 Serangoon Ave 4, Singapore 550212",1,0,0,0.44,,1
+Johor Premium Outlets (3.7 kW AC),1.60292,103.622421,"Jalan Premium Outlets, 81400 Senai, Johore, Malaysia",1,0,0,0.33,,1
+Marina Bay Cruise Center Singapore,1.266151,103.860488,"Marina Coastal Drive, Singapore",1,0,0,0.34,,1
+Thistle Hotel Multi Level Car Park (3 pin),1.462316,103.74322,"Jalan Sungai Chat, Sri Gelam, 80100 Johor Bahru, Johor, Malaysia",1,0,0,0.42,,1
+"BlueSG open to EVs: Blk 678A, Choa Chu Kang Crescent",1.401979,103.745077,"678A Choa Chu Kang Cres, Singapore 681678",1,0,0,0.52,,1
+Shell Bukit Batok,1.347825,103.764854,"28 Bukit Batok East Ave 6, Singapore 659760",1,0,0,0.17,,1
+Temasek Club,1.346985,103.780824,"131 Rifle Range Rd, #04-04, Singapore 588406",1,0,0,0.12,,1
+Eco Spring,1.588156,103.757771,"2, Jalan Ekoflora Utama, 81100 Johor Bahru, Johor, Malaysia",1,0,0,0.1,,1
+Starbucks Seri Austin DT,1.575883,103.747829,"Jalan Seri Austin 1, Taman Seri Austin, 81100 Johor Bahru, Johor",1,0,0,0.24,,1
+Starbucks Shell Seri Alam DT (22 kW AC),1.5107954893126725,103.87764133102405,"Bandar Baru Seri Alam, 81750 Masai, Johor, Malaysia",1,0,0,0.39,,1
+MEDINI 7 CORPORATE OFFICE (1 x 3.7 kW),1.413718,103.628348,"Jalan Medini Sentral 5, Bandar Medini Iskandar Malaysia, 79250, Iskandar Puteri",1,0,0,0.38,,1
+WATT - The Rochelle,1.332928,103.790957,"188 Keng Lee Rd, Singapore 308414",1,0,0,0.19,,1
+Tanah Merah Country Club Garden Course,1.328246,103.979775,"25 Changi Coast Road, Singapore 499803",1,0,0,0.38,,1
+MYDIN Mutiara Rini (3 x 22 kW AC),1.5151474195350636,103.6353126168251,"7, Persiaran Jaya 1, Mutiara Rini, 81300 Johor Bahru, Johor, Malaysia",1,0,0,0.33,,1
+Petronas Toll Skudai Northbound,1.579332,103.650349,"81400 Tampoi, Johore, Malaysia",1,0,0,0.31,,1
+Charge+: Ci Yuan Community Club Basement Carpark,1.375239,103.882883,51 Hougang Avenue 9 Singapore 538776,1,0,0,0.48,,1
+Singapore Polytechnic,1.309943,103.777368,"500 Dover Rd, Singapore 139651",1,0,0,0.21,,1
+West Park BizCentral,1.315185,103.695214,"32 Pioneer Cres, Singapore 628561",1,0,0,0.2,,1
+MapleTree Pionner Logistics Hub,1.3177871878172338,103.65339044017435,76 Pionner Road ,1,0,0,0.31,,1
+SP Group: Techplace II,1.377181,103.866439,"5012 Ang Mo Kio Ave 5, Singapore 569872",1,0,0,0.22,,1
+Tanah Merah Ferry Terminal,1.31412,103.9876,"50 Tanah Merah Ferry Rd, Singapore 498833",1,0,0,0.26,,1
+DC Fast Charger @JEGS (Coming Soon),1.303421,103.686712,"45 Shipyard Rd, 45, Singapore 628136",1,0,0,0.35,,1
+Sunway Citrine Hub (3 pin),1.390931,103.639452,"Persiaran Medini 3, Sunway City Iskandar Puteri, 79250 Iskandar Puteri, Johor, Malaysia",1,0,0,0.26,,1
+Shell Ang Mo Kio,1.367883,103.844826,"3535 Ang Mo Kio Ave 6, Singapore 569839",1,0,0,0.16,,1
+SP Group: Temasek Polytechnic Carpark E,1.347611,103.930455,"33 Tampines Ave 1, Singapore",1,0,0,0.39,,1
+Gardens by the Bay - Main Entrance Carpark,1.281584,103.866253,18 Marina Gardens Dr,1,0,0,0.42,,1
+Woodlands Industrial Park,1.451869,103.796326,"158 Woodlands Industrial Park E5, Singapore 757867",1,0,0,0.25,,1
+Shell Punggol,1.404761,103.906631,"821 Punggol Rd, Singapore 829169",1,0,0,0.13,,1
+"BlueSG open to EVs: Blk 346, Bt Batok St 34",1.362406,103.750959,"347 Bukit Batok Street 34, Singapore 650347",1,0,0,0.43,,1
+"BlueSG open to EVs: Blk 472, Fernvale Street",1.397119,103.881632,"472 Fernvale St, Singapore 792472",1,0,0,0.44,,1
+BlueSG open to EVs: 417 Pasir Ris Dr 6,1.372044,103.955051,"417 Pasir Ris Drive 6, Singapore 510417",1,0,0,0.38,,1
+Tada Station,1.359834,103.833595,"40 Sin Ming Lane, Midview City, Singapore 573958",1,0,0,0.12,,1
+BlueSG Charger (4.8kW AC),1.31248,103.874478,"114A Lor 3 Geylang, Singapore 382114 Lor 3 Geylang, Singapore 382114",1,0,0,0.25,,1
+Shell Telok Blangah,1.270457,103.812772,"450 Telok Blangah Road, Singapore 098857",1,0,0,0.19,,1
+Shell Recharge Geylang Rd,1.3119747225104634,103.87556815916649,203 Geylang Road ,1,0,0,0.25,,1
+BlueSG open to EVs: 21 Jalan Masjid,1.320339,103.912298,"21 Jln Masjid, Singapore 418946",1,0,0,0.35,,1
+Starbucks Bandar Seri Alam DT (22 kW AC),1.496464,103.871663,"8, Jln Suria, Bandar Baru Seri Alam, 81750 Masai, Johor",1,0,0,0.4,,1
+Aste Global -1 Tuas Link 1 by EVone Charging,1.3334408689452686,103.63838921925968,"1 Tuas Link 1, Singapore 638583",1,0,0,0.44,,1
+Shell Sengkang,1.391564,103.892738,"61 Sengkang E Rd, Singapore 545015",1,0,0,0.14,,1
+Shell Serangoon Gardens,1.363386,103.867302,"49 Serangoon Garden Way, Singapore 555944",1,0,0,0.23,,1
+Techplace I,1.360599,103.856128,"4008 Ang Mo Kio Ave 10, Singapore 569625",1,0,0,0.11,,1
+Paradigm Mall JB,1.515891,103.685631,"Lot no. 4FK-12, 4th floor, Paradigm Mall, Taman Bukit Mewah, 81200 Johor Bahru, Johor, Malaysia",1,0,0,0.16,,1
+Hougang Mall,1.3725894,103.8937225,90 Hougang Avenue 10,1,0,0,0.12,,1
+"BlueSG open to EVs: Blk 129A, Bt Merah View",1.283617,103.823466,"129A Bukit Merah View, Singapore 151129",1,0,0,0.43,,1
+Charge+: Woodlands Waterfront Carpark,1.451662,103.778802,FQ2H+MG Singapore,1,0,0,0.37,,1
+Charge+: 29A Marsiling Drive,1.442634,103.772981,"29A Marsiling Dr, Singapore 731029",1,0,0,0.28,,1
+Great World Supercharger,1.293346,103.832078,"1 Kim Seng Promenade, Singapore 237994",1,0,0,0.24,,1
+"BlueSG open to EVs: Blk 512A, Serangoon North Ave 4",1.370763,103.875194,"512A Serangoon North Ave 4, Singapore 551512",1,0,0,0.51,,1
+Shell Dunman,1.309945,103.901031,"No. 743 Dunman Rd, Singapore 439241",1,0,0,0.12,,1
+Pioneer Centre,1.3326227,103.6969065,"1 Soon Lee St, Singapore 627605",1,0,0,0.14,,1
+National Service Resort & Country Club,1.317674999999999,103.974319,"10 Changi Coast Walk, Singapore 499739",1,0,0,0.38,,1
+"BlueSG open to EVs: Blk 31A, Eunos Crescent",1.320107,103.901609,"31A Eunos Cres, Singapore 401031",1,0,0,0.43,,1
+"BlueSG open to EVs: BLK 241A, Bt Batok East Ave 5",1.350628,103.755377,"239 Bukit Batok East Ave 5, Block 239, Singapore 650239",1,0,0,0.49,,1
+Juice+: Marina Country Club,1.415565,103.899791,11 Northshore Drive Singapore 828670,1,0,0,0.27,,1
+CDG 455A Segar Rd,1.3876904485472563,103.77133410158996,"455A Segar Rd, 新加坡 671455",1,0,0,0.17,,1
+CDGE: 57A Teban Gardens Road,1.322502,103.737148,"57A Teban Gardens Rd, Singapore 601057",1,0,0,0.28,,1
+BlueSG open to EVs: Blk 4 Queens Road,1.319338,103.808723,"4 Queen's Rd, Singapore 260004",1,0,0,0.37,,1
+"BlueSG open to EVs: Blk 112, Bishan Street 12",1.346635,103.848961,"112 Bishan Street 12, Singapore 570112",1,0,0,0.45,,1
+Charge+: Les Mains Patisserie,1.315606,103.925587,47 Jalan Tua Kong Singapore 457247,1,0,0,0.29,,1
+Shell Newton Hooper,1.311417,103.843102,"150 Bukit Timah Rd, Singapore 229846",1,0,0,0.19,,1
+Upper Bukit Timah Shell Recharge,1.3384474506674329,103.7769100419015,"35 Upper Bukit Timah Rd, Singapore 588166",1,0,0,0.32,,1
+Charge+ (in operation) (Coming Soon),1.437431,103.801205,"644A Woodlands Ring Rd, Singapore 731644",1,0,0,0.36,,1
+Techlink,1.33594,103.905571,"31 Kaki Bukit Rd 3, Singapore 417818",1,0,0,0.8,,1
+Sengkang Grand Mall,1.3818507,103.8927293,70 Compassvale Bow Singapore 544692,1,0,0,0.19,,1
+Up@Robertson Quay,1.290676,103.837616,"75 Robertson Quay, Singapore 238238",1,0,0,0.17,,1
+SP Group: Rivervale Mall,1.392337,103.904346,"11 Rivervale Crescent, Singapore 545082",1,0,0,0.24,,1
+"BlueSG open to EVs: Blk 334, Clementi Ave 2",1.314714,103.768249,"334 Clementi Ave 2, Singapore 120334",1,0,0,0.43,,1
+700A Pasir Ris Drive 10,1.3807763343736783,103.93853976322937,511700,1,0,0,0.23,,1
+Caltex Jurong spring,1.349641,103.71487,"100 Jurong West Ave 1, Singapore 649519",1,0,0,0.2,,1
+LHN Energy Phoenix Park,1.29804,103.816568,"318 Tanglin Rd, Singapore 247979",1,0,0,0.23,,1
+National Heart Center,1.281513,103.836831,"17 Third Hospital Avenue, Singapore",1,0,0,0.21,,1
+BlueSG open to EVs: Across 343 Telok Kurau Road,1.308638,103.912318,"21A St. Patrick's Road, Singapore 424143",1,0,0,0.47,,1
+"BlueSG open to EVs: Blk 230, Jurong East St 21",1.341795,103.737547,"230 Jurong East Street 21, Singapore 600231",1,0,0,0.46,,1
+Resorts World Sentosa,1.257043,103.820353,"8 Sentosa Gateway, Singapore 098269",1,0,0,0.21,,1
+SP: Vivocity,1.264843,103.823285,"1 HarbourFront Walk, Singapore 098585",1,0,0,0.12,,1
+Connexion,1.312553,103.854282,"1 Farrer Park Station Rd, Singapore 217562",1,0,0,0.9,,1
+GoParkin: Union Gas building,1.350622,103.89087,"89 Defu Lane 10, Singapore 539220",1,0,0,0.28,,1
+Charge+: Defu Industrial City,1.3448827324526693,103.89675123010906,2 Defu South Street 1,1,0,0,0.29,,1
+ESSO Pioneer,1.312940252173984,103.68734506001852,19 Pioneer Road S628499,1,0,0,0.12,,1
+The Concourse,1.30136,103.862236,"300 Beach Rd, Singapore 199555",1,0,0,0.13,,1
+"BlueSG open to EVs: Blk 854A, Jurong West St 81",1.347799,103.696657,"854A Jurong West Street 81, Singapore 641854",1,0,0,0.47,,1
+BlueSG open to EVs: Blk 265 Yishun St 22,1.436903,103.838345,"266 Yishun Street 22, Singapore 760266",1,0,0,0.4,,1
+Singapore Polytechnic MSCP,1.311246,103.776681,"Dover Road, Commonwealth‎ 13, Singapore",1,0,0,0.26,,1
+Autobacs Ubi,1.33314,103.896672,"10 Ubi View, Singapore 408543",1,0,0,0.12,,1
+KED ENERGY PTE LTD,1.3363712654194329,103.75465851277113,"48 Toh Guan Rd E, Singapore 608586",1,0,0,0.18,,1
+CDG Engie: West Coast Park (McDonald’s),1.297562,103.763779,"71 W Coast Hwy, Singapore 126844",1,0,0,0.39,,1
+Shell,1.331795,103.888855,"255 Paya Lebar Rd, Singapore 409037",1,0,0,0.5,,1
+CDGE: Esso Upper Aljunied,1.3322678261427052,103.8790348300666,"373 Upper Aljunied Rd, Singapore 367859",1,0,0,0.25,,1
+"BlueSG open to EVs: Blk 903, Jurong West St 91",1.33961,103.686232,"903 Jurong West Street 91, Singapore 640903",1,0,0,0.46,,1
+"BlueSG open to EVs: Blk 117, Commonwealth Drive",1.306944,103.799533,"117 Commonwealth Cres, Singapore",1,0,0,0.47,,1
+UE Square Tower (red zone),1.293274,103.84234,"205 River Valley Rd, Singapore 238274",1,0,0,0.26,,1
+"BlueSG open to EVs: Blk 966A, Hougang Ave 9",1.377945,103.877754,"966A Hougang Avenue 9, Singapore 531966",1,0,0,0.43,,1
+"BlueSG open to EVs: Blk 326, Ubi Ave 1",1.32726,103.904208,"327 Ubi Ave 1, Block 327, Singapore 400327",1,0,0,0.38,,1
+BlueSG open to EVs: BLK 853 Yishun Ring Road,1.416467,103.836745,"853 Yishun Ring Road, Singapore 760853",1,0,0,0.44,,1
+BlueSG open to EVs: Blk 513 Yishun Street 51,1.415948,103.8442,"513c Yishun Street 51, Singapore 760513",1,0,0,0.44,,1
+LHN Energy Raeburn Park,1.273106,103.833155,"10 Raeburn Park, Singapore 088702",1,0,0,0.23,,1
+135A Pasir Ris Street 11,1.364802,103.956863,135A Pasir Ris Street 11,1,0,0,0.24,,1
+SP Group: Jewel Changi Airport,1.360699,103.989603,78 Airport Boulevard Singapore 819666,1,0,0,0.3,,1
+Tanah Merah Country Club Tampines Course,1.3270196096163687,103.96994161767903,151 Xilin Avenue,1,0,0,0.4,,1
+Mapletree,1.319214800107794,103.6882628000002,21 benoi sector,1,0,0,0.9,,1
+SPC Bukit Batok,1.3432427908352402,103.75834370192821,"50 Bukit Batok East Ave 3, Singapore 659879",1,0,0,0.15,,1
+Expo Carpark D,1.3339762545044767,103.95838708806289,1 Expo drive ,1,0,0,0.14,,1
+CDG 787A Choa Chu Kang Dr,1.3951133955580453,103.74766113446626,"787A Choa Chu Kang Dr, 新加坡 680787",1,0,0,0.25,,1
+LHN Energy,1.372804,103.763206,794 Upper Bukit Timah Road,1,0,0,0.1,,1
+CDGE: 117 Alkaff Crescent,1.3368648834995271,103.87302016909817,"117 Alkaff Cres, Singapore 341115",1,0,0,0.25,,1
+IKEA Tampines,1.373907,103.932551,"60 Tampines North Drive 2, Singapore 528764",1,0,0,0.13,,1
+BlueSG open to EVs: Blk 157 Ang Mo Kio Ave 4,1.375126,103.839276,"157 Ang Mo Kio Avenue 4, Singapore 56",1,0,0,0.44,,1
+Charge+: 220 Hougang Street 21,1.356983,103.884404,220 Hougang St 21,1,0,0,0.3,,1
+BlueSG open to EVs: 52 Sims Place,1.316535,103.880084,"52 Sims Pl, Singapore 380052",1,0,0,0.33,,1
+bluecharge@senja link 651,1.3868954434701355,103.76439869962157,senja link 651 carpark,1,0,0,0.25,,1
+Jit Poh Building,1.272962,103.842388,"19 Keppel Road, Singapore",1,0,0,0.16,,1
+"BlueSG open to EVs: Blk 602, Clementi West St 1",1.305137,103.766255,"602 Clementi West Street 1, Singapore 120602",1,0,0,0.47,,1
+CDGEG: Blk 146A Lorong 2 Toa Payoh,1.334501,103.845655,"146A Lor 2 Toa Payoh, Singapore 311146",1,0,0,0.34,,1
+"BlueSG open to EVs: Blk 117, Potong Pasir Ave 1",1.336562,103.863076,"114 Potong Pasir Ave 1, Singapore 350114",1,0,0,0.47,,1
+Molek Pine 4 (3.7 kW AC),1.525273,103.784371,"Jalan Molek 1/27, 81750‎ Pasir Gudang‎ Johor, Maleisië",1,0,0,0.24,,1
+Sheraton Towers,1.311664,103.83638,"39 Scotts Rd, Singapore 228230",1,0,0,0.15,,1
+CDG EV Charger,1.35583,103.844308,290A Bishan St 24,1,0,0,0.14,,1
+"BlueSG open to EVs: Bedok South Ave 3, behind blk 69",1.319527,103.942997,"behind blk 69, bedok south ave 3",1,0,0,0.52,,1
+D'Arena@Upper Jurong by EVone Charging,1.3294741,103.6822694,"511 Upper Jurong Rd, Singapore 638366",1,0,0,0.38,,1
+BlueSG open to EVs: 37 Chai Chee Street,1.325191,103.925778,"36 Chai Chee Avenue, Singapore 461037",1,0,0,0.39,,1
+CDG Engie - 274A Toh Guan Road,1.341565,103.747455,"274A Toh Guan Rd, Singapore 600276",1,0,0,0.3,,1
+BlueSG open to EVs: 420 Tampines St 41,1.357784,103.947142,"419 Tampines Street 41, Singapore 529204",1,0,0,0.38,,1
+CDGE: Singapore Botanic Gardens Botany Centre,1.3084224,103.8182032,"1 Cluny Rd, Singapore 259569",1,0,0,0.45,,1
+Charge+: 633 Punggol Drive,1.400696,103.913915,"633 Punggol Dr, Singapore 820633",1,0,0,0.26,,1
+"BlueSG open to EVs: Blk 688, Hougang St 61",1.375892,103.885486,"688 Hougang Street 61, Block 688, Singapore 530688",1,0,0,0.42,,1
+Shell Recharge Tanglin Mall,1.305026,103.823851,"163, Tanglin Road, 247933",1,0,0,0.27,,1
+BlueSG open to EVs: Blk 769 Yishun Ave 3,1.424279,103.833275,"769 Yishun Avenue 3, Singapore 760769",1,0,0,0.4,,1
+Gardens By The Bay - Bayfront Plaza,1.279198,103.860073,"Unnamed Road, Singapore",1,0,0,0.35,,1
+ChargEco: Block 80 HDB Car Park,1.274012010646763,103.80735956132412,"80 Telok Blangah Street 31, Singapore 102080",1,0,0,0.31,,1
+NUS Stephen Riady Center,1.304036,103.77304,"2 College Ave West, Singapore",1,0,0,0.24,,1
+Willing Hearts,1.3142482784278031,103.90704547618223,1 LorJ Telok Kurau,1,0,0,0.14,,1
+Shell Tampines,1.349178,103.948016,"9 Tampines Ave 2, Singapore 529731",1,0,0,0.14,,1
+Marina Bay Sands,1.285604,103.861107,"10 Bayfront Ave, Singapore 018956",1,0,0,0.16,,1
+Bluecharge: Blk 32 Telok Blangah Rise,1.2731828240010936,103.82100548832092,"Telok Blangah Rise, Mount Faber Grace Park, Singapore",1,0,0,0.37,,1
+Shell Braddell,1.3449,103.864464,"110 Braddell Rd, Singapore 359914",1,0,0,0.14,,1
+"BlueSG open to EVs: Blk 809, Yishun Ring Road",1.416877,103.83055,"809 Yishun Ring Rd, Singapore 760809",1,0,0,0.45,,1
+SP Group: Marina Square,1.29179,103.857758,"Raffles Blvd, Singapore",1,0,0,0.23,,1
+Tampines Plaza,1.353142,103.943078,"3 Tampines Central 1, Singapore 529540",1,0,0,0.14,,1
+"BlueSG open to EVs: Blk 103, Jalan Rajah",1.327412,103.852496,"103 Jln Rajah, Block 103, Singapore 321103",1,0,0,0.4,,1
+Lee Kong Chian School of Medicine,1.321851,103.848984,"11 Mandalay Rd, Singapore",1,0,0,0.33,,1
+Charge+: 519A Woodlands Drive 14,1.4344276124617934,103.79231706261635,"519A Woodlands Drive 14, Singapore 731519",1,0,0,0.32,,1
+Shell Recharge Pasir Ris,1.365821,103.966996,"1 New Loyang Link, Singapore 506931",1,0,0,0.24,,1
+Tiong Bahru Plaza,1.2862842,103.8277824,"355 Jln Bukit Ho Swee, Singapore 169567",1,0,0,0.17,,1
+Charge+: 226 Sumang Lane,1.4029418,103.8934653,"226 Sumang Lane, Singapore 820226",1,0,0,0.24,,1
+"BlueSG open to EVs: Blk 537, Bt Batok St 52",1.354886,103.751171,"539 Bukit Batok Street 52, Block 539, Singapore 650539",1,0,0,0.43,,1
+65A Kallang Bahru MSCP,1.3198411,103.8690631,65A Kallang Bahru S(331065),1,0,0,0.22,,1
+"Bluecharge: 50 Beach View, Basement",1.251294,103.818745,"50 Beach View, Singapore 098604",1,0,0,0.35,,1
+"BlueSG open to EVs: Blk 329, Anchorvale St",1.396432,103.88939,"329 Anchorvale St, Singapore 540329",1,0,0,0.42,,1
+CDGE: Autobay @ Kakit Bukit,1.3416647,103.9125865,1 Kakit Bukit Ave 6 ,1,0,0,0.27,,1
+CDGE: 635A Jurong West Street Car Park,1.342288,103.69866,"635A Jurong West Street 65, Singapore 641635",1,0,0,0.38,,1
+Storhub Toa Payoh,1.333221,103.852334,"615 Lrg. 5 Toa Payoh, Singapore 319457",1,0,0,0.17,,1
+Capella Hotel Solacharge,1.2496291,103.8243003,"1 The Knolls, Sentosa Island, 098297",1,0,0,0.24,,1
+Shell Paya Lebar,1.322042,103.891624,"98 Paya Lebar Rd, Singapore 409008",1,0,0,0.16,,1
+"Bluecharge: 534, Bedok North St 3",1.334142,103.927754,"534 Bedok North Street 3, Singapore 460534",1,0,0,0.33,,1
+The Siemens Center,1.328057,103.870776,"62 MacPherson Rd, Singapore",1,0,0,0.18,,1
+AA CENTRE,1.289876,103.812956,"2 Kung Chong Rd, Singapore 159140",1,0,0,0.9,,1
+CDGE: Sin Ming Autocity,1.3592956,103.8392412,160 Sin Ming Drive,1,0,0,0.23,,1
+CDG Engie- Blk 451 Bukit Batok West Ave 6,1.353007,103.743458,Blk 451 Bukit Batok West Ave 6,1,0,0,0.41,,1
+"BlueSG open to EVs: Blk 609, Bedok Reservoir Road",1.33138,103.912313,"610 Bedok Reservoir Rd, Block 610, Singapore 470610",1,0,0,0.49,,1
+BlueSG open to EVs: Blk 108 Simei St 1,1.343233,103.950837,"108 Simei Street 1, Singapore 520108",1,0,0,0.38,,1
+SP Group: Caltex Changi,1.316149,103.900084,"78 Changi Rd, Singapore 419714",1,0,0,0.23,,1
+Charge+: BLK 315 MSCP Y65M,1.432573,103.841762,"315 Yishun Ave 9, Block 315 Carpark, Singapore",1,0,0,0.26,,1
+"Charge+: 431 Yishun Ave 1, Deck 5",1.420133,103.847638,"431c Yishun Ave 1, Singapore",1,0,0,0.33,,1
+CDG: 183 Boon Lay MSCP,1.349273760519521,103.70946689980984,"183 Boon Lay Ave, Singapore 641183",1,0,0,0.22,,1
+"CDG Engie - 311, Clementi Ave 4",1.319082,103.765158,"311 Clementi Ave 4, Singapore 120311",1,0,0,0.31,,1
+BlueSG open to EVs: Blk 590 Ang Mo Kio St 51,1.371474,103.853217,"590 Ang Mo Kio Street 51, Singapore",1,0,0,0.44,,1
+CDG Engie - 85 Dawson Road,1.29541,103.809262,85 Dawson Road,1,0,0,0.26,,1
+116 Jalan Tenteram MSCP,1.3277547,103.8611462,116 Jalan Tenteram,1,0,0,0.23,,1
+"BlueSG open to EVs: Blk 203, Compassvale Road",1.387004,103.895935,"Blk 203, Singapore",1,0,0,0.45,,1
+Zhongshan Mall,1.327329,103.846394,"20 Ah Hood Rd, Singapore",1,0,0,0.14,,1
+Shell,1.324259,103.842094,"324 Thomson Rd, Singapore 307672",1,0,0,0.5,,1
+CDG Blk 289H Bukit Batok Street 25,1.344397052573844,103.76003090089257,"Blk 289H Bukit Batok Street 25, 新加坡 657289",1,0,0,0.34,,1
+BlueCharge: 425 Bedok North Road,1.329215,103.929551,425 Bedok Road Singapore 460425 ,1,0,0,0.32,,1
+CDG Engie - Blk 810 Choa Chu Kang Ave 7,1.373813,103.746674,"810 Choa Chu Kang Ave 7, Singapore 681810",1,0,0,0.39,,1
+870B Tampines St 86 (MSCP),1.356331,103.931039,"870B Tampines Street 86, Singapore 522870",1,0,0,0.26,,1
+Charge+: Blk 440 (MSCP) Fernvale Link,1.392986,103.878422,"440 Fernvale Link, Singapore 790440",1,0,0,0.37,,1
+Jurong Point,1.339342,103.705387,"1 Jurong West Central 2, Jurong Point, Singapore 648886",1,0,0,0.12,,1
+"20 Ayer Rajah Crescent, Technopreneur Centre",1.295231,103.789842,"20 Ayer Rajah Crescent, Singapore",1,0,0,0.44,,1
+The Capricorn Underground Car Park,1.289639,103.778957,"1 Science Park Rd, Singapore 117528",1,0,0,0.34,,1
+Storhub Jurong East by EVone Charging,1.3392365,103.7493724,3C Toh Guan Road East,1,0,0,0.37,,1
+PE Drive Charging Station,1.331391,103.89573,"52 Ubi Avenue 3, Singapore 408867",1,0,0,0.25,,1
+"BlueSG open to EVs: Blk 269, Tampines St 21",1.350668,103.947558,"269 Tampines Street 21, Singapore 520269",1,0,0,0.43,,1
+One@Redhill Centre,1.284876,103.808552,"1 Jln Kilang Barat, Singapore 159345",1,0,0,0.18,,1
+Millenia Walk,1.291826,103.860199,9 Raffles Boulevard ,1,0,0,0.13,,1
+CDG Teck Whye Ln Blk 118A Carpark,1.379520435889066,103.74993425995183,"118A Teck Whye Ln, Singapore 681118",1,0,0,0.33,,1
+Kim Chuan-Tai Seng by EVone Charging,1.33778,103.891319,"1005 Tai Seng Ave, #01-2576",1,0,0,0.36,,1
+"BlueSG open to EVs: Blk 165, Yishun Ring Road",1.435556,103.831963,"165 Yishun Ring Rd, Singapore 760165",1,0,0,0.45,,1
+Pan Pacific Serviced Suites Beach Road,1.299576,103.860151,7500B Beach Road,1,0,0,0.38,,1
+MILLENIA PRIVATE LIMITED,1.291937,103.859741,"#B1-01 MILLENIA TOWER SINGAPORE Singapore, 039192",1,0,0,0.24,,1
+SHELL TELOK BLANGAH 621_01,1.270383,103.812867,"450 TELOK BLANGAH ROAD SINGAPORE Singapore, 098857",1,0,0,0.26,,1
+SUNTEC CITY (6 ZONES),1.29448,103.858305,"3 TEMASEK BOULEVARD SINGAPORE Singapore, 038983",1,0,0,0.21,,1
+SHELL 305 OUTRAM 661_01.,1.28774,103.835,"305 OUTRAM ROAD SINGAPORE Singapore, 169072",1,0,0,0.24,,1
+SHELL HAVELOCK 669_01.,1.290006,103.832466,"548 HAVELOCK ROAD SINGAPORE Singapore, 169637",1,0,0,0.22,,1
+SHELL EAST COAST 631_01,1.308193,103.909796,"338 EAST COAST ROAD SINGAPORE Singapore, 428961",1,0,0,0.23,,1
+SHELL DUNMAN 639_01,1.309721,103.900959,"743 DUNMAN ROAD SINGAPORE Singapore, 439241",1,0,0,0.19,,1
+SHELL TANJONG KATONG 650_01,1.310955,103.894427,"191 TANJONG KATONG ROAD SINGAPORE Singapore, 436993",1,0,0,0.27,,1
+SHELL GUILLEMARD 662_01,1.310577,103.883834,"132 GUILLEMARD ROAD SINGAPORE Singapore, 399720",1,0,0,0.23,,1
+SHELL TIONG BAHRU 629_01,1.288301,103.819613,"603 TIONG BAHRU ROAD SINGAPORE Singapore, 158788",1,0,0,0.24,,1
+SHELL SIGLAP 602_01,1.312499,103.926555,"40 UPPER EAST COAST ROAD SINGAPORE Singapore, 455212",1,0,0,0.19,,1
+SHELL GEYLANG LOR 7 668_01,1.311984,103.875625,"203 GEYLANG ROAD SINGAPORE Singapore, 389266",1,0,0,0.26,,1
+SHELL CHANGI KEMBANGAN 601_01,1.318787,103.912929,"460 CHANGI ROAD SINGAPORE Singapore, 419883",1,0,0,0.29,,1
+KOMOCO MOTORS - EV,1.291688,103.810306,"253 ALEXANDRA ROAD #01-01 SINGAPORE Singapore, 159936",1,0,0,0.18,,1
+SHELL ALEXANDRA 651_01,1.290666,103.806853,"358 ALEXANDRA ROAD SINGAPORE Singapore, 159950",1,0,0,0.22,,1
+SHELL SERANGOON RD 645_01,1.314435,103.857134,"509 SERANGOON ROAD SINGAPORE Singapore, 218152",1,0,0,0.25,,1
+SHELL 168 PASIR PANJANG 635_01,1.277511,103.789709,"168 PASIR PANJANG ROAD SINGAPORE Singapore, 118556",1,0,0,0.3,,1
+SHELL Q'WAY ANCHORAGE 640_01,1.289379,103.802905,"260 QUEENSWAY SINGAPORE Singapore, 149060",1,0,0,0.28,,1
+SHELL PAYA LEBAR PIE 627_01,1.321708,103.891643,"98 PAYA LEBAR ROAD SINGAPORE Singapore, 409008",1,0,0,0.27,,1
+SHELL NEWTON HOOPER RD 643_01,1.311378,103.843095,"150 BUKIT TIMAH ROAD SINGAPORE Singapore, 229846",1,0,0,0.29,,1
+SHELL NEWTON CIRCUS 655_01,1.311142,103.842285,"143 BUKIT TIMAH RD SINGAPORE Singapore, 229843",1,0,0,0.26,,1
+CUSCADEN TANGLIN MALL,1.304805,103.823901,"163 TANGLIN ROAD B2-01 TANGLIN MALL SINGAPORE Singapore, 247933",1,0,0,0.21,,1
+SHELL MOULMEIN 632_01,1.318876,103.849692,"103 MOULMEIN ROAD SINGAPORE Singapore, 308080",1,0,0,0.21,,1
+SHELL CWEALTH/STIRLING 612_01,1.297515,103.803366,"355 COMMONWEALTH AVENUE SINGAPORE Singapore, 149731",1,0,0,0.29,,1
+SHELL P.LEBAR M'PHERSON 638_01,1.331822,103.888725,"255 PAYA LEBAR ROAD SINGAPORE Singapore, 409037",1,0,0,0.3,,1
+SHELL MACPHERSON 617_01,1.331146,103.877749,"259 MACPHERSON ROAD SINGAPORE Singapore, 348584",1,0,0,0.23,,1
+SHELL THOMSON NOVENA 665_01,1.324175,103.842151,"324 THOMSON ROAD SINGAPORE Singapore, 307672",1,0,0,0.27,,1
+SHELL SIMPANG BEDOK 623_01,1.330835,103.947557,"331 BEDOK ROAD SINGAPORE Singapore, 469504",1,0,0,0.26,,1
+SHELL 328 PASIR PANJANG 646_01,1.289315,103.777853,"328 PASIR PANJANG ROAD SINGAPORE Singapore, 118654",1,0,0,0.3,,1
+SINGAPORE EXPO,1.3341,103.959,"02-01 SINGAPORE EXPO SINGAPORE Singapore, 486150",1,0,0,0.14,,1
+SHELL EASTERN PETROLEUM (PTE) LTD,1.305927,103.791651,"9 NORTH BOUNA VISTA DRI, BASEMENT 1 SINGAPORE Singapore, 138588",1,0,0,0.33,,1
+SHELL DUNEARN UNI 658_01,1.323306,103.817319,"314 DUNEARN ROAD SINGAPORE Singapore, 299551",1,0,0,0.24,,1
+SHELL BRADDELL 642_01,1.344578,103.864639,"110 BRADDELL ROAD SINGAPORE Singapore, 359914",1,0,0,0.21,,1
+SHELL TOA PAYOH 663_01,1.341095,103.848894,"248 LORONG 1 TOA PAYOH SINGAPORE Singapore, 319755",1,0,0,0.22,,1
+SHELL HOUGANG 675_01.,1.349386,103.889993,"600 HOUGANG AVE 3 SINGAPORE Singapore, 538846",1,0,0,0.21,,1
+SHELL TAMPINES AVE 2,1.349153,103.947705,"9 TAMPINES AVENUE 2 SINGAPORE Singapore, 529731",1,0,0,0.2,,1
+SHELL LAKEVIEW 657_01,1.347975,103.838557,"80 UPPER THOMSON ROAD SINGAPORE Singapore, 574326",1,0,0,0.21,,1
+SHELL DUNEARN ENG NEO 666_01,1.331007,103.798941,"648 DUNEARN ROAD SINGAPORE Singapore, 289629",1,0,0,0.28,,1
+SHELL SIN MING 625_01,1.351306,103.835411,"183A UPPER THOMSON ROAD SINGAPORE Singapore, 574332",1,0,0,0.21,,1
+SHELL YIO CHU KANG 633_01,1.360672,103.873902,"158 YIO CHU KANG ROAD SINGAPORE Singapore, 545612",1,0,0,0.25,,1
+SHELL SGN GDN 606_01,1.363303,103.867444,"49 SERANGOON GARDEN WAY SINGAPORE Singapore, 555944",1,0,0,0.2,,1
+EV LUMENS AUTO PTE LTD,1.359432,103.839865,"300 Sin Ming Road SINGAPORE Singapore, 575626",1,0,0,0.22,,1
+SHELL PASIR RIS 607_01,1.365855,103.967185,"1 NEW LOYANG LINK SINGAPORE Singapore, 506931",1,0,0,0.22,,1
+SHELL ANG MO KIO AVE 6 670_01,1.367955,103.844734,"3535 ANG MO KIO, AVENUE 6 SINGAPORE Singapore, 569839",1,0,0,0.29,,1
+SHELL UPP BT TIMAH PIE 659_01,1.338636,103.776808,"35 UPPER BUKIT TIMAH ROAD SINGAPORE Singapore, 588166",1,0,0,0.29,,1
+SHELL PIERCE RESERVOIR 636_01,1.369931,103.828086,"551 UPPER THOMSON ROAD SINGAPORE Singapore, 574415",1,0,0,0.29,,1
+SHELL SELETAR HILLS 613_01,1.383614,103.877004,"298 YIO CHU KANG ROAD SINGAPORE Singapore, 805908",1,0,0,0.26,,1
+SHELL BT TIMAH HILL 667_01,1.345916,103.772113,"219 UPPER BUKIT TIMAH ROAD SINGAPORE Singapore, 588186",1,0,0,0.26,,1
+EV SINGAPORE AERO ENGINE,1.373256,103.982242,"11 CALSHOT ROAD SINGAPORE Singapore, 509932",1,0,0,0.24,,1
+SHELL BT BATOK NP 630_01,1.347664,103.764828,"28 BUKIT BATOK EAST AVENUE 6 SINGAPORE Singapore, 659760",1,0,0,0.24,,1
+Changi Airport Terminal 3,1.3564573010308,103.9865063972240,"65 Airport Boulevard, Singapore 819663",1,0,0,0.25,,1
+Asia Green,1.3562110282663,103.9416687460270,"7 Tampines Grande, Singapore 528736",1,0,0,0.1,,1
+I12 Katong,1.3060013193201,103.9050740693140,"112 East Coast Road, Singapore 428802",1,0,0,0.1,,1
+Marina Collection,1.2444116410724,103.8398206112710,13-17 Cove Drive Singapore 098327,1,0,0,0.17,,1
+Riverplace,1.2899955997604,103.8408744689420,60 Havelock Road Singapore 169658,1,0,0,0.1,,1
+Martin Place Residences,1.2943866708972,103.8382968266140,2 Martin Place Singapore 237988,1,0,0,0.23,,1
+South Beach Commercial,1.2944563644357,103.8561695333600,38 Beach Road Singapore 189762,1,0,0,0.22,,1
+South Beach Residential,1.2944563644357,103.8561695333600,38 Beach Road Singapore 189762,1,0,0,0.23,,1
+Asia Square Tower 2,1.2783544668131,103.8511218477630,"12 Marina View, Singapore 018961",1,0,0,0.19,,1
+Park Royal Kitchener,1.3106927935985,103.8556902422200,"181 Kitchener Road, Singapore 208533",1,0,0,0.2,,1
+Pan Pacific Serviced Suites Beach Road,1.2997782248776,103.8599838247640,"7500B Beach Road, Singapore 199592",1,0,0,0.38,,1
+Capitaspring,1.2841932206467814,103.85021626832763,"88 Market St, Singapore 048948",1,0,0,0.12,,1
+One Degree 15 (Private access only),1.2459096091904216,103.8397942,"11 Cove Drive, #01-01, Sentosa Cove, Singapore 098497",1,0,0,0.35,,1
+Caltex Dunearn,1.3190290968874914,103.83317511338463,"130 Dunearn Rd, Singapore 309436",1,0,0,0.14,,1
+Tampines Plaza 2,1.3535029001494643,103.94274972687707,"5 Tampines Central 1, Singapore 529541",1,0,0,0.16,,1
+Zhongshan Mall,1.3273092460580298,103.84636673878806,"20 Ah Hood Rd, Singapore 329984",1,0,0,0.14,,1
+Tekka Place,1.3053312503538694,103.8514153692055,"2 Serangoon Rd, Singapore 218227",1,0,0,0.11,,1
+Sheraton Towers,1.3120496455347723,103.83654047105618,"39 Scotts Rd, Singapore 228230",1,0,0,0.15,,1
+Mapletree Business City,1.2746046179753079,103.79967479804148,"10 Pasir Panjang Rd, Singapore 117438",1,0,0,0.23,,1
+Marina Square,1.2914322779500189,103.85759196735496,"6 Raffles Blvd, Marina Square, Singapore 039594",1,0,0,0.13,,1
+Vantage,1.289876243058258,103.8069890673551,"305 Alexandra Road, Singapore 159942",1,0,0,0.7,,1
+Caltex Changi,1.3166082011470479,103.90020161338465,"78 Changi Rd, Singapore 419714",1,0,0,0.13,,1
+Jewel Changi Airport,1.360433441062898,103.9897485692055,"78 Airport Blvd., Singapore 819666",1,0,0,0.2,,1
+Techlink,1.3358881915101088,103.90562568454875,"31 Kaki Bukit Rd 3, Singapore 417818",1,0,0,0.8,,1
+Shaw Centre,1.3065506241753113,103.83186865571309,"1 Scotts Rd, Singapore 228208",1,0,0,0.11,,1
+Caltex Jurong Spring,1.3495935507350258,103.71475718269808,"100 Jurong West Ave 1, Singapore 649519",1,0,0,0.2,,1
+Eightrium @ Changi Business Park,1.338116865412567,103.9644189096832,"15A Changi Business Park Central 1, Singapore 486035",1,0,0,0.32,,1
+PLQ Mall,1.3176785630259229,103.89277151153401,"10 Paya Lebar Road, PLQ Mall, Paya Lebar Quarter, 409057",1,0,0,0.8,,1
+Grand Park City Hall,1.2926194733919862,103.85017532687716,"10 Coleman St, Singapore 179809",1,0,0,0.2,,1
+Chinese Swimming Club,1.3004596333918585,103.90055332687734,"21 Amber Rd, Singapore 439870",1,0,0,0.21,,1
+IMM,1.3350942730466588,103.7467214808474,"2 Jurong East Street 21, Singapore 609601",1,0,0,0.3,,1
+Tanah Merah Ferry Terminal,1.3144999932854695,103.98847049804131,"50 Tanah Merah Ferry Rd, Singapore 498833",1,0,0,0.26,,1
+Caltex Chong Pang,1.4305366924935019,103.82984068095544,"3700 Yishun Ring Rd, Singapore 768690",1,0,0,0.17,,1
+Kinex,1.3149258932504018,103.89485195756366,"11 Tanjong Katong Rd, Singapore 437157",1,0,0,0.5,,1
+Paya Lebar Square,1.3194165488335265,103.89260719989211,"60 Paya Lebar Rd, Singapore 409051",1,0,0,0.17,,1
+Techview,1.3363751660197996,103.9097351863994,"1 Kaki Bukit View, Singapore 415941",1,0,0,0.8,,1
+Autobacs Ubi,1.3323478102542938,103.896064582698,"10 Ubi View, Singapore 408543",1,0,0,0.12,,1
+Plaza 8 CBP,1.3338697844844987,103.9654734329671,"1 Changi Business Park Crescent, Changi Business Park, 486025",1,0,0,0.11,,1
+Tampines Plaza 1,1.3535029001494643,103.94274972687707,"5 Tampines Central 1, Singapore 529541",1,0,0,0.16,,1
+PLQ 3,1.3161169272111835,103.89372179989206,"2 Tanjong Katong Rd, PLQ 3, Quarter 437161",1,0,0,0.5,,1
+Pan Pacific Serviced Suites Orchard,1.3010475118933178,103.83770512502662,"96 Somerset Rd, Singapore 238163",1,0,0,0.35,,1
+UIC Building,1.2780904439075123,103.84967042687718,"5 Shenton Way, Singapore 068808",1,0,0,0.12,,1
+Citibank Changi (Private access only),1.3339668879548907,103.96608103851919,"3 Changi Business Park Cres, Level 1, Singapore 486026",1,0,0,0.37,,1
+The Alpha,1.2886510170237973,103.77965674407113,"10 Science Park Rd, Singapore 117684",1,0,0,0.9,,1
+Connexion,1.3142882629925259,103.8537759399965,"1 Farrer Park Station Rd, Singapore 217562",1,0,0,0.9,,1
+Nordcom One,1.4458785697971703,103.81418965571275,"3 Gambas Cres, Singapore 757041",1,0,0,0.11,,1
+Rivervale Mall,1.3925894111071226,103.90444325833823,"11 Rivervale Cres, Singapore 545082",1,0,0,0.14,,1
+Hyflux Innovation Centre,1.3176494310264406,103.86336202317587,"80 Bendemeer Rd, Singapore 339949",1,0,0,0.24,,1
+3 Changi Business Park Vista,1.3369826136710221,103.96712331153395,"3 Changi Business Park Vista, Singapore 486051",1,0,0,0.28,,1
+Aperia Mall,1.3107261497734806,103.86429564407108,"12 Kallang Ave, Singapore 339511",1,0,0,0.11,,1
+Singapore Zoo,1.4045951880674357,103.79306591338417,"80 Mandai Lake Rd, 729826",1,0,0,0.13,,1
+Entrepreneur Business Centre,1.3376000103709433,103.90278751393072,"18 Kaki Bukit Rd 3, Singapore 415978",1,0,0,0.28,,1
+Techplace I,1.3606523410422908,103.85676749804132,"4008/ 4009/ 4010, 4012 Ang Mo Kio Ave 10, 569628",1,0,0,0.11,,1
+Orchid Country Club,1.4120004063294185,103.84434333666816,"1 Orchid Club Rd, Singapore 769162",1,0,0,0.19,,1
+United Square,1.319627713599663,103.84376251989039,"101 Thomson Rd, Singapore 307591",1,0,0,0.13,,1
+Novena Square,1.3201042993444796,103.84397966311558,"238 Thomson Rd, Singapore 307683",1,0,0,0.13,,1
+Sembawang Country Club,1.417491347776572,103.81561037105588,"249 Sembawang Rd, Singapore 758352",1,0,0,0.22,,1
+"Resorts World Sentosa B2, East B1, West B1",1.2553405988367123,103.82180542979668,"8 Sentosa Gateway, 098269",1,0,0,0.42,,1
+SGX Centre 2,1.2789176171246806,103.84925469672876,"4 Shenton Way, Singapore 068807",1,0,0,0.12,,1
+Resorts World Sentosa B2 (VIP),1.255335497272778,103.8216869448591,"8 Sentosa Gateway, 098269",1,0,0,0.3,,1
+Tagore 23 Warehouse,1.3855520727816606,103.82808762502624,"23 Tagore Ln, Singapore 787601",1,0,0,0.19,,1
+Park Royal Pickering,1.2860015694725884,103.84601569619078,"3 Upper Pickering St, Singapore 058289",1,0,0,0.2,,1
+Vivocity,1.2646499022068751,103.82221782687743,"1 HarbourFront Walk, Singapore 098585",1,0,0,0.8,,1
+Tan Chin Tuan Mansion (Private access only),1.3055208503335103,103.83738408269816,"42 Cairnhill Rd, Singapore 229661",1,0,0,0.43,,1
+Odeon Towers,1.296507751298007,103.85321882502662,"331 North Bridge Road Odeon Towers, Singapore 188720",1,0,0,0.12,,1
+Techplace II,1.377471459295966,103.86510913851887,"5012 Ang Mo Kio Ave 5, Singapore 569876",1,0,0,0.12,,1
+Temasek Club,1.3474006050675817,103.78038188454853,"131 Rifle Range Rd, Singapore 588406",1,0,0,0.12,,1
+Republic Plaza,1.2833620958193959,103.85087783851912,"9 Raffles Pl, Singapore 048619",1,0,0,0.14,,1
+Great World,1.2938454949730043,103.8318863826982,"1 Kim Seng Promenade, Singapore 237994",1,0,0,0.11,,1
+Meissa,1.2764820010683784,103.79596175386249,"100D Pasir Panjang Rd, Singapore 118520",1,0,0,0.6,,1
+West Park BizCentral,1.3136185714094601,103.69497577105612,"20 Pioneer Cres, Singapore 628555",1,0,0,0.2,,1
+Liat Towers,1.3054713763910522,103.83052612502659,"541 Orchard Rd, Singapore 238881",1,0,0,0.11,,1
+Alexandra Technopark Block A,1.2777054888149257,103.8008662250265,"438A &, 438B Alexandra Rd, 119967",1,0,0,0.28,,1
+The Galen,1.2865030262283659,103.7841566863995,"61 Science Park Road, Singapore 117525",1,0,0,0.9,,1
+HSL Waterfront@Penjuru,1.3062450377488148,103.7306316183668,"42D Penjuru Rd, Singapore 609162",1,0,0,0.22,,1
+Ascent,1.2912954920855881,103.78585655491173,"2 Science Park Dr, Singapore 118222",1,0,0,0.6,,1
+The Kendall,1.2864051569033701,103.78361656920569,"50 Science Park Rd, Singapore 117406",1,0,0,0.11,,1
+ALICE@MEDIAPOLIS,1.2941353037515957,103.79345738454887,"29 Media Cir., Singapore 138565",1,0,0,0.16,,1
+ICON@IBP,1.3275697739032384,103.74899823481773,"3A International Business Park Rd, Singapore 609935",1,0,0,0.8,,1
+The Capricorn,1.2901137609182913,103.77884600968341,"1 Science Park Road Singapore Science Park 2, 117528",1,0,0,0.13,,1
+Solaris@One-North,1.2984315640818178,103.78986636180299,"1 Fusionopolis Walk, Singapore 138628",1,0,0,0.17,,1
+Galaxis,1.3001244944627985,103.78833167105627,"1 Fusionopolis Pl, Singapore 138522",1,0,0,0.7,,1
+Goldbell Tuas,1.3207750549499142,103.63918377317582,"8 Tuas Ave 18, level 3, Singapore 638892",1,0,0,0.13,,1
+Singapore Polytechnic,1.3100545758784998,103.77753876920555,"500 Dover Rd, Singapore 139651",1,0,0,0.21,,1
+Infinite Studios,1.292845267658751,103.79484774633238,"23 Media Cir., #02-15, Singapore 138563",1,0,0,0.16,,1
+Corporation Place,1.3256525520174542,103.7199526961907,"2 Corporation Rd, Singapore 618494",1,0,0,0.17,,1
+Nordic European Centre,1.327590092202289,103.74840188084745,"3 International Business Park Rd, Singapore 609927",1,0,0,0.22,,1
+31 International Business Park,1.3289139920921229,103.74610266920557,"31 International Business Park Rd, Singapore 609921",1,0,0,0.3,,1
+5 Science Park Drive,1.2925926472878033,103.78651842687725,"5 Science Park Dr, Singapore 118265",1,0,0,0.2,,1
+Bukit Panjang Plaza,1.3803291935196855,103.76408369433989,"1 Jelebu Rd, Singapore 677743",1,0,0,0.19,,1
+Carros Centre,1.4308853577902021,103.7525576826979,"60 Jln Lam Huat, Singapore 737869",1,0,0,0.13,,1
+Singapore Polytechnic T11A ,1.3101508617401123,103.77915954589844,500 Dover Road Singapore 139651,1,0,0,0.27,,1
+Westgate,1.3343783617019653,103.74278259277344,3 Gateway Drive Singapore 608532,1,0,0,0.8,,1
+Six Battery Road,1.2853877544403076,103.8516616821289,6 Battery Road Singapore 049909,1,0,0,0.16,,1
+21 Collyer Quay,1.2851792573928833,103.85275268554688,21 Collyer Quay Singapore 049320,1,0,0,0.15,,1
+CapitaSky,1.2770323753356934,103.84796142578125,79 Robinson Road Singapore 068897,1,0,0,0.9,,1
+Capital Tower,1.2777024507522583,103.8475341796875,168 Robinson Road Singapore 068912,1,0,0,0.13,,1
+CapitaGreen,1.2824146747589111,103.85028076171875,138 Market Street Singapore 048946,1,0,0,0.11,,1
+Copthorne King’s Hotel,1.2882884740829468,103.83661651611328,403 Havelock Road Singapore 169632,1,0,0,0.22,,1
+Gardens by the Bay - Bayfront Plaza,1.2792644500732422,103.86003875732422,18 Marina Gardens Drive Singapore 018953,1,0,0,0.35,,1
+Gardens by the Bay - Main Entrance Carpark,1.2811683416366577,103.86572265625,18 Marina Gardens Drive Singapore 018953,1,0,0,0.42,,1
+Fortune Centre,1.3002822399139404,103.85269927978516,190 Middle Road Singapore 188979,1,0,0,0.14,,1
+M Hotel,1.2737669944763184,103.84503936767578,81 Anson Road Singapore 079908,1,0,0,0.7,,1
+Orchard Building,1.3014488220214844,103.83724975585938,1 Grange Road Singapore 239693,1,0,0,0.16,,1
+Studio M Hotel,1.2908153533935547,103.83917236328125,3 Nanson Road Singapore 238910,1,0,0,0.14,,1
+Quayside Isle,1.247928261756897,103.84172821044922,31 Ocean Way Singapore 098375,1,0,0,0.13,,1
+UOB Plaza 1,1.285383939743042,103.8505630493164,80 Raffles Place Singapore 048624,1,0,0,0.11,,1
+Novena Square,1.3199315071105957,103.84430694580078,238 Thomson Road Singapore 307683,1,0,0,0.13,,1
+Sentosa Cove,1.2487763166427612,103.8405532836914,1 Cove Avenue Singapore 098537,1,0,0,0.12,,1
+Waterfront Plaza,1.2905162572860718,103.83502960205078,390A Havelock Road,1,0,0,0.16,,1
+Orchard Hotel,1.3075321912765503,103.82859802246094,442 Orchard Road Singapore 238879,1,0,0,0.13,,1
+King’s Centre,1.2896087169647217,103.83589172363281,390 Havelock Road Singapore 169662,1,0,0,0.13,,1
+Marina One,1.2773464918136597,103.85360717773438,23 Marina Way Singapore 018979,1,0,0,0.1,,1
+Palais Renaissance,1.3066492080688477,103.82950592041016,390 Orchard Road Singapore 238871,1,0,0,0.18,,1
+Funan,1.2911354303359985,103.85015106201172,107 North Bridge Road Singapore 179105,1,0,0,0.5,,1
+The Atrium Orchard,1.2999743223190308,103.84535217285156,60A Orchard Road Singapore 238890,1,0,0,0.18,,1
+Raffles City Singapore,1.293506145477295,103.8528060913086,252 North Bridge Road Singapore 179103,1,0,0,0.22,,1
+Clarke Quay Central,1.2890251874923706,103.84661102294922,6 Eu Tong Sen Street Singapore 059817,1,0,0,0.19,,1
+Compass One,1.3919039964675903,103.8946304321289,1 Sengkang Square Singapore 545078,1,0,0,0.11,,1
+NSRCC Kranji,1.4241323471069336,103.72830200195312,50 Neo Tiew Lane 3,1,0,0,0.12,,1
+351 on Braddell,1.3434840440750122,103.84548950195312,351 Braddell Road Singapore 579713,1,0,0,0.15,,1
+Singapore Island Country Club,1.3589462041854858,103.81898498535156,180 Island Club Road Singapore 578774,1,0,0,0.29,,1
+City Square Mall,1.3113981485366821,103.8565902709961,180 Kitchener Road Singapore 208539,1,0,0,0.16,,1
+Edward Boustead Centre,1.332878589630127,103.89225006103516,82 Ubi Avenue 4 Singapore 408832,1,0,0,0.22,,1
+Temasek Polytechnic Carpark E,1.3475483655929565,103.93012237548828,21 Tampines Avenue 1 Singapore 529757,1,0,0,0.29,,1
+NSRCC Changi,1.318152666091919,103.97529602050781,10 Changi Coast Walk,1,0,0,0.12,,1

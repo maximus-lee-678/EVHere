@@ -11,7 +11,7 @@ CREATE TABLE charger (
 	latitude             DECIMAL(7) NOT NULL    ,
 	longitude            DECIMAL(7) NOT NULL    ,
 	address              VARCHAR(512) NOT NULL    ,
-	curently_open        INT NOT NULL    ,
+	currently_open        INT NOT NULL    ,
 	pv_current_in        DECIMAL(2) NOT NULL    ,
 	pv_energy_level      DECIMAL(2) NOT NULL    ,
 	rate_current         DECIMAL(2) NOT NULL    ,

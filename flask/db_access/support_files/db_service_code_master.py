@@ -164,7 +164,8 @@ SELECT_CHARGER_AVAILABLE_CONNECTOR_EMPTY = 304
 ez_update(SELECT_CHARGER_AVAILABLE_CONNECTOR_EMPTY, "Charger available connector select returned empty.")
 #>
 #>
-#
+CHARGER_AVAILABLE_CONNECTOR_INVALID_ENERGY_LEVEL = 305
+ez_update(CHARGER_AVAILABLE_CONNECTOR_INVALID_ENERGY_LEVEL, "Invalid energy level specified.")
 #>
 #>
 AVAILABLE_CONNECTORS_NOT_FOUND = 399
@@ -172,6 +173,15 @@ ez_update(AVAILABLE_CONNECTORS_NOT_FOUND, "Charger connector types found.")
 
 AVAILABLE_CONNECTORS_FOUND = 398
 ez_update(AVAILABLE_CONNECTORS_FOUND, "Charger connector types not found.")
+
+AVAILABLE_CONNECTOR_IN_USE = 397
+ez_update(AVAILABLE_CONNECTOR_IN_USE, "This charger connector is in use.")
+
+AVAILABLE_CONNECTOR_NOT_IN_USE = 396
+ez_update(AVAILABLE_CONNECTOR_NOT_IN_USE, "This charger connector is not in use.")
+
+AVAILABLE_CONNECTOR_SET_USE_STATE_SUCCESS = 395
+ez_update(AVAILABLE_CONNECTOR_NOT_IN_USE, "Charger connector use state changed.")
 
 #########################
 
@@ -376,6 +386,12 @@ ez_update(CHARGE_CURRENT_NOT_FOUND, "Charge current entry not found.")
 
 CHARGE_CURRENT_FOUND = 894
 ez_update(CHARGE_CURRENT_FOUND, "Charge current entry found.")
+
+CHARGE_CURRENT_UPDATE_SUCCESS = 893
+ez_update(CHARGE_CURRENT_UPDATE_SUCCESS, "Charge current entry updated.")
+
+CHARGE_CURRENT_UPDATE_FAILURE = 892
+ez_update(CHARGE_CURRENT_UPDATE_SUCCESS, "Charge current entry could not be updated.")
 
 #########################
 
