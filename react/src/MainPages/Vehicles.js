@@ -17,11 +17,13 @@ export default function Vehicles() {
     const [vehicleModel, setVehicleModel] = useState('');
     const [vehicleSN, setVehicleSN] = useState('');
     const [selectedConnectorId, setSelectedConnectorId] = useState(null);
+    const [selectedConnectorName, setSelectedConnectorName] = useState(null);
     function clearFormFields() {
         setVehicleName('');
         setVehicleModel('');
         setVehicleSN('');
         setSelectedConnectorId(connectorInfo[0].id);
+        setSelectedConnectorName(connectorInfo[0].name_short);
     }
 
     const [connectorInfo, setConnectorInfo] = useState();
@@ -65,7 +67,7 @@ export default function Vehicles() {
 
     // once connectorInfo loaded, update selectedConnector
     useEffect(() => {
-        connectorInfo && setSelectedConnectorId(connectorInfo[0].id);
+        connectorInfo && setSelectedConnectorId(connectorInfo[0].id) && setSelectedConnectorName(connectorInfo[0].name_short);
     }, [connectorInfo]);
 
     // Component that formats vehicle information for display in main page. Reads from userVehicleInfo.
@@ -82,7 +84,7 @@ export default function Vehicles() {
                             <div>
                                 <div>Model: {userVehicleInfo[i].model}</div>
                                 <div>S/N: {userVehicleInfo[i].vehicle_sn}</div>
-                                <div>Connector: {userVehicleInfo[i].connector.name_connector} ({userVehicleInfo[i].connector.name_short})</div>
+                                <div>Connector: {userVehicleInfo[i].connector.name_connector} {'<' + userVehicleInfo[i].connector.current_type + '>'}</div>
                             </div>
                         </CardContent>
                     </div>
@@ -99,8 +101,8 @@ export default function Vehicles() {
 
         for (var i = 0; i < connectorInfo.length; i++) {
             options.push(
-                <option className="border-0 px-3 py-3 text-gray-700" key={connectorInfo[i].id}
-                    value={connectorInfo[i].name_short}>{connectorInfo[i].name_short}</option>
+                <option className="border-0 px-3 py-3 text-gray-700" key={connectorInfo[i].id} data-connector-id={connectorInfo[i].id}
+                    value={connectorInfo[i].name_connector}>{connectorInfo[i].name_connector} {'<' + connectorInfo[i].current_type + '>'}</option>
             );
         }
         return options;
@@ -196,9 +198,12 @@ export default function Vehicles() {
                     />
 
                     <FormInputSelect elementName="Connector Type" id="connector-type"
-                        value={(connectorInfo && selectedConnectorId) || ""}
+                        value={(connectorInfo && selectedConnectorName) || ""}
                         options={connectorInfo && <ConnectorChoices />}
-                        onChange={(event) => setSelectedConnectorId(event.target.key)}
+                        onChange={(event) => {
+                            setSelectedConnectorName(event.target.value);
+                            setSelectedConnectorId(event.target.selectedOptions[0].getAttribute('data-connector-id'));
+                        }}
                     />
 
                     <FormButton elementName="Add new Vehicle" />

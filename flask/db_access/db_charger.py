@@ -11,19 +11,19 @@ import db_access.db_charger_available_connector as db_charger_available_connecto
 
 # Generics:
 column_sql_translations = {'id': 'id', 'name': 'name', 'latitude': 'latitude', 'longitude': 'longitude',
-                           'address': 'address', 'provider': 'provider', 'connectors': 'connectors', 'online': 'c.online',
-                           'kilowatts': 'kilowatts', 'twenty_four_hours': 'twenty_four_hours', 'last_updated': 'last_updated'}
-column_names_all = ['id', 'name', 'latitude', 'longitude', 'address', 'provider',
-                    'connectors', 'online', 'kilowatts', 'twenty_four_hours', 'last_updated', 'connector_info']
+                           'address': 'address', 'currently_open': 'currently_open', 'pv_current_in': 'pv_current_in', 'pv_energy_level': 'pv_energy_level',
+                           'rate_current': 'rate_current', 'rate_predicted': 'rate_predicted', 'active': 'active', 'last_updated': 'last_updated'}
+column_names_all = ['id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 'pv_current_in', 'pv_energy_level', 
+                    'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector']
 trailing_query = """
-FROM charger AS c
+FROM charger
 """
 
 
 def get_charger_hash_map(column_names=None, where_array=None):
     """
-    \tcolumn_names >> any combination of ['id', 'name', 'latitude', 'longitude', 'address', 'provider',
-                    'connectors', 'online', 'kilowatts', 'twenty_four_hours', 'last_updated', 'connector_info']\n
+    \tcolumn_names >> any combination of ['id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 'pv_current_in', 'pv_energy_level', 
+                    'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector']\n
     \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
     Returns Dictionary with keys:\n
     <result> INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY or HASHMAP_GENERIC_SUCCESS.\n
@@ -36,9 +36,9 @@ def get_charger_hash_map(column_names=None, where_array=None):
 
     get_connectors = False
     has_temp_id = False
-    if 'connector_info' in column_names:
+    if 'available_connector' in column_names:
         get_connectors = True
-        column_names.remove('connector_info')
+        column_names.remove('available_connector')
         if 'id' not in column_names:
             has_temp_id = True
             column_names.append('id')
@@ -48,6 +48,9 @@ def get_charger_hash_map(column_names=None, where_array=None):
                                                            column_sql_translations=column_sql_translations,
                                                            trailing_query=trailing_query,
                                                            where_array=where_array)
+    
+    if charger_hash_out['result'] == db_service_code_master.HASHMAP_GENERIC_EMPTY:
+        return charger_hash_out
 
     if not get_connectors:
         return charger_hash_out
@@ -58,11 +61,11 @@ def get_charger_hash_map(column_names=None, where_array=None):
     if not has_temp_id:
         for key, value in charger_hash_out['content'].items():
             db_helper_functions.update_dict_key(
-                dict=value, key_to_update='connector_info', new_key_name=None, new_key_value=charger_available_connector_dict_out['content'][key])
+                dict=value, key_to_update='available_connector', new_key_name=None, new_key_value=charger_available_connector_dict_out['content'][key])
     else:
         for key, value in charger_hash_out['content'].items():
             db_helper_functions.update_dict_key(
-                dict=value, key_to_update='connector_info', new_key_name=None, new_key_value=charger_available_connector_dict_out['content'][key])
+                dict=value, key_to_update='available_connector', new_key_name=None, new_key_value=charger_available_connector_dict_out['content'][key])
             value.pop('id')
     
     return charger_hash_out
@@ -70,8 +73,8 @@ def get_charger_hash_map(column_names=None, where_array=None):
 
 def get_charger_dict(column_names=None, where_array=None):
     """
-    \tcolumn_names >> any combination of ['id', 'name', 'latitude', 'longitude', 'address', 'provider',
-                    'connectors', 'online', 'kilowatts', 'twenty_four_hours', 'last_updated', 'connector_info']\n
+    \tcolumn_names >> any combination of ['id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 'pv_current_in', 'pv_energy_level', 
+                    'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector']\n
     \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
     Returns Dictionary with keys:\n
     <result> INTERNAL_ERROR, SELECT_GENERIC_EMPTY or SELECT_GENERIC_SUCCESS.\n
@@ -84,9 +87,9 @@ def get_charger_dict(column_names=None, where_array=None):
 
     get_connectors = False
     has_temp_id = False
-    if 'connector_info' in column_names:
+    if 'available_connector' in column_names:
         get_connectors = True
-        column_names.remove('connector_info')
+        column_names.remove('available_connector')
         if 'id' not in column_names:
             has_temp_id = True
             column_names.append('id')
@@ -95,6 +98,9 @@ def get_charger_dict(column_names=None, where_array=None):
                                                        column_sql_translations=column_sql_translations,
                                                        trailing_query=trailing_query,
                                                        where_array=where_array)
+    
+    if charger_dict_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
+        return charger_dict_out
 
     if not get_connectors:
         return charger_dict_out
@@ -111,11 +117,11 @@ def get_charger_dict(column_names=None, where_array=None):
     if not has_temp_id:
         for row in charger_dict_out['content']:
             db_helper_functions.update_dict_key(
-                dict=row, key_to_update='connector_info', new_key_name=None, new_key_value=charger_available_connector_dict_out['content'][row['id']])
+                dict=row, key_to_update='available_connector', new_key_name=None, new_key_value=charger_available_connector_dict_out['content'][row['id']])
     else:
         for row in charger_dict_out['content']:
             db_helper_functions.update_dict_key(
-                dict=row, key_to_update='connector_info', new_key_name=None, new_key_value=charger_available_connector_dict_out['content'][row['id']])
+                dict=row, key_to_update='available_connector', new_key_name=None, new_key_value=charger_available_connector_dict_out['content'][row['id']])
             row.pop('id')
 
     return charger_dict_out
@@ -130,12 +136,11 @@ def get_all_chargers(id_user_info_sanitised):
     <content> (if <result> is CHARGER_FOUND) [{Dictionary Array}] containing charger information.\n
     \t"keys":\n
     \t{"id", "name", "latitude", "longitude", "address", "provider", "connectors", 
-    "online", "kilowatts", "twenty_four_hours", "last_updated", "is_favourite", "connector_info"}
+    "online", "kilowatts", "twenty_four_hours", "last_updated", "is_favourite", "available_connector"}
     """
 
     # get charger hash map
-    charger_dict_out = get_charger_dict(column_names=['id', 'name', 'latitude', 'longitude', 'address', 'provider',
-                                                          'connectors', 'online', 'kilowatts', 'twenty_four_hours', 'last_updated', 'connector_info'])
+    charger_dict_out = get_charger_dict(where_array=[['active', True]])
     # check if empty or error
     if charger_dict_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
         return {'result': db_service_code_master.CHARGER_NOT_FOUND}

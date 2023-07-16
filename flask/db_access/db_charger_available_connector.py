@@ -10,8 +10,10 @@ import db_access.db_connector_type as db_connector_type
 
 # Generics:
 column_sql_translations = {
-    'id': 'id', 'id_charger': 'id_charger', 'id_connector_type': 'id_connector_type'}
-column_names_all = ['id', 'id_charger', 'id_connector_type']
+    'id': 'id', 'id_charger': 'id_charger', 'id_connector_type': 'id_connector_type',
+    'in_use': 'in_use', 'output_voltage': 'output_voltage', 'output_current': 'output_current'}
+column_names_all = ['id', 'id_charger', 'id_connector_type',
+                    'in_use', 'output_voltage', 'output_current']
 trailing_query = """
 FROM charger_available_connector
 """
@@ -19,7 +21,7 @@ FROM charger_available_connector
 
 def get_charger_available_connector_hash_map(column_names=None, where_array=None):
     """
-    \tcolumn_names >> any combination of ['id', 'id_charger', 'id_connector_type']\n
+    \tcolumn_names >> any combination of ['id', 'id_charger', 'id_connector_type', 'in_use', 'output_voltage', 'output_current']\n
     \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
     Returns Dictionary with keys:\n
     <result> INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY or HASHMAP_GENERIC_SUCCESS.\n
@@ -38,7 +40,7 @@ def get_charger_available_connector_hash_map(column_names=None, where_array=None
 
 def get_charger_available_connector_dict(column_names=None, where_array=None):
     """
-    \tcolumn_names >> any combination of ['id', 'id_charger', 'id_connector_type']\n
+    \tcolumn_names >> any combination of ['id', 'id_charger', 'id_connector_type', 'in_use', 'output_voltage', 'output_current']\n
     \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
     Returns Dictionary with keys:\n
     <result> INTERNAL_ERROR, SELECT_GENERIC_EMPTY or SELECT_GENERIC_SUCCESS.\n
@@ -66,7 +68,7 @@ def get_all_charger_connectors_decoded():
 
     # get all chargers' available connectors
     charger_available_connector_dict_out = get_charger_available_connector_dict(
-        column_names=['id_charger', 'id_connector_type'])
+        column_names=['id', 'id_charger', 'in_use', 'id_connector_type'])
     # check if empty or error
     if charger_available_connector_dict_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
         return {'result': db_service_code_master.AVAILABLE_CONNECTORS_NOT_FOUND}
@@ -74,28 +76,52 @@ def get_all_charger_connectors_decoded():
         return charger_available_connector_dict_out
 
     # flatten charger_available_connector_out to dict with
-    # key: id_charger
-    # value: [id_connector_type]
+    # {id_charger: [{id, in_use, id_connector_type}, ...], ...}
     charger_available_connector_dict = {}
     for row in charger_available_connector_dict_out['content']:
         if row['id_charger'] not in charger_available_connector_dict:
             charger_available_connector_dict.update(
-                {row['id_charger']: [row['id_connector_type']]})
+                {row['id_charger']: [{'id': row['id'], 'in_use': row['in_use'], 'id_connector_type': row['id_connector_type']}]})
         else:
             charger_available_connector_dict[row['id_charger']].append(
-                row['id_connector_type'])
+                {'id': row['id'], 'in_use': row['in_use'], 'id_connector_type': row['id_connector_type']})
 
     # get all connector types
     connector_type_hash_out = db_connector_type.get_connector_type_hash_map()
 
     # update charger_available_connector_out id_connector_types to actual connector info
-    # original content: {[id, ...], [id, ...], ...}
-    # cycle through each array and each index of array
-    # update each array index to contain matched id_connector_type to connector_type_out dict
-    # final content: {[{connector_info}, ...], [{connector_info}, ...], ...}
     for value in charger_available_connector_dict.values():
-        for index, id_connector_type in enumerate(value):
-            value[index] = connector_type_hash_out['content'][id_connector_type]
+        for row in value:
+            db_helper_functions.update_dict_key(
+                dict=row, key_to_update='id_connector_type', new_key_name='connector_type', new_key_value=connector_type_hash_out['content'][row['id_connector_type']])
 
     return {'result': db_service_code_master.AVAILABLE_CONNECTORS_FOUND,
             'content': charger_available_connector_dict}
+
+
+def set_charger_available_connector_in_use(id_charger_available_connector, set_to):
+    """
+    Sets a given id_charger_available_connector's in_use state.\n
+    \tset_to >> True or False\n
+    Returns Dictionary with keys:\n
+    <result> INTERNAL_ERROR, AVAILABLE_CONNECTOR_IN_USE or AVAILABLE_CONNECTOR_SET_USE_STATE_SUCCESS.
+    """
+
+    # sanitise input
+    id_charger_available_connector_sanitised = db_helper_functions.string_sanitise(
+        id_charger_available_connector)
+
+    query = 'UPDATE charger_available_connector SET in_use=? WHERE id=?'
+    task = (set_to, id_charger_available_connector_sanitised)
+
+    transaction = db_methods.safe_transaction(query=query, task=task)
+    if not transaction['transaction_successful']:
+        return {'result': db_service_code_master.INTERNAL_ERROR}
+    if transaction['rows_affected'] != 1:
+        return {'result': db_service_code_master.AVAILABLE_CONNECTOR_IN_USE}
+
+    return {'result': db_service_code_master.AVAILABLE_CONNECTOR_SET_USE_STATE_SUCCESS}
+
+
+def update_charger_available_connector_electric_stats(id_charger_available_connector, output_voltage, output_current):
+    pass

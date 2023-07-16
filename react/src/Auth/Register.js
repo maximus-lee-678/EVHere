@@ -26,7 +26,7 @@ export default function Register() {
 
     // If success, redirect
     if (response.status === 'success') {
-      toast.success(response.api_response);
+      toast.success(response.message);
 
       // delay 2s
       await new Promise(resolve => setTimeout(resolve, 2000));

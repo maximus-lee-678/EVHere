@@ -1,16 +1,16 @@
 import { GenerateHeader, GetResponse } from '../APIBase';
 
-export const ChargeHistoryAdd = async (email, IDVehicleInfo, IDCharger, batteryPercentage) => {
+export const ChargeHistoryAdd = async (email, IDVehicleInfo, IDCharger, IDChargerAvailableConnector) => {
     return GetResponse('/api/start_charge_history',
         GenerateHeader({
             email: email, id_vehicle_info: IDVehicleInfo,
-            id_charger: IDCharger, battery_percentage: batteryPercentage
+            id_charger: IDCharger, id_charger_available_connector: IDChargerAvailableConnector
         }));
 }
 
-export const ChargeHistoryFinish = async (email, batteryPercentage, amountPayable) => {
+export const ChargeHistoryFinish = async (email, kWh) => {
     return GetResponse('/api/finish_charge_history',
-        GenerateHeader({ email: email, battery_percentage: batteryPercentage, amount_payable: amountPayable }));
+        GenerateHeader({ email: email, energy_drawn: kWh }));
 }
 
 export const ChargeHistoryGet = async (email, filter) => {

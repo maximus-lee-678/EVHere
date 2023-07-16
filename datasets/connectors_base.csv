@@ -1,4 +1,9 @@
-name_short,name_long,name_connector
-AC,Alternating Current,J1772
-DC,Direct Current,Type 2
-Dual,AC/DC,CCS
+current_type,name_connector,output_voltage_max,output_current_max
+AC,SAE J1772 (Type 1),240,80
+AC,Mennekes (Type 2),400,32
+DC,CCS (Type 1),1000,500
+DC,CCS (Type 2),1000,500
+DC,CHAdeMO,1000,400
+AC,GB/T (AC),230,32
+DC,GB/T (DC),950,250
+AC/DC,Tesla NACS,625,400
