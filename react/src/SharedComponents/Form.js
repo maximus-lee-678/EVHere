@@ -53,7 +53,7 @@ export default function Form(props) {
 };
 
 export function FormInputField(props) {
-    const { elementName, id, type, value, placeholder, onChange } = props;
+    const { elementName, icon, id, type, value, placeholder, onChange } = props;
 
     return (
         <div className="relative w-full mb-3">
@@ -61,6 +61,7 @@ export function FormInputField(props) {
                 className="block uppercase text-gray-700 text-xs font-bold mb-2"
                 htmlFor={id}
             >
+                <i className={icon != null ? "fas fa-" + icon + " mr-2" : "hidden"}></i>
                 {elementName}
             </label>
             <input

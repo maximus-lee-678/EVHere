@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from "../SharedComponents/Navbar";
 import { CardButton, CardContent } from '../SharedComponents/Card';
+import Form, { FormInputField } from '../SharedComponents/Form';
 
 export default function Profile() {
-
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [fullName, setFullName] = useState('');
 
     return (
         <div className="min-h-screen bg-gray-900">
@@ -16,22 +20,47 @@ export default function Profile() {
                 </div>
 
                 <div className="relative top-24 mx-auto py-5 px-3 bg-white w-11/12 md:w-1/2 rounded-lg text-center space-y-4">
-                    <CardContent elementName="Full Name">
-                        <div>
-                            <i className="fas fa-user mr-2"></i>
-                            (Username here)
+                    <CardContent>
+                        <div className="flex items-center px-4">
+                            <FormInputField
+                            value={fullName} 
+                            elementName="Full name"
+                            icon="id-card"
+                            id="fullname" 
+                            placeholder="Full name here"
+                            onChange={(event) => setFullName(event.target.value)}/>
                         </div>
-                        <div>
-                            <i className="fas fa-envelope mr-2"></i>
-                            (Email address here)
+                        <div className="flex items-center px-4">
+                            <FormInputField
+                            value={username} 
+                            elementName="Username"
+                            icon="user"
+                            id="username" 
+                            placeholder="Username here"
+                            onChange={(event) => setUsername(event.target.value)}/>
+                        </div>
+                        <div className="flex items-center px-4">
+                            <FormInputField 
+                            value={email} 
+                            elementName="Email"
+                            icon="envelope"
+                            id="email" 
+                            placeholder="Email address here"
+                            onChange={(event) => setEmail(event.target.value)}/>
                         </div>
                         
-                        <div>
-                            <i className="fas fa-phone mr-2"></i>
-                            (Phone number here)
+                        <div className="flex items-center px-4">
+                            <FormInputField type="tel"
+                            value={phoneNumber}
+                            elementName="Phone number"
+                            icon="phone"
+                            id="phoneNumber"
+                            placeholder="Phone number here"
+                            onChange={(event) => setPhoneNumber(event.target.value)}/>
                         </div>
                     </CardContent>
 
+                    <CardButton text="Save profile" icon="edit" color="green" onClick="editFunction" id="userID"></CardButton>
                     <CardButton text="Delete account" icon="trash" color="red" onClick="deleteFunction" id="userID"></CardButton>
                 </div>
                 

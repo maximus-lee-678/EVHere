@@ -130,16 +130,17 @@ export default function Map(props) {
                         new Icon({ iconUrl: markerIconFavouritePng, iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -30] })}
                     key={allChargerInfo[i].id}>
                     <Popup>
-                        [Name] {allChargerInfo[i].name}
-                        <br />
-                        [Address] {allChargerInfo[i].address}
-                        <br />
-                        [Solar Current In] {allChargerInfo[i].pv_current_in} A
-                        <br />
-                        [Solar Stored Charge] {allChargerInfo[i].pv_energy_level} kWh
-                        <br />
-                        [Price Rate] ${allChargerInfo[i].rate_current} / kWh
-                        <br />
+                        <div className="pb-1">
+                            <span className="font-semibold text-sm">Name:</span> {allChargerInfo[i].name}
+                            <br />
+                            <span className="font-semibold text-sm">Address:</span> {allChargerInfo[i].address}
+                            <br />
+                            <span className="font-semibold text-sm">Solar Current In:</span> {allChargerInfo[i].pv_current_in} A
+                            <br />
+                            <span className="font-semibold text-sm">Solar Stored Charge:</span> {allChargerInfo[i].pv_energy_level} kWh
+                            <br />
+                            <span className="font-semibold text-sm">Price Rate:</span> ${allChargerInfo[i].rate_current} / kWh
+                        </div>
                         <button id={allChargerInfo[i].id}
                             onClick={() => handleFavourite(id, favourite === false ? 'add' : 'remove')}
                             className={(allChargerInfo[i].is_favourite === false ? "hover:bg-red-900" : "hover:bg-red-300")
