@@ -19,9 +19,9 @@ export default function Profile() {
                     </div>
                 </div>
 
-                <div className="relative top-24 mx-auto py-5 px-3 bg-white w-11/12 md:w-1/2 rounded-lg text-center space-y-4">
+                <div className="relative mx-auto py-5 px-3 bg-white w-11/12 md:w-1/2 rounded-lg space-y-4">
                     <CardContent>
-                        <div className="flex items-center px-4">
+                        <div className="flex md:px-4">
                             <FormInputField
                             value={fullName} 
                             elementName="Full name"
@@ -30,7 +30,7 @@ export default function Profile() {
                             placeholder="Full name here"
                             onChange={(event) => setFullName(event.target.value)}/>
                         </div>
-                        <div className="flex items-center px-4">
+                        <div className="flex md:px-4">
                             <FormInputField
                             value={username} 
                             elementName="Username"
@@ -39,7 +39,7 @@ export default function Profile() {
                             placeholder="Username here"
                             onChange={(event) => setUsername(event.target.value)}/>
                         </div>
-                        <div className="flex items-center px-4">
+                        <div className="flex md:px-4">
                             <FormInputField 
                             value={email} 
                             elementName="Email"
@@ -49,7 +49,7 @@ export default function Profile() {
                             onChange={(event) => setEmail(event.target.value)}/>
                         </div>
                         
-                        <div className="flex items-center px-4">
+                        <div className="flex items-center md:px-4">
                             <FormInputField type="tel"
                             value={phoneNumber}
                             elementName="Phone number"
