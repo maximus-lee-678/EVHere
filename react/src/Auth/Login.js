@@ -36,7 +36,6 @@ export default function Login() {
     return (
         <div>
             <Toast />
-            <Navbar transparent />
 
             <Form elementName="Sign In" onSubmit={HandleLogin} backgroundImageURL="login-register.png">
                 <FormInputField elementName="Email" id="email" placeholder="Enter Email . . ."

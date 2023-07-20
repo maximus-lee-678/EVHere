@@ -34,7 +34,8 @@ def fun_start_charge_history():
 
     # start charging history actual
     charge_history_response = db_charge_history.add_charge_history_initial(id_user_info_sanitised=id_user_info, id_vehicle_info_input=id_vehicle_info,
-                                                                           id_charger_input=id_charger, id_charger_available_connector_input=id_charger_available_connector)
+                                                                           id_charger_input=id_charger, 
+                                                                           id_charger_available_connector_input=id_charger_available_connector)
 
     return flask_helper_functions.format_for_endpoint(db_dictionary=charge_history_response,
                                                       success_scenarios_array=[db_service_code_master.CHARGE_HISTORY_CREATE_SUCCESS])

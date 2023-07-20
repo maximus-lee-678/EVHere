@@ -113,6 +113,18 @@ ez_update(ACCOUNT_FOUND, "Matching account found.")
 ACCOUNT_NOT_FOUND = 194
 ez_update(ACCOUNT_NOT_FOUND, "No matching account found.")
 
+USER_INFO_VALID = 193
+ez_update(USER_INFO_VALID, "Provided user info is valid.")
+
+USER_INFO_INVALID = 192
+ez_update(USER_INFO_INVALID, "Provided user info is invalid.")
+
+USER_INFO_UPDATE_SUCCESS = 191
+ez_update(USER_INFO_UPDATE_SUCCESS, "Account details updated.")
+
+USER_INFO_UPDATE_FAILURE = 190
+ez_update(USER_INFO_UPDATE_FAILURE, "Account details not updated.")
+
 #########################
 
 # charger [200-299]

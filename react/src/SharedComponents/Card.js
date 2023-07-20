@@ -22,7 +22,7 @@ export function CardButton(props) {
         <div className="flex justify-center items-center">
             <button id={id}
                 className={"bg-" + color + "-400 hover:bg-" + color + "-300  px-5 py-4 rounded-full text-white max-h-14"}
-                onClick={() => onClick(id)}
+                onClick={onClick}
             >
                 <i className={"fas fa-" + icon}></i>
                 <span className={text != null ? "ml-2" : ""}>{text}</span>

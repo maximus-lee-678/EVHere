@@ -40,7 +40,54 @@ def fun_create_account():
 
     # create user actual
     user_info_response = db_user_info.create_user(username_input=username, password_input=password,
-                                      email_input=email, full_name_input=full_name, phone_no_input=phone_number)
-    
+                                                  email_input=email, full_name_input=full_name, phone_no_input=phone_number)
+
     return flask_helper_functions.format_for_endpoint(db_dictionary=user_info_response,
                                                       success_scenarios_array=[db_service_code_master.USER_INFO_CREATE_SUCCESS])
+
+
+# Route: Get user account details
+@flask_user_info.route('/api/get_user_info', methods=['POST'])
+def fun_get_user_info():
+    email = request.json['email']
+
+    # get user id
+    user_info_response = db_user_info.get_user_id_by_email(email_input=email)
+    if user_info_response['result'] != db_service_code_master.ACCOUNT_FOUND:
+        return flask_helper_functions.format_for_endpoint(db_dictionary=user_info_response,
+                                                          success_scenarios_array=[db_service_code_master.ACCOUNT_FOUND])
+    # store user id
+    id_user_info = user_info_response['content']
+
+    # get user actual
+    user_info_response = db_user_info.get_user_info_by_user_id(
+        id_user_info_sanitised=id_user_info)
+
+    return flask_helper_functions.format_for_endpoint(db_dictionary=user_info_response,
+                                                      success_scenarios_array=[db_service_code_master.ACCOUNT_FOUND])
+
+
+# Route: Update user account details
+@flask_user_info.route('/api/update_user_info', methods=['POST'])
+def fun_update_user_info():
+    email = request.json['email']
+    email_new = request.json['email_new']
+    full_name = request.json['full_name']
+    username = request.json['username']
+    phone_number = request.json['phone_number'] if request.json['phone_number'] != '' else None
+    password = request.json['password'] if request.json['password'] != '' else None
+
+    # get user id
+    user_info_response = db_user_info.get_user_id_by_email(email_input=email)
+    if user_info_response['result'] != db_service_code_master.ACCOUNT_FOUND:
+        return flask_helper_functions.format_for_endpoint(db_dictionary=user_info_response,
+                                                          success_scenarios_array=[db_service_code_master.ACCOUNT_FOUND])
+    # store user id
+    id_user_info = user_info_response['content']
+
+    # update user actual
+    user_info_response = db_user_info.update_user(id_user_info_sanitised=id_user_info, password_input=password,
+                                                  email_input=email_new, full_name_input=full_name, username_input=username, phone_no_input=phone_number)
+
+    return flask_helper_functions.format_for_endpoint(db_dictionary=user_info_response,
+                                                      success_scenarios_array=[db_service_code_master.USER_INFO_UPDATE_SUCCESS])

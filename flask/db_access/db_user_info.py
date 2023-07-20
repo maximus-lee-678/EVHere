@@ -12,7 +12,7 @@ import db_access.db_universal as db_universal
 column_sql_translations = {'id': 'id', 'username': 'username', 'password': 'password', 'email': 'email',
                            'full_name': 'full_name', 'phone_no': 'phone_no', 'created_at': 'created_at', 'modified_at': 'modified_at'}
 column_names_all = ['id', 'username', 'password', 'email',
-                'full_name', 'phone_no', 'created_at', 'modified_at']
+                    'full_name', 'phone_no', 'created_at', 'modified_at']
 trailing_query = """
 FROM user_info
 """
@@ -62,86 +62,106 @@ def create_user(username_input, password_input, email_input, full_name_input, ph
     Returns Dictionary with keys:\n
     <result> INTERNAL_ERROR, USER_INFO_CREATE_FAILURE or USER_INFO_CREATE_SUCCESS.\n
     <reason> (if <result> is USER_INFO_CREATE_FAILURE) [Array] Reason for failure.
-    \t[USERNAME_INVALID_LENGTH, PASSWORD_INVALID_LENGTH, PASSWORD_INVALID_SYNTAX, 
+    \t[USERNAME_INVALID_LENGTH, PASSWORD_INVALID_LENGTH, PASSWORD_INVALID_SYNTAX,
     EMAIL_INVALID_LENGTH, EMAIL_INVALID_SYNTAX, ACCOUNT_ALREADY_EXISTS, PHONE_NUMBER_INVALID, FULL_NAME_INVALID_LENGTH]
     """
 
     contains_errors = False
     error_list = []
 
-    # 1.1: input_username > check[length]
-    if len(username_input) > 64 or len(username_input) == 0:
-        contains_errors = True
-        error_list.append(db_service_code_master.USERNAME_INVALID_LENGTH)
-    # 1.2: sanitise username
-    else:
-        username_sanitised = db_helper_functions.string_sanitise(
-            username_input)
+    user_info_out = validate_user_info(username_input=username_input, password_input=password_input,
+                                       email_input=email_input, full_name_input=full_name_input, phone_no_input=phone_no_input)
 
-    # 2.1: password > check[length]
-    if len(password_input) > 64 or len(password_input) == 0:
+    if user_info_out['result'] == db_service_code_master.USER_INFO_INVALID:
         contains_errors = True
-        error_list.append(db_service_code_master.PASSWORD_INVALID_LENGTH)
-    # 2.2: password > check[security level]
-    elif not db_helper_functions.validate_password(password_input):
-        contains_errors = True
-        error_list.append(db_service_code_master.PASSWORD_INVALID_SYNTAX)
-    # 2.3: hash password
+        error_list = user_info_out['reason']
     else:
-        password_hashed = db_helper_functions.password_encrypt(password_input)
-
-    # 3.1: email > check[length]
-    if len(email_input) > 255 or len(email_input) == 0:
-        contains_errors = True
-        error_list.append(db_service_code_master.EMAIL_INVALID_LENGTH)
-    # 3.2: email > check[syntax]
-    elif not db_helper_functions.validate_email(email_input):
-        contains_errors = True
-        error_list.append(db_service_code_master.EMAIL_INVALID_SYNTAX)
-    # 3.3: check if email exists
-    else:
-        email_response = get_user_id_by_email(email_input=email_input)
-        if email_response['result'] != db_service_code_master.ACCOUNT_NOT_FOUND:
+        # check for email duplicate
+        user_info_dict_out = get_user_info_dict(column_names=['id'],
+                                                where_array=[['email', user_info_out['content']['email_sanitised']]])
+        if user_info_dict_out['result'] == db_service_code_master.SELECT_GENERIC_SUCCESS:
             contains_errors = True
-            error_list.append(email_response['result'])
-        else:
-            email_sanitised = db_helper_functions.string_sanitise(email_input)
-
-    # 4.1: phone_no > check[length & syntax]
-    if not db_helper_functions.validate_phone_no(phone_no_input):
-        contains_errors = True
-        error_list.append(db_service_code_master.PHONE_NUMBER_INVALID)
-    # 4.2: variable change (lol)
-    else:
-        phone_no_sanitised = phone_no_input
-
-    # 5.1: full_name > check[length]
-    if len(full_name_input) > 255 or len(full_name_input) == 0:
-        contains_errors = True
-        error_list.append(db_service_code_master.FULL_NAME_INVALID_LENGTH)
-    # 5.2: sanitise name
-    else:
-        full_name_sanitised = db_helper_functions.string_sanitise(
-            full_name_input)
-
+            error_list.append(db_service_code_master.ACCOUNT_ALREADY_EXISTS)
+        if user_info_dict_out['result'] == db_service_code_master.INTERNAL_ERROR:
+            return {'result': db_service_code_master.INTERNAL_ERROR}
+    
     if contains_errors:
-        return {'result': db_service_code_master.USER_INFO_CREATE_FAILURE, 'reason': error_list}
+        return {'result': db_service_code_master.USER_INFO_CREATE_FAILURE,
+            'reason': error_list}
 
-    # 6: previous checks passed, generate rest of the fields
+    # checks passed, generate rest of the fields
     id = db_helper_functions.generate_uuid()
     created_at = db_helper_functions.generate_time_now()
     modified_at = db_helper_functions.generate_time_now()
 
-    # 7: insert new user
+    # insert new user
     query = 'INSERT INTO user_info VALUES (?,?,?,?,?,?,?,?)'
-    task = (id, username_sanitised, password_hashed, email_sanitised,
-            full_name_sanitised, phone_no_sanitised, created_at, modified_at)
+    task = (id, user_info_out['content']['username_sanitised'], user_info_out['content']['password_hashed'],
+            user_info_out['content']['email_sanitised'], user_info_out['content']['full_name_sanitised'],
+            user_info_out['content']['phone_no_sanitised'], created_at, modified_at)
 
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:
         return {'result': db_service_code_master.INTERNAL_ERROR}
 
     return {'result': db_service_code_master.USER_INFO_CREATE_SUCCESS}
+
+
+def get_user_info_by_user_id(id_user_info_sanitised):
+    """
+    """
+
+    user_info_dict_out = get_user_info_dict(column_names=['username', 'email', 'full_name', 'phone_no', 'created_at', 'modified_at'],
+                                        where_array=[['id', id_user_info_sanitised]])
+    # check if empty or error
+    if user_info_dict_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
+        return {'result': db_service_code_master.ACCOUNT_NOT_FOUND}
+    if user_info_dict_out['result'] == db_service_code_master.INTERNAL_ERROR:
+        return user_info_dict_out
+
+    return {'result': db_service_code_master.ACCOUNT_FOUND,
+            'content': user_info_dict_out['content'][0]}
+
+
+
+def update_user(id_user_info_sanitised, username_input, password_input, email_input, full_name_input, phone_no_input):
+    """
+    Returns Dictionary with keys:\n
+    <result> INTERNAL_ERROR, USER_INFO_UPDATE_FAILURE or USER_INFO_UPDATE_SUCCESS.\n
+    <reason> (if <result> is USER_INFO_UPDATE_FAILURE) [Array] Reason for failure.
+    \t[USERNAME_INVALID_LENGTH, PASSWORD_INVALID_LENGTH, PASSWORD_INVALID_SYNTAX,
+    EMAIL_INVALID_LENGTH, EMAIL_INVALID_SYNTAX, ACCOUNT_ALREADY_EXISTS, PHONE_NUMBER_INVALID, FULL_NAME_INVALID_LENGTH]
+    """
+
+    contains_errors = False
+    error_list = []
+
+    user_info_out = validate_user_info(username_input=username_input, password_input=password_input,
+                                    email_input=email_input, full_name_input=full_name_input, phone_no_input=phone_no_input)
+    
+
+    if user_info_out['result'] == db_service_code_master.USER_INFO_INVALID:
+        contains_errors = True
+        error_list = user_info_out['reason']
+    else:
+        # check for email duplicate, but ignore if self
+        user_info_dict_out = get_user_info_dict(column_names=['id'],
+                                                where_array=[['email', user_info_out['content']['email_sanitised']],
+                                                             ['id', id_user_info_sanitised, 'NOT']])
+        if user_info_dict_out['result'] == db_service_code_master.SELECT_GENERIC_SUCCESS:
+            contains_errors = True
+            error_list.append(db_service_code_master.ACCOUNT_ALREADY_EXISTS)
+        if user_info_dict_out['result'] == db_service_code_master.INTERNAL_ERROR:
+            return {'result': db_service_code_master.INTERNAL_ERROR}
+    
+    if contains_errors:
+        return {'result': db_service_code_master.USER_INFO_UPDATE_FAILURE,
+            'reason': error_list}
+    
+    # DO THE UPDATE
+    
+    return {'result': db_service_code_master.USER_INFO_UPDATE_SUCCESS}
+    
 
 
 def login_user(email_input, password_input):
@@ -155,10 +175,12 @@ def login_user(email_input, password_input):
 
     # 1.1: email > check[length]
     if len(email_input) > 255:
-        return {'result': db_service_code_master.LOGIN_FAILURE, 'reason': [db_service_code_master.EMAIL_PASSWORD_INVALID]}
+        return {'result': db_service_code_master.LOGIN_FAILURE,
+                'reason': [db_service_code_master.EMAIL_PASSWORD_INVALID]}
     # 1.2: email > check[syntax]
     if not db_helper_functions.validate_email(email_input):
-        return {'result': db_service_code_master.LOGIN_FAILURE, 'reason': [db_service_code_master.EMAIL_PASSWORD_INVALID]}
+        return {'result': db_service_code_master.LOGIN_FAILURE,
+                'reason': [db_service_code_master.EMAIL_PASSWORD_INVALID]}
     # 1.3: sanitise email
     email_sanitised = db_helper_functions.string_sanitise(email_input)
 
@@ -170,14 +192,17 @@ def login_user(email_input, password_input):
         return user_info_dict_out
     # check if empty
     if user_info_dict_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
-        return {'result': db_service_code_master.LOGIN_FAILURE, 'reason': [db_service_code_master.EMAIL_PASSWORD_INVALID]}
+        return {'result': db_service_code_master.LOGIN_FAILURE,
+                'reason': [db_service_code_master.EMAIL_PASSWORD_INVALID]}
     # 2.2: obtain account password hash
     password_hash_string = user_info_dict_out['content'][0]['password']
     # 2.3: check if passwords match
     if db_helper_functions.password_check(password_input, password_hash_string):
         return {'result': db_service_code_master.LOGIN_SUCCESS}
     else:
-        return {'result': db_service_code_master.LOGIN_FAILURE, 'reason': [db_service_code_master.EMAIL_PASSWORD_INVALID]}
+        return {'result': db_service_code_master.LOGIN_FAILURE,
+                'reason': [db_service_code_master.EMAIL_PASSWORD_INVALID]}
+
 
 def get_user_id_by_email(email_input):
     """
@@ -200,4 +225,78 @@ def get_user_id_by_email(email_input):
     if user_info_dict_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
         return {'result': db_service_code_master.ACCOUNT_NOT_FOUND}
 
-    return {"result": db_service_code_master.ACCOUNT_FOUND, "content": user_info_dict_out['content'][0]['id']}
+    return {"result": db_service_code_master.ACCOUNT_FOUND,
+            "content": user_info_dict_out['content'][0]['id']}
+
+
+def validate_user_info(username_input=None, password_input=None, email_input=None, full_name_input=None, phone_no_input=None):
+    """
+    Validates, sanitises, hashes, the whole lot (user info).\n
+    Returns Dictionary with keys:\n
+    <result> USER_INFO_INVALID or USER_INFO_VALID.\n
+    <reason> (if <result> is USER_INFO_INVALID) [Array] Reason for failure.\n
+    \t[USERNAME_INVALID_LENGTH, PASSWORD_INVALID_LENGTH, PASSWORD_INVALID_SYNTAX,
+    EMAIL_INVALID_LENGTH, EMAIL_INVALID_SYNTAX, ACCOUNT_ALREADY_EXISTS, PHONE_NUMBER_INVALID, FULL_NAME_INVALID_LENGTH]\n
+    <content> (if <result> is USER_INFO_VALID) {Dictionary} containing ready-to-use fields.\n
+    \t{username_sanitised, password_hashed, email_sanitised, phone_no_sanitised, full_name_sanitised}\n
+    \tReturns only fields it is provided with.
+    """
+
+    contains_errors = False
+    error_list = []
+    output_dict = {}
+
+    if username_input != None:
+        if len(username_input) > 64 or len(username_input) <= 0:
+            contains_errors = True
+            error_list.append(db_service_code_master.USERNAME_INVALID_LENGTH)
+        elif not contains_errors:
+            output_dict.update(
+                {'username_sanitised': db_helper_functions.string_sanitise(username_input)})
+
+    if password_input != None:
+        if len(password_input) > 64 or len(password_input) <= 0:
+            contains_errors = True
+            error_list.append(db_service_code_master.PASSWORD_INVALID_LENGTH)
+        # check password strength
+        elif not db_helper_functions.validate_password(password_input):
+            contains_errors = True
+            error_list.append(db_service_code_master.PASSWORD_INVALID_SYNTAX)
+        elif not contains_errors:
+            output_dict.update(
+                {'password_hashed': db_helper_functions.password_encrypt(password_input)})
+
+    if email_input != None:
+        if len(email_input) > 255 or len(email_input) <= 0:
+            contains_errors = True
+            error_list.append(db_service_code_master.EMAIL_INVALID_LENGTH)
+        # match email regex
+        elif not db_helper_functions.validate_email(email_input):
+            contains_errors = True
+            error_list.append(db_service_code_master.EMAIL_INVALID_SYNTAX)
+        elif not contains_errors:
+            output_dict.update(
+                {'email_sanitised': db_helper_functions.string_sanitise(email_input)})
+
+    if phone_no_input != None:
+        # match phone regex
+        if not db_helper_functions.validate_phone_no(phone_no_input):
+            contains_errors = True
+            error_list.append(db_service_code_master.PHONE_NUMBER_INVALID)
+        elif not contains_errors:
+            output_dict.update({'phone_no_sanitised': phone_no_input})
+
+    if full_name_input != None:
+        if len(full_name_input) > 255 or len(full_name_input) <= 0:
+            contains_errors = True
+            error_list.append(db_service_code_master.FULL_NAME_INVALID_LENGTH)
+        elif not contains_errors:
+            output_dict.update(
+                {'full_name_sanitised': db_helper_functions.string_sanitise(full_name_input)})
+
+    if contains_errors:
+        return {'result': db_service_code_master.USER_INFO_INVALID,
+                'reason': error_list}
+
+    return {'result': db_service_code_master.USER_INFO_VALID,
+            'content': output_dict}

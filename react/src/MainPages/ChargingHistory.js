@@ -19,11 +19,11 @@ export default function ChargingHistory() {
 
     // Function that gets user's historical charges. Called on page load, populates chargeHistoryDetails.
     const fetchUserChargeHistory = useCallback(async () => {
-        const Response = await ChargeHistoryGet(userEmail, 'complete');
+        const response = await ChargeHistoryGet(userEmail, 'complete');
 
         // result is boolean of status
-        if (Response.status === 'success' && Response.data !== null) {
-            setChargeHistoryDetails(Response.data);
+        if (response.status === 'success' && response.data !== null) {
+            setChargeHistoryDetails(response.data);
         }
     }, [userEmail]);
 

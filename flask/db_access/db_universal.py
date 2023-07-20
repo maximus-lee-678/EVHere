@@ -11,8 +11,9 @@ def get_universal_hash_map(column_names, column_sql_translations, trailing_query
     \tcolumn_names >> [Array with key strings]\n
     \tcolumn_sql_translations >> {Dictionary} with mappings\n
     \ttrailing_query >> the rest of the damn query\n
-    \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']]
-    Returns Dictionary with keys:\n
+    \twhere_array >> an [Array] containing more [Arrays][2-3],
+    [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1'].
+    [Array][2] is optional, can specify 'NOT' operator.
     <result> INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY or HASHMAP_GENERIC_SUCCESS.\n
     <content> (if <result> is HASHMAP_GENERIC_SUCCESS) {Dictionary} containing table information.\n
     \t{"id": {...more key-values...}}
@@ -23,7 +24,7 @@ def get_universal_hash_map(column_names, column_sql_translations, trailing_query
     SELECT {column_sql_translations['id']}, {', '.join(column_sql_translations[column] for column in column_names if column in column_sql_translations)}
     {trailing_query}
     {'' if where_array is None else 
-    'WHERE ' + ' AND '.join(f'{column_sql_translations[item[0]]}=?'
+    'WHERE ' + ' AND '.join(f'{item[2] + " " if len(item) == 3 else ""}{column_sql_translations[item[0]]}=?'
                             for item in where_array if item[0] in column_sql_translations.keys())}
     """
 
@@ -54,7 +55,9 @@ def get_universal_dict(column_names, column_sql_translations, trailing_query, wh
     \tcolumn_names >> [Array with key strings]\n
     \tcolumn_sql_translations >> {Dictionary} with mappings\n
     \ttrailing_query >> the rest of the damn query\n
-    \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']]
+    \twhere_array >> an [Array] containing more [Arrays][2-3], 
+    [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1'].
+    [Array][2] is optional, can specify 'NOT' operator.
     Returns Dictionary with keys:\n
     <result> INTERNAL_ERROR, SELECT_GENERIC_EMPTY or SELECT_GENERIC_SUCCESS.\n
     <content> (if <result> is SELECT_GENERIC_SUCCESS) {Dictionary} containing table information.\n
@@ -68,7 +71,7 @@ def get_universal_dict(column_names, column_sql_translations, trailing_query, wh
     SELECT {', '.join(column_sql_translations[column] for column in column_names if column in column_sql_translations)}
     {trailing_query}
     {'' if where_array is None else 
-    'WHERE ' + ' AND '.join(f'{column_sql_translations[item[0]]}=?'
+    'WHERE ' + ' AND '.join(f'{item[2] + " " if len(item) == 3 else ""}{column_sql_translations[item[0]]}=?'
                             for item in where_array if item[0] in column_sql_translations.keys())}
     """
     
