@@ -78,7 +78,7 @@ export default function ChargingHistory() {
             )
         }
 
-        return result;
+        return result.reverse();
     }
 
     return (
