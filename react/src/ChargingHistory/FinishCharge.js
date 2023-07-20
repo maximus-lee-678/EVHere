@@ -36,15 +36,16 @@ export default function FinishCharge() {
   return (
     <div>
       <Toast />
+      <div className="absolute w-full h-full bg-gray-900">
+          <Form elementName="Finish Charging History" onSubmit={handleFinish} backgroundImageURL="battery.png">
+            <FormInputField elementName="kWh Final (WiP!)" id="kwh-set" placeholder="Enter kWh . . ."
+              type="number" value={inputKwh}
+              onChange={(event) => setInputKwh(event.target.value)}
+            />
 
-      <Form elementName="Finish Charging History" onSubmit={handleFinish} backgroundImageURL="battery.png">
-        <FormInputField elementName="kWh Final (WiP!)" id="kwh-set" placeholder="Enter kWh . . ."
-          type="number" value={inputKwh}
-          onChange={(event) => setInputKwh(event.target.value)}
-        />
-
-        <FormButton elementName={"\"Finish\" Charge"} />
-      </Form>
+            <FormButton elementName={"\"Finish\" Charge"} />
+          </Form>
+    </div>
     </div>
   );
 }

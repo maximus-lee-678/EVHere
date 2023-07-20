@@ -164,7 +164,7 @@ export default function AddCharge() {
     return (
         <div>
             <Toast />
-
+            <div className="absolute w-full h-full bg-gray-900">
             <Form elementName="Add new Charging History" onSubmit={handleStart} backgroundImageURL="battery.png">
                 <FormInputSelect elementName="Vehicle" id="vehicle"
                     value={(userVehicleInfo && selectedVehicleId) || ""}
@@ -191,6 +191,8 @@ export default function AddCharge() {
 
                 <FormButton elementName={"\"Start\" Charge"} />
             </Form>
+        
+            </div>
         </div>
     )
 }
