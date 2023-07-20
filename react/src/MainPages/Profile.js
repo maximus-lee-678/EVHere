@@ -72,68 +72,64 @@ export default function Profile() {
                         <div className="flex content-center items-center justify-center h-full w-full font-semibold text-3xl text-white">Profile</div>
                     </div>
                 </div>
-
-                <div className="relative mx-auto py-5 px-3 bg-white w-11/12 md:w-1/2 rounded-lg space-y-4">
-                    <CardContent>
-                        <div className="flex md:px-4">
-                            <FormInputField type="email"
-                                value={email}
-                                elementName="Email"
-                                icon="envelope"
-                                id="email"
-                                placeholder="Enter Email Address . . ."
-                                onChange={(event) => setEmail(event.target.value)} />
-                        </div>
-                        <div className="flex md:px-4">
-                            <FormInputField
-                                value={fullName}
-                                elementName="Full name"
-                                icon="id-card"
-                                id="fullname"
-                                placeholder="Enter Full Name . . ."
-                                onChange={(event) => setFullName(event.target.value)} />
-                        </div>
-                        <div className="flex md:px-4">
-                            <FormInputField
-                                value={username}
-                                elementName="Username"
-                                icon="user"
-                                id="username"
-                                placeholder="Enter Username . . ."
-                                onChange={(event) => setUsername(event.target.value)} />
-                        </div>
-                        <div className="flex items-center md:px-4">
-                            <FormInputField type="tel"
-                                value={phoneNumber}
-                                elementName="Phone number"
-                                icon="phone"
-                                id="phone-number"
-                                placeholder="Enter Phone Number . . ."
-                                onChange={(event) => setPhoneNumber(event.target.value)} />
-                        </div>
-                        <div className="flex items-center md:px-4">
-                            <FormInputField type="password"
-                                value={newPassword}
-                                elementName="Change Password"
-                                icon="key"
-                                id="password-new"
-                                placeholder="Enter New Password . . ."
-                                onChange={(event) => setNewPassword(event.target.value)} />
-                        </div>
-                        <div className="flex items-center md:px-4">
-                            <FormInputField type="password"
-                                value={newPasswordConfirm}
-                                elementName="Confirm New Password"
-                                icon="key"
-                                id="password-new-confirm"
-                                placeholder="Confirm New Password . . ."
-                                onChange={(event) => setNewPasswordConfirm(event.target.value)} />
-                        </div>
-                    </CardContent>
+                <Form>
+                    <div className="flex md:px-4">
+                        <FormInputField type="email"
+                            value={email}
+                            elementName="Email"
+                            icon="envelope"
+                            id="email"
+                            placeholder="Enter Email Address . . ."
+                            onChange={(event) => setEmail(event.target.value)} />
+                    </div>
+                    <div className="flex md:px-4">
+                        <FormInputField
+                            value={fullName}
+                            elementName="Full name"
+                            icon="id-card"
+                            id="fullname"
+                            placeholder="Enter Full Name . . ."
+                            onChange={(event) => setFullName(event.target.value)} />
+                    </div>
+                    <div className="flex md:px-4">
+                        <FormInputField
+                            value={username}
+                            elementName="Username"
+                            icon="user"
+                            id="username"
+                            placeholder="Enter Username . . ."
+                            onChange={(event) => setUsername(event.target.value)} />
+                    </div>
+                    <div className="flex items-center md:px-4">
+                        <FormInputField type="tel"
+                            value={phoneNumber}
+                            elementName="Phone number"
+                            icon="phone"
+                            id="phone-number"
+                            placeholder="Enter Phone Number . . ."
+                            onChange={(event) => setPhoneNumber(event.target.value)} />
+                    </div>
+                    <div className="flex items-center md:px-4">
+                        <FormInputField type="password"
+                            value={newPassword}
+                            elementName="Change Password"
+                            icon="key"
+                            id="password-new"
+                            placeholder="Enter New Password . . ."
+                            onChange={(event) => setNewPassword(event.target.value)} />
+                    </div>
+                    <div className="flex items-center md:px-4">
+                        <FormInputField type="password"
+                            value={newPasswordConfirm}
+                            elementName="Confirm New Password"
+                            icon="key"
+                            id="password-new-confirm"
+                            placeholder="Confirm New Password . . ."
+                            onChange={(event) => setNewPasswordConfirm(event.target.value)} />
+                    </div>
 
                     <CardButton text="Save Profile" icon="edit" color="green" onClick={(event) => handleUpdate()} id="profile-save"></CardButton>
-                    <CardButton text="Delete Account" icon="trash" color="red" onClick={(event) => undefined} id="profile-delete"></CardButton>
-                </div>
+                </Form>
 
             </main>
         </div>

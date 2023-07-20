@@ -44,7 +44,16 @@ export default function Register() {
       <Toast />
       <Navbar transparent />
 
-      <Form elementName="Create an Account" onSubmit={handleSubmit} backgroundImageURL="login-register.png">
+      <div className="absolute w-full h-full">
+            <div className="absolute top-0 w-full h-full bg-gray-900"
+                style={{
+                    backgroundImage:
+                        `url('login-register.png')`,
+                    backgroundSize: "100%",
+                    backgroundRepeat: "no-repeat"
+                }}></div>
+
+      <Form elementName="Create an Account" onSubmit={handleSubmit}>
         <FormInputField elementName="Email" id="email" placeholder="Enter Email . . ."
           type="email" value={email}
           onChange={(event) => setEmail(event.target.value)}
@@ -78,6 +87,7 @@ export default function Register() {
           </Link>
         </div>
       </Form>
+      </div>
     </div>
   );
 }

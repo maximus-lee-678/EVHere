@@ -36,8 +36,18 @@ export default function Login() {
     return (
         <div>
             <Toast />
+            <Navbar transparent/>
 
-            <Form elementName="Sign In" onSubmit={HandleLogin} backgroundImageURL="login-register.png">
+            <div className="absolute w-full h-full">
+            <div className="absolute top-0 w-full h-full bg-gray-900"
+                style={{
+                    backgroundImage:
+                        `url('login-register.png')`,
+                    backgroundSize: "100%",
+                    backgroundRepeat: "no-repeat"
+                }}></div>
+            
+            <Form elementName="Sign In" onSubmit={HandleLogin}>
                 <FormInputField elementName="Email" id="email" placeholder="Enter Email . . ."
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
@@ -56,6 +66,7 @@ export default function Login() {
                     </Link>
                 </div>
             </Form>
+            </div>
         </div>
     )
 }
