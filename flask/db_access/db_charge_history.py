@@ -140,17 +140,17 @@ def get_charge_history_by_user_id(id_user_info_sanitised, filter_by):
     # get charge history
     if filter_by == 'in_progress':
         charge_history_out = get_charge_history_dict(
-            column_names=['id_vehicle_info', 'id_charger',
+            column_names=['id', 'id_vehicle_info', 'id_charger',
                           'time_start', 'total_energy_drawn'],
             where_array=[['id_user_info', id_user_info_sanitised], ['is_charge_finished', False]])
     elif filter_by == 'complete':
         charge_history_out = get_charge_history_dict(
-            column_names=['id_vehicle_info', 'id_charger', 'time_start',
+            column_names=['id', 'id_vehicle_info', 'id_charger', 'time_start',
                           'time_end', 'total_energy_drawn', 'amount_payable'],
             where_array=[['id_user_info', id_user_info_sanitised], ['is_charge_finished', True]])
     elif filter_by == 'all':
         charge_history_out = get_charge_history_dict(
-            column_names=['id_vehicle_info', 'id_charger', 'time_start', 'time_end',
+            column_names=['id', 'id_vehicle_info', 'id_charger', 'time_start', 'time_end',
                           'total_energy_drawn', 'amount_payable', 'is_charge_finished'],
             where_array=[['id_user_info', id_user_info_sanitised]])
     else:

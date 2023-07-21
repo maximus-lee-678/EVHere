@@ -38,8 +38,10 @@ export default function Profile() {
         fetchUserInfo();
     }, [fetchUserInfo]);
 
-    // Function that removes a vehicle. Called upon corresponding button selection.
-    async function handleUpdate() {
+    // Function that updates user info. Called upon corresponding button selection.
+    async function handleUpdate(event) {
+        event.preventDefault();
+
         if (newPassword !== newPasswordConfirm) {
             toast.error(<div>Passwords do not match!</div>);
             return;
@@ -56,6 +58,9 @@ export default function Profile() {
         // result is boolean of status
         if (response.status === 'success') {
             toast.success(response.message);
+
+            // store the user in localStorage
+            localStorage.setItem('user_email', response.data);
         } else {
             toast.error(<div>{response.message}<br />{response.reason}</div>);
         }
@@ -128,7 +133,7 @@ export default function Profile() {
                             onChange={(event) => setNewPasswordConfirm(event.target.value)} />
                     </div>
 
-                    <CardButton text="Save Profile" icon="edit" color="green" onClick={(event) => handleUpdate()} id="profile-save"></CardButton>
+                    <CardButton text="Save Profile" icon="edit" color="green" onClick={(event) => handleUpdate(event)} id="profile-save"></CardButton>
                 </Form>
 
             </main>
