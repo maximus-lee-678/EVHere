@@ -17,6 +17,11 @@ export default function ChargingHistory() {
 
     const [chargeHistoryDetails, setChargeHistoryDetails] = useState(null);
 
+    const [dataTimeSpent, setDataTimeSpent] = useState([0,0,0,0,0,0,0,0,0,0,0,0]);
+    const [dataExpenses, setDataExpenses] = useState([0,0,0,0,0,0,0,0,0,0,0,0]);
+    
+    var idAdded = [];
+
     // Function that gets user's historical charges. Called on page load, populates chargeHistoryDetails.
     const fetchUserChargeHistory = useCallback(async () => {
         const response = await ChargeHistoryGet(userEmail, 'complete');
@@ -41,13 +46,12 @@ export default function ChargingHistory() {
 
     function FormatChargeHistoryDetails() {
         let result = [];
-        console.log("hello?", chargeHistoryDetails);
 
         for (var i = 0; i < chargeHistoryDetails.length; i++) {
             let id = chargeHistoryDetails[i].id;
 
             result.push(
-                <tr>
+                <tr key={id}>
                     <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                     {FormatDateTime(chargeHistoryDetails[i].time_start)}
                     </th>
@@ -69,6 +73,7 @@ export default function ChargingHistory() {
                             className="text-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none"
                             type="button"
                             onClick={showModal}
+                            id={id}
                             style={{ transition: "all .15s ease" }}
                         >
                             Details
@@ -80,6 +85,26 @@ export default function ChargingHistory() {
 
         return result.reverse();
     }
+
+    // function calculateGraphData() {
+    //     var timeSpent = [];
+    //     //var expenses = [];
+
+    //     for (var i = 0; i < chargeHistoryDetails.length; i++) {
+    //         if (!idAdded.includes(chargeHistoryDetails[i].id)) {
+    //             idAdded.push(chargeHistoryDetails[i].id);
+    //             if (FormatDateTime(chargeHistoryDetails[i].time_start, "yyyy") == DateTime.now().year) {
+    //                 timeSpent[FormatDateTime(chargeHistoryDetails[i].time_start, "L")] = parseInt(timeSpent[FormatDateTime(chargeHistoryDetails[i].time_start, "L")]) + parseInt(GetDateDiffString(chargeHistoryDetails[i].time_start, chargeHistoryDetails[i].time_end, ["minutes"]).split(" ")[0]);
+    //                 console.log("month:", FormatDateTime(chargeHistoryDetails[i].time_start, "L"), "time for this record:", parseInt(GetDateDiffString(chargeHistoryDetails[i].time_start, chargeHistoryDetails[i].time_end, ["minutes"]).split(" ")[0]), "\nresult:", timeSpent[FormatDateTime(chargeHistoryDetails[i].time_start, "L")])
+
+    //                 //expenses[FormatDateTime(chargeHistoryDetails[i].time_start, "L")] = parseInt(timeSpent[FormatDateTime(chargeHistoryDetails[i].time_start, "L")]) + parseInt(chargeHistoryDetails[i].amount_payable);
+    //             }
+    //         }
+    //     }
+
+    //     // setDataTimeSpent(timeSpent);
+    //     // setDataExpenses(expenses);
+    // }
 
     return (
         <div className="min-h-screen bg-gray-900"
@@ -110,7 +135,7 @@ export default function ChargingHistory() {
 
                 <div className="px-4 py-2 md:px-10 mx-auto w-full flex flex-col items-center bg-white">
                     <div id="overview-tab-content" className="w-full block">
-                        <BarChart />
+                        <BarChart dataTimeSpent = {dataTimeSpent}/>
                         <PieChart />
                     </div>
 
@@ -171,25 +196,23 @@ export default function ChargingHistory() {
                     className="relative top-24 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white"
                 >
                     <div className="mt-3 text-center">
-                        <h3 className="text-lg leading-6 font-medium text-gray-900">1/6/2023, 2pm</h3>
+                        <h3 className="text-lg leading-6 font-medium text-gray-900" id="date">1/6/2023, 2pm</h3>
                         <div className="mt-2 px-7 py-3 space-y-5">
                             {/*Vehicle charging details*/}
                             <div>
-                                <p>Vehicle: (Vehicle name)</p>
-                                <p>Time: 2pm - 2.25pm (25 min)</p>
-                                <p>Starting battery percentage: 50%</p>
-                                <p>Ending battery percentage: 60%</p>
-                                <p>Total price: $20.00</p>
+                                <p>Vehicle: <span id="veh-name">(Vehicle name)</span></p>
+                                <p>Time: <span id="duration">2pm - 2.25pm (25 min)</span></p>
+                                <p>Charged: <span id="charged">0 kWh</span></p>
+                                <p>Total price: <span id="paid">$0.00</span></p>
                             </div>
 
                             {/*Charger details*/}
                             <div>
 
-                                <p>Charger: (Charger name)</p>
-                                <p>Charger type: DC</p>
-                                <p>Charger connector: XX</p>
-                                <p>Location: XX</p>
-                                <p>Rate: $1.50/kWh</p>
+                                <p>Charger: <span id="charger-name">(Charger name)</span></p>
+                                <p>Connector used: <span id="connector-used">XX</span></p>
+                                <p>Location: <span id="location">XX</span></p>
+                                <p>Rate: <span id="rate">$1.50/kWh</span></p>
                             </div>
                             <div className="flex justify-center items-center">
                                 <button className="bg-red-400 hover:bg-red-900 px-3 py-2 mr-2 rounded-full text-white">
@@ -206,9 +229,22 @@ export default function ChargingHistory() {
         </div>
     );
 
-    function showModal() {
+    function showModal(e) {
         let modal = document.getElementById("charge-details");
         modal.style.display = "block";
+
+        let record = chargeHistoryDetails.find(rec => rec.id == e.target.id)
+
+        document.getElementById("date").innerHTML = FormatDateTime(record.time_start);
+        document.getElementById("veh-name").innerHTML = record.vehicle.name;
+        document.getElementById("duration").innerHTML = FormatDateTime(record.time_start, "t") + " - " + FormatDateTime(record.time_end, "t") + " (" + GetDateDiffString(record.time_start, record.time_end, ["minutes"]) + ")";
+        document.getElementById("charged").innerHTML = record.total_energy_drawn + " kWh";
+        document.getElementById("paid").innerHTML = "$" + record.amount_payable;
+
+        document.getElementById("charger-name").innerHTML = record.charger.name;
+        document.getElementById("connector-used").innerHTML = record.vehicle.connector.name_connector;
+        document.getElementById("location").innerHTML = record.charger.address;
+        document.getElementById("rate").innerHTML = record.charger.rate_current + " / kWh";
     }
 
     function showOverview() {
@@ -228,19 +264,5 @@ export default function ChargingHistory() {
         document.getElementById("overview-tab-btn").classList.replace("bg-white", "bg-gray-300")
         document.getElementById("history-tab-btn").classList.replace("bg-gray-300", "bg-white")
     }
-
-    function increaseYear() {
-        let yearHeader = document.getElementById("yearNo");
-        let yearNoInt = parseInt(yearHeader.innerText);
-        yearHeader.innerText = yearNoInt + 1;
-    }
-
-    function decreaseYear() {
-        let yearHeader = document.getElementById("yearNo");
-        let yearNoInt = parseInt(yearHeader.innerText);
-        yearHeader.innerText = yearNoInt - 1;
-    }
-
-
 
 }

@@ -1,7 +1,11 @@
 import React from "react";
 import Chart from "chart.js/auto";
 
-export default function Barchart() {
+export default function Barchart(props) {
+
+  const {dataExpenses, dataTimeSpent} = props;
+
+
   React.useEffect(() => {
     let config = {
 
@@ -18,7 +22,7 @@ export default function Barchart() {
         }, {
           type: "bar",
           label: "Time spent (mins)",
-          data: [50, 110, 150, 28, 40, 20, 125],
+          data: dataTimeSpent,
           fill: false,
           backgroundColor: '#4cbfba',
           borderColor: '#4cbfba',
