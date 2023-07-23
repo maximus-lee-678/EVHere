@@ -47,7 +47,7 @@ export default function ChargingHistory() {
 
     window.onclick = function (event) {
         if (event.target === document.getElementById("charge-details")) {
-            document.getElementById("charge-details").style.display = "none";
+            document.getElementById("charge-details").classList.replace("block", "hidden");
         }
     }
 
@@ -218,9 +218,9 @@ export default function ChargingHistory() {
                 id="charge-details">
                 {/*Modal content*/}
                 <div
-                    className="relative mx-auto w-96 top-24 p-5 border shadow-lg rounded-md bg-white"
+                    className="relative mx-auto w-fit max-w-screen top-24 p-5 border shadow-lg rounded-md bg-white"
                 >
-                    <div className="mt-3 text-center">
+                    <div className="mt-3 text-center w-fit">
                         <h3 className="text-lg leading-6 font-medium text-gray-900" id="date">1/6/2023, 2pm</h3>
                         <div className="mt-2 px-7 py-3 space-y-5">
                             {/*Vehicle charging details*/}
@@ -256,7 +256,7 @@ export default function ChargingHistory() {
 
     function showModal(e) {
         let modal = document.getElementById("charge-details");
-        modal.style.display = "block";
+        modal.classList.replace("hidden", "block");
 
         let record = chargeHistoryDetails.find(rec => rec.id == e.target.id)
 
