@@ -20,7 +20,9 @@ export function GetDateDiffString(DateTimeStart, DateTimeEnd, TimeStepsArray = [
 
     let ReturnString = "";
     for (var key of TimeStepsArray) {
-        ReturnString = ReturnString.concat(`${Math.floor(DiffObj[key])} ${key}, `);
+        if (DiffObj[key] != 0) {
+            ReturnString = ReturnString.concat(`${Math.floor(DiffObj[key])} ${key}, `);
+        };
     }
     ReturnString = ReturnString.slice(0, -2);
 

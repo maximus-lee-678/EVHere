@@ -19,6 +19,7 @@ export default function ChargingHistory() {
 
     const [dataTimeSpent, setDataTimeSpent] = useState([0,0,0,0,0,0,0,0,0,0,0,0]);
     const [dataExpenses, setDataExpenses] = useState([0,0,0,0,0,0,0,0,0,0,0,0]);
+    const [dataCharged, setDataCharged] = useState([0,0,0,0,0,0,0,0,0,0,0,0]);
     
     var idAdded = [];
 
@@ -37,12 +38,22 @@ export default function ChargingHistory() {
     }, [fetchUserChargeHistory]);
 
 
+    useEffect(() => {
+        if (chargeHistoryDetails != null && chargeHistoryDetails.length > 0) {
+            calculateGraphData();
+        }
+    }, [chargeHistoryDetails]);
+
+
     window.onclick = function (event) {
         if (event.target === document.getElementById("charge-details")) {
             document.getElementById("charge-details").style.display = "none";
         }
     }
 
+    function round(value, decimals) {
+        return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals).toFixed(decimals);
+    }
 
     function FormatChargeHistoryDetails() {
         let result = [];
@@ -65,7 +76,7 @@ export default function ChargingHistory() {
                         {chargeHistoryDetails[i].total_energy_drawn} kWh
                     </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        ${chargeHistoryDetails[i].amount_payable}
+                        ${round(chargeHistoryDetails[i].amount_payable,2)}
                     </td>
 
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
@@ -86,25 +97,39 @@ export default function ChargingHistory() {
         return result.reverse();
     }
 
-    // function calculateGraphData() {
-    //     var timeSpent = [];
-    //     //var expenses = [];
+    function calculateGraphData() {
 
-    //     for (var i = 0; i < chargeHistoryDetails.length; i++) {
-    //         if (!idAdded.includes(chargeHistoryDetails[i].id)) {
-    //             idAdded.push(chargeHistoryDetails[i].id);
-    //             if (FormatDateTime(chargeHistoryDetails[i].time_start, "yyyy") == DateTime.now().year) {
-    //                 timeSpent[FormatDateTime(chargeHistoryDetails[i].time_start, "L")] = parseInt(timeSpent[FormatDateTime(chargeHistoryDetails[i].time_start, "L")]) + parseInt(GetDateDiffString(chargeHistoryDetails[i].time_start, chargeHistoryDetails[i].time_end, ["minutes"]).split(" ")[0]);
-    //                 console.log("month:", FormatDateTime(chargeHistoryDetails[i].time_start, "L"), "time for this record:", parseInt(GetDateDiffString(chargeHistoryDetails[i].time_start, chargeHistoryDetails[i].time_end, ["minutes"]).split(" ")[0]), "\nresult:", timeSpent[FormatDateTime(chargeHistoryDetails[i].time_start, "L")])
+        var timeSpent = [0,0,0,0,0,0,0,0,0,0,0,0];
+        var expenses = [0,0,0,0,0,0,0,0,0,0,0,0];
+        var charged = [0,0,0,0,0,0,0,0,0,0,0,0];
+        for (var i = 0; i < chargeHistoryDetails.length; i++) {
+            if (!idAdded.includes(chargeHistoryDetails[i].id)) {
+                idAdded.push(chargeHistoryDetails[i].id);
+                if (FormatDateTime(chargeHistoryDetails[i].time_start, "yyyy") == DateTime.now().year) {
+                    timeSpent[FormatDateTime(chargeHistoryDetails[i].time_start, "L") - 1] = parseInt(timeSpent[FormatDateTime(chargeHistoryDetails[i].time_start, "L") - 1]) + parseInt(GetDateDiffString(chargeHistoryDetails[i].time_start, chargeHistoryDetails[i].time_end, ["minutes"]).split(" ")[0]);
+                    
+                    var roundedExpenses = round(parseFloat(expenses[FormatDateTime(chargeHistoryDetails[i].time_start, "L") - 1]) + parseFloat(chargeHistoryDetails[i].amount_payable), 2);
 
-    //                 //expenses[FormatDateTime(chargeHistoryDetails[i].time_start, "L")] = parseInt(timeSpent[FormatDateTime(chargeHistoryDetails[i].time_start, "L")]) + parseInt(chargeHistoryDetails[i].amount_payable);
-    //             }
-    //         }
-    //     }
+                    expenses[FormatDateTime(chargeHistoryDetails[i].time_start, "L") - 1] = roundedExpenses;
+                    charged[FormatDateTime(chargeHistoryDetails[i].time_start, "L") - 1] = parseFloat(charged[FormatDateTime(chargeHistoryDetails[i].time_start, "L") - 1]) + parseFloat(chargeHistoryDetails[i].total_energy_drawn);
+                }
+            }
+        }
 
-    //     // setDataTimeSpent(timeSpent);
-    //     // setDataExpenses(expenses);
-    // }
+        // for 0 values not to be drawn on graph - example
+        /* expenses.forEach((item, index) => {
+            if (item == 0) {
+                expenses[index] = null;
+            }
+        }) */
+
+        console.log(expenses);
+
+        setDataExpenses(expenses);
+        setDataTimeSpent(timeSpent);
+        setDataCharged(charged);
+        
+    }
 
     return (
         <div className="min-h-screen bg-gray-900"
@@ -115,7 +140,7 @@ export default function ChargingHistory() {
                 backgroundRepeat: "repeat"
             }}>
             <Navbar transparent />
-            <div className="relative container mx-auto px-4 h-full bg-gray-900">
+            <div className="relative container mx-auto px-0 md:px-4 h-screen bg-gray-900">
                 {/* Header */}
                 <div className="h-40">
                     <div className="flex content-center items-center justify-center h-full w-full font-semibold text-3xl text-white">Charging History</div>
@@ -133,9 +158,9 @@ export default function ChargingHistory() {
                 </div>
 
 
-                <div className="px-4 py-2 md:px-10 mx-auto w-full flex flex-col items-center bg-white">
-                    <div id="overview-tab-content" className="w-full block">
-                        <BarChart dataTimeSpent = {dataTimeSpent}/>
+                <div className="px-0 py-2 md:px-10 mx-auto w-full flex flex-col items-center bg-white">
+                    <div id="overview-tab-content" className="w-full grid grid-rows-2 grid-cols-1 md:grid-cols-2 md:grid-rows-1"> {/* change to w-full block if including piechart for stacked charts */}
+                        <BarChart dataTimeSpent = {dataTimeSpent} dataExpenses = {dataExpenses} dataCharged={dataCharged}/>
                         <PieChart />
                     </div>
 
@@ -189,11 +214,11 @@ export default function ChargingHistory() {
 
             {/*Modal with overlay*/}
             <div
-                className="fixed hidden inset-0 bg-gray-900 bg-opacity-50 overflow-y-auto h-full w-full"
+                className="fixed hidden inset-0 bg-gray-900 bg-opacity-50 h-full"
                 id="charge-details">
                 {/*Modal content*/}
                 <div
-                    className="relative top-24 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white"
+                    className="relative mx-auto w-96 top-24 p-5 border shadow-lg rounded-md bg-white"
                 >
                     <div className="mt-3 text-center">
                         <h3 className="text-lg leading-6 font-medium text-gray-900" id="date">1/6/2023, 2pm</h3>
@@ -237,20 +262,20 @@ export default function ChargingHistory() {
 
         document.getElementById("date").innerHTML = FormatDateTime(record.time_start);
         document.getElementById("veh-name").innerHTML = record.vehicle.name;
-        document.getElementById("duration").innerHTML = FormatDateTime(record.time_start, "t") + " - " + FormatDateTime(record.time_end, "t") + " (" + GetDateDiffString(record.time_start, record.time_end, ["minutes"]) + ")";
+        document.getElementById("duration").innerHTML = FormatDateTime(record.time_start, "t") + " - " + FormatDateTime(record.time_end, "t") + "<br/><span class='text-sm'>(" + GetDateDiffString(record.time_start, record.time_end, ["hours", "minutes", "seconds"]) + ")</span>    ";
         document.getElementById("charged").innerHTML = record.total_energy_drawn + " kWh";
-        document.getElementById("paid").innerHTML = "$" + record.amount_payable;
+        document.getElementById("paid").innerHTML = "$" + round(record.amount_payable, 2);
 
         document.getElementById("charger-name").innerHTML = record.charger.name;
         document.getElementById("connector-used").innerHTML = record.vehicle.connector.name_connector;
         document.getElementById("location").innerHTML = record.charger.address;
-        document.getElementById("rate").innerHTML = record.charger.rate_current + " / kWh";
+        document.getElementById("rate").innerHTML = "$" + record.charger.rate_current + " / kWh";
     }
 
     function showOverview() {
         let overviewTab = document.getElementById("overview-tab-content")
         let historyTab = document.getElementById("history-tab-content")
-        overviewTab.classList.replace("hidden", "block");
+        overviewTab.classList.replace("hidden", "grid");
         historyTab.classList.replace("block", "hidden");
         document.getElementById("overview-tab-btn").classList.replace("bg-gray-300", "bg-white")
         document.getElementById("history-tab-btn").classList.replace("bg-white", "bg-gray-300")
@@ -259,7 +284,7 @@ export default function ChargingHistory() {
     function showHistory() {
         let overviewTab = document.getElementById("overview-tab-content")
         let historyTab = document.getElementById("history-tab-content")
-        overviewTab.classList.replace("block", "hidden");
+        overviewTab.classList.replace("grid", "hidden");
         historyTab.classList.replace("hidden", "block");
         document.getElementById("overview-tab-btn").classList.replace("bg-white", "bg-gray-300")
         document.getElementById("history-tab-btn").classList.replace("bg-gray-300", "bg-white")
