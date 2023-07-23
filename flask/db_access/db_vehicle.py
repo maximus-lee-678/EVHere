@@ -20,14 +20,18 @@ FROM vehicle_info
 
 def get_vehicle_hash_map(column_names=None, where_array=None):
     """
-    \tcolumn_names >> any combination of ['id', 'id_user_info', 'name', 'model', 'vehicle_sn', 'connector', 'active']\n
-    \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY or HASHMAP_GENERIC_SUCCESS.\n
-    <content> (if <result> is HASHMAP_GENERIC_SUCCESS) {Dictionary} containing table information.\n
-    \t{"id": {...key-values...}}
-    """
+    | **[SUPPORTING]**
+    | **Vehicle Hashmap supported fields:** 
+    | ['id', 'id_user_info', 'name', 'model', 'vehicle_sn', 'connector', 'active']
 
+    :param array column_names: any combination of supported fields
+    :param array where_array: containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being 'NOT' e.g. [['id', '0'], ['id', '1', 'NOT]]
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY, HASHMAP_GENERIC_SUCCESS. 
+    :key 'content': (dictionary) *('result' == HASHMAP_GENERIC_SUCCESS)* Output. ('id' as key)
+    """
+    
     if column_names == None:
         column_names = copy.deepcopy(column_names_all)
 
@@ -51,12 +55,16 @@ def get_vehicle_hash_map(column_names=None, where_array=None):
 
 def get_vehicle_dict(column_names=None, where_array=None):
     """
-    \tcolumn_names >> any combination of ['id', 'id_user_info', 'name', 'model', 'vehicle_sn', 'connector', 'active']\n
-    \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, SELECT_GENERIC_EMPTY or SELECT_GENERIC_SUCCESS.\n
-    <content> (if <result> is SELECT_GENERIC_SUCCESS) {Dictionary} containing table information.\n
-    \t{{...key-values...}}
+    | **[SUPPORTING]**
+    | **Vehicle Dictionary supported fields:** 
+    | ['id', 'id_user_info', 'name', 'model', 'vehicle_sn', 'connector', 'active']
+
+    :param array column_names: any combination of supported fields
+    :param array where_array: containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being 'NOT' e.g. [['id', '0'], ['id', '1', 'NOT]]
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, SELECT_GENERIC_EMPTY, SELECT_GENERIC_SUCCESS. 
+    :key 'content': (dictionary array) *('result' == SELECT_GENERIC_SUCCESS)* Output.
     """
 
     if column_names == None:
@@ -82,12 +90,18 @@ def get_vehicle_dict(column_names=None, where_array=None):
 
 def add_vehicle(id_user_info_sanitised, name_input, model_input, sn_input, connector_input):
     """
-    Attempts to insert a new vehicle into the database.\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, VEHICLE_ADD_FAILURE or VEHICLE_ADD_SUCCESS.\n
-    <reason> (if <result> is VEHICLE_ADD_FAILURE) [Array] Reason for failure.
-    \t[reasons]:\n
-    \t[VEHICLE_NAME_INVALID_LENGTH, VEHICLE_MODEL_INVALID_LENGTH, VEHICLE_SN_INVALID_LENGTH, CONNECTOR_NOT_FOUND]
+    | **[ENDPOINT]**
+    | Attempts to add a vehicle.
+
+    :param string id_user_info_sanitised: id_user_info_sanitised
+    :param string name_input: name_input
+    :param string model_input: model_input
+    :param string sn_input: sn_input
+    :param string connector_input: connector_input
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, VEHICLE_ADD_FAILURE, VEHICLE_ADD_SUCCESS. 
+    :key 'reason': (array, one/multiple) *('result' == VEHICLE_ADD_FAILURE)* VEHICLE_NAME_INVALID_LENGTH, VEHICLE_MODEL_INVALID_LENGTH, VEHICLE_SN_INVALID_LENGTH, CONNECTOR_NOT_FOUND.
     """
 
     contains_errors = False
@@ -150,12 +164,14 @@ def add_vehicle(id_user_info_sanitised, name_input, model_input, sn_input, conne
 
 def remove_vehicle(id_vehicle_input):
     """
-    Attempts to set a specific vehicle's active state to false.\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, VEHICLE_REMOVE_FAILURE or VEHICLE_REMOVE_SUCCESS.\n
-    <reason> (if <result> is VEHICLE_REMOVE_FAILURE) [Array] Reason for failure.
-    \t[reasons]:\n
-    \t[VEHICLE_NOT_FOUND]
+    | **[ENDPOINT]**
+    | Attempts to remove a vehicle.
+
+    :param string id_vehicle_input: id_vehicle_input
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, VEHICLE_REMOVE_FAILURE, VEHICLE_REMOVE_SUCCESS. 
+    :key 'reason': (array, one) *('result' == VEHICLE_REMOVE_FAILURE)* VEHICLE_NOT_FOUND.
     """
 
     # sanitise input
@@ -176,14 +192,17 @@ def remove_vehicle(id_vehicle_input):
 
 def get_active_vehicle_by_user_id(id_user_info_sanitised):
     """
-    Attempts to get all ACTIVE vehicles for a given user id.\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, VEHICLE_NOT_FOUND or VEHICLE_FOUND.\n
-    <content> (if <result> is VEHICLE_FOUND) [{Array Dictionary}] containing vehicle information.\n
-    \t"keys":\n
-    \t{"id", "name", "model", "vehicle_sn", "connector_type"}
-    """
+    | **[ENDPOINT]**
+    | Retrieves a user's vehicles.
+    | **Fields returned:** [{'id', 'name', 'model', 'vehicle_sn', 'connector'}]
 
+    :param string id_user_info_sanitised: id_user_info_sanitised
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, VEHICLE_NOT_FOUND, VEHICLE_FOUND. 
+    :key 'content': (dictionary array) *('result' == VEHICLE_FOUND)* Output.
+    """
+    
     vehicle_dict_out = get_vehicle_dict(column_names=['id', 'name', 'model', 'vehicle_sn', 'connector'],
                                         where_array=[['id_user_info', id_user_info_sanitised], ['active', '1']])
     # check if empty or error

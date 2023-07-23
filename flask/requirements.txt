@@ -1,0 +1,6 @@
+bcrypt==4.0.1
+Flask==2.3.2
+Flask-Cors==3.0.10
+python-dotenv==1.0.0
+Sphinx==6.2.1
+sphinx-rtd-theme==1.2.2

@@ -21,12 +21,16 @@ FROM charger_available_connector
 
 def get_charger_available_connector_hash_map(column_names=None, where_array=None):
     """
-    \tcolumn_names >> any combination of ['id', 'id_charger', 'id_connector_type', 'in_use', 'output_voltage', 'output_current']\n
-    \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY or HASHMAP_GENERIC_SUCCESS.\n
-    <content> (if <result> is HASHMAP_GENERIC_SUCCESS) {Dictionary} containing table information.\n
-    \t{"id": {...key-values...}}
+    | [SUPPORTING]
+    | **Charger Available Connector Hashmap supported fields:** 
+    | ['id', 'id_charger', 'id_connector_type', 'in_use', 'output_voltage', 'output_current']
+
+    :param array column_names: any combination of supported fields
+    :param array where_array: containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being 'NOT' e.g. [['id', '0'], ['id', '1', 'NOT]]
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY, HASHMAP_GENERIC_SUCCESS. 
+    :key 'content': (dictionary) *('result' == HASHMAP_GENERIC_SUCCESS)* Output. ('id' as key)
     """
 
     if column_names == None:
@@ -40,14 +44,18 @@ def get_charger_available_connector_hash_map(column_names=None, where_array=None
 
 def get_charger_available_connector_dict(column_names=None, where_array=None):
     """
-    \tcolumn_names >> any combination of ['id', 'id_charger', 'id_connector_type', 'in_use', 'output_voltage', 'output_current']\n
-    \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, SELECT_GENERIC_EMPTY or SELECT_GENERIC_SUCCESS.\n
-    <content> (if <result> is SELECT_GENERIC_SUCCESS) {Dictionary} containing table information.\n
-    \t{{...key-values...}}
-    """
+    | [SUPPORTING]
+    | **Charger Available Connector Dictionary supported fields:** 
+    | ['id', 'id_charger', 'id_connector_type', 'in_use', 'output_voltage', 'output_current']
 
+    :param array column_names: any combination of supported fields
+    :param array where_array: containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being 'NOT' e.g. [['id', '0'], ['id', '1', 'NOT]]
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, SELECT_GENERIC_EMPTY, SELECT_GENERIC_SUCCESS. 
+    :key 'content': (dictionary array) *('result' == SELECT_GENERIC_SUCCESS)* Output.
+    """
+    
     if column_names == None:
         column_names = copy.deepcopy(column_names_all)
 
@@ -59,11 +67,13 @@ def get_charger_available_connector_dict(column_names=None, where_array=None):
 
 def get_all_charger_connectors_decoded():
     """
-    Gets a mapping of chargers' connectors.\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, AVAILABLE_CONNECTORS_NOT_FOUND or AVAILABLE_CONNECTORS_FOUND.\n
-    <content> (if <result> is AVAILABLE_CONNECTORS_FOUND) {Dictionary} containing chargers' connectors.\n
-    \t{"id_charger": {..connector info...}}
+    | **[INTERNAL]**
+    | Gets a mapping of chargers' connectors.
+    | **Fields returned:** {'id_charger':[{'id_charger_available_connector', 'in_use', 'connector_type':{...}}], 'id_charger':[{...}], ...}
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, AVAILABLE_CONNECTORS_NOT_FOUND, AVAILABLE_CONNECTORS_FOUND.
+    :key 'content': (dictionary) *('result' == AVAILABLE_CONNECTORS_FOUND)* Output.
     """
 
     # get all chargers' available connectors
@@ -101,10 +111,14 @@ def get_all_charger_connectors_decoded():
 
 def set_charger_available_connector_in_use(id_charger_available_connector, set_to):
     """
-    Sets a given id_charger_available_connector's in_use state.\n
-    \tset_to >> True or False\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, AVAILABLE_CONNECTOR_IN_USE or AVAILABLE_CONNECTOR_SET_USE_STATE_SUCCESS.
+    | **[INTERNAL]**
+    | Sets a given id_charger_available_connector's 'in_use' state.
+
+    :param string id_charger_available_connector: id_charger_available_connector
+    :param boolean set_to: True or False
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, AVAILABLE_CONNECTOR_IN_USE or AVAILABLE_CONNECTOR_SET_USE_STATE_SUCCESS.
     """
 
     # sanitise input

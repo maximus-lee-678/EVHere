@@ -19,12 +19,16 @@ FROM favourited_chargers
 
 def get_favourite_charger_hash_map(column_names=None, where_array=None):
     """
-    \tcolumn_names >> any combination of ['id', 'id_user_info', 'id_charger']\n
-    \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY or HASHMAP_GENERIC_SUCCESS.\n
-    <content> (if <result> is HASHMAP_GENERIC_SUCCESS) {Dictionary} containing table information.\n
-    \t{"id": {...key-values...}}
+    | **[SUPPORTING]**
+    | **Favourite Charger Hashmap supported fields:** 
+    | ['id', 'id_user_info', 'id_charger']
+
+    :param array column_names: any combination of supported fields
+    :param array where_array: containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being 'NOT' e.g. [['id', '0'], ['id', '1', 'NOT]]
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY, HASHMAP_GENERIC_SUCCESS. 
+    :key 'content': (dictionary) *('result' == HASHMAP_GENERIC_SUCCESS)* Output. ('id' as key)
     """
 
     if column_names == None:
@@ -38,12 +42,16 @@ def get_favourite_charger_hash_map(column_names=None, where_array=None):
 
 def get_favourite_charger_dict(column_names=None, where_array=None):
     """
-    \tcolumn_names >> any combination of ['id', 'id_user_info', 'id_charger']\n
-    \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, SELECT_GENERIC_EMPTY or SELECT_GENERIC_SUCCESS.\n
-    <content> (if <result> is SELECT_GENERIC_SUCCESS) {Dictionary} containing table information.\n
-    \t{{...key-values...}}
+    | **[SUPPORTING]**
+    | **Favourite Charger Dictionary supported fields:** 
+    | ['id', 'id_user_info', 'id_charger']
+
+    :param array column_names: any combination of supported fields
+    :param array where_array: containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being 'NOT' e.g. [['id', '0'], ['id', '1', 'NOT]]
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, SELECT_GENERIC_EMPTY, SELECT_GENERIC_SUCCESS. 
+    :key 'content': (dictionary array) *('result' == SELECT_GENERIC_SUCCESS)* Output.
     """
 
     if column_names == None:
@@ -57,13 +65,21 @@ def get_favourite_charger_dict(column_names=None, where_array=None):
 
 def get_user_favourite_chargers(id_user_info_sanitised):
     """
-    Get a user's favourite chargers.
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, FAVOURITE_CHARGERS_NOT_FOUND or FAVOURITE_CHARGERS_FOUND.\n
-    <content> (if <result> is FAVOURITE_CHARGERS_FOUND) {Dictionary} containing user's favourite chargers.
+    | **[ENDPOINT]**
+    | Get a user's favourite chargers.
+    | **Fields returned:** 
+    | [{'id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 'pv_current_in', 'pv_energy_level',
+    | 'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector'}]
+
+    :param string id_user_info_sanitised: id_user_info_sanitised
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, FAVOURITE_CHARGERS_NOT_FOUND, FAVOURITE_CHARGERS_FOUND.
+    :key 'content': (dictionary array) *('result' == FAVOURITE_CHARGERS_FOUND)* Output.
     """
+
     # get favourite chargers
-    favourites_array_out = get_user_favourite_charger_ids(
+    favourites_array_out = get_user_favourite_charger_id_array(
         id_user_info_sanitised)
     # check if error or empty
     if favourites_array_out['result'] == db_service_code_master.INTERNAL_ERROR:
@@ -71,12 +87,14 @@ def get_user_favourite_chargers(id_user_info_sanitised):
     if favourites_array_out['result'] == db_service_code_master.FAVOURITE_CHARGERS_NOT_FOUND:
         return favourites_array_out
 
-    charger_hash_map_out = db_charger.get_charger_hash_map(where_array=[['active', True]])
-
+    # get all chargers
+    charger_hash_map_out = db_charger.get_charger_hash_map(
+        where_array=[['active', True]])
     # check if empty or error (empty -> internal error)
     if charger_hash_map_out['result'] != db_service_code_master.HASHMAP_GENERIC_SUCCESS:
         return {'result': db_service_code_master.INTERNAL_ERROR}
 
+    # map array of ids to dict array
     favourite_charger_details_array = [charger_hash_map_out['content'][item]
                                        for item in favourites_array_out['content']]
 
@@ -86,12 +104,15 @@ def get_user_favourite_chargers(id_user_info_sanitised):
 
 def add_favourite_charger(id_user_info_sanitised, id_charger_input):
     """
-    Attempts to add one favourite charger entry to the database.\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, FAVOURITE_CHARGER_MODIFY_SUCCESS or FAVOURITE_CHARGER_MODIFY_FAILURE.\n
-    <reason> (if <result> is FAVOURITE_CHARGER_MODIFY_FAILURE) [Array] Reason for failure.
-    \t[reasons]:\n
-    [CHARGER_NOT_FOUND, FAVOURITE_CHARGER_DUPLICATE_ENTRY]
+    | **[ENDPOINT]**
+    | Attempts to add a favourite charger entry to the database.
+
+    :param string id_user_info_sanitised: id_user_info_sanitised
+    :param string id_charger_input: id_charger_input
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, FAVOURITE_CHARGER_MODIFY_SUCCESS, FAVOURITE_CHARGER_MODIFY_FAILURE.
+    :key 'reason': (array, one/multiple) *('result' == FAVOURITE_CHARGER_MODIFY_FAILURE)* CHARGER_NOT_FOUND, FAVOURITE_CHARGER_DUPLICATE_ENTRY.
     """
 
     contains_errors = False
@@ -139,12 +160,15 @@ def add_favourite_charger(id_user_info_sanitised, id_charger_input):
 
 def remove_favourite_charger(id_user_info_sanitised, id_charger_input):
     """
-    Attempts to remove one favourite charger entry from the database. A lot less stringent than add, as it affects nothing if entry isn't found.\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, FAVOURITE_CHARGER_MODIFY_SUCCESS or FAVOURITE_CHARGER_MODIFY_FAILURE.\n
-    <reason> (if <result> is FAVOURITE_CHARGER_MODIFY_FAILURE) [Array] Reason for failure.
-    \t[reasons]:\n
-    [FAVOURITE_CHARGERS_NOT_FOUND]
+    | **[ENDPOINT]**
+    | Attempts to remove a favourite charger entry from the database.
+
+    :param string id_user_info_sanitised: id_user_info_sanitised
+    :param string id_charger_input: id_charger_input
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, FAVOURITE_CHARGER_MODIFY_SUCCESS, FAVOURITE_CHARGER_MODIFY_FAILURE.
+    :key 'reason': (array, one) *('result' == FAVOURITE_CHARGER_MODIFY_FAILURE)* FAVOURITE_CHARGERS_NOT_FOUND.
     """
 
     id_charger_sanitised = db_helper_functions.string_sanitise(
@@ -162,12 +186,16 @@ def remove_favourite_charger(id_user_info_sanitised, id_charger_input):
     return {'result': db_service_code_master.FAVOURITE_CHARGER_MODIFY_SUCCESS}
 
 
-def get_user_favourite_charger_ids(id_user_info_sanitised):
+def get_user_favourite_charger_id_array(id_user_info_sanitised):
     """
-    Get an [Array] containing user's favourite charger ids.
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, FAVOURITE_CHARGERS_NOT_FOUND or FAVOURITE_CHARGERS_FOUND.\n
-    <content> (if <result> is FAVOURITE_CHARGERS_FOUND) [Array] containing user's favourite charger ids.
+    | **[INTERNAL]**
+    | Get an array of a user's favourite charger ids.
+
+    :param string id_user_info_sanitised: id_user_info_sanitised
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, FAVOURITE_CHARGERS_NOT_FOUND, FAVOURITE_CHARGERS_FOUND.
+    :key 'content': (array) *('result' == FAVOURITE_CHARGERS_FOUND)* Output.
     """
 
     favourite_charger_dict_out = get_favourite_charger_dict(column_names=['id_charger'],

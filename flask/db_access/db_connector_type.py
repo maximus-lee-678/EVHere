@@ -19,12 +19,16 @@ FROM connector_type
 
 def get_connector_type_hash_map(column_names=None,where_array=None):
     """
-    \tcolumn_names >> any combination of ['id', 'current_type', 'name_connector', 'output_voltage_max', 'output_current_max']\n
-    \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY or HASHMAP_GENERIC_SUCCESS.\n
-    <content> (if <result> is HASHMAP_GENERIC_SUCCESS) {Dictionary} containing table information.\n
-    \t{"id": {...key-values...}}
+    | **[SUPPORTING]**
+    | **Connector Type Hashmap supported fields:** 
+    | ['id', 'current_type', 'name_connector', 'output_voltage_max', 'output_current_max']
+
+    :param array column_names: any combination of supported fields
+    :param array where_array: containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being 'NOT' e.g. [['id', '0'], ['id', '1', 'NOT]]
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY, HASHMAP_GENERIC_SUCCESS. 
+    :key 'content': (dictionary) *('result' == HASHMAP_GENERIC_SUCCESS)* Output. ('id' as key)
     """
 
     if column_names == None:
@@ -38,12 +42,16 @@ def get_connector_type_hash_map(column_names=None,where_array=None):
 
 def get_connector_type_dict(column_names=None,where_array=None):
     """
-    \tcolumn_names >> any combination of ['id', 'current_type', 'name_connector', 'output_voltage_max', 'output_current_max']\n
-    \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, SELECT_GENERIC_EMPTY or SELECT_GENERIC_SUCCESS.\n
-    <content> (if <result> is SELECT_GENERIC_SUCCESS) {Dictionary} containing table information.\n
-    \t{{...key-values...}}
+    | **[SUPPORTING]**
+    | **Connector Type Dictionary supported fields:** 
+    | ['id', 'current_type', 'name_connector', 'output_voltage_max', 'output_current_max']
+
+    :param array column_names: any combination of supported fields
+    :param array where_array: containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being 'NOT' e.g. [['id', '0'], ['id', '1', 'NOT]]
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, SELECT_GENERIC_EMPTY, SELECT_GENERIC_SUCCESS. 
+    :key 'content': (dictionary array) *('result' == SELECT_GENERIC_SUCCESS)* Output.
     """
 
     if column_names == None:
@@ -57,12 +65,13 @@ def get_connector_type_dict(column_names=None,where_array=None):
 
 def get_all_connectors():
     """
-    Retrieves ALL connectors from database.\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, CONNECTOR_NOT_FOUND or CONNECTOR_FOUND.\n
-    <content> (if <result> is CONNECTOR_FOUND) [{Dictionary Array}] containing connector information.\n
-    \t"keys":\n
-    \t{"id", "name_short", "name_long", "name_connector"}
+    | **[ENDPOINT]**
+    | Retrieves ALL connector types from database.
+    | **Fields returned:** [{'id', 'name_short', 'name_long', 'name_connector'}]
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, CONNECTOR_NOT_FOUND, CONNECTOR_FOUND. 
+    :key 'content': (dictionary array) *('result' == CONNECTOR_FOUND)* Output.
     """
 
     connector_type_dict_out = get_connector_type_dict()

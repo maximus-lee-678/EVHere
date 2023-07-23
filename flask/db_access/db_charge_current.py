@@ -22,13 +22,16 @@ FROM charge_current
 
 def get_charge_current_hash_map(column_names=None, where_array=None):
     """
-    \tcolumn_names >> any combination of ['id', 'id_charge_history', 'id_charger_available_connector',
-                    'current_energy_drawn', 'rate_snapshot', 'last_updated']\n
-    \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY or HASHMAP_GENERIC_SUCCESS.\n
-    <content> (if <result> is HASHMAP_GENERIC_SUCCESS) {Dictionary} containing table information.\n
-    \t{"id": {...key-values...}}
+    | **[SUPPORTING]**
+    | **Charge Current Hashmap supported fields:** 
+    | ['id', 'id_charge_history', 'id_charger_available_connector', 'current_energy_drawn', 'rate_snapshot', 'last_updated']
+
+    :param array column_names: any combination of supported fields
+    :param array where_array: containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being 'NOT' e.g. [['id', '0'], ['id', '1', 'NOT]]
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY, HASHMAP_GENERIC_SUCCESS. 
+    :key 'content': (dictionary) *('result' == HASHMAP_GENERIC_SUCCESS)* Output.
     """
 
     if column_names == None:
@@ -42,13 +45,16 @@ def get_charge_current_hash_map(column_names=None, where_array=None):
 
 def get_charge_current_dict(column_names=None, where_array=None):
     """
-    \tcolumn_names >> any combination of ['id', 'id_charge_history', 'id_charger_available_connector',
-                    'current_energy_drawn', 'rate_snapshot', 'last_updated']\n
-    \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, SELECT_GENERIC_EMPTY or SELECT_GENERIC_SUCCESS.\n
-    <content> (if <result> is SELECT_GENERIC_SUCCESS) {Dictionary} containing table information.\n
-    \t{{...key-values...}}
+    | [SUPPORTING]
+    | **Charge Current Dictionary supported fields:** 
+    | ['id', 'id_charge_history', 'id_charger_available_connector', 'current_energy_drawn', 'rate_snapshot', 'last_updated']
+
+    :param array column_names: any combination of supported fields
+    :param array where_array: containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being 'NOT' e.g. [['id', '0'], ['id', '1', 'NOT]]
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, SELECT_GENERIC_EMPTY, SELECT_GENERIC_SUCCESS. 
+    :key 'content': (dictionary array) *('result' == SELECT_GENERIC_SUCCESS)* Output. ('id' as key)
     """
 
     if column_names == None:
@@ -62,11 +68,16 @@ def get_charge_current_dict(column_names=None, where_array=None):
 
 def add_charge_current(id_charge_history, id_charger, id_charger_available_connector_input):
     """
-    =CHILD FUNCTION=
-    Inserts a charge current entry into the database.\n
-    Also toggles charger available connector's 'in use' field.\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, AVAILABLE_CONNECTORS_NOT_FOUND, AVAILABLE_CONNECTOR_IN_USE or CHARGE_CURRENT_CREATE_SUCCESS.
+    | **[INTERNAL]**
+    | Inserts a charge current entry into the database.
+    | Also toggles charger available connector's 'in use' field.
+
+    :param string id_charge_history: id_charge_history
+    :param string id_charger: id_charger
+    :param string id_charger_available_connector_input: id_charger_available_connector_input
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, AVAILABLE_CONNECTORS_NOT_FOUND, AVAILABLE_CONNECTOR_IN_USE, CHARGE_CURRENT_CREATE_SUCCESS.
     """
 
     # 1: verify charger available connector exists for given charger and that it is not in use
@@ -110,7 +121,7 @@ def add_charge_current(id_charge_history, id_charger, id_charger_available_conne
     query = 'INSERT INTO charge_current VALUES (?,?,?,?,?,?)'
     task = (id, id_charge_history, id_charger_available_connector_sanitised,
             0, rate_current, last_updated)
-    
+
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:
         return {'result': db_service_code_master.INTERNAL_ERROR}
@@ -120,14 +131,17 @@ def add_charge_current(id_charge_history, id_charger, id_charger_available_conne
 
 def update_user_charge_current(id_user_info_sanitised, current_energy_drawn_input):
     """
-    TODO replace with periodic automated updates\n
-    =CHILD FUNCTION=
-    Removes a charge current entry from the database.\n
-    Also toggles charger available connector's 'in use' field.\n
-    Updates a charge current entry with a new energy drawn value.\n
-    <result> INTERNAL_ERROR, CHARGE_CURRENT_UPDATE_FAILURE or CHARGE_CURRENT_UPDATE_SUCCESS.\n
-    <reason> (if <result> is CHARGE_CURRENT_UPDATE_FAILURE) [Array] Reason for failure.
-    \t[CHARGE_HISTORY_NOT_CHARGING, CHARGER_AVAILABLE_CONNECTOR_INVALID_ENERGY_LEVEL]
+    | **[ENDPOINT]**
+    | Updates a charge current entry in the database.
+    | TODO In the future, instead of updating current_energy_drawn_input directly,
+    | can refer to attached connector info and calculate energy.
+
+    :param string id_user_info_sanitised: id_user_info_sanitised
+    :param string current_energy_drawn_input: current_energy_drawn_input
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, CHARGE_CURRENT_UPDATE_FAILURE, CHARGE_CURRENT_UPDATE_SUCCESS.
+    :key 'reason': (array, one/multiple) *('result' == CHARGE_CURRENT_UPDATE_FAILURE)* INTERNAL_ERROR, CHARGE_CURRENT_UPDATE_FAILURE, CHARGE_HISTORY_NOT_CHARGING, CHARGER_AVAILABLE_CONNECTOR_INVALID_ENERGY_LEVEL, CHARGE_CURRENT_UPDATE_SUCCESS.
     """
 
     contains_errors = False
@@ -167,9 +181,13 @@ def update_user_charge_current(id_user_info_sanitised, current_energy_drawn_inpu
 
 def remove_charge_current(id_charge_history):
     """
-    Removes a charge current entry from the database. This function assumes input is legal, as it cannot be called directly.\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR or CHARGE_CURRENT_REMOVE_SUCCESS.
+    | **[INTERNAL]**
+    | Removes a charge current entry from the database.
+
+    :param string id_user_info_sanitised: id_charge_history
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, CHARGE_CURRENT_REMOVE_SUCCESS
     """
 
     # get available connector id
@@ -177,7 +195,8 @@ def remove_charge_current(id_charge_history):
                                                       where_array=[['id_charge_history', id_charge_history]])
     if charge_current_dict_out['result'] != db_service_code_master.SELECT_GENERIC_SUCCESS:
         return {'result': db_service_code_master.INTERNAL_ERROR}
-    id_charger_available_connector = charge_current_dict_out['content'][0]['id_charger_available_connector']
+    id_charger_available_connector = charge_current_dict_out[
+        'content'][0]['id_charger_available_connector']
 
     query = 'DELETE FROM charge_current WHERE id_charge_history=?'
     task = (id_charge_history,)
@@ -185,7 +204,7 @@ def remove_charge_current(id_charge_history):
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:
         return {'result': db_service_code_master.INTERNAL_ERROR}
-    
+
     # set charger connector's in_use
     charger_available_connectors_out = db_charger_available_connector.set_charger_available_connector_in_use(
         id_charger_available_connector, False)

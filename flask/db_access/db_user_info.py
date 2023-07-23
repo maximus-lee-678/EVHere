@@ -20,12 +20,16 @@ FROM user_info
 
 def get_user_info_hash_map(column_names=None, where_array=None):
     """
-    \tcolumn_names >> any combination of ['id', 'username', 'password', 'email', 'full_name', 'phone_no', 'created_at', 'modified_at']\n
-    \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY or HASHMAP_GENERIC_SUCCESS.\n
-    <content> (if <result> is HASHMAP_GENERIC_SUCCESS) {Dictionary} containing table information.\n
-    \t{"id": {...key-values...}}
+    | **[SUPPORTING]**
+    | **User Info Hashmap supported fields:** 
+    | ['id', 'username', 'password', 'email', 'full_name', 'phone_no', 'created_at', 'modified_at']
+
+    :param array column_names: any combination of supported fields
+    :param array where_array: containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being 'NOT' e.g. [['id', '0'], ['id', '1', 'NOT]]
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY, HASHMAP_GENERIC_SUCCESS. 
+    :key 'content': (dictionary) *('result' == HASHMAP_GENERIC_SUCCESS)* Output. ('id' as key)
     """
 
     if column_names == None:
@@ -39,12 +43,16 @@ def get_user_info_hash_map(column_names=None, where_array=None):
 
 def get_user_info_dict(column_names=None, where_array=None):
     """
-    \tcolumn_names >> any combination of ['id', 'username', 'password', 'email', 'full_name', 'phone_no', 'created_at', 'modified_at']\n
-    \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, SELECT_GENERIC_EMPTY or SELECT_GENERIC_SUCCESS.\n
-    <content> (if <result> is SELECT_GENERIC_SUCCESS) {Dictionary} containing table information.\n
-    \t{{...key-values...}}
+    | **[SUPPORTING]**
+    | **User Info Dictionary supported fields:** 
+    | ['id', 'username', 'password', 'email', 'full_name', 'phone_no', 'created_at', 'modified_at']
+
+    :param array column_names: any combination of supported fields
+    :param array where_array: containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being 'NOT' e.g. [['id', '0'], ['id', '1', 'NOT]]
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, SELECT_GENERIC_EMPTY, SELECT_GENERIC_SUCCESS. 
+    :key 'content': (dictionary array) *('result' == SELECT_GENERIC_SUCCESS)* Output.
     """
 
     if column_names == None:
@@ -58,12 +66,18 @@ def get_user_info_dict(column_names=None, where_array=None):
 
 def create_user(username_input, password_input, email_input, full_name_input, phone_no_input):
     """
-    Attempts to insert a new user into the database.\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, USER_INFO_CREATE_FAILURE or USER_INFO_CREATE_SUCCESS.\n
-    <reason> (if <result> is USER_INFO_CREATE_FAILURE) [Array] Reason for failure.
-    \t[USERNAME_INVALID_LENGTH, PASSWORD_INVALID_LENGTH, PASSWORD_INVALID_SYNTAX,
-    EMAIL_INVALID_LENGTH, EMAIL_INVALID_SYNTAX, ACCOUNT_ALREADY_EXISTS, PHONE_NUMBER_INVALID, FULL_NAME_INVALID_LENGTH]
+    | **[ENDPOINT]**
+    | Attempts to insert a new user into the database.
+
+    :param string username_input: username_input
+    :param string password_input: password_input
+    :param string email_input: email_input
+    :param string full_name_input: full_name_input
+    :param string phone_no_input: phone_no_input
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, USER_INFO_CREATE_FAILURE, USER_INFO_CREATE_SUCCESS. 
+    :key 'reason': (array, one/multiple) *('result' == USER_INFO_CREATE_FAILURE)* USERNAME_INVALID_LENGTH, PASSWORD_INVALID_LENGTH, PASSWORD_INVALID_SYNTAX, EMAIL_INVALID_LENGTH, EMAIL_INVALID_SYNTAX, ACCOUNT_ALREADY_EXISTS, PHONE_NUMBER_INVALID, FULL_NAME_INVALID_LENGTH
     """
 
     contains_errors = False
@@ -78,7 +92,7 @@ def create_user(username_input, password_input, email_input, full_name_input, ph
     else:
         # check for email duplicate
         user_info_dict_out = get_user_info_dict(column_names=['id'],
-                                                where_array=[['email', user_info_out['content']['email_sanitised']]])
+                                                where_array=[['email', user_info_out['content']['email']]])
         if user_info_dict_out['result'] == db_service_code_master.SELECT_GENERIC_SUCCESS:
             contains_errors = True
             error_list.append(db_service_code_master.ACCOUNT_ALREADY_EXISTS)
@@ -96,9 +110,9 @@ def create_user(username_input, password_input, email_input, full_name_input, ph
 
     # insert new user
     query = 'INSERT INTO user_info VALUES (?,?,?,?,?,?,?,?)'
-    task = (id, user_info_out['content']['username_sanitised'], user_info_out['content']['password_hashed'],
-            user_info_out['content']['email_sanitised'], user_info_out['content']['full_name_sanitised'],
-            user_info_out['content']['phone_no_sanitised'], created_at, modified_at)
+    task = (id, user_info_out['content']['username'], user_info_out['content']['password'],
+            user_info_out['content']['email'], user_info_out['content']['full_name'],
+            user_info_out['content']['phone_no'], created_at, modified_at)
 
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:
@@ -109,6 +123,15 @@ def create_user(username_input, password_input, email_input, full_name_input, ph
 
 def get_user_info_by_user_id(id_user_info_sanitised):
     """
+    | **[ENDPOINT]**
+    | Retrieves a user's details.
+    | **Fields returned:** {'username', 'email', 'full_name', 'phone_no', 'created_at', 'modified_at'}
+
+    :param string id_user_info_sanitised: id_user_info_sanitised
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, ACCOUNT_NOT_FOUND, ACCOUNT_FOUND. 
+    :key 'content': (dictionary) *('result' == ACCOUNT_FOUND)* Output.
     """
 
     user_info_dict_out = get_user_info_dict(column_names=['username', 'email', 'full_name', 'phone_no', 'created_at', 'modified_at'],
@@ -125,12 +148,19 @@ def get_user_info_by_user_id(id_user_info_sanitised):
 
 def update_user(id_user_info_sanitised, username_input, password_input, email_input, full_name_input, phone_no_input):
     """
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, USER_INFO_UPDATE_FAILURE or USER_INFO_UPDATE_SUCCESS.\n
-    <reason> (if <result> is USER_INFO_UPDATE_FAILURE) [Array] Reason for failure.
-    \t[USERNAME_INVALID_LENGTH, PASSWORD_INVALID_LENGTH, PASSWORD_INVALID_SYNTAX,
-    EMAIL_INVALID_LENGTH, EMAIL_INVALID_SYNTAX, ACCOUNT_ALREADY_EXISTS, PHONE_NUMBER_INVALID, FULL_NAME_INVALID_LENGTH, ACCOUNT_NOT_FOUND]\n
-    <content> (if <result> is USER_INFO_UPDATE_SUCCESS) Sanitised email string.
+    | **[ENDPOINT]**
+    | Updates a user's details.
+
+    :param string username_input: username_input
+    :param string password_input: password_input
+    :param string email_input: email_input
+    :param string full_name_input: full_name_input
+    :param string phone_no_input: phone_no_input
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, USER_INFO_UPDATE_FAILURE, USER_INFO_UPDATE_SUCCESS. 
+    :key 'reason': (array, one/multiple) *('result' == USER_INFO_UPDATE_FAILURE)* USERNAME_INVALID_LENGTH, PASSWORD_INVALID_LENGTH, PASSWORD_INVALID_SYNTAX, EMAIL_INVALID_LENGTH, EMAIL_INVALID_SYNTAX, ACCOUNT_ALREADY_EXISTS, PHONE_NUMBER_INVALID, FULL_NAME_INVALID_LENGTH, ACCOUNT_NOT_FOUND
+    :key 'content': (string) *('result' == USER_INFO_UPDATE_SUCCESS)* Sanitised email string.
     """
 
     contains_errors = False
@@ -156,12 +186,13 @@ def update_user(id_user_info_sanitised, username_input, password_input, email_in
     if contains_errors:
         return {'result': db_service_code_master.USER_INFO_UPDATE_FAILURE,
                 'reason': error_list}
-    
+
     query = f"""
     UPDATE user_info SET {', '.join(f'{key}=?' for key in user_info_out['content'].keys())}, modified_at=?
     WHERE id=?
     """
-    task = tuple(value for value in user_info_out['content'].values()) + (db_helper_functions.generate_time_now(), id_user_info_sanitised)
+    task = tuple(value for value in user_info_out['content'].values(
+    )) + (db_helper_functions.generate_time_now(), id_user_info_sanitised)
 
     print(query)
     print(task)
@@ -177,15 +208,20 @@ def update_user(id_user_info_sanitised, username_input, password_input, email_in
 
 def validate_user_info(username_input=None, password_input=None, email_input=None, full_name_input=None, phone_no_input=None):
     """
-    Validates, sanitises, hashes, the whole lot (user info).\n
-    Returns Dictionary with keys:\n
-    <result> USER_INFO_INVALID or USER_INFO_VALID.\n
-    <reason> (if <result> is USER_INFO_INVALID) [Array] Reason for failure.\n
-    \t[USERNAME_INVALID_LENGTH, PASSWORD_INVALID_LENGTH, PASSWORD_INVALID_SYNTAX,
-    EMAIL_INVALID_LENGTH, EMAIL_INVALID_SYNTAX, ACCOUNT_ALREADY_EXISTS, PHONE_NUMBER_INVALID, FULL_NAME_INVALID_LENGTH]\n
-    <content> (if <result> is USER_INFO_VALID) {Dictionary} containing ready-to-use fields.\n
-    \t{username, password, email, phone_no, full_name}\n
-    \tReturns only fields it is provided with.
+    | **[INTERNAL]**
+    | Takes inputs bound for insertion into 'user info' table and validates it. If valid, also sanitises and hashes where needed.
+    | **Fields returned:** {'username', 'email', 'full_name', 'phone_no'} (returns only what it is provided with)
+
+    :param string username_input: username_input (can be None)
+    :param string password_input: password_input (can be None)
+    :param string email_input: email_input (can be None)
+    :param string full_name_input: full_name_input (can be None)
+    :param string phone_no_input: phone_no_input (can be None)
+
+    :returns: Dictionary
+    :key 'result': (one) USER_INFO_INVALID, USER_INFO_VALID. 
+    :key 'reason': (array, one/multiple) *('result' == USER_INFO_INVALID)* USERNAME_INVALID_LENGTH, PASSWORD_INVALID_LENGTH, PASSWORD_INVALID_SYNTAX, EMAIL_INVALID_LENGTH, EMAIL_INVALID_SYNTAX, ACCOUNT_ALREADY_EXISTS, PHONE_NUMBER_INVALID, FULL_NAME_INVALID_LENGTH
+    :key 'content': (dictionary) *('result' == USER_INFO_UPDATE_SUCCESS)* Output.
     """
 
     contains_errors = False
@@ -250,11 +286,15 @@ def validate_user_info(username_input=None, password_input=None, email_input=Non
 
 def login_user(email_input, password_input):
     """
-    Takes an input email and password and verifies that it exists in the database.\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, LOGIN_FAILURE or LOGIN_SUCCESS.\n
-    <reason> (if <result> is LOGIN_FAILURE) [Array] Reason for failure.
-    \t[EMAIL_PASSWORD_INVALID]
+    | **[ENDPOINT]**
+    | Takes an input email and password and verifies that it exists in the database.
+
+    :param string email_input: email_input
+    :param string password_input: password_input
+
+    :returns: Dictionary
+    :key 'result': (one) USER_INFO_INVALID, USER_INFO_VALID. 
+    :key 'reason': (array, one) *('result' == USER_INFO_INVALID)* EMAIL_PASSWORD_INVALID.
     """
 
     # 1.1: email > check[length]
@@ -290,10 +330,14 @@ def login_user(email_input, password_input):
 
 def get_user_id_by_email(email_input):
     """
-    Takes an input email and verifies that it exists in the database.\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, ACCOUNT_NOT_FOUND or ACCOUNT_FOUND.\n
-    <content> (if <result> is ACCOUNT_FOUND) =Value= containing user_id.
+    | **[ENDPOINT]**
+    | Takes an input email and retrieves the corresponding user id.
+
+    :param string email_input: email_input
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, ACCOUNT_NOT_FOUND, ACCOUNT_FOUND. 
+    :key 'content': (string) *('result' == ACCOUNT_FOUND)* user id.
     """
 
     # sanitise email

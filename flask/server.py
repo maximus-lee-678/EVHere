@@ -8,6 +8,8 @@ API endpoints ALWAYS follow this format:\n
 [content] when [status==success] (nullable)
 [reason] when [status==fail], why it failed.
 """
+
+
 from flask_routes.flask_charge_current import flask_charge_current
 from flask_routes.flask_charge_history import flask_charge_history
 from flask_routes.flask_vehicle import flask_vehicle
@@ -18,6 +20,11 @@ from flask_routes.flask_charger import flask_charger
 from flask import Flask
 from flask_cors import CORS
 import os
+
+# if running sphinx, need to change directory to 'root'
+current_working_directory = os.path.basename(os.getcwd())
+if current_working_directory != 'team_15_flask_react':
+    os.chdir('../')
 
 # If db file not exists, create
 import db_access.support_files.db_methods as db_methods
@@ -52,4 +59,3 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 # Running app
 if __name__ == '__main__':
     app.run(debug=True)
-    

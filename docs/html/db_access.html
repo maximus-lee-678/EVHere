@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>db_access package &mdash; EVHere  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="flask_routes package" href="flask_routes.html" />
+    <link rel="prev" title="flask" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            EVHere
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">flask</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">db_access package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-db_access.db_charge_current">db_access.db_charge_current module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charge_current.add_charge_current"><code class="docutils literal notranslate"><span class="pre">add_charge_current()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charge_current.get_charge_current_dict"><code class="docutils literal notranslate"><span class="pre">get_charge_current_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charge_current.get_charge_current_hash_map"><code class="docutils literal notranslate"><span class="pre">get_charge_current_hash_map()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charge_current.remove_charge_current"><code class="docutils literal notranslate"><span class="pre">remove_charge_current()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charge_current.update_user_charge_current"><code class="docutils literal notranslate"><span class="pre">update_user_charge_current()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-db_access.db_charge_history">db_access.db_charge_history module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charge_history.add_charge_history_initial"><code class="docutils literal notranslate"><span class="pre">add_charge_history_initial()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charge_history.finish_charge_history"><code class="docutils literal notranslate"><span class="pre">finish_charge_history()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charge_history.get_charge_history_active"><code class="docutils literal notranslate"><span class="pre">get_charge_history_active()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charge_history.get_charge_history_by_user_id"><code class="docutils literal notranslate"><span class="pre">get_charge_history_by_user_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charge_history.get_charge_history_dict"><code class="docutils literal notranslate"><span class="pre">get_charge_history_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charge_history.get_charge_history_hash_map"><code class="docutils literal notranslate"><span class="pre">get_charge_history_hash_map()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-db_access.db_charger">db_access.db_charger module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger.get_all_chargers"><code class="docutils literal notranslate"><span class="pre">get_all_chargers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger.get_charger_dict"><code class="docutils literal notranslate"><span class="pre">get_charger_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger.get_charger_hash_map"><code class="docutils literal notranslate"><span class="pre">get_charger_hash_map()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-db_access.db_charger_available_connector">db_access.db_charger_available_connector module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger_available_connector.get_all_charger_connectors_decoded"><code class="docutils literal notranslate"><span class="pre">get_all_charger_connectors_decoded()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger_available_connector.get_charger_available_connector_dict"><code class="docutils literal notranslate"><span class="pre">get_charger_available_connector_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger_available_connector.get_charger_available_connector_hash_map"><code class="docutils literal notranslate"><span class="pre">get_charger_available_connector_hash_map()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger_available_connector.set_charger_available_connector_in_use"><code class="docutils literal notranslate"><span class="pre">set_charger_available_connector_in_use()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger_available_connector.update_charger_available_connector_electric_stats"><code class="docutils literal notranslate"><span class="pre">update_charger_available_connector_electric_stats()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-db_access.db_connector_type">db_access.db_connector_type module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_connector_type.get_all_connectors"><code class="docutils literal notranslate"><span class="pre">get_all_connectors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_connector_type.get_connector_type_dict"><code class="docutils literal notranslate"><span class="pre">get_connector_type_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_connector_type.get_connector_type_hash_map"><code class="docutils literal notranslate"><span class="pre">get_connector_type_hash_map()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-db_access.db_favourite_charger">db_access.db_favourite_charger module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_favourite_charger.add_favourite_charger"><code class="docutils literal notranslate"><span class="pre">add_favourite_charger()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_favourite_charger.get_favourite_charger_dict"><code class="docutils literal notranslate"><span class="pre">get_favourite_charger_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_favourite_charger.get_favourite_charger_hash_map"><code class="docutils literal notranslate"><span class="pre">get_favourite_charger_hash_map()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_favourite_charger.get_user_favourite_charger_id_array"><code class="docutils literal notranslate"><span class="pre">get_user_favourite_charger_id_array()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_favourite_charger.get_user_favourite_chargers"><code class="docutils literal notranslate"><span class="pre">get_user_favourite_chargers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_favourite_charger.remove_favourite_charger"><code class="docutils literal notranslate"><span class="pre">remove_favourite_charger()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-db_access.db_universal">db_access.db_universal module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_universal.degeneralise_result_codes"><code class="docutils literal notranslate"><span class="pre">degeneralise_result_codes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_universal.get_universal_dict"><code class="docutils literal notranslate"><span class="pre">get_universal_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_universal.get_universal_hash_map"><code class="docutils literal notranslate"><span class="pre">get_universal_hash_map()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-db_access.db_user_info">db_access.db_user_info module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_user_info.create_user"><code class="docutils literal notranslate"><span class="pre">create_user()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_user_info.get_user_id_by_email"><code class="docutils literal notranslate"><span class="pre">get_user_id_by_email()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_user_info.get_user_info_by_user_id"><code class="docutils literal notranslate"><span class="pre">get_user_info_by_user_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_user_info.get_user_info_dict"><code class="docutils literal notranslate"><span class="pre">get_user_info_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_user_info.get_user_info_hash_map"><code class="docutils literal notranslate"><span class="pre">get_user_info_hash_map()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_user_info.login_user"><code class="docutils literal notranslate"><span class="pre">login_user()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_user_info.update_user"><code class="docutils literal notranslate"><span class="pre">update_user()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_user_info.validate_user_info"><code class="docutils literal notranslate"><span class="pre">validate_user_info()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-db_access.db_vehicle">db_access.db_vehicle module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_vehicle.add_vehicle"><code class="docutils literal notranslate"><span class="pre">add_vehicle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_vehicle.get_active_vehicle_by_user_id"><code class="docutils literal notranslate"><span class="pre">get_active_vehicle_by_user_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_vehicle.get_vehicle_dict"><code class="docutils literal notranslate"><span class="pre">get_vehicle_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_vehicle.get_vehicle_hash_map"><code class="docutils literal notranslate"><span class="pre">get_vehicle_hash_map()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_vehicle.remove_vehicle"><code class="docutils literal notranslate"><span class="pre">remove_vehicle()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-db_access">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="flask_routes.html">flask_routes package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">server module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">EVHere</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">flask</a></li>
+      <li class="breadcrumb-item active">db_access package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/db_access.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="db-access-package">
+<h1>db_access package<a class="headerlink" href="#db-access-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-db_access.db_charge_current">
+<span id="db-access-db-charge-current-module"></span><h2>db_access.db_charge_current module<a class="headerlink" href="#module-db_access.db_charge_current" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charge_current.add_charge_current">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charge_current.</span></span><span class="sig-name descname"><span class="pre">add_charge_current</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_charge_history</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_charger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_charger_available_connector_input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charge_current.add_charge_current" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[INTERNAL]</strong></div>
+<div class="line">Inserts a charge current entry into the database.</div>
+<div class="line">Also toggles charger available connector’s ‘in use’ field.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_charge_history</strong> (<em>string</em>) – id_charge_history</p></li>
+<li><p><strong>id_charger</strong> (<em>string</em>) – id_charger</p></li>
+<li><p><strong>id_charger_available_connector_input</strong> (<em>string</em>) – id_charger_available_connector_input</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, AVAILABLE_CONNECTORS_NOT_FOUND, AVAILABLE_CONNECTOR_IN_USE, CHARGE_CURRENT_CREATE_SUCCESS.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charge_current.get_charge_current_dict">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charge_current.</span></span><span class="sig-name descname"><span class="pre">get_charge_current_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charge_current.get_charge_current_dict" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line">[SUPPORTING]</div>
+<div class="line"><strong>Charge Current Dictionary supported fields:</strong> </div>
+<div class="line">[‘id’, ‘id_charge_history’, ‘id_charger_available_connector’, ‘current_energy_drawn’, ‘rate_snapshot’, ‘last_updated’]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – any combination of supported fields</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, SELECT_GENERIC_EMPTY, SELECT_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary array) <em>(‘result’ == SELECT_GENERIC_SUCCESS)</em> Output. (‘id’ as key)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charge_current.get_charge_current_hash_map">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charge_current.</span></span><span class="sig-name descname"><span class="pre">get_charge_current_hash_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charge_current.get_charge_current_hash_map" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[SUPPORTING]</strong></div>
+<div class="line"><strong>Charge Current Hashmap supported fields:</strong> </div>
+<div class="line">[‘id’, ‘id_charge_history’, ‘id_charger_available_connector’, ‘current_energy_drawn’, ‘rate_snapshot’, ‘last_updated’]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – any combination of supported fields</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY, HASHMAP_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary) <em>(‘result’ == HASHMAP_GENERIC_SUCCESS)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charge_current.remove_charge_current">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charge_current.</span></span><span class="sig-name descname"><span class="pre">remove_charge_current</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_charge_history</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charge_current.remove_charge_current" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[INTERNAL]</strong></div>
+<div class="line">Removes a charge current entry from the database.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – id_charge_history</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, CHARGE_CURRENT_REMOVE_SUCCESS</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charge_current.update_user_charge_current">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charge_current.</span></span><span class="sig-name descname"><span class="pre">update_user_charge_current</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_energy_drawn_input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charge_current.update_user_charge_current" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Updates a charge current entry in the database.</div>
+<div class="line">TODO In the future, instead of updating current_energy_drawn_input directly,</div>
+<div class="line">can refer to attached connector info and calculate energy.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – id_user_info_sanitised</p></li>
+<li><p><strong>current_energy_drawn_input</strong> (<em>string</em>) – current_energy_drawn_input</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, CHARGE_CURRENT_UPDATE_FAILURE, CHARGE_CURRENT_UPDATE_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘reason’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(array, one/multiple) <em>(‘result’ == CHARGE_CURRENT_UPDATE_FAILURE)</em> INTERNAL_ERROR, CHARGE_CURRENT_UPDATE_FAILURE, CHARGE_HISTORY_NOT_CHARGING, CHARGER_AVAILABLE_CONNECTOR_INVALID_ENERGY_LEVEL, CHARGE_CURRENT_UPDATE_SUCCESS.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-db_access.db_charge_history">
+<span id="db-access-db-charge-history-module"></span><h2>db_access.db_charge_history module<a class="headerlink" href="#module-db_access.db_charge_history" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charge_history.add_charge_history_initial">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charge_history.</span></span><span class="sig-name descname"><span class="pre">add_charge_history_initial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_vehicle_info_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_charger_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_charger_available_connector_input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charge_history.add_charge_history_initial" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Attempts to insert a charge history into the database.</div>
+<div class="line">This method will also add an entry to “charge current”.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – id_user_info_sanitised</p></li>
+<li><p><strong>id_vehicle_info_input</strong> (<em>string</em>) – id_vehicle_info_input</p></li>
+<li><p><strong>id_charger_input</strong> (<em>string</em>) – id_charger_input</p></li>
+<li><p><strong>id_charger_available_connector_input</strong> (<em>string</em>) – id_charger_available_connector_input</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key result<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, CHARGE_HISTORY_CREATE_FAILURE, CHARGE_HISTORY_CREATE_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key reason<span class="colon">:</span></dt>
+<dd class="field-even"><p>(array, one/multiple) <em>(‘result’ == CHARGE_HISTORY_CREATE_FAILURE)</em> ACCOUNT_NOT_FOUND, CHARGE_HISTORY_ALREADY_CHARGING, VEHICLE_NOT_FOUND, CHARGER_NOT_FOUND, CHARGE_HISTORY_INVALID_CHARGE_LEVEL</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charge_history.finish_charge_history">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charge_history.</span></span><span class="sig-name descname"><span class="pre">finish_charge_history</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charge_history.finish_charge_history" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Attempts to close a charge history entry.</div>
+<div class="line">This method will also remove the corresponding “charge current” entry.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – id_user_info_sanitised</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, CHARGE_HISTORY_FINISH_FAILURE, CHARGE_HISTORY_FINISH_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘reason’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(array, one/multiple) <em>(‘result’ == CHARGE_HISTORY_FINISH_FAILURE)</em> CHARGE_HISTORY_NOT_CHARGING</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charge_history.get_charge_history_active">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charge_history.</span></span><span class="sig-name descname"><span class="pre">get_charge_history_active</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charge_history.get_charge_history_active" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Attempts to retrieve a charge history entry based on user id. </div>
+<div class="line">The entry is also joined with charge current, vehicle details, and charger details.</div>
+<div class="line"><strong>Fields returned:</strong> [{‘id’, ‘time_start’, ‘total_energy_drawn’, ‘vehicle’, ‘charger’}]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – id_user_info_sanitised</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, CHARGE_HISTORY_NOT_FOUND, CHARGE_HISTORY_FOUND.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary array, one/multiple) <em>(‘result’ == CHARGE_HISTORY_FOUND)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charge_history.get_charge_history_by_user_id">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charge_history.</span></span><span class="sig-name descname"><span class="pre">get_charge_history_by_user_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_by</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charge_history.get_charge_history_by_user_id" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Retrieves a user’s charge history.</div>
+<div class="line"><strong>Fields returned:</strong> </div>
+<div class="line">‘in_progress’: [{‘id’, ‘time_start’, ‘total_energy_drawn’, ‘vehicle’, ‘charger’}]</div>
+<div class="line">‘complete’: [{‘id’, ‘time_start’, ‘time_end’, ‘total_energy_drawn’, ‘amount_payable’, ‘vehicle’, ‘charger’}]</div>
+<div class="line">‘all’: [{‘id’, ‘time_start’, ‘time_end’, ‘total_energy_drawn’, ‘amount_payable’, ‘is_charge_finished’, ‘vehicle’, ‘charger’}]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – id_user_info_sanitised</p></li>
+<li><p><strong>filter_by</strong> (<em>string</em>) – ‘in_progress’, ‘complete’, ‘all’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, CHARGE_HISTORY_NOT_FOUND, CHARGE_HISTORY_FOUND, CONFIGURATION_ERROR.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary array) <em>(‘result’ == CHARGE_HISTORY_FOUND)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charge_history.get_charge_history_dict">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charge_history.</span></span><span class="sig-name descname"><span class="pre">get_charge_history_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charge_history.get_charge_history_dict" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line">[SUPPORTING]</div>
+<div class="line"><strong>Charge History Dictionary supported fields:</strong> </div>
+<div class="line">[‘id’, ‘id_user_info’, ‘id_vehicle_info’, ‘id_charger’, ‘time_start’,</div>
+<div class="line">‘time_end’, ‘total_energy_drawn’, ‘amount_payable’, ‘is_charge_finished’]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – any combination of supported fields</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, SELECT_GENERIC_EMPTY, SELECT_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary array) <em>(‘result’ == SELECT_GENERIC_SUCCESS)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charge_history.get_charge_history_hash_map">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charge_history.</span></span><span class="sig-name descname"><span class="pre">get_charge_history_hash_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charge_history.get_charge_history_hash_map" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line">[SUPPORTING]</div>
+<div class="line"><strong>Charge History Hashmap supported fields:</strong> </div>
+<div class="line">[‘id’, ‘id_user_info’, ‘id_vehicle_info’, ‘id_charger’, ‘time_start’,</div>
+<div class="line">‘time_end’, ‘total_energy_drawn’, ‘amount_payable’, ‘is_charge_finished’]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – any combination of supported fields</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY, HASHMAP_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary) <em>(‘result’ == HASHMAP_GENERIC_SUCCESS)</em> Output. (‘id’ as key)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-db_access.db_charger">
+<span id="db-access-db-charger-module"></span><h2>db_access.db_charger module<a class="headerlink" href="#module-db_access.db_charger" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charger.get_all_chargers">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charger.</span></span><span class="sig-name descname"><span class="pre">get_all_chargers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger.get_all_chargers" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Retrieves ALL chargers from database.</div>
+<div class="line"><strong>Fields returned:</strong> [{‘id’, ‘name’, ‘latitude’, ‘longitude’, ‘address’, ‘currently_open’, ‘pv_current_in’, </div>
+<div class="line">‘pv_energy_level’, ‘rate_current’, ‘rate_predicted’, ‘active’, ‘last_updated’, ‘available_connector’}]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – <em>(optional)</em> if specified, adds ‘is_favourite’ key to content dict</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, CHARGER_NOT_FOUND, CHARGER_FOUND.</p>
+</dd>
+<dt class="field-even">Key ‘type’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(one) CHARGER_WITH_FAVOURITE, CHARGER_WITHOUT_FAVOURITE.</p>
+</dd>
+<dt class="field-odd">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(dictionary array) <em>(‘result’ == CHARGER_FOUND)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charger.get_charger_dict">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charger.</span></span><span class="sig-name descname"><span class="pre">get_charger_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger.get_charger_dict" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[SUPPORTING]</strong></div>
+<div class="line"><strong>Charger Dictionary supported fields:</strong> </div>
+<div class="line">[‘id’, ‘name’, ‘latitude’, ‘longitude’, ‘address’, ‘currently_open’, </div>
+<div class="line">‘pv_current_in’, ‘pv_energy_level’, ‘rate_current’, ‘rate_predicted’, ‘active’, ‘last_updated’, ‘available_connector’]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – any combination of supported fields</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, SELECT_GENERIC_EMPTY, SELECT_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary array) <em>(‘result’ == SELECT_GENERIC_SUCCESS)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charger.get_charger_hash_map">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charger.</span></span><span class="sig-name descname"><span class="pre">get_charger_hash_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger.get_charger_hash_map" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[SUPPORTING]</strong></div>
+<div class="line"><strong>Charger Hashmap supported fields:</strong> </div>
+<div class="line">[‘id’, ‘name’, ‘latitude’, ‘longitude’, ‘address’, ‘currently_open’, </div>
+<div class="line">‘pv_current_in’, ‘pv_energy_level’, ‘rate_current’, ‘rate_predicted’, ‘active’, ‘last_updated’, ‘available_connector’]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – any combination of supported fields</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY, HASHMAP_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary) <em>(‘result’ == HASHMAP_GENERIC_SUCCESS)</em> Output. (‘id’ as key)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-db_access.db_charger_available_connector">
+<span id="db-access-db-charger-available-connector-module"></span><h2>db_access.db_charger_available_connector module<a class="headerlink" href="#module-db_access.db_charger_available_connector" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charger_available_connector.get_all_charger_connectors_decoded">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charger_available_connector.</span></span><span class="sig-name descname"><span class="pre">get_all_charger_connectors_decoded</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger_available_connector.get_all_charger_connectors_decoded" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[INTERNAL]</strong></div>
+<div class="line">Gets a mapping of chargers’ connectors.</div>
+<div class="line"><strong>Fields returned:</strong> {‘id_charger’:[{‘id_charger_available_connector’, ‘in_use’, ‘connector_type’:{…}}], ‘id_charger’:[{…}], …}</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary</p>
+</dd>
+<dt class="field-even">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(one) INTERNAL_ERROR, AVAILABLE_CONNECTORS_NOT_FOUND, AVAILABLE_CONNECTORS_FOUND.</p>
+</dd>
+<dt class="field-odd">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(dictionary) <em>(‘result’ == AVAILABLE_CONNECTORS_FOUND)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charger_available_connector.get_charger_available_connector_dict">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charger_available_connector.</span></span><span class="sig-name descname"><span class="pre">get_charger_available_connector_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger_available_connector.get_charger_available_connector_dict" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line">[SUPPORTING]</div>
+<div class="line"><strong>Charger Available Connector Dictionary supported fields:</strong> </div>
+<div class="line">[‘id’, ‘id_charger’, ‘id_connector_type’, ‘in_use’, ‘output_voltage’, ‘output_current’]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – any combination of supported fields</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, SELECT_GENERIC_EMPTY, SELECT_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary array) <em>(‘result’ == SELECT_GENERIC_SUCCESS)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charger_available_connector.get_charger_available_connector_hash_map">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charger_available_connector.</span></span><span class="sig-name descname"><span class="pre">get_charger_available_connector_hash_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger_available_connector.get_charger_available_connector_hash_map" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line">[SUPPORTING]</div>
+<div class="line"><strong>Charger Available Connector Hashmap supported fields:</strong> </div>
+<div class="line">[‘id’, ‘id_charger’, ‘id_connector_type’, ‘in_use’, ‘output_voltage’, ‘output_current’]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – any combination of supported fields</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY, HASHMAP_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary) <em>(‘result’ == HASHMAP_GENERIC_SUCCESS)</em> Output. (‘id’ as key)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charger_available_connector.set_charger_available_connector_in_use">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charger_available_connector.</span></span><span class="sig-name descname"><span class="pre">set_charger_available_connector_in_use</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_charger_available_connector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_to</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger_available_connector.set_charger_available_connector_in_use" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[INTERNAL]</strong></div>
+<div class="line">Sets a given id_charger_available_connector’s ‘in_use’ state.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary</p>
+</dd>
+<dt class="field-even">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(one) INTERNAL_ERROR, AVAILABLE_CONNECTOR_IN_USE or AVAILABLE_CONNECTOR_SET_USE_STATE_SUCCESS.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charger_available_connector.update_charger_available_connector_electric_stats">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charger_available_connector.</span></span><span class="sig-name descname"><span class="pre">update_charger_available_connector_electric_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_charger_available_connector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_voltage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_current</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger_available_connector.update_charger_available_connector_electric_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-db_access.db_connector_type">
+<span id="db-access-db-connector-type-module"></span><h2>db_access.db_connector_type module<a class="headerlink" href="#module-db_access.db_connector_type" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_connector_type.get_all_connectors">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_connector_type.</span></span><span class="sig-name descname"><span class="pre">get_all_connectors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_connector_type.get_all_connectors" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Retrieves ALL connector types from database.</div>
+<div class="line"><strong>Fields returned:</strong> [{‘id’, ‘name_short’, ‘name_long’, ‘name_connector’}]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary</p>
+</dd>
+<dt class="field-even">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(one) INTERNAL_ERROR, CONNECTOR_NOT_FOUND, CONNECTOR_FOUND.</p>
+</dd>
+<dt class="field-odd">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(dictionary array) <em>(‘result’ == CONNECTOR_FOUND)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_connector_type.get_connector_type_dict">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_connector_type.</span></span><span class="sig-name descname"><span class="pre">get_connector_type_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_connector_type.get_connector_type_dict" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[SUPPORTING]</strong></div>
+<div class="line"><strong>Connector Type Dictionary supported fields:</strong> </div>
+<div class="line">[‘id’, ‘current_type’, ‘name_connector’, ‘output_voltage_max’, ‘output_current_max’]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – any combination of supported fields</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, SELECT_GENERIC_EMPTY, SELECT_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary array) <em>(‘result’ == SELECT_GENERIC_SUCCESS)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_connector_type.get_connector_type_hash_map">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_connector_type.</span></span><span class="sig-name descname"><span class="pre">get_connector_type_hash_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_connector_type.get_connector_type_hash_map" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[SUPPORTING]</strong></div>
+<div class="line"><strong>Connector Type Hashmap supported fields:</strong> </div>
+<div class="line">[‘id’, ‘current_type’, ‘name_connector’, ‘output_voltage_max’, ‘output_current_max’]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – any combination of supported fields</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY, HASHMAP_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary) <em>(‘result’ == HASHMAP_GENERIC_SUCCESS)</em> Output. (‘id’ as key)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-db_access.db_favourite_charger">
+<span id="db-access-db-favourite-charger-module"></span><h2>db_access.db_favourite_charger module<a class="headerlink" href="#module-db_access.db_favourite_charger" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_favourite_charger.add_favourite_charger">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_favourite_charger.</span></span><span class="sig-name descname"><span class="pre">add_favourite_charger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_charger_input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_favourite_charger.add_favourite_charger" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Attempts to add a favourite charger entry to the database.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – id_user_info_sanitised</p></li>
+<li><p><strong>id_charger_input</strong> (<em>string</em>) – id_charger_input</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, FAVOURITE_CHARGER_MODIFY_SUCCESS, FAVOURITE_CHARGER_MODIFY_FAILURE.</p>
+</dd>
+<dt class="field-even">Key ‘reason’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(array, one/multiple) <em>(‘result’ == FAVOURITE_CHARGER_MODIFY_FAILURE)</em> CHARGER_NOT_FOUND, FAVOURITE_CHARGER_DUPLICATE_ENTRY.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_favourite_charger.get_favourite_charger_dict">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_favourite_charger.</span></span><span class="sig-name descname"><span class="pre">get_favourite_charger_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_favourite_charger.get_favourite_charger_dict" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[SUPPORTING]</strong></div>
+<div class="line"><strong>Favourite Charger Dictionary supported fields:</strong> </div>
+<div class="line">[‘id’, ‘id_user_info’, ‘id_charger’]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – any combination of supported fields</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, SELECT_GENERIC_EMPTY, SELECT_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary array) <em>(‘result’ == SELECT_GENERIC_SUCCESS)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_favourite_charger.get_favourite_charger_hash_map">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_favourite_charger.</span></span><span class="sig-name descname"><span class="pre">get_favourite_charger_hash_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_favourite_charger.get_favourite_charger_hash_map" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[SUPPORTING]</strong></div>
+<div class="line"><strong>Favourite Charger Hashmap supported fields:</strong> </div>
+<div class="line">[‘id’, ‘id_user_info’, ‘id_charger’]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – any combination of supported fields</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY, HASHMAP_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary) <em>(‘result’ == HASHMAP_GENERIC_SUCCESS)</em> Output. (‘id’ as key)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_favourite_charger.get_user_favourite_charger_id_array">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_favourite_charger.</span></span><span class="sig-name descname"><span class="pre">get_user_favourite_charger_id_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_favourite_charger.get_user_favourite_charger_id_array" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[INTERNAL]</strong></div>
+<div class="line">Get an array of a user’s favourite charger ids.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – id_user_info_sanitised</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, FAVOURITE_CHARGERS_NOT_FOUND, FAVOURITE_CHARGERS_FOUND.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(array) <em>(‘result’ == FAVOURITE_CHARGERS_FOUND)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_favourite_charger.get_user_favourite_chargers">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_favourite_charger.</span></span><span class="sig-name descname"><span class="pre">get_user_favourite_chargers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_favourite_charger.get_user_favourite_chargers" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Get a user’s favourite chargers.</div>
+<div class="line"><strong>Fields returned:</strong> </div>
+<div class="line">[{‘id’, ‘name’, ‘latitude’, ‘longitude’, ‘address’, ‘currently_open’, ‘pv_current_in’, ‘pv_energy_level’,</div>
+<div class="line">‘rate_current’, ‘rate_predicted’, ‘active’, ‘last_updated’, ‘available_connector’}]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – id_user_info_sanitised</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, FAVOURITE_CHARGERS_NOT_FOUND, FAVOURITE_CHARGERS_FOUND.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary array) <em>(‘result’ == FAVOURITE_CHARGERS_FOUND)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_favourite_charger.remove_favourite_charger">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_favourite_charger.</span></span><span class="sig-name descname"><span class="pre">remove_favourite_charger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_charger_input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_favourite_charger.remove_favourite_charger" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Attempts to remove a favourite charger entry from the database.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – id_user_info_sanitised</p></li>
+<li><p><strong>id_charger_input</strong> (<em>string</em>) – id_charger_input</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, FAVOURITE_CHARGER_MODIFY_SUCCESS, FAVOURITE_CHARGER_MODIFY_FAILURE.</p>
+</dd>
+<dt class="field-even">Key ‘reason’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(array, one) <em>(‘result’ == FAVOURITE_CHARGER_MODIFY_FAILURE)</em> FAVOURITE_CHARGERS_NOT_FOUND.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-db_access.db_universal">
+<span id="db-access-db-universal-module"></span><h2>db_access.db_universal module<a class="headerlink" href="#module-db_access.db_universal" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_universal.degeneralise_result_codes">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_universal.</span></span><span class="sig-name descname"><span class="pre">degeneralise_result_codes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operation_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_universal.degeneralise_result_codes" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[INTERNAL]</strong></div>
+<div class="line">Takes an output from get_universal_hash_map or get_universal_dict and swaps the result key’s value with a more specific one specified by operation_type.</div>
+<div class="line">No return because dictionaries are pass by reference.</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_universal.get_universal_dict">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_universal.</span></span><span class="sig-name descname"><span class="pre">get_universal_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_sql_translations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trailing_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_universal.get_universal_dict" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[SUPPORTING]</strong></div>
+<div class="line">Simply retrieves chosen rows of a single table, loads into dictionary array. [{…}, …]</div>
+<div class="line">This is used to separate retrieval concerns. Any joins are performed by the parent method.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – output key names of chosen column key-values.</p></li>
+<li><p><strong>column_sql_translations</strong> (<em>dict</em>) – mapping of output key names to SQL column names.</p></li>
+<li><p><strong>trailing_query</strong> (<em>string</em>) – ‘FROM &lt;table_name&gt;’</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, SELECT_GENERIC_EMPTY, SELECT_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary array) <em>(‘result’ == SELECT_GENERIC_SUCCESS)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_universal.get_universal_hash_map">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_universal.</span></span><span class="sig-name descname"><span class="pre">get_universal_hash_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_sql_translations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trailing_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_universal.get_universal_hash_map" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[SUPPORTING]</strong></div>
+<div class="line">Simply retrieves chosen rows of a single table, loads into hashmap with id being the key, </div>
+<div class="line">other fields containing chosen column key-values. {id: {…}, …}</div>
+<div class="line">This is used to separate retrieval concerns. Any joins are performed by the parent method.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – output key names of chosen column key-values.</p></li>
+<li><p><strong>column_sql_translations</strong> (<em>dict</em>) – mapping of output key names to SQL column names.</p></li>
+<li><p><strong>trailing_query</strong> (<em>string</em>) – ‘FROM &lt;table_name&gt;’</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY, HASHMAP_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary) <em>(‘result’ == HASHMAP_GENERIC_SUCCESS)</em> Output. (‘id’ as key)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-db_access.db_user_info">
+<span id="db-access-db-user-info-module"></span><h2>db_access.db_user_info module<a class="headerlink" href="#module-db_access.db_user_info" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_user_info.create_user">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_user_info.</span></span><span class="sig-name descname"><span class="pre">create_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">full_name_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phone_no_input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_user_info.create_user" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Attempts to insert a new user into the database.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>username_input</strong> (<em>array</em>) – username_input</p></li>
+<li><p><strong>password_input</strong> (<em>array</em>) – password_input</p></li>
+<li><p><strong>email_input</strong> (<em>array</em>) – email_input</p></li>
+<li><p><strong>full_name_input</strong> (<em>array</em>) – full_name_input</p></li>
+<li><p><strong>phone_no_input</strong> (<em>array</em>) – phone_no_input</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, USER_INFO_CREATE_FAILURE, USER_INFO_CREATE_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘reason’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(array, one/multiple) <em>(‘result’ == USER_INFO_CREATE_FAILURE)</em> USERNAME_INVALID_LENGTH, PASSWORD_INVALID_LENGTH, PASSWORD_INVALID_SYNTAX, EMAIL_INVALID_LENGTH, EMAIL_INVALID_SYNTAX, ACCOUNT_ALREADY_EXISTS, PHONE_NUMBER_INVALID, FULL_NAME_INVALID_LENGTH</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_user_info.get_user_id_by_email">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_user_info.</span></span><span class="sig-name descname"><span class="pre">get_user_id_by_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email_input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_user_info.get_user_id_by_email" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Takes an input email and retrieves the corresponding user id.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>email_input</strong> (<em>array</em>) – email_input</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, ACCOUNT_NOT_FOUND, ACCOUNT_FOUND.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(string) <em>(‘result’ == ACCOUNT_FOUND)</em> user id.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_user_info.get_user_info_by_user_id">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_user_info.</span></span><span class="sig-name descname"><span class="pre">get_user_info_by_user_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_user_info.get_user_info_by_user_id" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Retrieves a user’s details.</div>
+<div class="line"><strong>Fields returned:</strong> {‘username’, ‘email’, ‘full_name’, ‘phone_no’, ‘created_at’, ‘modified_at’}</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_user_info_sanitised</strong> (<em>array</em>) – id_user_info_sanitised</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, ACCOUNT_NOT_FOUND, ACCOUNT_FOUND.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary) <em>(‘result’ == ACCOUNT_FOUND)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_user_info.get_user_info_dict">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_user_info.</span></span><span class="sig-name descname"><span class="pre">get_user_info_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_user_info.get_user_info_dict" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[SUPPORTING]</strong></div>
+<div class="line"><strong>User Info Dictionary supported fields:</strong> </div>
+<div class="line">[‘id’, ‘username’, ‘password’, ‘email’, ‘full_name’, ‘phone_no’, ‘created_at’, ‘modified_at’]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – any combination of supported fields</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, SELECT_GENERIC_EMPTY, SELECT_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary array) <em>(‘result’ == SELECT_GENERIC_SUCCESS)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_user_info.get_user_info_hash_map">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_user_info.</span></span><span class="sig-name descname"><span class="pre">get_user_info_hash_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_user_info.get_user_info_hash_map" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[SUPPORTING]</strong></div>
+<div class="line"><strong>User Info Hashmap supported fields:</strong> </div>
+<div class="line">[‘id’, ‘username’, ‘password’, ‘email’, ‘full_name’, ‘phone_no’, ‘created_at’, ‘modified_at’]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – any combination of supported fields</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY, HASHMAP_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary) <em>(‘result’ == HASHMAP_GENERIC_SUCCESS)</em> Output. (‘id’ as key)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_user_info.login_user">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_user_info.</span></span><span class="sig-name descname"><span class="pre">login_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password_input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_user_info.login_user" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Takes an input email and password and verifies that it exists in the database.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>email_input</strong> (<em>array</em>) – email_input</p></li>
+<li><p><strong>password_input</strong> (<em>array</em>) – password_input</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) USER_INFO_INVALID, USER_INFO_VALID.</p>
+</dd>
+<dt class="field-even">Key ‘reason’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(array, one) <em>(‘result’ == USER_INFO_INVALID)</em> EMAIL_PASSWORD_INVALID.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_user_info.update_user">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_user_info.</span></span><span class="sig-name descname"><span class="pre">update_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">full_name_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phone_no_input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_user_info.update_user" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Updates a user’s details.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>username_input</strong> (<em>array</em>) – username_input</p></li>
+<li><p><strong>password_input</strong> (<em>array</em>) – password_input</p></li>
+<li><p><strong>email_input</strong> (<em>array</em>) – email_input</p></li>
+<li><p><strong>full_name_input</strong> (<em>array</em>) – full_name_input</p></li>
+<li><p><strong>phone_no_input</strong> (<em>array</em>) – phone_no_input</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, USER_INFO_UPDATE_FAILURE, USER_INFO_UPDATE_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘reason’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(array, one/multiple) <em>(‘result’ == USER_INFO_UPDATE_FAILURE)</em> USERNAME_INVALID_LENGTH, PASSWORD_INVALID_LENGTH, PASSWORD_INVALID_SYNTAX, EMAIL_INVALID_LENGTH, EMAIL_INVALID_SYNTAX, ACCOUNT_ALREADY_EXISTS, PHONE_NUMBER_INVALID, FULL_NAME_INVALID_LENGTH, ACCOUNT_NOT_FOUND</p>
+</dd>
+<dt class="field-odd">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(string) <em>(‘result’ == USER_INFO_UPDATE_SUCCESS)</em> Sanitised email string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_user_info.validate_user_info">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_user_info.</span></span><span class="sig-name descname"><span class="pre">validate_user_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">full_name_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phone_no_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_user_info.validate_user_info" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[INTERNAL]</strong></div>
+<div class="line">Takes inputs bound for insertion into ‘user info’ table and validates it. If valid, also sanitises and hashes where needed.</div>
+<div class="line"><strong>Fields returned:</strong> {‘username’, ‘email’, ‘full_name’, ‘phone_no’} (returns only what it is provided with)</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>username_input</strong> (<em>array</em>) – username_input (can be None)</p></li>
+<li><p><strong>password_input</strong> (<em>array</em>) – password_input (can be None)</p></li>
+<li><p><strong>email_input</strong> (<em>array</em>) – email_input (can be None)</p></li>
+<li><p><strong>full_name_input</strong> (<em>array</em>) – full_name_input (can be None)</p></li>
+<li><p><strong>phone_no_input</strong> (<em>array</em>) – phone_no_input (can be None)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) USER_INFO_INVALID, USER_INFO_VALID.</p>
+</dd>
+<dt class="field-even">Key ‘reason’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(array, one/multiple) <em>(‘result’ == USER_INFO_INVALID)</em> USERNAME_INVALID_LENGTH, PASSWORD_INVALID_LENGTH, PASSWORD_INVALID_SYNTAX, EMAIL_INVALID_LENGTH, EMAIL_INVALID_SYNTAX, ACCOUNT_ALREADY_EXISTS, PHONE_NUMBER_INVALID, FULL_NAME_INVALID_LENGTH</p>
+</dd>
+<dt class="field-odd">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(dictionary) <em>(‘result’ == USER_INFO_UPDATE_SUCCESS)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-db_access.db_vehicle">
+<span id="db-access-db-vehicle-module"></span><h2>db_access.db_vehicle module<a class="headerlink" href="#module-db_access.db_vehicle" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_vehicle.add_vehicle">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_vehicle.</span></span><span class="sig-name descname"><span class="pre">add_vehicle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sn_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connector_input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_vehicle.add_vehicle" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Attempts to add a vehicle.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – id_user_info_sanitised</p></li>
+<li><p><strong>name_input</strong> (<em>string</em>) – name_input</p></li>
+<li><p><strong>model_input</strong> (<em>string</em>) – model_input</p></li>
+<li><p><strong>sn_input</strong> (<em>string</em>) – sn_input</p></li>
+<li><p><strong>connector_input</strong> (<em>string</em>) – connector_input</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, VEHICLE_ADD_FAILURE, VEHICLE_ADD_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘reason’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(array, one/multiple) <em>(‘result’ == VEHICLE_ADD_FAILURE)</em> VEHICLE_NAME_INVALID_LENGTH, VEHICLE_MODEL_INVALID_LENGTH, VEHICLE_SN_INVALID_LENGTH, CONNECTOR_NOT_FOUND.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_vehicle.get_active_vehicle_by_user_id">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_vehicle.</span></span><span class="sig-name descname"><span class="pre">get_active_vehicle_by_user_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_vehicle.get_active_vehicle_by_user_id" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Retrieves a user’s vehicles.</div>
+<div class="line"><strong>Fields returned:</strong> [{‘id’, ‘name’, ‘model’, ‘vehicle_sn’, ‘connector’}]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – id_user_info_sanitised</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, VEHICLE_NOT_FOUND, VEHICLE_FOUND.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary array) <em>(‘result’ == VEHICLE_FOUND)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_vehicle.get_vehicle_dict">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_vehicle.</span></span><span class="sig-name descname"><span class="pre">get_vehicle_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_vehicle.get_vehicle_dict" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[SUPPORTING]</strong></div>
+<div class="line"><strong>Vehicle Dictionary supported fields:</strong> </div>
+<div class="line">[‘id’, ‘id_user_info’, ‘name’, ‘model’, ‘vehicle_sn’, ‘connector’, ‘active’]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – any combination of supported fields</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, SELECT_GENERIC_EMPTY, SELECT_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary array) <em>(‘result’ == SELECT_GENERIC_SUCCESS)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_vehicle.get_vehicle_hash_map">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_vehicle.</span></span><span class="sig-name descname"><span class="pre">get_vehicle_hash_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_vehicle.get_vehicle_hash_map" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[SUPPORTING]</strong></div>
+<div class="line"><strong>Vehicle Hashmap supported fields:</strong> </div>
+<div class="line">[‘id’, ‘id_user_info’, ‘name’, ‘model’, ‘vehicle_sn’, ‘connector’, ‘active’]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – any combination of supported fields</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY, HASHMAP_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary) <em>(‘result’ == HASHMAP_GENERIC_SUCCESS)</em> Output. (‘id’ as key)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_vehicle.remove_vehicle">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_vehicle.</span></span><span class="sig-name descname"><span class="pre">remove_vehicle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_vehicle_input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_vehicle.remove_vehicle" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Attempts to remove a vehicle.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_vehicle_input</strong> (<em>string</em>) – id_vehicle_input</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, VEHICLE_REMOVE_FAILURE, VEHICLE_REMOVE_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘reason’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(array, one) <em>(‘result’ == VEHICLE_REMOVE_FAILURE)</em> VEHICLE_NOT_FOUND.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-db_access">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-db_access" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="flask" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="flask_routes.html" class="btn btn-neutral float-right" title="flask_routes package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, maximus-lee-678, zoee-Y.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

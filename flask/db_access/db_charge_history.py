@@ -23,13 +23,17 @@ FROM charge_history
 
 def get_charge_history_hash_map(column_names=None, where_array=None):
     """
-    \tcolumn_names >> any combination of ['id', 'id_user_info', 'id_vehicle_info', 'id_charger', 'time_start',
-                    'time_end', 'total_energy_drawn', 'amount_payable', 'is_charge_finished']\n
-    \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY or HASHMAP_GENERIC_SUCCESS.\n
-    <content> (if <result> is HASHMAP_GENERIC_SUCCESS) {Dictionary} containing table information.\n
-    \t{"id": {...key-values...}}
+    | [SUPPORTING]
+    | **Charge History Hashmap supported fields:** 
+    | ['id', 'id_user_info', 'id_vehicle_info', 'id_charger', 'time_start',
+    | 'time_end', 'total_energy_drawn', 'amount_payable', 'is_charge_finished']
+
+    :param array column_names: any combination of supported fields
+    :param array where_array: containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being 'NOT' e.g. [['id', '0'], ['id', '1', 'NOT]]
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY, HASHMAP_GENERIC_SUCCESS. 
+    :key 'content': (dictionary) *('result' == HASHMAP_GENERIC_SUCCESS)* Output. ('id' as key)
     """
 
     if column_names == None:
@@ -43,13 +47,17 @@ def get_charge_history_hash_map(column_names=None, where_array=None):
 
 def get_charge_history_dict(column_names=None, where_array=None):
     """
-    \tcolumn_names >> any combination of ['id', 'id_user_info', 'id_vehicle_info', 'id_charger', 'time_start',
-                    'time_end', 'total_energy_drawn', 'amount_payable', 'is_charge_finished']\n
-    \twhere_array >> an [Array] containing more [Arrays][2], [Array][0] being WHERE column and [Array][1] being WHERE value e.g. [['id', '0'], ['id', '1']\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, SELECT_GENERIC_EMPTY or SELECT_GENERIC_SUCCESS.\n
-    <content> (if <result> is SELECT_GENERIC_SUCCESS) {Dictionary} containing table information.\n
-    \t{{...key-values...}}
+    | [SUPPORTING]
+    | **Charge History Dictionary supported fields:** 
+    | ['id', 'id_user_info', 'id_vehicle_info', 'id_charger', 'time_start',
+    | 'time_end', 'total_energy_drawn', 'amount_payable', 'is_charge_finished']
+
+    :param array column_names: any combination of supported fields
+    :param array where_array: containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being 'NOT' e.g. [['id', '0'], ['id', '1', 'NOT]]
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, SELECT_GENERIC_EMPTY, SELECT_GENERIC_SUCCESS. 
+    :key 'content': (dictionary array) *('result' == SELECT_GENERIC_SUCCESS)* Output.
     """
 
     if column_names == None:
@@ -63,12 +71,16 @@ def get_charge_history_dict(column_names=None, where_array=None):
 
 def get_charge_history_active(id_user_info_sanitised):
     """
-    Attempts to retrieve a charge history entry based on user id. 
-    The entry is also joined with charge current, vehicle details, and charger details.\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, CHARGE_HISTORY_NOT_FOUND or CHARGE_HISTORY_FOUND.\n
-    <content> (if <result> is CHARGE_HISTORY_FOUND) {Dictionary} containing charge history information.
-    \t{"time_start", "percentage_current", "charge_current", "vehicle", "charger"}
+    | **[ENDPOINT]**
+    | Attempts to retrieve a charge history entry based on user id. 
+    | The entry is also joined with charge current, vehicle details, and charger details.
+    | **Fields returned:** [{'id', 'time_start', 'total_energy_drawn', 'vehicle', 'charger'}]
+
+    :param string id_user_info_sanitised: id_user_info_sanitised
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, CHARGE_HISTORY_NOT_FOUND, CHARGE_HISTORY_FOUND.
+    :key 'content': (dictionary array, one/multiple) *('result' == CHARGE_HISTORY_FOUND)* Output.
     """
 
     # get charge history
@@ -127,14 +139,19 @@ def get_charge_history_active(id_user_info_sanitised):
 
 def get_charge_history_by_user_id(id_user_info_sanitised, filter_by):
     """
-    Retrieve's a user's charge history.
-    \tfilter_by >> in_progress, complete, all\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, CHARGE_HISTORY_NOT_FOUND, CHARGE_HISTORY_FOUND or CONFIGURATION_ERROR.\n
-    <content> (if <result> is CHARGE_HISTORY_FOUND) [{Array Dictionary}] containing charge history information.
-    \tin_progress: {"vehicle", "id_vehicle_info", "charger", "time_start", "percentage_start"}
-    \complete: {"vehicle", "id_vehicle_info", "charger", "time_start", "time_end", "percentage_start", "percentage_end", "amount_payable"}
-    \all: {"vehicle", "id_vehicle_info", "charger", "time_start", "time_end", "percentage_start", "percentage_end", "amount_payable", "is_charge_finished"}
+    | **[ENDPOINT]**
+    | Retrieves a user's charge history.
+    | **Fields returned:** 
+    | 'in_progress': [{'id', 'time_start', 'total_energy_drawn', 'vehicle', 'charger'}]
+    | 'complete': [{'id', 'time_start', 'time_end', 'total_energy_drawn', 'amount_payable', 'vehicle', 'charger'}]
+    | 'all': [{'id', 'time_start', 'time_end', 'total_energy_drawn', 'amount_payable', 'is_charge_finished', 'vehicle', 'charger'}]
+
+    :param string id_user_info_sanitised: id_user_info_sanitised
+    :param string filter_by: 'in_progress', 'complete', 'all'
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, CHARGE_HISTORY_NOT_FOUND, CHARGE_HISTORY_FOUND, CONFIGURATION_ERROR. 
+    :key 'content': (dictionary array) *('result' == CHARGE_HISTORY_FOUND)* Output.
     """
 
     # get charge history
@@ -195,12 +212,18 @@ def get_charge_history_by_user_id(id_user_info_sanitised, filter_by):
 
 def add_charge_history_initial(id_user_info_sanitised, id_vehicle_info_input, id_charger_input, id_charger_available_connector_input):
     """
-    Attempts to insert a charge history into the database. This method will also add an entry to "charge current",
-    as this method is called when the user starts a charge.\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, CHARGE_HISTORY_CREATE_FAILURE or CHARGE_HISTORY_CREATE_SUCCESS.\n
-    <reason> (if <result> is CHARGE_HISTORY_CREATE_FAILURE) [Array] Reason for failure.
-    \t[ACCOUNT_NOT_FOUND, CHARGE_HISTORY_ALREADY_CHARGING, VEHICLE_NOT_FOUND, CHARGER_NOT_FOUND, CHARGE_HISTORY_INVALID_CHARGE_LEVEL]
+    | **[ENDPOINT]**
+    | Attempts to insert a charge history into the database.
+    | This method will also add an entry to "charge current".
+
+    :param string id_user_info_sanitised: id_user_info_sanitised
+    :param string id_vehicle_info_input: id_vehicle_info_input
+    :param string id_charger_input: id_charger_input
+    :param string id_charger_available_connector_input: id_charger_available_connector_input
+
+    :returns: Dictionary
+    :key result: (one) INTERNAL_ERROR, CHARGE_HISTORY_CREATE_FAILURE, CHARGE_HISTORY_CREATE_SUCCESS.
+    :key reason: (array, one/multiple) *('result' == CHARGE_HISTORY_CREATE_FAILURE)* ACCOUNT_NOT_FOUND, CHARGE_HISTORY_ALREADY_CHARGING, VEHICLE_NOT_FOUND, CHARGER_NOT_FOUND, CHARGE_HISTORY_INVALID_CHARGE_LEVEL
     """
 
     contains_errors = False
@@ -273,11 +296,15 @@ def add_charge_history_initial(id_user_info_sanitised, id_vehicle_info_input, id
 
 def finish_charge_history(id_user_info_sanitised):
     """
-    Attempts to finish an unfinished charge history. This method will also remove the corresponding "charge current" entry.\n
-    Returns Dictionary with keys:\n
-    <result> INTERNAL_ERROR, CHARGE_HISTORY_FINISH_FAILURE or CHARGE_HISTORY_FINISH_SUCCESS.\n
-    <reason> (if <result> is CHARGE_HISTORY_FINISH_FAILURE) [Array] Reason for failure.
-    \t[CHARGE_HISTORY_NOT_CHARGING]
+    | **[ENDPOINT]**
+    | Attempts to close a charge history entry.
+    | This method will also remove the corresponding "charge current" entry.
+
+    :param string id_user_info_sanitised: id_user_info_sanitised
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, CHARGE_HISTORY_FINISH_FAILURE, CHARGE_HISTORY_FINISH_SUCCESS.
+    :key 'reason': (array, one/multiple) *('result' == CHARGE_HISTORY_FINISH_FAILURE)* CHARGE_HISTORY_NOT_CHARGING
     """
 
     contains_errors = False

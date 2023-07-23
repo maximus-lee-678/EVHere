@@ -30,3 +30,6 @@ __pycache__
 # [global ignores]
 .vscode
 *.db
+
+# [sphinx documentation ignores]
+docs/_build/

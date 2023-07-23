@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>flask &mdash; EVHere  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="db_access package" href="db_access.html" />
+    <link rel="prev" title="Welcome to EVHere’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            EVHere
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">flask</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="db_access.html">db_access package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flask_routes.html">flask_routes package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">server module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">EVHere</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">flask</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="flask">
+<h1>flask<a class="headerlink" href="#flask" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="db_access.html">db_access package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="db_access.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_access.html#module-db_access.db_charge_current">db_access.db_charge_current module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charge_current.add_charge_current"><code class="docutils literal notranslate"><span class="pre">add_charge_current()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charge_current.get_charge_current_dict"><code class="docutils literal notranslate"><span class="pre">get_charge_current_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charge_current.get_charge_current_hash_map"><code class="docutils literal notranslate"><span class="pre">get_charge_current_hash_map()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charge_current.remove_charge_current"><code class="docutils literal notranslate"><span class="pre">remove_charge_current()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charge_current.update_user_charge_current"><code class="docutils literal notranslate"><span class="pre">update_user_charge_current()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="db_access.html#module-db_access.db_charge_history">db_access.db_charge_history module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charge_history.add_charge_history_initial"><code class="docutils literal notranslate"><span class="pre">add_charge_history_initial()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charge_history.finish_charge_history"><code class="docutils literal notranslate"><span class="pre">finish_charge_history()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charge_history.get_charge_history_active"><code class="docutils literal notranslate"><span class="pre">get_charge_history_active()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charge_history.get_charge_history_by_user_id"><code class="docutils literal notranslate"><span class="pre">get_charge_history_by_user_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charge_history.get_charge_history_dict"><code class="docutils literal notranslate"><span class="pre">get_charge_history_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charge_history.get_charge_history_hash_map"><code class="docutils literal notranslate"><span class="pre">get_charge_history_hash_map()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="db_access.html#module-db_access.db_charger">db_access.db_charger module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charger.get_all_chargers"><code class="docutils literal notranslate"><span class="pre">get_all_chargers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charger.get_charger_dict"><code class="docutils literal notranslate"><span class="pre">get_charger_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charger.get_charger_hash_map"><code class="docutils literal notranslate"><span class="pre">get_charger_hash_map()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="db_access.html#module-db_access.db_charger_available_connector">db_access.db_charger_available_connector module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charger_available_connector.get_all_charger_connectors_decoded"><code class="docutils literal notranslate"><span class="pre">get_all_charger_connectors_decoded()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charger_available_connector.get_charger_available_connector_dict"><code class="docutils literal notranslate"><span class="pre">get_charger_available_connector_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charger_available_connector.get_charger_available_connector_hash_map"><code class="docutils literal notranslate"><span class="pre">get_charger_available_connector_hash_map()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charger_available_connector.set_charger_available_connector_in_use"><code class="docutils literal notranslate"><span class="pre">set_charger_available_connector_in_use()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charger_available_connector.update_charger_available_connector_electric_stats"><code class="docutils literal notranslate"><span class="pre">update_charger_available_connector_electric_stats()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="db_access.html#module-db_access.db_connector_type">db_access.db_connector_type module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_connector_type.get_all_connectors"><code class="docutils literal notranslate"><span class="pre">get_all_connectors()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_connector_type.get_connector_type_dict"><code class="docutils literal notranslate"><span class="pre">get_connector_type_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_connector_type.get_connector_type_hash_map"><code class="docutils literal notranslate"><span class="pre">get_connector_type_hash_map()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="db_access.html#module-db_access.db_favourite_charger">db_access.db_favourite_charger module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_favourite_charger.add_favourite_charger"><code class="docutils literal notranslate"><span class="pre">add_favourite_charger()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_favourite_charger.get_favourite_charger_dict"><code class="docutils literal notranslate"><span class="pre">get_favourite_charger_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_favourite_charger.get_favourite_charger_hash_map"><code class="docutils literal notranslate"><span class="pre">get_favourite_charger_hash_map()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_favourite_charger.get_user_favourite_charger_id_array"><code class="docutils literal notranslate"><span class="pre">get_user_favourite_charger_id_array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_favourite_charger.get_user_favourite_chargers"><code class="docutils literal notranslate"><span class="pre">get_user_favourite_chargers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_favourite_charger.remove_favourite_charger"><code class="docutils literal notranslate"><span class="pre">remove_favourite_charger()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="db_access.html#module-db_access.db_universal">db_access.db_universal module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_universal.degeneralise_result_codes"><code class="docutils literal notranslate"><span class="pre">degeneralise_result_codes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_universal.get_universal_dict"><code class="docutils literal notranslate"><span class="pre">get_universal_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_universal.get_universal_hash_map"><code class="docutils literal notranslate"><span class="pre">get_universal_hash_map()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="db_access.html#module-db_access.db_user_info">db_access.db_user_info module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_user_info.create_user"><code class="docutils literal notranslate"><span class="pre">create_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_user_info.get_user_id_by_email"><code class="docutils literal notranslate"><span class="pre">get_user_id_by_email()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_user_info.get_user_info_by_user_id"><code class="docutils literal notranslate"><span class="pre">get_user_info_by_user_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_user_info.get_user_info_dict"><code class="docutils literal notranslate"><span class="pre">get_user_info_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_user_info.get_user_info_hash_map"><code class="docutils literal notranslate"><span class="pre">get_user_info_hash_map()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_user_info.login_user"><code class="docutils literal notranslate"><span class="pre">login_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_user_info.update_user"><code class="docutils literal notranslate"><span class="pre">update_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_user_info.validate_user_info"><code class="docutils literal notranslate"><span class="pre">validate_user_info()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="db_access.html#module-db_access.db_vehicle">db_access.db_vehicle module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_vehicle.add_vehicle"><code class="docutils literal notranslate"><span class="pre">add_vehicle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_vehicle.get_active_vehicle_by_user_id"><code class="docutils literal notranslate"><span class="pre">get_active_vehicle_by_user_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_vehicle.get_vehicle_dict"><code class="docutils literal notranslate"><span class="pre">get_vehicle_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_vehicle.get_vehicle_hash_map"><code class="docutils literal notranslate"><span class="pre">get_vehicle_hash_map()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_vehicle.remove_vehicle"><code class="docutils literal notranslate"><span class="pre">remove_vehicle()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="db_access.html#module-db_access">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="flask_routes.html">flask_routes package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="flask_routes.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flask_routes.html#module-flask_routes.flask_charge_current">flask_routes.flask_charge_current module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flask_routes.html#module-flask_routes.flask_charge_history">flask_routes.flask_charge_history module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_charge_history.fun_finish_charge_history"><code class="docutils literal notranslate"><span class="pre">fun_finish_charge_history()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_charge_history.fun_get_charge_current"><code class="docutils literal notranslate"><span class="pre">fun_get_charge_current()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_charge_history.fun_get_charge_history"><code class="docutils literal notranslate"><span class="pre">fun_get_charge_history()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_charge_history.fun_start_charge_history"><code class="docutils literal notranslate"><span class="pre">fun_start_charge_history()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="flask_routes.html#module-flask_routes.flask_charger">flask_routes.flask_charger module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_charger.fun_get_all_chargers"><code class="docutils literal notranslate"><span class="pre">fun_get_all_chargers()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="flask_routes.html#module-flask_routes.flask_connector_type">flask_routes.flask_connector_type module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_connector_type.fun_get_connectors"><code class="docutils literal notranslate"><span class="pre">fun_get_connectors()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="flask_routes.html#module-flask_routes.flask_favourite_charger">flask_routes.flask_favourite_charger module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_favourite_charger.fun_add_favourite_charger"><code class="docutils literal notranslate"><span class="pre">fun_add_favourite_charger()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_favourite_charger.fun_get_favourite_chargers"><code class="docutils literal notranslate"><span class="pre">fun_get_favourite_chargers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_favourite_charger.fun_remove_favourite_charger"><code class="docutils literal notranslate"><span class="pre">fun_remove_favourite_charger()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="flask_routes.html#module-flask_routes.flask_helper_functions">flask_routes.flask_helper_functions module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_helper_functions.format_for_endpoint"><code class="docutils literal notranslate"><span class="pre">format_for_endpoint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_helper_functions.join_strings"><code class="docutils literal notranslate"><span class="pre">join_strings()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="flask_routes.html#module-flask_routes.flask_user_info">flask_routes.flask_user_info module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_user_info.fun_create_account"><code class="docutils literal notranslate"><span class="pre">fun_create_account()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_user_info.fun_get_user_info"><code class="docutils literal notranslate"><span class="pre">fun_get_user_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_user_info.fun_login"><code class="docutils literal notranslate"><span class="pre">fun_login()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_user_info.fun_update_user_info"><code class="docutils literal notranslate"><span class="pre">fun_update_user_info()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="flask_routes.html#module-flask_routes.flask_vehicle">flask_routes.flask_vehicle module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_vehicle.fun_add_vehicle"><code class="docutils literal notranslate"><span class="pre">fun_add_vehicle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_vehicle.fun_get_user_vehicles"><code class="docutils literal notranslate"><span class="pre">fun_get_user_vehicles()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_vehicle.fun_remove_vehicle"><code class="docutils literal notranslate"><span class="pre">fun_remove_vehicle()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="flask_routes.html#module-flask_routes">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="server.html">server module</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to EVHere’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="db_access.html" class="btn btn-neutral float-right" title="db_access package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, maximus-lee-678, zoee-Y.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
