@@ -134,18 +134,17 @@ def get_charger_dict(column_names=None, where_array=None):
     return charger_dict_out
 
 
-def get_all_chargers(id_user_info_sanitised=None):
+def get_all_chargers_with_favourite_dict(id_user_info_sanitised):
     """
-    | **[ENDPOINT]**
-    | Retrieves ALL chargers from database.
+    | **[ENDPOINT/INTERNAL]**
+    | Retrieves ALL chargers from database. Also includes 'is_favourite'. (Dictionary)
     | **Fields returned:** [{'id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 'pv_current_in', 
-    | 'pv_energy_level', 'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector'}]
+    | 'pv_energy_level', 'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector', 'is_favourite'}]
 
-    :param string id_user_info_sanitised: *(optional)* if specified, adds 'is_favourite' key to content dict
+    :param string id_user_info_sanitised: id_user_info_sanitised
 
     :returns: Dictionary
     :key 'result': (one) INTERNAL_ERROR, CHARGER_NOT_FOUND, CHARGER_FOUND. 
-    :key 'type': (one) CHARGER_WITH_FAVOURITE, CHARGER_WITHOUT_FAVOURITE. 
     :key 'content': (dictionary array) *('result' == CHARGER_FOUND)* Output.
     """
 
@@ -159,10 +158,51 @@ def get_all_chargers(id_user_info_sanitised=None):
 
     key_values = charger_dict_out['content']
 
-    if id_user_info_sanitised is None:
-        return {'result': db_service_code_master.CHARGER_FOUND,
-                'type': db_service_code_master.CHARGER_WITHOUT_FAVOURITE,
-                'content': key_values}
+    add_favourites(key_values, id_user_info_sanitised)
+
+    return {'result': db_service_code_master.CHARGER_FOUND,
+            'content': key_values}
+
+
+def get_all_chargers_with_favourite_hash_map(id_user_info_sanitised):
+    """
+    | **[INTERNAL]**
+    | Retrieves ALL chargers from database. Also includes 'is_favourite'. (Hashmap)
+    | **Fields returned:** {'id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 'pv_current_in', 
+    | 'pv_energy_level', 'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector', 'is_favourite'}
+
+    :param string id_user_info_sanitised: id_user_info_sanitised
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, CHARGER_NOT_FOUND, CHARGER_FOUND. 
+    :key 'content': (dictionary) *('result' == CHARGER_FOUND)* Output.
+    """
+
+    # get charger hash map
+    charger_dict_out = get_charger_hash_map(where_array=[['active', True]])
+    # check if empty or error
+    if charger_dict_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
+        return {'result': db_service_code_master.CHARGER_NOT_FOUND}
+    if charger_dict_out['result'] == db_service_code_master.INTERNAL_ERROR:
+        return charger_dict_out
+
+    content_dict = charger_dict_out['content']
+    
+    add_favourites(content_dict, id_user_info_sanitised)
+
+    return {'result': db_service_code_master.CHARGER_FOUND,
+            'content': content_dict}
+
+
+def add_favourites(charger_dict_or_hash, id_user_info_sanitised):
+    """
+    | **[INTERNAL]**
+    | Adds user charger favourites to a dictionary array or hashmap.
+    | No return as dicts and arrays are pass by reference.
+
+    :param string charger_dict_or_hash: charger dictionary or hashmap
+    :param string id_user_info_sanitised: id_user_info_sanitised
+    """
 
     # get favourite chargers
     favourites_array_out = db_favourite_charger.get_user_favourite_charger_id_array(
@@ -170,17 +210,24 @@ def get_all_chargers(id_user_info_sanitised=None):
     # check if error
     if favourites_array_out['result'] == db_service_code_master.INTERNAL_ERROR:
         return favourites_array_out
+    
     # check if empty, return dict with additional key is_favourite all set to false
-    if favourites_array_out['result'] == db_service_code_master.FAVOURITE_CHARGERS_NOT_FOUND:
-        for row in key_values:
-            db_helper_functions.update_dict_key(
-                row, None, 'is_favourite', False)
-    # user has favourites, return dict with additional key is_favourite based on key appearance in favourites_array_out
-    else:
-        for row in key_values:
-            db_helper_functions.update_dict_key(
-                row, None, 'is_favourite', True if row['id'] in favourites_array_out['content'] else False)
-
-    return {'result': db_service_code_master.CHARGER_FOUND,
-            'type': db_service_code_master.CHARGER_WITH_FAVOURITE,
-            'content': key_values}
+    # else return with additional key is_favourite based on key appearance in favourites_array_out
+    if type(charger_dict_or_hash) is list:
+        if favourites_array_out['result'] == db_service_code_master.FAVOURITE_CHARGERS_NOT_FOUND:
+            for row in charger_dict_or_hash:
+                db_helper_functions.update_dict_key(
+                    row, None, 'is_favourite', False)
+        else:
+            for row in charger_dict_or_hash:
+                db_helper_functions.update_dict_key(
+                    row, None, 'is_favourite', True if row['id'] in favourites_array_out['content'] else False)
+    elif type(charger_dict_or_hash) is dict:
+        if favourites_array_out['result'] == db_service_code_master.FAVOURITE_CHARGERS_NOT_FOUND:
+            for value in charger_dict_or_hash.values():
+                db_helper_functions.update_dict_key(
+                    value, None, 'is_favourite', False)
+        else:
+            for value in charger_dict_or_hash.values():
+                db_helper_functions.update_dict_key(
+                    value, None, 'is_favourite', True if value['id'] in favourites_array_out['content'] else False)

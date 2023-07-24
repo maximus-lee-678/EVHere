@@ -22,11 +22,14 @@ def get_universal_hash_map(column_names=None, column_sql_translations=None, trai
     :key 'content': (dictionary) *('result' == HASHMAP_GENERIC_SUCCESS)* Output. ('id' as key)
     """
 
+    # remove invalid columns
+    column_names = [column for column in column_names if column in column_sql_translations]
+
     # select clause: joins values of column_sql_translations if the value's key is found in column_names
     # where clause: joins values of where_array if the value's key is found in column_names, item[0] being
     # column_sql_translations key's associated value, item[1] being actual value
     query = f"""
-    SELECT {column_sql_translations['id']}, {', '.join(column_sql_translations[column] for column in column_names if column in column_sql_translations)}
+    SELECT {column_sql_translations['id']}, {', '.join(column_sql_translations[column] for column in column_names)}
     {trailing_query}
     {'' if where_array is None else 
     'WHERE ' + ' AND '.join(f'{item[2] + " " if len(item) == 3 else ""}{column_sql_translations[item[0]]}=?'
@@ -68,11 +71,14 @@ def get_universal_dict(column_names=None, column_sql_translations=None, trailing
     :key 'content': (dictionary array) *('result' == SELECT_GENERIC_SUCCESS)* Output.
     """
 
+    # remove invalid columns
+    column_names = [column for column in column_names if column in column_sql_translations]
+
     # select clause: joins values of column_sql_translations if the value's key is found in column_names
     # where clause: joins values of where_array if the value's key is found in column_names, item[0] being
     # column_sql_translations key's associated value, item[1] being actual value
     query = f"""
-    SELECT {', '.join(column_sql_translations[column] for column in column_names if column in column_sql_translations)}
+    SELECT {', '.join(column_sql_translations[column] for column in column_names)}
     {trailing_query}
     {'' if where_array is None else 
     'WHERE ' + ' AND '.join(f'{item[2] + " " if len(item) == 3 else ""}{column_sql_translations[item[0]]}=?'
@@ -104,7 +110,7 @@ def degeneralise_result_codes(input, operation_type):
     | No return because dictionaries are pass by reference.
 
     :param dict input: an output from get_universal_hash_map or get_universal_dict.
-    :param int operation_type: a value from db_service_code_master, TYPE_...
+    :param int operation_type: a value from db_service_code_master (TYPE...)
     """
 
     try:

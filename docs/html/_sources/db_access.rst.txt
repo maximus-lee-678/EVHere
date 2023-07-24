@@ -1,6 +1,14 @@
 db\_access package
 ==================
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   db_access.support_files
+
 Submodules
 ----------
 

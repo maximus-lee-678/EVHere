@@ -15,9 +15,20 @@ flask_user_info = Blueprint(
     'flask_user_info', __name__, template_folder='flask_routes')
 
 
-# Route: Authenticate user login
 @flask_user_info.route('/api/login', methods=['POST'])
 def fun_login():
+    """
+    | Endpoint implementation for <Route: Authenticate user login>
+
+    :request POST fields: email, password
+
+    :returns: Dictionary 
+
+    | **Refer to:**
+    | :meth:`db_access.db_user_info.login_user`
+    | :meth:`flask_routes.flask_helper_functions.format_for_endpoint`
+    """
+
     email = request.json['email']
     password = request.json['password']
 
@@ -29,9 +40,20 @@ def fun_login():
                                                       success_scenarios_array=[db_service_code_master.LOGIN_SUCCESS])
 
 
-# Route: Create new user account
 @flask_user_info.route('/api/create_account', methods=['POST'])
 def fun_create_account():
+    """
+    | Endpoint implementation for <Route: Create new user account>
+
+    :request POST fields: username, password, email, full_name, phone_number
+
+    :returns: Dictionary 
+
+    | **Refer to:**
+    | :meth:`db_access.db_user_info.create_user`
+    | :meth:`flask_routes.flask_helper_functions.format_for_endpoint`
+    """
+
     username = request.json['username']
     password = request.json['password']
     email = request.json['email']
@@ -46,9 +68,20 @@ def fun_create_account():
                                                       success_scenarios_array=[db_service_code_master.USER_INFO_CREATE_SUCCESS])
 
 
-# Route: Get user account details
 @flask_user_info.route('/api/get_user_info', methods=['POST'])
 def fun_get_user_info():
+    """
+    | Endpoint implementation for <Route: Get user account details>
+
+    :request POST fields: email
+
+    :returns: Dictionary 
+
+    | **Refer to:**
+    | :meth:`db_access.db_user_info.get_user_id_by_email`
+    | :meth:`flask_routes.flask_helper_functions.format_for_endpoint`
+    """
+
     email = request.json['email']
 
     # get user id
@@ -67,9 +100,20 @@ def fun_get_user_info():
                                                       success_scenarios_array=[db_service_code_master.ACCOUNT_FOUND])
 
 
-# Route: Update user account details
 @flask_user_info.route('/api/update_user_info', methods=['POST'])
 def fun_update_user_info():
+    """
+    | Endpoint implementation for <Route: Update user account details>
+
+    :request POST fields: email, email_new, full_name, username, phone_number, password
+
+    :returns: Dictionary 
+
+    | **Refer to:**
+    | :meth:`db_access.db_user_info.update_user`
+    | :meth:`flask_routes.flask_helper_functions.format_for_endpoint`
+    """
+
     email = request.json['email']
     email_new = request.json['email_new']
     full_name = request.json['full_name']
