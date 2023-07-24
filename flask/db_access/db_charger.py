@@ -133,6 +133,30 @@ def get_charger_dict(column_names=None, where_array=None):
 
     return charger_dict_out
 
+def get_charger_by_id(id):
+    charger_dict_out = get_charger_dict(where_array=[['id', "61bf163e-83fa-45f0-84a9-ba47c2e3359e"]])
+    key_values = charger_dict_out['content']
+        # check if empty or error
+    if charger_dict_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
+        return {'result': db_service_code_master.CHARGER_NOT_FOUND}
+    if charger_dict_out['result'] == db_service_code_master.INTERNAL_ERROR:
+        return charger_dict_out
+    return {'result': db_service_code_master.CHARGER_FOUND,
+                'content': key_values}
+
+
+def update_charger(charger, pv_current_in, pv_energy_level, pv_timestamp):
+
+    charger['pv_current_in']=pv_current_in
+    charger['pv_energy_level']=pv_energy_level
+    charger['last_updated']=pv_timestamp
+
+    query = f"""
+    UPDATE charger SET {', '.join(f'{key}=?' for key in charger.keys())}, modified_at=?
+    WHERE id=?
+    """
+    db_methods.safe_transaction(query=query, task=None)
+    return {'result': db_service_code_master.CHARGER_FOUND, 'content': charger}
 
 def get_all_chargers(id_user_info_sanitised=None):
     """

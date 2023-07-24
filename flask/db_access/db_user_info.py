@@ -66,18 +66,12 @@ def get_user_info_dict(column_names=None, where_array=None):
 
 def create_user(username_input, password_input, email_input, full_name_input, phone_no_input):
     """
-    | **[ENDPOINT]**
-    | Attempts to insert a new user into the database.
-
-    :param string username_input: username_input
-    :param string password_input: password_input
-    :param string email_input: email_input
-    :param string full_name_input: full_name_input
-    :param string phone_no_input: phone_no_input
-
-    :returns: Dictionary
-    :key 'result': (one) INTERNAL_ERROR, USER_INFO_CREATE_FAILURE, USER_INFO_CREATE_SUCCESS. 
-    :key 'reason': (array, one/multiple) *('result' == USER_INFO_CREATE_FAILURE)* USERNAME_INVALID_LENGTH, PASSWORD_INVALID_LENGTH, PASSWORD_INVALID_SYNTAX, EMAIL_INVALID_LENGTH, EMAIL_INVALID_SYNTAX, ACCOUNT_ALREADY_EXISTS, PHONE_NUMBER_INVALID, FULL_NAME_INVALID_LENGTH
+    Attempts to insert a new user into the database.\n
+    Returns Dictionary with keys:\n
+    <result> INTERNAL_ERROR, USER_INFO_CREATE_FAILURE or USER_INFO_CREATE_SUCCESS.\n
+    <reason> (if <result> is USER_INFO_CREATE_FAILURE) [Array] Reason for failure.
+    \t[USERNAME_INVALID_LENGTH, PASSWORD_INVALID_LENGTH, PASSWORD_INVALID_SYNTAX,
+    EMAIL_INVALID_LENGTH, EMAIL_INVALID_SYNTAX, ACCOUNT_ALREADY_EXISTS, PHONE_NUMBER_INVALID, FULL_NAME_INVALID_LENGTH]
     """
 
     contains_errors = False
