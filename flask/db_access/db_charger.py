@@ -149,13 +149,20 @@ def update_charger(charger, pv_current_in, pv_energy_level, pv_timestamp):
 
     charger['pv_current_in']=pv_current_in
     charger['pv_energy_level']=pv_energy_level
-    charger['last_updated']=pv_timestamp
 
+    # currently a cheat
+    del charger['last_updated']
+    del charger["available_connector"]
+    
     query = f"""
-    UPDATE charger SET {', '.join(f'{key}=?' for key in charger.keys())}, modified_at=?
+    UPDATE charger SET {', '.join(f'{key}=?' for key in charger.keys())}, last_updated=?
     WHERE id=?
     """
-    db_methods.safe_transaction(query=query, task=None)
+    task = tuple(value for value in charger.values()) +  (db_helper_functions.generate_time_now(), charger['id'])
+    print(query)
+    print(task)
+    transaction = db_methods.safe_transaction(query=query, task=task)
+    print(transaction['transaction_successful'])
     return {'result': db_service_code_master.CHARGER_FOUND, 'content': charger}
 
 def get_all_chargers(id_user_info_sanitised=None):

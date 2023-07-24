@@ -168,7 +168,7 @@ def safe_transaction(query, task):
 
         return_dict = {'transaction_successful': True,
                        'rows_affected': cursor.execute('SELECT changes()').fetchone()[0]}
-
+        print('return dict {}'.format(return_dict))
     except sqlite3.OperationalError as err:
         print('SQLite error: %s' % (' '.join(err.args)), file=sys.stderr)
         print('Exception class is: %s' % err.__class__, file=sys.stderr)
