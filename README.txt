@@ -2,6 +2,7 @@
 [pip]
 pip install flask python-dotenv
 pip install bcrypt
+pip install sphinx sphinx_rtd_theme
 
 [npm]
 command prompt cd to </react>:

@@ -11,15 +11,15 @@ DEFAULT_CHARGER_CONNECTORS_PATH = './database/chargers_connectors_modded.csv'
 
 def touch_database():
     """
-    Called by server when database has been determined to not exist.\n
-    Sets up schema and populates charger table.
+    | Automatically called by server when database does not exist.\n
+    | Sets up schema and populates tables.
     """
 
     # Read schema
     with open(SCRIPT_PATH, 'r') as sql_file:
         sql_script = sql_file.read()
 
-    conn = setup_connection()
+    conn = sqlite3.connect(DATABASE_PATH)
     cursor = conn.cursor()
 
     # Write schema to database
@@ -58,56 +58,23 @@ def touch_database():
         "INSERT INTO charger_available_connector VALUES (?,?,?,?,?,?)", to_db)
 
     conn.commit()
-    close_connection(conn)
-
-
-def setup_connection():
-    """
-    Helper that returns a sqlite3 connection object.\n
-    Remember to call close_connection(<variable>) when done.
-    """
-
-    return sqlite3.connect(DATABASE_PATH)
-
-
-def close_connection(conn):
-    """
-    Helper that closes a sqlite3 connection object.\n
-    Called on object returned by setup_connection().
-    """
-
     conn.close()
-
-
-def check_fetchall_has_nothing(rows):
-    """
-    Helper that checks if a fetchall returned nothing.
-    """
-
-    return len(rows) == 0
-
-
-def check_fetchone_has_nothing(row):
-    """
-    Helper that checks if a fetchone returned nothing.
-    """
-
-    return row is None
 
 
 def safe_select(query, task, get_type):
     """
-    (SELECT) Wrapper that ensures OperationalErrors do not cause execution termination. \n
-    task must be specified:\n
-    \t>> (Tuple), None\n
-    get_type must be specified:\n
-    \t>> 'one', 'all'\n
-    Returns Dictionary with keys:\n
-    <select_successful> True or False.\n
-    <num_rows> (if <select_successful> is True) =Value= Number of rows returned.\n
-    <content> (if <select_successful> is True) Content. (can be blank)\n
-    courtesy of: https://stackoverflow.com/questions/25371636/how-to-get-sqlite-result-error-codes-in-python
+    | SELECT sqlite Wrapper.
+
+    :param string query: query string
+    :param tuple/bool task: tuple containing fields for prepared statement, or None
+    :param string get_type: 'one' or 'all'
+
+    :returns: Dictionary
+    :key 'select_successful': True or False.
+    :key 'num_rows': (int) *('select_successful' == True)* Number of rows returned.
+    :key 'content': (array) *('select_successful' == True)* Output array. May be empty.
     """
+
     conn = sqlite3.connect(DATABASE_PATH)
     cursor = conn.cursor()
 
@@ -147,14 +114,16 @@ def safe_select(query, task, get_type):
 
 def safe_transaction(query, task):
     """
-    (CREATE, UPDATE, DELETE) Wrapper that ensures OperationalErrors do not cause execution termination. \n
-    task must be specified:\n
-    \t>> (Tuple), None\n
-    Returns Dictionary with keys:\n
-    <transaction_successful> True or False.\n
-    <rows_affected> (if <select_successful> is True) =Value= Number of rows affected.\n
-    courtesy of: https://stackoverflow.com/questions/25371636/how-to-get-sqlite-result-error-codes-in-python
+    | CREATE, UPDATE, DELETE sqlite Wrapper.
+
+    :param string query: query string
+    :param tuple/bool task: tuple containing fields for prepared statement, or None
+
+    :returns: Dictionary
+    :key 'transaction_successful': True or False.
+    :key 'rows_affected': (int) *('transaction_successful' == True)* Number of rows affected.
     """
+
     conn = sqlite3.connect(DATABASE_PATH)
     cursor = conn.cursor()
 

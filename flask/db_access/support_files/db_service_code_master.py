@@ -1,15 +1,15 @@
 """
-This file holds all status codes and their corresponding meanings.
-This should be included in all functional db files.
+| This file holds all status codes and their corresponding meanings.
+| This should be included in all functional db files.
 
-Each table gets a block of 100. 
-First 5 values are reserved for database interaction operations. (these are currently not used)
-Details(errors, extra info, etc.) should count up and completion codes should count down.
-(e.g. reserved: 0-4 | error: 5,6,7,... | completion: 100,99,98,...)
-NO ASSIGNMENTS CAN HAVE THE SAME VALUE!
+| Each table gets a block of 100. 
+| First 5 values are reserved for database interaction operations. (these are currently not used)
+| Details(errors, extra info, etc.) should count up and completion codes should count down.
+| (e.g. reserved: 0-4 | error: 5,6,7,... | completion: 100,99,98,...)
+| ALL ASSIGNMENTS MUST BE DIFFERENT VALUES!
 
-"What is this abomination?!"
-"Like the good old days of C, eh?"
+| *"What is this abomination?!"*
+| *"Like the good old days of C, eh?"*
 """
 
 API_SUCCESS_STRING = 'success'
@@ -144,11 +144,7 @@ SELECT_CHARGER_EMPTY = 204
 ez_update(SELECT_CHARGER_EMPTY, "Charger select returned empty.")
 #>
 #>
-CHARGER_WITH_FAVOURITE = 205
-ez_update(CHARGER_WITH_FAVOURITE, "Charger list with favourites.")
-
-CHARGER_WITHOUT_FAVOURITE = 206
-ez_update(CHARGER_WITHOUT_FAVOURITE, "Charger list without favourites.")
+#
 #>
 #>
 CHARGER_FOUND = 299

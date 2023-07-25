@@ -15,11 +15,20 @@ flask_connector_type = Blueprint(
     'flask_connector_type', __name__, template_folder='flask_routes')
 
 
-# Route: Get available connector details
 @flask_connector_type.route('/api/get_all_connectors', methods=['GET'])
 def fun_get_connectors():
+    """
+    | Endpoint implementation for <Route: Get available connector details>
+
+    :returns: Dictionary 
+
+    | **Refer to:**
+    | :meth:`db_access.db_connector_type.get_all_connectors`
+    | :meth:`flask_routes.flask_helper_functions.format_for_endpoint`
+    """
+
     # retrieve connector types actual
     connector_type_response = db_connector_type.get_all_connectors()
 
     return flask_helper_functions.format_for_endpoint(db_dictionary=connector_type_response,
-                                                    success_scenarios_array=[db_service_code_master.CONNECTOR_FOUND])
+                                                      success_scenarios_array=[db_service_code_master.CONNECTOR_FOUND])

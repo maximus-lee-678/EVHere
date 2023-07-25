@@ -15,9 +15,20 @@ flask_vehicle = Blueprint('flask_vehicle', __name__,
                           template_folder='flask_routes')
 
 
-# Route: Get user's active vehicles
 @flask_vehicle.route('/api/get_user_vehicles', methods=['POST'])
 def fun_get_user_vehicles():
+    """
+    | Endpoint implementation for <Route: Get user's active vehicles>
+
+    :request POST fields: email
+
+    :returns: Dictionary 
+
+    | **Refer to:**
+    | :meth:`db_access.db_vehicle.get_active_vehicle_by_user_id`
+    | :meth:`flask_routes.flask_helper_functions.format_for_endpoint`
+    """
+
     email = request.json['email']
 
     # get user id
@@ -37,9 +48,20 @@ def fun_get_user_vehicles():
                                                                                db_service_code_master.VEHICLE_NOT_FOUND])
 
 
-# Route: Add new vehicle
 @flask_vehicle.route('/api/add_vehicle', methods=['POST'])
 def fun_add_vehicle():
+    """
+    | Endpoint implementation for <Route: Add new vehicle>
+
+    :request POST fields: email, vehicle_name, vehicle_model, vehicle_sn, vehicle_connector
+
+    :returns: Dictionary 
+
+    | **Refer to:**
+    | :meth:`db_access.db_vehicle.add_vehicle`
+    | :meth:`flask_routes.flask_helper_functions.format_for_endpoint`
+    """
+
     email = request.json['email']
     vehicle_name = request.json['vehicle_name']
     vehicle_model = request.json['vehicle_model']
@@ -66,6 +88,18 @@ def fun_add_vehicle():
 # Route: Remove vehicle
 @flask_vehicle.route('/api/remove_vehicle', methods=['POST'])
 def fun_remove_vehicle():
+    """
+    | Endpoint implementation for <Route: Remove vehicle>
+
+    :request POST fields: id_vehicle
+
+    :returns: Dictionary 
+
+    | **Refer to:**
+    | :meth:`db_access.db_vehicle.remove_vehicle`
+    | :meth:`flask_routes.flask_helper_functions.format_for_endpoint`
+    """
+
     id_vehicle = request.json['id_vehicle']
 
     # remove vehicle actual

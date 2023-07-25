@@ -1,15 +1,3 @@
-"""
-API endpoints ALWAYS follow this format:\n
-[status] success, fail, error
-\tsuccess: very good, contains [content] (nullable)
-\tfail: could not finish request, [reason] will be given
-\terror: server blew up
-[message] always included, request outcome.
-[content] when [status==success] (nullable)
-[reason] when [status==fail], why it failed.
-"""
-
-
 from flask_routes.flask_charge_current import flask_charge_current
 from flask_routes.flask_charge_history import flask_charge_history
 from flask_routes.flask_vehicle import flask_vehicle
@@ -22,8 +10,8 @@ from flask_cors import CORS
 import os
 
 # if running sphinx, need to change directory to 'root'
-current_working_directory = os.path.basename(os.getcwd())
-if current_working_directory != 'team_15_flask_react':
+current_working_directory_highest = os.path.basename(os.getcwd())
+if current_working_directory_highest != 'team_15_flask_react':
     os.chdir('../')
 
 # If db file not exists, create

@@ -16,9 +16,19 @@ flask_charge_history = Blueprint(
     'flask_charge_history', __name__, template_folder='flask_routes')
 
 
-# Route: Start charging entry
 @flask_charge_history.route('/api/start_charge_history', methods=['POST'])
 def fun_start_charge_history():
+    """
+    | Endpoint implementation for <Route: Start charging entry>
+
+    :request POST fields: email, id_vehicle_info, id_charger, id_charger_available_connector
+
+    :returns: Dictionary 
+
+    | **Refer to:**
+    | :meth:`db_access.db_charge_history.add_charge_history_initial`
+    | :meth:`flask_routes.flask_helper_functions.format_for_endpoint`
+    """
     email = request.json['email']
     id_vehicle_info = request.json['id_vehicle_info']
     id_charger = request.json['id_charger']
@@ -34,16 +44,26 @@ def fun_start_charge_history():
 
     # start charging history actual
     charge_history_response = db_charge_history.add_charge_history_initial(id_user_info_sanitised=id_user_info, id_vehicle_info_input=id_vehicle_info,
-                                                                           id_charger_input=id_charger, 
+                                                                           id_charger_input=id_charger,
                                                                            id_charger_available_connector_input=id_charger_available_connector)
 
     return flask_helper_functions.format_for_endpoint(db_dictionary=charge_history_response,
                                                       success_scenarios_array=[db_service_code_master.CHARGE_HISTORY_CREATE_SUCCESS])
 
 
-# Route: Finish charging entry
 @flask_charge_history.route('/api/finish_charge_history', methods=['POST'])
 def fun_finish_charge_history():
+    """
+    | Endpoint implementation for <Route: Finish charging entry>
+
+    :request POST fields: email, energy_drawn
+
+    :returns: Dictionary 
+
+    | **Refer to:**
+    | :meth:`db_access.db_charge_history.finish_charge_history`
+    | :meth:`flask_routes.flask_helper_functions.format_for_endpoint`
+    """
     email = request.json['email']
     energy_drawn = request.json['energy_drawn']
 
@@ -57,21 +77,33 @@ def fun_finish_charge_history():
 
     # TODO replace with periodic automated updates
     # for now: override of current_energy_drawn
-    charge_current_response = db_charge_current.update_user_charge_current(id_user_info_sanitised=id_user_info, current_energy_drawn_input=energy_drawn)
+    charge_current_response = db_charge_current.update_user_charge_current(
+        id_user_info_sanitised=id_user_info, current_energy_drawn_input=energy_drawn)
     if charge_current_response['result'] != db_service_code_master.CHARGE_CURRENT_UPDATE_SUCCESS:
         return flask_helper_functions.format_for_endpoint(db_dictionary=charge_current_response,
-                                                      success_scenarios_array=[db_service_code_master.CHARGE_CURRENT_UPDATE_SUCCESS])
+                                                          success_scenarios_array=[db_service_code_master.CHARGE_CURRENT_UPDATE_SUCCESS])
 
     # finish charging history actual
-    charge_history_response = db_charge_history.finish_charge_history(id_user_info_sanitised=id_user_info)
-    
+    charge_history_response = db_charge_history.finish_charge_history(
+        id_user_info_sanitised=id_user_info)
+
     return flask_helper_functions.format_for_endpoint(db_dictionary=charge_history_response,
                                                       success_scenarios_array=[db_service_code_master.CHARGE_HISTORY_FINISH_SUCCESS])
 
 
-# Route: Get charge history (all)
 @flask_charge_history.route('/api/get_charge_history', methods=['POST'])
 def fun_get_charge_history():
+    """
+    | Endpoint implementation for <Route: Get charge history (all)>
+
+    :request POST fields: email, filter
+
+    :returns: Dictionary 
+
+    | **Refer to:**
+    | :meth:`db_access.db_charge_history.get_charge_history_by_user_id`
+    | :meth:`flask_routes.flask_helper_functions.format_for_endpoint`
+    """
     email = request.json['email']
     filter = request.json['filter']
 
@@ -84,17 +116,29 @@ def fun_get_charge_history():
     id_user_info = user_info_response['content']
 
     # get charging history actual
-    charge_history_response = db_charge_history.get_charge_history_by_user_id(id_user_info_sanitised=id_user_info, filter_by=filter)
+    charge_history_response = db_charge_history.get_charge_history_by_user_id(
+        id_user_info_sanitised=id_user_info, filter_by=filter)
 
     return flask_helper_functions.format_for_endpoint(db_dictionary=charge_history_response,
                                                       success_scenarios_array=[db_service_code_master.CHARGE_HISTORY_FOUND,
                                                                                db_service_code_master.CHARGE_HISTORY_NOT_FOUND])
 
 
-
 # Route: Get charge history (currently charging)
 @flask_charge_history.route('/api/get_charge_history_active', methods=['POST'])
 def fun_get_charge_current():
+    """
+    | Endpoint implementation for <Route: Get charge history (currently charging)>
+
+    :request POST fields: email
+
+    :returns: Dictionary 
+
+    | **Refer to:**
+    | :meth:`db_access.db_charge_history.get_charge_history_active`
+    | :meth:`flask_routes.flask_helper_functions.format_for_endpoint`
+    """
+
     email = request.json['email']
 
     # get user id
