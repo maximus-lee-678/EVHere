@@ -8,6 +8,9 @@ import Map from "../Map/Map";
 
 // API endpoints imports
 import { VehicleInfoGetByUser } from '../API/API';
+import { map } from 'leaflet';
+import { useMap } from 'react-leaflet';
+import { LatLng } from 'leaflet';
 
 export default function Recommendations() {
     const userEmail = localStorage.getItem("user_email");
@@ -48,7 +51,9 @@ export default function Recommendations() {
         return options;
     }
 
-    const [recommendationsOpen, setRecommendationsOpen] = React.useState(false);
+    const [recommendationsOpen, setRecommendationsOpen] = useState(false);
+
+    const [panToNearestMarker, setPanToNearestMarker] = useState(false);
 
     return (
         <div className="min-h-screen bg-gray-900 "
@@ -97,32 +102,32 @@ export default function Recommendations() {
                                     </div>
 
                                     <div className="grid lg:gap-4 gap-2 lg:text-base text-sm">
-                                        <div className="p-2 rounded-md hover:bg-gray-200 cursor-pointer grid grid-cols-8">
+                                        <button id="nearest-charger-button" className="p-2 rounded-md hover:bg-gray-200 grid grid-cols-8 text-left">
                                             <div className="h-full mt-2">
                                                 <i className="fas fa-map-marker-alt fa-2xl"></i>
                                             </div>
 
                                             <div className="ml-4 col-span-7">
                                                 <div className="uppercase text-gray-700 font-bold">Nearest to me:</div>
-                                                <div>
+                                                <div id="nearest-charger-name">
                                                     Bukit Merah / Telok Blangah Rise / Blk 32
                                                 </div>
                                             </div>
-                                        </div>
+                                        </button>
 
 
-                                        <div className="p-2 rounded-md hover:bg-gray-200 cursor-pointer grid grid-cols-8">
+                                        <button id="best-value-charger-button" className="p-2 rounded-md hover:bg-gray-200 cursor-pointer grid grid-cols-8 text-left">
                                             <div className="h-full mt-2">
                                                 <i className="fas fa-map-marker-alt fa-2xl"></i>
                                             </div>
 
                                             <div className="ml-4 col-span-7">
-                                                <div className="uppercase text-gray-700 font-bold">Fastest charging speed:</div>
-                                                <div>
+                                                <div className="uppercase text-gray-700 font-bold">Best value for money:</div>
+                                                <div id="best-value-charger-name">
                                                     Shell Recharge Punggol
                                                 </div>
                                             </div>
-                                        </div>
+                                        </button>
                                     </div>
                                 </div>
 
