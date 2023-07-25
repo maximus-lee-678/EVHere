@@ -271,8 +271,6 @@ export default function Map(props) {
         const map = useMap();
         var layers = [];
         
-        console.log("sourceLocation", sourceLocation);
-
         var markersArray = [];
         for (var i = 0; i < allChargerInfo.length; i++) {
             //markersArray.push(new LatLng(allChargerInfo[i].latitude, allChargerInfo[i].longitude));
@@ -291,16 +289,9 @@ export default function Map(props) {
         });
 
         if (layers.length > 0) {
-            console.log("layers", layers);
-
-            console.log(sourceLocation);
-
-
             //for nearest charger
     
-            var nearest = GeometryUtil.closestLayer(map, layers, sourceLocation); //supposed to use closestLayer instead of closest ****
-    
-            console.log(nearest);
+            var nearest = GeometryUtil.closestLayer(map, layers, sourceLocation);
     
             var nearestMarker = markersArray.find(element => element.latitude === nearest.latlng.lat && element.longitude === nearest.latlng.lng);
 
@@ -318,8 +309,6 @@ export default function Map(props) {
             markersArray.forEach(item => {
                 prices.push(item.rate_current);
             });
-
-            console.log("prices", Math.min.apply(Math, prices));
 
             var valueMarker = markersArray.find(element => element.rate_current == Math.min.apply(Math, prices));
 
