@@ -39,14 +39,13 @@ ez_update(SELECT_GENERIC_EMPTY, "Select returned empty.")
 #>
 #>
 MISSING_FIELDS = 5
-ez_update(MISSING_FIELDS, "One or more fields are missing.")
+ez_update(MISSING_FIELDS, "One or more json fields are missing.")
 
 CONFIGURATION_ERROR = 6
 ez_update(CONFIGURATION_ERROR, "Function not configured properly.")
 
 INTERNAL_ERROR = 7  # oh damn better call the programmers
 ez_update(INTERNAL_ERROR, "Something went wrong.")
-
 
 #########################
 
@@ -152,6 +151,12 @@ ez_update(CHARGER_FOUND, "Chargers found.")
 
 CHARGER_NOT_FOUND = 298
 ez_update(CHARGER_NOT_FOUND, "Chargers not found.")
+
+CHARGER_UPDATE_SUCCESS = 297
+ez_update(CHARGER_UPDATE_SUCCESS, "Charger details updated.")
+
+CHARGER_UPDATE_FAILURE = 296
+ez_update(CHARGER_UPDATE_FAILURE, "Chargers details could not be updated.")
 
 #########################
 

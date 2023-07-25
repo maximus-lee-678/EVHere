@@ -98,6 +98,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="db_access.html#db_access.db_favourite_charger.add_favourite_charger">add_favourite_charger() (in module db_access.db_favourite_charger)</a>
 </li>
+      <li><a href="db_access.html#db_access.db_charger.add_favourites">add_favourites() (in module db_access.db_charger)</a>
+</li>
       <li><a href="db_access.html#db_access.db_vehicle.add_vehicle">add_vehicle() (in module db_access.db_vehicle)</a>
 </li>
   </ul></td>
@@ -154,12 +156,28 @@
 </li>
       </ul></li>
       <li>
+    db_access.db_charger_pv_historic
+
+      <ul>
+        <li><a href="db_access.html#module-db_access.db_charger_pv_historic">module</a>
+</li>
+      </ul></li>
+      <li>
+    db_access.db_charger_rate_historic
+
+      <ul>
+        <li><a href="db_access.html#module-db_access.db_charger_rate_historic">module</a>
+</li>
+      </ul></li>
+      <li>
     db_access.db_connector_type
 
       <ul>
         <li><a href="db_access.html#module-db_access.db_connector_type">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     db_access.db_favourite_charger
 
@@ -167,8 +185,6 @@
         <li><a href="db_access.html#module-db_access.db_favourite_charger">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     db_access.db_universal
 
@@ -265,6 +281,27 @@
 </li>
       </ul></li>
       <li>
+    flask_routes.flask_charger_available_connector
+
+      <ul>
+        <li><a href="flask_routes.html#module-flask_routes.flask_charger_available_connector">module</a>
+</li>
+      </ul></li>
+      <li>
+    flask_routes.flask_charger_pv_historic
+
+      <ul>
+        <li><a href="flask_routes.html#module-flask_routes.flask_charger_pv_historic">module</a>
+</li>
+      </ul></li>
+      <li>
+    flask_routes.flask_charger_rate_historic
+
+      <ul>
+        <li><a href="flask_routes.html#module-flask_routes.flask_charger_rate_historic">module</a>
+</li>
+      </ul></li>
+      <li>
     flask_routes.flask_connector_type
 
       <ul>
@@ -285,6 +322,8 @@
         <li><a href="flask_routes.html#module-flask_routes.flask_helper_functions">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     flask_routes.flask_user_info
 
@@ -299,8 +338,6 @@
         <li><a href="flask_routes.html#module-flask_routes.flask_vehicle">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="flask_routes.html#flask_routes.flask_helper_functions.format_for_endpoint">format_for_endpoint() (in module flask_routes.flask_helper_functions)</a>
 </li>
       <li><a href="flask_routes.html#flask_routes.flask_favourite_charger.fun_add_favourite_charger">fun_add_favourite_charger() (in module flask_routes.flask_favourite_charger)</a>
@@ -333,6 +370,8 @@
 </li>
       <li><a href="flask_routes.html#flask_routes.flask_charge_history.fun_start_charge_history">fun_start_charge_history() (in module flask_routes.flask_charge_history)</a>
 </li>
+      <li><a href="flask_routes.html#flask_routes.flask_charger.fun_update_charger">fun_update_charger() (in module flask_routes.flask_charger)</a>
+</li>
       <li><a href="flask_routes.html#flask_routes.flask_user_info.fun_update_user_info">fun_update_user_info() (in module flask_routes.flask_user_info)</a>
 </li>
   </ul></td>
@@ -349,7 +388,9 @@
 </li>
       <li><a href="db_access.html#db_access.db_charger_available_connector.get_all_charger_connectors_decoded">get_all_charger_connectors_decoded() (in module db_access.db_charger_available_connector)</a>
 </li>
-      <li><a href="db_access.html#db_access.db_charger.get_all_chargers">get_all_chargers() (in module db_access.db_charger)</a>
+      <li><a href="db_access.html#db_access.db_charger.get_all_chargers_with_favourite_dict">get_all_chargers_with_favourite_dict() (in module db_access.db_charger)</a>
+</li>
+      <li><a href="db_access.html#db_access.db_charger.get_all_chargers_with_favourite_hash_map">get_all_chargers_with_favourite_hash_map() (in module db_access.db_charger)</a>
 </li>
       <li><a href="db_access.html#db_access.db_connector_type.get_all_connectors">get_all_connectors() (in module db_access.db_connector_type)</a>
 </li>
@@ -371,9 +412,17 @@
 </li>
       <li><a href="db_access.html#db_access.db_charger.get_charger_dict">get_charger_dict() (in module db_access.db_charger)</a>
 </li>
+      <li><a href="db_access.html#db_access.db_charger.get_charger_hash_map">get_charger_hash_map() (in module db_access.db_charger)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="db_access.html#db_access.db_charger.get_charger_hash_map">get_charger_hash_map() (in module db_access.db_charger)</a>
+      <li><a href="db_access.html#db_access.db_charger_pv_historic.get_charger_pv_historic_dict">get_charger_pv_historic_dict() (in module db_access.db_charger_pv_historic)</a>
+</li>
+      <li><a href="db_access.html#db_access.db_charger_pv_historic.get_charger_pv_historic_hash_map">get_charger_pv_historic_hash_map() (in module db_access.db_charger_pv_historic)</a>
+</li>
+      <li><a href="db_access.html#db_access.db_charger_rate_historic.get_charger_rate_historic_dict">get_charger_rate_historic_dict() (in module db_access.db_charger_rate_historic)</a>
+</li>
+      <li><a href="db_access.html#db_access.db_charger_rate_historic.get_charger_rate_historic_hash_map">get_charger_rate_historic_hash_map() (in module db_access.db_charger_rate_historic)</a>
 </li>
       <li><a href="db_access.html#db_access.db_connector_type.get_connector_type_dict">get_connector_type_dict() (in module db_access.db_connector_type)</a>
 </li>
@@ -431,6 +480,10 @@
 </li>
         <li><a href="db_access.html#module-db_access.db_charger_available_connector">db_access.db_charger_available_connector</a>
 </li>
+        <li><a href="db_access.html#module-db_access.db_charger_pv_historic">db_access.db_charger_pv_historic</a>
+</li>
+        <li><a href="db_access.html#module-db_access.db_charger_rate_historic">db_access.db_charger_rate_historic</a>
+</li>
         <li><a href="db_access.html#module-db_access.db_connector_type">db_access.db_connector_type</a>
 </li>
         <li><a href="db_access.html#module-db_access.db_favourite_charger">db_access.db_favourite_charger</a>
@@ -456,6 +509,12 @@
         <li><a href="flask_routes.html#module-flask_routes.flask_charge_history">flask_routes.flask_charge_history</a>
 </li>
         <li><a href="flask_routes.html#module-flask_routes.flask_charger">flask_routes.flask_charger</a>
+</li>
+        <li><a href="flask_routes.html#module-flask_routes.flask_charger_available_connector">flask_routes.flask_charger_available_connector</a>
+</li>
+        <li><a href="flask_routes.html#module-flask_routes.flask_charger_pv_historic">flask_routes.flask_charger_pv_historic</a>
+</li>
+        <li><a href="flask_routes.html#module-flask_routes.flask_charger_rate_historic">flask_routes.flask_charger_rate_historic</a>
 </li>
         <li><a href="flask_routes.html#module-flask_routes.flask_connector_type">flask_routes.flask_connector_type</a>
 </li>
@@ -535,10 +594,12 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="db_access.html#db_access.db_charger_available_connector.update_charger_available_connector_electric_stats">update_charger_available_connector_electric_stats() (in module db_access.db_charger_available_connector)</a>
 </li>
-      <li><a href="db_access.support_files.html#db_access.support_files.db_helper_functions.update_dict_key">update_dict_key() (in module db_access.support_files.db_helper_functions)</a>
+      <li><a href="db_access.html#db_access.db_charger.update_charger_technical">update_charger_technical() (in module db_access.db_charger)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="db_access.support_files.html#db_access.support_files.db_helper_functions.update_dict_key">update_dict_key() (in module db_access.support_files.db_helper_functions)</a>
+</li>
       <li><a href="db_access.html#db_access.db_user_info.update_user">update_user() (in module db_access.db_user_info)</a>
 </li>
       <li><a href="db_access.html#db_access.db_charge_current.update_user_charge_current">update_user_charge_current() (in module db_access.db_charge_current)</a>

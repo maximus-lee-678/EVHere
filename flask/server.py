@@ -53,6 +53,6 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 # TODO
 # loop thru current charges and update power consumption based on connector out
 
-# Running app
+# Running app, allow '0.0.0.0' for all device access
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True)

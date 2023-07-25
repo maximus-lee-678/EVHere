@@ -58,8 +58,12 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-flask_routes.flask_charger">flask_routes.flask_charger module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#flask_routes.flask_charger.fun_get_all_chargers"><code class="docutils literal notranslate"><span class="pre">fun_get_all_chargers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flask_routes.flask_charger.fun_update_charger"><code class="docutils literal notranslate"><span class="pre">fun_update_charger()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#module-flask_routes.flask_charger_available_connector">flask_routes.flask_charger_available_connector module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-flask_routes.flask_charger_pv_historic">flask_routes.flask_charger_pv_historic module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-flask_routes.flask_charger_rate_historic">flask_routes.flask_charger_rate_historic module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-flask_routes.flask_connector_type">flask_routes.flask_connector_type module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#flask_routes.flask_connector_type.fun_get_connectors"><code class="docutils literal notranslate"><span class="pre">fun_get_connectors()</span></code></a></li>
 </ul>
@@ -225,7 +229,7 @@
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Request POST fields<span class="colon">:</span></dt>
-<dd class="field-odd"><p>email (optional)</p>
+<dd class="field-odd"><p>email</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Dictionary</p>
@@ -233,11 +237,44 @@
 </dl>
 <div class="line-block">
 <div class="line"><strong>Refer to:</strong></div>
-<div class="line"><a class="reference internal" href="db_access.html#db_access.db_charger.get_all_chargers" title="db_access.db_charger.get_all_chargers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db_access.db_charger.get_all_chargers()</span></code></a></div>
+<div class="line"><a class="reference internal" href="db_access.html#db_access.db_charger.get_all_chargers_with_favourite_dict" title="db_access.db_charger.get_all_chargers_with_favourite_dict"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db_access.db_charger.get_all_chargers_with_favourite_dict()</span></code></a></div>
 <div class="line"><a class="reference internal" href="#flask_routes.flask_helper_functions.format_for_endpoint" title="flask_routes.flask_helper_functions.format_for_endpoint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">flask_routes.flask_helper_functions.format_for_endpoint()</span></code></a></div>
 </div>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="flask_routes.flask_charger.fun_update_charger">
+<span class="sig-prename descclassname"><span class="pre">flask_routes.flask_charger.</span></span><span class="sig-name descname"><span class="pre">fun_update_charger</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#flask_routes.flask_charger.fun_update_charger" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line">Endpoint implementation for &lt;Route: Update charger&gt;</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Request POST fields<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id_charger, pv_voltage_in*, pv_current_in*, pv_voltage_out*, pv_current_out*, rate_predicted*</p>
+</dd>
+</dl>
+<p>(fields marked with * are not compulsory.)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><strong>Refer to:</strong></div>
+<div class="line"><a class="reference internal" href="db_access.html#db_access.db_charger.update_charger_technical" title="db_access.db_charger.update_charger_technical"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db_access.db_charger.update_charger_technical()</span></code></a></div>
+<div class="line"><a class="reference internal" href="#flask_routes.flask_helper_functions.format_for_endpoint" title="flask_routes.flask_helper_functions.format_for_endpoint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">flask_routes.flask_helper_functions.format_for_endpoint()</span></code></a></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-flask_routes.flask_charger_available_connector">
+<span id="flask-routes-flask-charger-available-connector-module"></span><h2>flask_routes.flask_charger_available_connector module<a class="headerlink" href="#module-flask_routes.flask_charger_available_connector" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-flask_routes.flask_charger_pv_historic">
+<span id="flask-routes-flask-charger-pv-historic-module"></span><h2>flask_routes.flask_charger_pv_historic module<a class="headerlink" href="#module-flask_routes.flask_charger_pv_historic" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-flask_routes.flask_charger_rate_historic">
+<span id="flask-routes-flask-charger-rate-historic-module"></span><h2>flask_routes.flask_charger_rate_historic module<a class="headerlink" href="#module-flask_routes.flask_charger_rate_historic" title="Permalink to this heading"></a></h2>
 </section>
 <section id="module-flask_routes.flask_connector_type">
 <span id="flask-routes-flask-connector-type-module"></span><h2>flask_routes.flask_connector_type module<a class="headerlink" href="#module-flask_routes.flask_connector_type" title="Permalink to this heading"></a></h2>
