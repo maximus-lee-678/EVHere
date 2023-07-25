@@ -8,9 +8,10 @@ import Navbar from "../SharedComponents/Navbar";
 import BarChart from "./Barchart";
 import PieChart from "./Piechart";
 import { FormatDateTime, GetDateDiffString } from '../Utils/Time';
+import Toast, { toast } from '../SharedComponents/Toast';
 
 // API endpoints imports
-import { ChargeHistoryGet } from '../API/API';
+import { ChargeHistoryGet, FavouriteChargerAdd, FavouriteChargerRemove } from '../API/API';
 
 export default function ChargingHistory() {
     const userEmail = localStorage.getItem("user_email");
@@ -48,6 +49,43 @@ export default function ChargingHistory() {
     window.onclick = function (event) {
         if (event.target === document.getElementById("charge-details")) {
             document.getElementById("charge-details").classList.replace("block", "hidden");
+        }
+    }
+
+    async function handleFavourite(IDCharger, operation) {
+        // Ugly confirmation prompt, TODO better
+        //maybe can make a dialog that opens when button is clicked, then yes no goes to handle favourite?
+        if (!window.confirm(operation + " favourite charger?")) {
+            //do nothing if cancel confirmation
+            return;
+        }
+
+        let response;
+        // Pick API endpoint
+        if (operation === "add") {
+            response = await FavouriteChargerAdd(userEmail, IDCharger);
+        } else if (operation === "remove") {
+            response = await FavouriteChargerRemove(userEmail, IDCharger);
+        } else {
+            return;
+        }
+
+        // If operation successful, reload user charge history
+        // Which reloads modal
+        if (response.status === 'success') {
+            fetchUserChargeHistory();
+            //close modal and show toast accordingly
+            if (operation === "add") {
+                document.getElementById("charge-details").classList.replace("block", "hidden");
+                toast.success("Added to favourites!");
+            }
+            if (operation === "remove") {
+                document.getElementById("charge-details").classList.replace("block", "hidden");
+                toast.success("Removed from favourites!");
+            }
+        }
+        else {
+            toast.error(<div>{response.message}<br />{response.reason}</div>);
         }
     }
 
@@ -140,6 +178,7 @@ export default function ChargingHistory() {
                 backgroundRepeat: "repeat"
             }}>
             <Navbar transparent />
+            <Toast/>
             <div className="relative container mx-auto px-0 md:px-4 h-screen bg-gray-900">
                 {/* Header */}
                 <div className="h-40">
@@ -239,8 +278,8 @@ export default function ChargingHistory() {
                                 <p>Location: <span id="location">XX</span></p>
                                 <p>Rate: <span id="rate">$1.50/kWh</span></p>
                             </div>
-                            <div className="flex justify-center items-center">
-                                <button className="bg-red-400 hover:bg-red-900 px-3 py-2 mr-2 rounded-full text-white">
+                            <div className="flex justify-center items-center" id="favourite-button-div">
+                                <button id="favourite-button" className="bg-red-400 hover:bg-red-900 px-3 py-2 mr-2 rounded-full text-white">
                                     <i className="fas fa-heart" style={{ color: "#ffffff" }}></i> Add charger to favourites
                                 </button>
                             </div>
@@ -270,6 +309,17 @@ export default function ChargingHistory() {
         document.getElementById("connector-used").innerHTML = record.vehicle.connector.name_connector;
         document.getElementById("location").innerHTML = record.charger.address;
         document.getElementById("rate").innerHTML = "$" + record.charger.rate_current + " / kWh";
+        
+        if (record.charger.is_favourite == true) {
+            document.getElementById("favourite-button-div").innerHTML = `<button id='favourite-button' class='bg-red-400 hover:bg-red-300 px-3 py-2 mr-2 rounded-full text-white'><i class='fas fa-trash'></i> Remove favourite</button>`;
+            document.getElementById("favourite-button").addEventListener("click", () => handleFavourite(record.charger.id, 'remove'));
+        }
+        else {
+            document.getElementById("favourite-button-div").innerHTML = "<button id='favourite-button' class='bg-red-400 hover:bg-red-900 px-3 py-2 mr-2 rounded-full text-white'><i class='fas fa-heart'></i> Add to favourites</button>";
+            document.getElementById("favourite-button").addEventListener("click", () => handleFavourite(record.charger.id, 'add'));
+    
+        }
+        
     }
 
     function showOverview() {

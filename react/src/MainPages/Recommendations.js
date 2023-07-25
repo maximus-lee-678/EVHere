@@ -53,8 +53,6 @@ export default function Recommendations() {
 
     const [recommendationsOpen, setRecommendationsOpen] = useState(false);
 
-    const [panToNearestMarker, setPanToNearestMarker] = useState(false);
-
     return (
         <div className="min-h-screen bg-gray-900 "
         >
