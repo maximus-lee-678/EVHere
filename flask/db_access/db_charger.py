@@ -145,15 +145,15 @@ def get_charger_by_id(id):
                 'content': key_values}
 
 
-def update_charger(charger, pv_current_in, pv_energy_level, pv_timestamp):
-
-    charger['pv_current_in']=pv_current_in
-    charger['pv_energy_level']=pv_energy_level
-
+def update_charger(charger, data):
     # currently a cheat
     del charger['last_updated']
     del charger["available_connector"]
-    
+
+    for key in charger.keys():
+        if key in data:
+            charger[key] = data[key]
+
     query = f"""
     UPDATE charger SET {', '.join(f'{key}=?' for key in charger.keys())}, last_updated=?
     WHERE id=?
