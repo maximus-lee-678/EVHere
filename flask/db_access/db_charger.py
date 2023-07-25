@@ -10,10 +10,11 @@ import db_access.db_favourite_charger as db_favourite_charger
 import db_access.db_charger_available_connector as db_charger_available_connector
 
 # Generics:
-column_sql_translations = {'id': 'id', 'name': 'name', 'latitude': 'latitude', 'longitude': 'longitude',
-                           'address': 'address', 'currently_open': 'currently_open', 'pv_current_in': 'pv_current_in', 'pv_energy_level': 'pv_energy_level',
+column_sql_translations = {'id': 'id', 'name': 'name', 'latitude': 'latitude', 'longitude': 'longitude', 
+                           'address': 'address', 'currently_open': 'currently_open', 
+                           'pv_voltage_in': 'pv_voltage_in', 'pv_current_in': 'pv_current_in', 'pv_voltage_out': 'pv_voltage_out', 'pv_current_out': 'pv_current_out',
                            'rate_current': 'rate_current', 'rate_predicted': 'rate_predicted', 'active': 'active', 'last_updated': 'last_updated'}
-column_names_all = ['id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 'pv_current_in', 'pv_energy_level',
+column_names_all = ['id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 'pv_voltage_in', 'pv_current_in', 'pv_voltage_out', 'pv_current_out',
                     'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector']
 trailing_query = """
 FROM charger
@@ -24,8 +25,8 @@ def get_charger_hash_map(column_names=None, where_array=None):
     """
     | **[SUPPORTING]**
     | **Charger Hashmap supported fields:** 
-    | ['id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 
-    | 'pv_current_in', 'pv_energy_level', 'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector']
+    | ['id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 'pv_voltage_in', 'pv_current_in', 'pv_voltage_out', 'pv_current_out',
+    | 'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector']
 
     :param array column_names: any combination of supported fields
     :param array where_array: containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being 'NOT' e.g. [['id', '0'], ['id', '1', 'NOT]]
@@ -78,8 +79,8 @@ def get_charger_dict(column_names=None, where_array=None):
     """
     | **[SUPPORTING]**
     | **Charger Dictionary supported fields:** 
-    | ['id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 
-    | 'pv_current_in', 'pv_energy_level', 'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector']
+    | ['id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 'pv_voltage_in', 'pv_current_in', 'pv_voltage_out', 'pv_current_out',
+    | 'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector']
 
     :param array column_names: any combination of supported fields
     :param array where_array: containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being 'NOT' e.g. [['id', '0'], ['id', '1', 'NOT]]
@@ -138,8 +139,8 @@ def get_all_chargers_with_favourite_dict(id_user_info_sanitised):
     """
     | **[ENDPOINT/INTERNAL]**
     | Retrieves ALL chargers from database. Also includes 'is_favourite'. (Dictionary)
-    | **Fields returned:** [{'id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 'pv_current_in', 
-    | 'pv_energy_level', 'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector', 'is_favourite'}]
+    | **Fields returned:** [{'id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 'pv_voltage_in', 'pv_current_in', 'pv_voltage_out', 'pv_current_out',
+    | 'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector', 'is_favourite'}]
 
     :param string id_user_info_sanitised: id_user_info_sanitised
 
@@ -168,8 +169,8 @@ def get_all_chargers_with_favourite_hash_map(id_user_info_sanitised):
     """
     | **[INTERNAL]**
     | Retrieves ALL chargers from database. Also includes 'is_favourite'. (Hashmap)
-    | **Fields returned:** {'id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 'pv_current_in', 
-    | 'pv_energy_level', 'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector', 'is_favourite'}
+    | **Fields returned:** {'id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 'pv_voltage_in', 'pv_current_in', 'pv_voltage_out', 'pv_current_out',
+    | 'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector', 'is_favourite'}
 
     :param string id_user_info_sanitised: id_user_info_sanitised
 

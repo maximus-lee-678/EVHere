@@ -63,8 +63,10 @@ export default function Favourites() {
                     <div className="w-full md:w-4/5 row-span-3">
                         <CardContent elementName={favouriteChargerInfo[i].name}>
                             <div><span className="uppercase font-semibold text-sm">Location:</span> {favouriteChargerInfo[i].address}</div>
+                            <div><span className="uppercase font-semibold text-sm">Solar Voltage In:</span> {favouriteChargerInfo[i].pv_voltage_in} V</div>
                             <div><span className="uppercase font-semibold text-sm">Solar Current In:</span> {favouriteChargerInfo[i].pv_current_in} A</div>
-                            <div><span className="uppercase font-semibold text-sm">Solar Stored Charge:</span> {favouriteChargerInfo[i].pv_energy_level} kWh</div>
+                            <div><span className="uppercase font-semibold text-sm">Solar Voltage Out:</span> {favouriteChargerInfo[i].pv_voltage_out} V</div>
+                            <div><span className="uppercase font-semibold text-sm">Solar Current Out:</span> {favouriteChargerInfo[i].pv_current_out} A</div>
                             <div><span className="uppercase font-semibold text-sm">Price Rate:</span> ${favouriteChargerInfo[i].rate_current} / kWh</div>
                         </CardContent>
                     </div>

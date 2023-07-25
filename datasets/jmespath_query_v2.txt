@@ -1,14 +1,14 @@
 =BlueCharge=
-results[*].{name: public_name, latitude: lat, longitude: lng, address: address, currently_open: `1`, pv_current_in: `0`, pv_energy_level: `0`, rate_current: to_number(join('', [`0.`, to_string(length(public_name))])), rate_predicted: `null`, active: `1`}
+results[*].{name: public_name, latitude: lat, longitude: lng, address: address, currently_open: `1`, pv_voltage_in: `0`, pv_current_in: `0`, pv_voltage_out: `0`, pv_current_out: `0`, rate_current: to_number(join('', [`0.`, to_string(length(public_name))])), rate_predicted: `null`, active: `1`}
 
 =Plugshare=
-[*].{name: name, latitude: latitude, longitude: longitude, address: address, currently_open: `1`, pv_current_in: `0`, pv_energy_level: `0`, rate_current: to_number(join('', [`0.`, to_string(length(name))])), rate_predicted: `null`, active: `1`}
+[*].{name: name, latitude: latitude, longitude: longitude, address: address, currently_open: `1`, pv_voltage_in: `0`, pv_current_in: `0`, pv_voltage_out: `0`, pv_current_out: `0`, rate_current: to_number(join('', [`0.`, to_string(length(name))])), rate_predicted: `null`, active: `1`}
 
 =Shell=
-locations[?site_category == 'conventional_fuel_site_with_ev' || 'conventional_fuel_site' || 'destination_charging_ev'].{name: name, latitude: lat, longitude: lng, address: formatted_address, currently_open: `1`, pv_current_in: `0`, pv_energy_level: `0`, rate_current: to_number(join('', [`0.`, to_string(length(name))])), rate_predicted: `null`, active: `1`}
+locations[?site_category == 'conventional_fuel_site_with_ev' || 'conventional_fuel_site' || 'destination_charging_ev'].{name: name, latitude: lat, longitude: lng, address: formatted_address, currently_open: `1`, pv_voltage_in: `0`, pv_current_in: `0`, pv_voltage_out: `0`, pv_current_out: `0`, rate_current: to_number(join('', [`0.`, to_string(length(name))])), rate_predicted: `null`, active: `1`}
 
 =SPMobility=
-data[*].{name: title, latitude: latitude, longitude: longitude, address: address, currently_open: `1`, pv_current_in: `0`, pv_energy_level: `0`, rate_current: to_number(join('', [`0.`, to_string(length(title))])), rate_predicted: `null`, active: `1`}
+data[*].{name: title, latitude: latitude, longitude: longitude, address: address, currently_open: `1`, pv_voltage_in: `0`, pv_current_in: `0`, pv_voltage_out: `0`, pv_current_out: `0`, rate_current: to_number(join('', [`0.`, to_string(length(title))])), rate_predicted: `null`, active: `1`}
 
 [Comments]
 A much more generic dataset extracted from existing chargers. More values are initialised to 1 or 0.
