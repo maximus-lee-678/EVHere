@@ -7,6 +7,7 @@ SCRIPT_PATH = './database/db_schema.sql'
 DEFAULT_CHARGER_PATH = './database/chargers_modded.csv'
 DEFAULT_CONNECTOR_PATH = './database/connectors_modded.csv'
 DEFAULT_CHARGER_CONNECTORS_PATH = './database/chargers_connectors_modded.csv'
+DEFAULT_CHARGER_RATE_HISTORIC_PATH = './database/charger_rate_historic.csv'
 
 
 def touch_database():
@@ -29,12 +30,13 @@ def touch_database():
     with open(DEFAULT_CHARGER_PATH, 'r', encoding='UTF-8') as file:
         # csv.DictReader uses first line in file for column headings by default
         dict_reader = csv.DictReader(file)  # comma is default delimiter
-        to_db = [(i['id'], i['name'], i['latitude'], i['longitude'], i['address'], i['currently_open'],
-                  i['pv_current_in'], i['pv_energy_level'], i['rate_current'], i['rate_predicted'], i['active'], i['last_updated']) for i in dict_reader]
+        to_db = [(i['id'], i['name'], i['latitude'], i['longitude'], i['address'], i['currently_open'], i['pv_voltage_in'], i['pv_current_in'], 
+                  i['pv_voltage_out'], i['pv_current_out'], i['rate_current'], i['rate_predicted'], i['active'], i['last_updated']) for i in dict_reader]
 
     # Write charger details to database
     cursor.executemany(
-        "INSERT INTO charger VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", to_db)
+        "INSERT INTO charger VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", to_db)
+    conn.commit()
 
     # Read connector data, write to variable
     with open(DEFAULT_CONNECTOR_PATH, 'r', encoding='UTF-8') as file:
@@ -45,6 +47,7 @@ def touch_database():
 
     # Write connector details to database
     cursor.executemany("INSERT INTO connector_type VALUES (?,?,?,?,?)", to_db)
+    conn.commit()
 
     # Read charger connector data, write to variable
     with open(DEFAULT_CHARGER_CONNECTORS_PATH, 'r', encoding='UTF-8') as file:
@@ -56,8 +59,20 @@ def touch_database():
     # Write connector details to database
     cursor.executemany(
         "INSERT INTO charger_available_connector VALUES (?,?,?,?,?,?)", to_db)
-
     conn.commit()
+
+    # Read charger rate historic data, write to variable
+    with open(DEFAULT_CHARGER_RATE_HISTORIC_PATH, 'r', encoding='UTF-8') as file:
+        # csv.DictReader uses first line in file for column headings by default
+        dict_reader = csv.DictReader(file)  # comma is default delimiter
+        to_db = [(i['id'], i['id_charger'], i['rate'], i['timestamp'])
+                 for i in dict_reader]
+
+    # Write charger rate historic details to database
+    cursor.executemany(
+        "INSERT INTO charger_rate_historic VALUES (?,?,?,?)", to_db)
+    conn.commit()    
+
     conn.close()
 
 

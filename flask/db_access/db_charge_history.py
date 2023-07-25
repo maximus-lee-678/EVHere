@@ -117,10 +117,7 @@ def get_charge_history_active(id_user_info_sanitised):
         return {'result': db_service_code_master.INTERNAL_ERROR}
 
     # get all chargers hash map
-    charger_hash_map_out = db_charger.get_charger_hash_map(column_names=['name', 'latitude', 'longitude', 'address', 'currently_open',
-                                                                         'pv_current_in', 'pv_energy_level', 'rate_current', 'rate_predicted',
-                                                                         'active', 'last_updated', 'available_connector'],
-                                                           where_array=[['active', True]])
+    charger_hash_map_out = db_charger.get_charger_hash_map(where_array=[['active', True]])
     # check if empty or error
     # at this point, if empty returned, considered impossible under normal circumstances, internal error
     if charger_hash_map_out['result'] != db_service_code_master.HASHMAP_GENERIC_SUCCESS:
@@ -190,13 +187,6 @@ def get_charge_history_by_user_id(id_user_info_sanitised, filter_by):
     charger_hash_map_out = db_charger.get_all_chargers_with_favourite_hash_map(id_user_info_sanitised)
     if charger_hash_map_out['result'] != db_service_code_master.CHARGER_FOUND:
         return {'result': db_service_code_master.INTERNAL_ERROR}
-    # charger_hash_map_out = db_charger.get_charger_hash_map(column_names=['name', 'latitude', 'longitude', 'address', 'currently_open',
-    #                                                                      'pv_current_in', 'pv_energy_level', 'rate_current', 'rate_predicted',
-    #                                                                      'active', 'last_updated', 'available_connector'],
-    #                                                        where_array=[['active', True]])
-    # # check if empty or error (empty -> internal error)
-    # if charger_hash_map_out['result'] != db_service_code_master.HASHMAP_GENERIC_SUCCESS:
-    #     return {'result': db_service_code_master.INTERNAL_ERROR}
 
     key_values = charge_history_out['content']
 

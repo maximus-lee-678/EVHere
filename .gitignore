@@ -29,7 +29,13 @@ __pycache__
 
 # [global ignores]
 .vscode
-*.db
 
 # [sphinx documentation ignores]
 docs/_build/
+
+# [database/dataset related ignores]
+*.db
+**/charger_rate_historic.csv
+**/chargers_connectors_modded.csv
+**/chargers_modded.csv
+**/connectors_modded.csv

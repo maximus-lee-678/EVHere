@@ -135,9 +135,13 @@ export default function Map(props) {
                             <br />
                             <span className="font-semibold text-sm">Address:</span> {allChargerInfo[i].address}
                             <br />
+                            <span className="font-semibold text-sm">Solar Voltage In:</span> {allChargerInfo[i].pv_voltage_in} V
+                            <br />
                             <span className="font-semibold text-sm">Solar Current In:</span> {allChargerInfo[i].pv_current_in} A
                             <br />
-                            <span className="font-semibold text-sm">Solar Stored Charge:</span> {allChargerInfo[i].pv_energy_level} kWh
+                            <span className="font-semibold text-sm">Solar Voltage Out:</span> {allChargerInfo[i].pv_voltage_out} V
+                            <br />
+                            <span className="font-semibold text-sm">Solar Current Out:</span> {allChargerInfo[i].pv_current_out} A
                             <br />
                             <span className="font-semibold text-sm">Price Rate:</span> ${allChargerInfo[i].rate_current} / kWh
                         </div>

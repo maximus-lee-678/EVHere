@@ -68,7 +68,7 @@ def get_user_favourite_chargers(id_user_info_sanitised):
     | **[ENDPOINT]**
     | Get a user's favourite chargers.
     | **Fields returned:** 
-    | [{'id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 'pv_current_in', 'pv_energy_level',
+    | [{'id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 'pv_voltage_in', 'pv_current_in', 'pv_voltage_out', 'pv_current_out',
     | 'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector'}]
 
     :param string id_user_info_sanitised: id_user_info_sanitised
