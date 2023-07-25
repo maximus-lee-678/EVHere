@@ -10,8 +10,7 @@ import db_access.db_favourite_charger as db_favourite_charger
 import db_access.db_charger_available_connector as db_charger_available_connector
 
 # Generics:
-column_sql_translations = {'id': 'id', 'name': 'name', 'latitude': 'latitude', 'longitude': 'longitude', 
-                           'address': 'address', 'currently_open': 'currently_open', 
+column_sql_translations = {'id': 'id', 'name': 'name', 'latitude': 'latitude', 'longitude': 'longitude', 'address': 'address', 'currently_open': 'currently_open',
                            'pv_voltage_in': 'pv_voltage_in', 'pv_current_in': 'pv_current_in', 'pv_voltage_out': 'pv_voltage_out', 'pv_current_out': 'pv_current_out',
                            'rate_current': 'rate_current', 'rate_predicted': 'rate_predicted', 'active': 'active', 'last_updated': 'last_updated'}
 column_names_all = ['id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 'pv_voltage_in', 'pv_current_in', 'pv_voltage_out', 'pv_current_out',
@@ -134,37 +133,6 @@ def get_charger_dict(column_names=None, where_array=None):
 
     return charger_dict_out
 
-def get_charger_by_id(id):
-    charger_dict_out = get_charger_dict(where_array=[['id', "61bf163e-83fa-45f0-84a9-ba47c2e3359e"]])
-    key_values = charger_dict_out['content']
-        # check if empty or error
-    if charger_dict_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
-        return {'result': db_service_code_master.CHARGER_NOT_FOUND}
-    if charger_dict_out['result'] == db_service_code_master.INTERNAL_ERROR:
-        return charger_dict_out
-    return {'result': db_service_code_master.CHARGER_FOUND,
-                'content': key_values}
-
-
-def update_charger(charger, data):
-    # currently a cheat
-    del charger['last_updated']
-    del charger["available_connector"]
-
-    for key in charger.keys():
-        if key in data:
-            charger[key] = data[key]
-
-    query = f"""
-    UPDATE charger SET {', '.join(f'{key}=?' for key in charger.keys())}, last_updated=?
-    WHERE id=?
-    """
-    task = tuple(value for value in charger.values()) +  (db_helper_functions.generate_time_now(), charger['id'])
-    print(query)
-    print(task)
-    transaction = db_methods.safe_transaction(query=query, task=task)
-    print(transaction['transaction_successful'])
-    return {'result': db_service_code_master.CHARGER_FOUND, 'content': charger}
 
 def get_all_chargers_with_favourite_dict(id_user_info_sanitised):
     """
@@ -219,7 +187,7 @@ def get_all_chargers_with_favourite_hash_map(id_user_info_sanitised):
         return charger_dict_out
 
     content_dict = charger_dict_out['content']
-    
+
     add_favourites(content_dict, id_user_info_sanitised)
 
     return {'result': db_service_code_master.CHARGER_FOUND,
@@ -242,7 +210,7 @@ def add_favourites(charger_dict_or_hash, id_user_info_sanitised):
     # check if error
     if favourites_array_out['result'] == db_service_code_master.INTERNAL_ERROR:
         return favourites_array_out
-    
+
     # check if empty, return dict with additional key is_favourite all set to false
     # else return with additional key is_favourite based on key appearance in favourites_array_out
     if type(charger_dict_or_hash) is list:
@@ -263,3 +231,38 @@ def add_favourites(charger_dict_or_hash, id_user_info_sanitised):
             for value in charger_dict_or_hash.values():
                 db_helper_functions.update_dict_key(
                     value, None, 'is_favourite', True if value['id'] in favourites_array_out['content'] else False)
+
+
+def update_charger_technical(id_charger, fields_to_update):
+    """
+    | **[ENDPOINT]**
+    | Updates a charger's technical information.
+    | **Supported fields_to_update keys:**
+    | {'pv_voltage_in', 'pv_current_in', 'pv_voltage_out', 'pv_current_out', 'rate_predicted'}
+
+    :param string id_charger: id_charger
+    :param dict fields_to_update: key-values of columns to update
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, CHARGER_UPDATE_FAILURE, CHARGER_UPDATE_SUCCESS. 
+    :key 'reason': (array, one) *('result' == CHARGER_UPDATE_FAILURE)* CHARGER_NOT_FOUND, MISSING_FIELDS.
+    """
+
+    # empty dict
+    if not fields_to_update:
+        return {'result': db_service_code_master.CHARGER_UPDATE_FAILURE, 'reason': [db_service_code_master.MISSING_FIELDS]}
+
+    query = f"""
+    UPDATE charger SET {', '.join(f'{key}=?' for key in fields_to_update.keys())}, last_updated=?
+    WHERE id=?
+    """
+    task = tuple(value for value in fields_to_update.values()) + \
+        (db_helper_functions.generate_time_now(), id_charger)
+
+    transaction = db_methods.safe_transaction(query=query, task=task)
+    if not transaction['transaction_successful']:
+        return {'result': db_service_code_master.INTERNAL_ERROR}
+    if transaction['rows_affected'] != 1:
+        return {'result': db_service_code_master.CHARGER_UPDATE_FAILURE, 'reason': [db_service_code_master.CHARGER_NOT_FOUND]}
+
+    return {'result': db_service_code_master.CHARGER_UPDATE_SUCCESS}

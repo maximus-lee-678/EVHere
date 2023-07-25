@@ -44,6 +44,22 @@ db\_access.db\_charger\_available\_connector module
    :undoc-members:
    :show-inheritance:
 
+db\_access.db\_charger\_pv\_historic module
+-------------------------------------------
+
+.. automodule:: db_access.db_charger_pv_historic
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+db\_access.db\_charger\_rate\_historic module
+---------------------------------------------
+
+.. automodule:: db_access.db_charger_rate_historic
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 db\_access.db\_connector\_type module
 -------------------------------------
 

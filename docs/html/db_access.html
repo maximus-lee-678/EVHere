@@ -69,9 +69,12 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-db_access.db_charger">db_access.db_charger module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger.get_all_chargers"><code class="docutils literal notranslate"><span class="pre">get_all_chargers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger.add_favourites"><code class="docutils literal notranslate"><span class="pre">add_favourites()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger.get_all_chargers_with_favourite_dict"><code class="docutils literal notranslate"><span class="pre">get_all_chargers_with_favourite_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger.get_all_chargers_with_favourite_hash_map"><code class="docutils literal notranslate"><span class="pre">get_all_chargers_with_favourite_hash_map()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger.get_charger_dict"><code class="docutils literal notranslate"><span class="pre">get_charger_dict()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger.get_charger_hash_map"><code class="docutils literal notranslate"><span class="pre">get_charger_hash_map()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger.update_charger_technical"><code class="docutils literal notranslate"><span class="pre">update_charger_technical()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-db_access.db_charger_available_connector">db_access.db_charger_available_connector module</a><ul>
@@ -80,6 +83,16 @@
 <li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger_available_connector.get_charger_available_connector_hash_map"><code class="docutils literal notranslate"><span class="pre">get_charger_available_connector_hash_map()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger_available_connector.set_charger_available_connector_in_use"><code class="docutils literal notranslate"><span class="pre">set_charger_available_connector_in_use()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger_available_connector.update_charger_available_connector_electric_stats"><code class="docutils literal notranslate"><span class="pre">update_charger_available_connector_electric_stats()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-db_access.db_charger_pv_historic">db_access.db_charger_pv_historic module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger_pv_historic.get_charger_pv_historic_dict"><code class="docutils literal notranslate"><span class="pre">get_charger_pv_historic_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger_pv_historic.get_charger_pv_historic_hash_map"><code class="docutils literal notranslate"><span class="pre">get_charger_pv_historic_hash_map()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-db_access.db_charger_rate_historic">db_access.db_charger_rate_historic module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger_rate_historic.get_charger_rate_historic_dict"><code class="docutils literal notranslate"><span class="pre">get_charger_rate_historic_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger_rate_historic.get_charger_rate_historic_hash_map"><code class="docutils literal notranslate"><span class="pre">get_charger_rate_historic_hash_map()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-db_access.db_connector_type">db_access.db_connector_type module</a><ul>
@@ -497,17 +510,35 @@
 <section id="module-db_access.db_charger">
 <span id="db-access-db-charger-module"></span><h2>db_access.db_charger module<a class="headerlink" href="#module-db_access.db_charger" title="Permalink to this heading"></a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="db_access.db_charger.get_all_chargers">
-<span class="sig-prename descclassname"><span class="pre">db_access.db_charger.</span></span><span class="sig-name descname"><span class="pre">get_all_chargers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger.get_all_chargers" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="db_access.db_charger.add_favourites">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charger.</span></span><span class="sig-name descname"><span class="pre">add_favourites</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">charger_dict_or_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger.add_favourites" title="Permalink to this definition"></a></dt>
 <dd><div class="line-block">
-<div class="line"><strong>[ENDPOINT]</strong></div>
-<div class="line">Retrieves ALL chargers from database.</div>
-<div class="line"><strong>Fields returned:</strong> [{‘id’, ‘name’, ‘latitude’, ‘longitude’, ‘address’, ‘currently_open’, ‘pv_current_in’, </div>
-<div class="line">‘pv_energy_level’, ‘rate_current’, ‘rate_predicted’, ‘active’, ‘last_updated’, ‘available_connector’}]</div>
+<div class="line"><strong>[INTERNAL]</strong></div>
+<div class="line">Adds user charger favourites to a dictionary array or hashmap.</div>
+<div class="line">No return as dicts and arrays are pass by reference.</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – <em>(optional)</em> if specified, adds ‘is_favourite’ key to content dict</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>charger_dict_or_hash</strong> (<em>string</em>) – charger dictionary or hashmap</p></li>
+<li><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – id_user_info_sanitised</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charger.get_all_chargers_with_favourite_dict">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charger.</span></span><span class="sig-name descname"><span class="pre">get_all_chargers_with_favourite_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger.get_all_chargers_with_favourite_dict" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT/INTERNAL]</strong></div>
+<div class="line">Retrieves ALL chargers from database. Also includes ‘is_favourite’. (Dictionary)</div>
+<div class="line"><strong>Fields returned:</strong> [{‘id’, ‘name’, ‘latitude’, ‘longitude’, ‘address’, ‘currently_open’, ‘pv_voltage_in’, ‘pv_current_in’, ‘pv_voltage_out’, ‘pv_current_out’,</div>
+<div class="line">‘rate_current’, ‘rate_predicted’, ‘active’, ‘last_updated’, ‘available_connector’, ‘is_favourite’}]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – id_user_info_sanitised</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Dictionary</p>
@@ -515,11 +546,33 @@
 <dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
 <dd class="field-odd"><p>(one) INTERNAL_ERROR, CHARGER_NOT_FOUND, CHARGER_FOUND.</p>
 </dd>
-<dt class="field-even">Key ‘type’<span class="colon">:</span></dt>
-<dd class="field-even"><p>(one) CHARGER_WITH_FAVOURITE, CHARGER_WITHOUT_FAVOURITE.</p>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary array) <em>(‘result’ == CHARGER_FOUND)</em> Output.</p>
 </dd>
-<dt class="field-odd">Key ‘content’<span class="colon">:</span></dt>
-<dd class="field-odd"><p>(dictionary array) <em>(‘result’ == CHARGER_FOUND)</em> Output.</p>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charger.get_all_chargers_with_favourite_hash_map">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charger.</span></span><span class="sig-name descname"><span class="pre">get_all_chargers_with_favourite_hash_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger.get_all_chargers_with_favourite_hash_map" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[INTERNAL]</strong></div>
+<div class="line">Retrieves ALL chargers from database. Also includes ‘is_favourite’. (Hashmap)</div>
+<div class="line"><strong>Fields returned:</strong> {‘id’, ‘name’, ‘latitude’, ‘longitude’, ‘address’, ‘currently_open’, ‘pv_voltage_in’, ‘pv_current_in’, ‘pv_voltage_out’, ‘pv_current_out’,</div>
+<div class="line">‘rate_current’, ‘rate_predicted’, ‘active’, ‘last_updated’, ‘available_connector’, ‘is_favourite’}</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – id_user_info_sanitised</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, CHARGER_NOT_FOUND, CHARGER_FOUND.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary) <em>(‘result’ == CHARGER_FOUND)</em> Output.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -530,8 +583,8 @@
 <dd><div class="line-block">
 <div class="line"><strong>[SUPPORTING]</strong></div>
 <div class="line"><strong>Charger Dictionary supported fields:</strong> </div>
-<div class="line">[‘id’, ‘name’, ‘latitude’, ‘longitude’, ‘address’, ‘currently_open’, </div>
-<div class="line">‘pv_current_in’, ‘pv_energy_level’, ‘rate_current’, ‘rate_predicted’, ‘active’, ‘last_updated’, ‘available_connector’]</div>
+<div class="line">[‘id’, ‘name’, ‘latitude’, ‘longitude’, ‘address’, ‘currently_open’, ‘pv_voltage_in’, ‘pv_current_in’, ‘pv_voltage_out’, ‘pv_current_out’,</div>
+<div class="line">‘rate_current’, ‘rate_predicted’, ‘active’, ‘last_updated’, ‘available_connector’]</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -558,8 +611,8 @@
 <dd><div class="line-block">
 <div class="line"><strong>[SUPPORTING]</strong></div>
 <div class="line"><strong>Charger Hashmap supported fields:</strong> </div>
-<div class="line">[‘id’, ‘name’, ‘latitude’, ‘longitude’, ‘address’, ‘currently_open’, </div>
-<div class="line">‘pv_current_in’, ‘pv_energy_level’, ‘rate_current’, ‘rate_predicted’, ‘active’, ‘last_updated’, ‘available_connector’]</div>
+<div class="line">[‘id’, ‘name’, ‘latitude’, ‘longitude’, ‘address’, ‘currently_open’, ‘pv_voltage_in’, ‘pv_current_in’, ‘pv_voltage_out’, ‘pv_current_out’,</div>
+<div class="line">‘rate_current’, ‘rate_predicted’, ‘active’, ‘last_updated’, ‘available_connector’]</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -576,6 +629,34 @@
 </dd>
 <dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
 <dd class="field-even"><p>(dictionary) <em>(‘result’ == HASHMAP_GENERIC_SUCCESS)</em> Output. (‘id’ as key)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charger.update_charger_technical">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charger.</span></span><span class="sig-name descname"><span class="pre">update_charger_technical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_charger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields_to_update</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger.update_charger_technical" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Updates a charger’s technical information.</div>
+<div class="line"><strong>Supported fields_to_update keys:</strong></div>
+<div class="line">{‘pv_voltage_in’, ‘pv_current_in’, ‘pv_voltage_out’, ‘pv_current_out’, ‘rate_predicted’}</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_charger</strong> (<em>string</em>) – id_charger</p></li>
+<li><p><strong>fields_to_update</strong> (<em>dict</em>) – key-values of columns to update</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, CHARGER_UPDATE_FAILURE, CHARGER_UPDATE_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘reason’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(array, one) <em>(‘result’ == CHARGER_UPDATE_FAILURE)</em> CHARGER_NOT_FOUND, MISSING_FIELDS.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -685,6 +766,120 @@
 <dt class="sig sig-object py" id="db_access.db_charger_available_connector.update_charger_available_connector_electric_stats">
 <span class="sig-prename descclassname"><span class="pre">db_access.db_charger_available_connector.</span></span><span class="sig-name descname"><span class="pre">update_charger_available_connector_electric_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_charger_available_connector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_voltage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_current</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger_available_connector.update_charger_available_connector_electric_stats" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
+
+</section>
+<section id="module-db_access.db_charger_pv_historic">
+<span id="db-access-db-charger-pv-historic-module"></span><h2>db_access.db_charger_pv_historic module<a class="headerlink" href="#module-db_access.db_charger_pv_historic" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charger_pv_historic.get_charger_pv_historic_dict">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charger_pv_historic.</span></span><span class="sig-name descname"><span class="pre">get_charger_pv_historic_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger_pv_historic.get_charger_pv_historic_dict" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line">[SUPPORTING]</div>
+<div class="line"><strong>Charger PV Historic Dictionary supported fields:</strong> </div>
+<div class="line">[‘id’, ‘id_charger’, ‘pv_voltage_in’, ‘pv_current_in’, ‘pv_voltage_out’, ‘pv_current_out’, ‘timestamp’]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – any combination of supported fields</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, SELECT_GENERIC_EMPTY, SELECT_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary array) <em>(‘result’ == SELECT_GENERIC_SUCCESS)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charger_pv_historic.get_charger_pv_historic_hash_map">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charger_pv_historic.</span></span><span class="sig-name descname"><span class="pre">get_charger_pv_historic_hash_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger_pv_historic.get_charger_pv_historic_hash_map" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line">[SUPPORTING]</div>
+<div class="line"><strong>Charger PV Historic Hashmap supported fields:</strong> </div>
+<div class="line">[‘id’, ‘id_charger’, ‘pv_voltage_in’, ‘pv_current_in’, ‘pv_voltage_out’, ‘pv_current_out’, ‘timestamp’]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – any combination of supported fields</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY, HASHMAP_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary) <em>(‘result’ == HASHMAP_GENERIC_SUCCESS)</em> Output. (‘id’ as key)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-db_access.db_charger_rate_historic">
+<span id="db-access-db-charger-rate-historic-module"></span><h2>db_access.db_charger_rate_historic module<a class="headerlink" href="#module-db_access.db_charger_rate_historic" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charger_rate_historic.get_charger_rate_historic_dict">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charger_rate_historic.</span></span><span class="sig-name descname"><span class="pre">get_charger_rate_historic_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger_rate_historic.get_charger_rate_historic_dict" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line">[SUPPORTING]</div>
+<div class="line"><strong>Charger Rate Historic Dictionary supported fields:</strong> </div>
+<div class="line">[‘id’, ‘id_charger’, ‘rate’, ‘timestamp’]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – any combination of supported fields</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, SELECT_GENERIC_EMPTY, SELECT_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary array) <em>(‘result’ == SELECT_GENERIC_SUCCESS)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charger_rate_historic.get_charger_rate_historic_hash_map">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charger_rate_historic.</span></span><span class="sig-name descname"><span class="pre">get_charger_rate_historic_hash_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger_rate_historic.get_charger_rate_historic_hash_map" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line">[SUPPORTING]</div>
+<div class="line"><strong>Charger Rate Historic Hashmap supported fields:</strong> </div>
+<div class="line">[‘id’, ‘id_charger’, ‘rate’, ‘timestamp’]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column_names</strong> (<em>array</em>) – any combination of supported fields</p></li>
+<li><p><strong>where_array</strong> (<em>array</em>) – containing more arrays[2-3], array[0] being WHERE column, array[1] being WHERE value, array[2] optionally being ‘NOT’ e.g. [[‘id’, ‘0’], [‘id’, ‘1’, ‘NOT]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(one) INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY, HASHMAP_GENERIC_SUCCESS.</p>
+</dd>
+<dt class="field-even">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dictionary) <em>(‘result’ == HASHMAP_GENERIC_SUCCESS)</em> Output. (‘id’ as key)</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="module-db_access.db_connector_type">
@@ -877,7 +1072,7 @@
 <div class="line"><strong>[ENDPOINT]</strong></div>
 <div class="line">Get a user’s favourite chargers.</div>
 <div class="line"><strong>Fields returned:</strong> </div>
-<div class="line">[{‘id’, ‘name’, ‘latitude’, ‘longitude’, ‘address’, ‘currently_open’, ‘pv_current_in’, ‘pv_energy_level’,</div>
+<div class="line">[{‘id’, ‘name’, ‘latitude’, ‘longitude’, ‘address’, ‘currently_open’, ‘pv_voltage_in’, ‘pv_current_in’, ‘pv_voltage_out’, ‘pv_current_out’,</div>
 <div class="line">‘rate_current’, ‘rate_predicted’, ‘active’, ‘last_updated’, ‘available_connector’}]</div>
 </div>
 <dl class="field-list simple">
