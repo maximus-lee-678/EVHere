@@ -45,6 +45,7 @@ export default function Map(props) {
     const [sourceLocation, setSourceLocation] = useState({});
     const [destinationLocation, setDestinationLocation] = useState({});
     const [nearestMarkerLatLng, setNearestMarkerLatLng] = useState();
+    const [geolocationMsg, setGeolocationMsg] = useState("Awaiting permission");
 
     // Function that loads all chargers. Called on page load, populates allChargerInfo.
     const fetchAllChargers = useCallback(async () => {
@@ -117,9 +118,7 @@ export default function Map(props) {
 
     // Component that formats charger information into markers for display. Reads from allChargerInfo.
     function RenderMarkers() {
-        let result = [];
-
-        PopulateRecommendations();
+        let result = [];        
 
         for (var i = 0; i < allChargerInfo.length; i++) {
             // this is necessary for event handler to work, using allChargerInfo[i] directly causes it to go out of bound for some reason
@@ -200,7 +199,7 @@ export default function Map(props) {
                         </button>
                         <button id={allChargerInfo[i].id}
                             onClick={() => navigate(lat, lng)}
-                            className="bg-green-400 hover:bg-green-900 px-3 py-2 rounded-full text-white">
+                            className={(geolocationMsg != "Permission granted" ? "hidden " : "") + "bg-green-400 hover:bg-green-900 px-3 py-2 rounded-full text-white"}>
                             Go
                             <i className="fas fa-location-arrow pl-1"></i>
                         </button>
@@ -208,6 +207,7 @@ export default function Map(props) {
                 </Marker>
             )
         }
+        console.log("result", result)
         return result;
     }
 
@@ -250,7 +250,7 @@ export default function Map(props) {
         };
 
         //if location allowed, set view as current location
-        navigator.geolocation.getCurrentPosition((position) => location(map, position.coords.latitude, position.coords.longitude));
+        navigator.geolocation.getCurrentPosition((position) => location(map, position.coords.latitude, position.coords.longitude), function(error) {setGeolocationMsg(error.message)});
 
         // Return geoJSON overlay depending on zoom level
         if (zoomLevel >= displayMarkersThreshold) {// No overlay, only markers
@@ -260,7 +260,6 @@ export default function Map(props) {
             return allChargerInfo && <div><GeoJSON data={geoJsonSubzone} key={Date.now()} /></div>;
         }
         else {                                     // Region Level
-
             return <GeoJSON data={geoJsonRegion} key={Date.now()} />;
         }
     }
@@ -272,54 +271,53 @@ export default function Map(props) {
         var layers = [];
         
         var markersArray = [];
+        var markersCoordsArray = [];
         for (var i = 0; i < allChargerInfo.length; i++) {
-            //markersArray.push(new LatLng(allChargerInfo[i].latitude, allChargerInfo[i].longitude));
             markersArray.push(allChargerInfo[i]);
+            var coords = [allChargerInfo[i].latitude, allChargerInfo[i].longitude]
+            markersCoordsArray.push(coords);
         }
 
-        //console.log("markersarray", markersArray);
 
-        map.eachLayer( function(layer) {
-            //check if is marker and is not current location
-            if (layer._latlng != undefined) {
-                if (layer._latlng.lat != undefined && layer._latlng.lng != undefined && layer._latlng.lat != sourceLocation.lat && layer._latlng.lng != sourceLocation.lng) {
-                    layers.push(layer);
-                }
+        if (geolocationMsg == "Permission granted" && sourceLocation != null) {
+    
+            if (markersArray.length > 0) {
+                //for nearest charger
+
+                var nearest = GeometryUtil.closest(map, markersCoordsArray, [sourceLocation.lat, sourceLocation.lng], true);
+        
+                var nearestMarker = markersArray.find(element => element.latitude === nearest.lat && element.longitude === nearest.lng);
+    
+                console.log("nearestMarker", nearestMarker);
+    
+                document.getElementById("nearest-charger-name").innerText = nearestMarker.name;
+                document.getElementById("nearest-charger-button").addEventListener("click", () => {
+                    map.panTo(new LatLng(nearestMarker.latitude, nearestMarker.longitude));
+                });
+    
+    
+                //for best value charger
+                var prices = [];
+    
+                markersArray.forEach(item => {
+                    prices.push(item.rate_current);
+                });
+    
+                var valueMarker = markersArray.find(element => element.rate_current == Math.min.apply(Math, prices));
+    
+                console.log("valueMarker", valueMarker);
+                document.getElementById("best-value-charger-name").innerText = valueMarker.name;
+                document.getElementById("best-value-charger-button").addEventListener("click", () => {
+                    map.panTo(new LatLng(valueMarker.latitude, valueMarker.longitude));
+                });
+    
+    
             }
-        });
 
-        if (layers.length > 0) {
-            //for nearest charger
-    
-            var nearest = GeometryUtil.closestLayer(map, layers, sourceLocation);
-    
-            var nearestMarker = markersArray.find(element => element.latitude === nearest.latlng.lat && element.longitude === nearest.latlng.lng);
-
-            console.log("nearestMarker", nearestMarker);
-
-            document.getElementById("nearest-charger-name").innerText = nearestMarker.name;
-            document.getElementById("nearest-charger-button").addEventListener("click", () => {
-                map.panTo(new LatLng(nearest.latlng.lat, nearest.latlng.lng))
-            });
-
-
-            //for best value charger
-            var prices = [];
-
-            markersArray.forEach(item => {
-                prices.push(item.rate_current);
-            });
-
-            var valueMarker = markersArray.find(element => element.rate_current == Math.min.apply(Math, prices));
-
-            console.log("valueMarker", valueMarker);
-            document.getElementById("best-value-charger-name").innerText = valueMarker.name;
-            document.getElementById("best-value-charger-button").addEventListener("click", () => {
-                map.panTo(new LatLng(valueMarker.latitude, valueMarker.longitude))
-            });
-
-
-
+        }
+        else {
+            document.getElementById("nearest-charger-name").innerText = "-- (" + geolocationMsg + ")";
+            document.getElementById("best-value-charger-name").innerText =  "-- (" + geolocationMsg + ")";
         }
         
     }
@@ -329,10 +327,12 @@ export default function Map(props) {
 
         const center = new LatLng(lat, lng);
 
-        map.setView(center, 24);
-
         if (sourceLocation.lat !== center.lat && sourceLocation.lng !== center.lng) {
             setSourceLocation(center);
+
+            map.setView(center, 24);
+
+            setGeolocationMsg("Permission granted");
 
             const newMarker = marker(center, {icon: new Icon({ iconUrl: routeIconPng, iconSize: [41, 41], iconAnchor: [20, 41] })});
 

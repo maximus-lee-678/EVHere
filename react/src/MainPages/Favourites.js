@@ -70,7 +70,7 @@ export default function Favourites() {
                             <div><span className="uppercase font-semibold text-sm">Price Rate:</span> ${favouriteChargerInfo[i].rate_current} / kWh</div>
                         </CardContent>
                     </div>
-                    <CardButton id={id} onClick={handleFavouriteRemove} icon="heart-broken fa-lg" color="red"></CardButton>
+                    <CardButton id={id} onClick={() => handleFavouriteRemove(id)} icon="heart-broken fa-lg" color="red"></CardButton>
                 </div>
             )
         }

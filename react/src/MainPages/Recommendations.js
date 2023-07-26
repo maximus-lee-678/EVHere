@@ -108,7 +108,7 @@ export default function Recommendations() {
                                             <div className="ml-4 col-span-7">
                                                 <div className="uppercase text-gray-700 font-bold">Nearest to me:</div>
                                                 <div id="nearest-charger-name">
-                                                    Bukit Merah / Telok Blangah Rise / Blk 32
+                                                    --
                                                 </div>
                                             </div>
                                         </button>
@@ -122,7 +122,7 @@ export default function Recommendations() {
                                             <div className="ml-4 col-span-7">
                                                 <div className="uppercase text-gray-700 font-bold">Best value for money:</div>
                                                 <div id="best-value-charger-name">
-                                                    Shell Recharge Punggol
+                                                    --
                                                 </div>
                                             </div>
                                         </button>
