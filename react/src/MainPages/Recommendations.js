@@ -16,6 +16,8 @@ export default function Recommendations() {
     const userEmail = localStorage.getItem("user_email");
 
     const [userVehicleInfo, setUserVehicleInfo] = useState();
+    const [selectedVehicleId, setSelectedVehicleId] = useState('');
+
 
     // Function that loads all user vehicles. Called on page load, populates userVehicleInfo.
     // Used in main page.
@@ -35,21 +37,49 @@ export default function Recommendations() {
         fetchAllUserVehicles();
     }, [fetchAllUserVehicles]);
 
-    // Component that formats vehicle information for display in main page. Reads from userVehicleInfo.
-    function UserVehicles() {
-        let options = [];
+    var optionsList = [{
+        text: "No vehicles available",
+        value: "No vehicles available"
+    }];
 
+    if (userVehicleInfo != null || userVehicleInfo != undefined) {
+        optionsList = [];
+        populateOptionsList();
+    }
+
+    function populateOptionsList() {
         if (userVehicleInfo != null || userVehicleInfo != undefined || userVehicleInfo.length !== 0) {
             document.getElementById("vehicleName").disabled = false;
 
+            optionsList.push(
+                {
+                    text: "Show all markers",
+                    value: ""
+                }
+            )
+
             for (var i = 0; i < userVehicleInfo.length; i++) {
                 let id = userVehicleInfo[i].id;
-
-                options.push(<option className="border-0 px-3 py-3 text-gray-700" value={userVehicleInfo[i].name} key={id}>{userVehicleInfo[i].name}</option>)
+                
+                optionsList.push(
+                    {
+                        text: userVehicleInfo[i].name,
+                        value: userVehicleInfo[i].id
+                    }
+                )
             }
+            
         }
-        return options;
     }
+
+    function updateValue(value) {
+        setSelectedVehicleId(value);
+    }
+
+    // const filterMarkers = useCallback(() => {
+
+    //     console.log(selectedVehicleId, "was selected!!");
+    // }, [selectedVehicleId]);
 
     const [recommendationsOpen, setRecommendationsOpen] = useState(false);
 
@@ -72,8 +102,6 @@ export default function Recommendations() {
                                     <button className="md:hidden"
                                     onClick={() => setRecommendationsOpen(!recommendationsOpen)}>
                                         {
-                                            
-                                            //recommendationsOpen == true ? "Hide" : "Show"
                                              <i className="fas fa-angle-down"></i>
                                         }
                                     </button>
@@ -83,20 +111,7 @@ export default function Recommendations() {
                                         <label className="block uppercase text-gray-700 text-xs font-bold mb-2">
                                             Vehicle
                                         </label>
-                                        <select
-                                            id="vehicleName"
-                                            disabled
-                                            className="border-0 px-3 py-3 text-gray-700 bg-white rounded text-sm focus:outline-none focus:ring w-full"
-                                            style={{ transition: "all .15s ease" }}
-                                            defaultValue="No vehicles available"
-                                        >                                            
-                                            {/*{userVehicleInfo && <UserVehicles />}*/}
-                                            {userVehicleInfo != null
-                                                ? <UserVehicles/>
-                                                : <option value="No vehicles available">No vehicles available</option>
-                                            }
-
-                                        </select>
+                                        <SelectVehicles optionList={optionsList} onSelected={updateValue} />
                                     </div>
 
                                     <div className="grid lg:gap-4 gap-2 lg:text-base text-sm">
@@ -132,7 +147,7 @@ export default function Recommendations() {
                             </div>
 
                             <div className="row-span-2 md:col-span-2">
-                                <Map desiredZoom={11} mapWidth={"100%"} mapHeight={"70vh"} />
+                                <Map desiredZoom={11} mapWidth={"100%"} mapHeight={"70vh"} userVehicleInfo={userVehicleInfo} selectedVehicleId={selectedVehicleId} />
                             </div>
                         </div>
                     </div>
@@ -140,4 +155,36 @@ export default function Recommendations() {
             </main>
         </div>
     );
+}
+
+
+function SelectVehicles({ optionList, onSelected}) {
+    const [value, setValue] = useState();
+
+    function updateValue({ target }) {
+        setValue(target.value);
+        if (onSelected) {
+            onSelected(target.value);
+        }
+    };
+    
+      return (
+        <>
+          <select
+            id="vehicleName"
+            disabled
+            className="border-0 px-3 py-3 text-gray-700 bg-white rounded text-sm focus:outline-none focus:ring w-full"
+            style={{ transition: "all .15s ease" }}
+            defaultValue="No vehicles available"
+            value={value}
+            onChange={updateValue}
+          >
+            {optionList.map((option) => (
+              <option value={option.value} key={option.value}>
+                {option.text}
+              </option>
+            ))}
+          </select>
+        </>
+      );
 }

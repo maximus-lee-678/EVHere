@@ -46,6 +46,7 @@ export default function Map(props) {
     const [destinationLocation, setDestinationLocation] = useState({});
     const [nearestMarkerLatLng, setNearestMarkerLatLng] = useState();
     const [geolocationMsg, setGeolocationMsg] = useState("Awaiting permission");
+    const { userVehicleInfo, selectedVehicleId } = props;
 
     // Function that loads all chargers. Called on page load, populates allChargerInfo.
     const fetchAllChargers = useCallback(async () => {
@@ -116,88 +117,88 @@ export default function Map(props) {
         return zoomLevel;
     }
 
+
+    var markersToRender = [];
     // Component that formats charger information into markers for display. Reads from allChargerInfo.
     function RenderMarkers() {
+        const map = useMap();
+
         let result = [];
+        // console.log("selectedId", selectedVehicleId);
 
-        for (var i = 0; i < allChargerInfo.length; i++) {
-            // this is necessary for event handler to work, using allChargerInfo[i] directly causes it to go out of bound for some reason
-            let id = allChargerInfo[i].id;
-            let favourite = allChargerInfo[i].is_favourite;
-            let lat = allChargerInfo[i].latitude;
-            let lng = allChargerInfo[i].longitude;
+        //if user has selected their vehicle
+        if (selectedVehicleId != "" && document.getElementById("vehicleName").value != "Show all markers") {
+            var selectedVehicle = userVehicleInfo.find(vehicle => vehicle.id == selectedVehicleId);
+            markersToRender = [];
 
-            /*
-            const newMarker = marker(new LatLng(lat, lng), {
-                iconUrl: favourite === false ? markerIconPng : markerIconFavouritePng, iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -30], key:{id}
-                //iconUrl: markerIconFavouritePng, iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -30], key:{id}
-
+            
+            //check for their vehicle connector
+            allChargerInfo.forEach(charger => {
+                charger.available_connector.forEach(connector => {
+                    if (connector.connector_type.id == selectedVehicle.connector.id) {
+                        markersToRender.push(charger);
+                    }
+                })
             });
 
-            newMarker.bindPopup(
-                <Popup>
-                        <div className="pb-1">
-                            <span className="font-semibold text-sm">Name:</span> {allChargerInfo[i].name}
-                            <br />
-                            <span className="font-semibold text-sm">Address:</span> {allChargerInfo[i].address}
-                            <br />
-                            <span className="font-semibold text-sm">Solar Current In:</span> {allChargerInfo[i].pv_current_in} A
-                            <br />
-                            <span className="font-semibold text-sm">Solar Stored Charge:</span> {allChargerInfo[i].pv_energy_level} kWh
-                            <br />
-                            <span className="font-semibold text-sm">Price Rate:</span> ${allChargerInfo[i].rate_current} / kWh
-                        </div>
-                        <button id={allChargerInfo[i].id}
-                            onClick={() => handleFavourite(id, favourite === false ? 'add' : 'remove')}
-                            className={(allChargerInfo[i].is_favourite === false ? "hover:bg-red-900" : "hover:bg-red-300")
-                                + " bg-red-400 px-3 py-2 mr-2 rounded-full text-white"}
-                        >
-                            {allChargerInfo[i].is_favourite === false ? <i className="fas fa-heart" style={{ color: "#ffffff" }}></i> : <i className="fas fa-heart-broken" style={{ color: "#ffffff" }}></i>}
-                            {allChargerInfo[i].is_favourite === false ? ' Add to favourites' : ' Remove favourite'}
-                        </button>
-                        <button id={allChargerInfo[i].id}
-                            onClick={() => navigate(lat, lng)}
-                            className="bg-green-400 hover:bg-green-900 px-3 py-2 rounded-full text-white">
-                            Go
-                            <i className="fas fa-location-arrow pl-1"></i>
-                        </button>
-                    </Popup>
-            )
+            // console.log("IN SELECTED", markersToRender);
 
-            layergrp.addLayer(newMarker);
-             */
+            //check map's existing layers, markers
+            map.eachLayer(function(layer) {
+                if (layer._latlng != undefined) {
+                    if (layer._latlng.lat != undefined && layer._latlng.lng != undefined) {
+                        //remove them if doesnt match with markersToRender latlng, and also doesnt match with sourceLocation
+                        if (markersToRender.find(marker => marker.latitude == layer._latlng.lat && marker.longitude == layer._latlng.lng) == undefined) {
+                            if (layer._latlng.lat != sourceLocation.lat && layer._latlng.lng != sourceLocation.lng) {
+                                map.removeLayer(layer);
+                            }
+                        }
+                    }
+                }
+            })
+        }
+        else {
+            markersToRender = allChargerInfo; 
+        }
 
+        for (var i = 0; i < markersToRender.length; i++) {
+            // this is necessary for event handler to work, using allChargerInfo[i] directly causes it to go out of bound for some reason
+            let id = markersToRender[i].id;
+            let favourite = markersToRender[i].is_favourite;
+            let lat = markersToRender[i].latitude;
+            let lng = markersToRender[i].longitude;
+        
             result.push(
-                <Marker position={[allChargerInfo[i].latitude, allChargerInfo[i].longitude]}
-                    icon={allChargerInfo[i].is_favourite === false ?
+                <Marker position={[markersToRender[i].latitude, markersToRender[i].longitude]}
+                    icon={markersToRender[i].is_favourite === false ?
                         new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -30] }) :
                         new Icon({ iconUrl: markerIconFavouritePng, iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [0, -30] })}
-                    key={allChargerInfo[i].id}>
+                    key={markersToRender[i].id}>
                     <Popup>
                         <div className="pb-1">
-                            <span className="font-semibold text-sm">Name:</span> {allChargerInfo[i].name}
+                            <span className="font-semibold text-sm">Name:</span> {markersToRender[i].name}
                             <br />
-                            <span className="font-semibold text-sm">Address:</span> {allChargerInfo[i].address}
+                            <span className="font-semibold text-sm">Address:</span> {markersToRender[i].address}
                             <br />
-                            <span className="font-semibold text-sm">Solar Voltage In:</span> {allChargerInfo[i].pv_voltage_in} V
+                            <span className="font-semibold text-sm">Solar Voltage In:</span> {markersToRender[i].pv_voltage_in} V
                             <br />
-                            <span className="font-semibold text-sm">Solar Current In:</span> {allChargerInfo[i].pv_current_in} A
+                            <span className="font-semibold text-sm">Solar Current In:</span> {markersToRender[i].pv_current_in} A
                             <br />
-                            <span className="font-semibold text-sm">Solar Voltage Out:</span> {allChargerInfo[i].pv_voltage_out} V
+                            <span className="font-semibold text-sm">Solar Voltage Out:</span> {markersToRender[i].pv_voltage_out} V
                             <br />
-                            <span className="font-semibold text-sm">Solar Current Out:</span> {allChargerInfo[i].pv_current_out} A
+                            <span className="font-semibold text-sm">Solar Current Out:</span> {markersToRender[i].pv_current_out} A
                             <br />
-                            <span className="font-semibold text-sm">Price Rate:</span> ${allChargerInfo[i].rate_current} / kWh
+                            <span className="font-semibold text-sm">Price Rate:</span> ${markersToRender[i].rate_current} / kWh
                         </div>
-                        <button id={allChargerInfo[i].id}
+                        <button id={markersToRender[i].id}
                             onClick={() => handleFavourite(id, favourite === false ? 'add' : 'remove')}
-                            className={(allChargerInfo[i].is_favourite === false ? "hover:bg-red-900" : "hover:bg-red-300")
+                            className={(markersToRender[i].is_favourite === false ? "hover:bg-red-900" : "hover:bg-red-300")
                                 + " bg-red-400 px-3 py-2 mr-2 rounded-full text-white"}
                         >
-                            {allChargerInfo[i].is_favourite === false ? <i className="fas fa-heart" style={{ color: "#ffffff" }}></i> : <i className="fas fa-heart-broken" style={{ color: "#ffffff" }}></i>}
-                            {allChargerInfo[i].is_favourite === false ? ' Add to favourites' : ' Remove favourite'}
+                            {markersToRender[i].is_favourite === false ? <i className="fas fa-heart" style={{ color: "#ffffff" }}></i> : <i className="fas fa-heart-broken" style={{ color: "#ffffff" }}></i>}
+                            {markersToRender[i].is_favourite === false ? ' Add to favourites' : ' Remove favourite'}
                         </button>
-                        <button id={allChargerInfo[i].id}
+                        <button id={markersToRender[i].id}
                             onClick={() => navigate(lat, lng)}
                             className={(geolocationMsg != "Permission granted" ? "hidden " : "") + "bg-green-400 hover:bg-green-900 px-3 py-2 rounded-full text-white"}>
                             Go
@@ -271,9 +272,9 @@ export default function Map(props) {
         
         var markersArray = [];
         var markersCoordsArray = [];
-        for (var i = 0; i < allChargerInfo.length; i++) {
-            markersArray.push(allChargerInfo[i]);
-            var coords = [allChargerInfo[i].latitude, allChargerInfo[i].longitude]
+        for (var i = 0; i < markersToRender.length; i++) {
+            markersArray.push(markersToRender[i]);
+            var coords = [markersToRender[i].latitude, markersToRender[i].longitude]
             markersCoordsArray.push(coords);
         }
 
@@ -287,7 +288,7 @@ export default function Map(props) {
         
                 var nearestMarker = markersArray.find(element => element.latitude === nearest.lat && element.longitude === nearest.lng);
     
-                console.log("nearestMarker", nearestMarker);
+                // console.log("nearestMarker", nearestMarker);
     
                 document.getElementById("nearest-charger-name").innerText = nearestMarker.name;
                 document.getElementById("nearest-charger-button").addEventListener("click", () => {
@@ -304,7 +305,7 @@ export default function Map(props) {
     
                 var valueMarker = markersArray.find(element => element.rate_current == Math.min.apply(Math, prices));
     
-                console.log("valueMarker", valueMarker);
+                // console.log("valueMarker", valueMarker);
                 document.getElementById("best-value-charger-name").innerText = valueMarker.name;
                 document.getElementById("best-value-charger-button").addEventListener("click", () => {
                     map.panTo(new LatLng(valueMarker.latitude, valueMarker.longitude));
@@ -341,11 +342,11 @@ export default function Map(props) {
     }
 
     function navigate(destinationLat, destinationLng) {
-        console.log(destinationLat);
-        console.log(destinationLng);
+        // console.log(destinationLat);
+        // console.log(destinationLng);
 
         setDestinationLocation(new LatLng(destinationLat, destinationLng));
-        console.log(destinationLocation);
+        // console.log(destinationLocation);
     }
 
     return (
