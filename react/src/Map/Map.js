@@ -118,7 +118,7 @@ export default function Map(props) {
 
     // Component that formats charger information into markers for display. Reads from allChargerInfo.
     function RenderMarkers() {
-        let result = [];        
+        let result = [];
 
         for (var i = 0; i < allChargerInfo.length; i++) {
             // this is necessary for event handler to work, using allChargerInfo[i] directly causes it to go out of bound for some reason
@@ -207,7 +207,6 @@ export default function Map(props) {
                 </Marker>
             )
         }
-        console.log("result", result)
         return result;
     }
 
