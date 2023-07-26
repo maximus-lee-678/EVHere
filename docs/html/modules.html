@@ -112,8 +112,9 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="db_access.html#module-db_access.db_charger">db_access.db_charger module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charger.add_favourites"><code class="docutils literal notranslate"><span class="pre">add_favourites()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charger.get_all_chargers_with_favourite_dict"><code class="docutils literal notranslate"><span class="pre">get_all_chargers_with_favourite_dict()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charger.get_all_chargers_with_favourite_hash_map"><code class="docutils literal notranslate"><span class="pre">get_all_chargers_with_favourite_hash_map()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charger.get_all_charger_ids"><code class="docutils literal notranslate"><span class="pre">get_all_charger_ids()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charger.get_all_chargers_dict_join_favourite"><code class="docutils literal notranslate"><span class="pre">get_all_chargers_dict_join_favourite()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charger.get_all_chargers_hash_map_join_favourite"><code class="docutils literal notranslate"><span class="pre">get_all_chargers_hash_map_join_favourite()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charger.get_charger_dict"><code class="docutils literal notranslate"><span class="pre">get_charger_dict()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charger.get_charger_hash_map"><code class="docutils literal notranslate"><span class="pre">get_charger_hash_map()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charger.update_charger_technical"><code class="docutils literal notranslate"><span class="pre">update_charger_technical()</span></code></a></li>
@@ -133,6 +134,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="db_access.html#module-db_access.db_charger_rate_historic">db_access.db_charger_rate_historic module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charger_rate_historic.get_all_past_charger_rates"><code class="docutils literal notranslate"><span class="pre">get_all_past_charger_rates()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charger_rate_historic.get_charger_rate_historic_dict"><code class="docutils literal notranslate"><span class="pre">get_charger_rate_historic_dict()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="db_access.html#db_access.db_charger_rate_historic.get_charger_rate_historic_hash_map"><code class="docutils literal notranslate"><span class="pre">get_charger_rate_historic_hash_map()</span></code></a></li>
 </ul>
@@ -191,13 +193,17 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="flask_routes.html#module-flask_routes.flask_charger">flask_routes.flask_charger module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_charger.fun_get_all_charger_ids"><code class="docutils literal notranslate"><span class="pre">fun_get_all_charger_ids()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_charger.fun_get_all_chargers"><code class="docutils literal notranslate"><span class="pre">fun_get_all_chargers()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_charger.fun_update_charger"><code class="docutils literal notranslate"><span class="pre">fun_update_charger()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="flask_routes.html#module-flask_routes.flask_charger_available_connector">flask_routes.flask_charger_available_connector module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="flask_routes.html#module-flask_routes.flask_charger_pv_historic">flask_routes.flask_charger_pv_historic module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flask_routes.html#module-flask_routes.flask_charger_rate_historic">flask_routes.flask_charger_rate_historic module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flask_routes.html#module-flask_routes.flask_charger_rate_historic">flask_routes.flask_charger_rate_historic module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_charger_rate_historic.fun_get_all_past_charger_rates"><code class="docutils literal notranslate"><span class="pre">fun_get_all_past_charger_rates()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="flask_routes.html#module-flask_routes.flask_connector_type">flask_routes.flask_connector_type module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_connector_type.fun_get_connectors"><code class="docutils literal notranslate"><span class="pre">fun_get_connectors()</span></code></a></li>
 </ul>
@@ -209,6 +215,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="flask_routes.html#module-flask_routes.flask_helper_functions">flask_routes.flask_helper_functions module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_helper_functions.determine_json_existence"><code class="docutils literal notranslate"><span class="pre">determine_json_existence()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="flask_routes.html#flask_routes.flask_helper_functions.format_for_endpoint"><code class="docutils literal notranslate"><span class="pre">format_for_endpoint()</span></code></a></li>
 </ul>
 </li>

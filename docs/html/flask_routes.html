@@ -57,13 +57,17 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-flask_routes.flask_charger">flask_routes.flask_charger module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#flask_routes.flask_charger.fun_get_all_charger_ids"><code class="docutils literal notranslate"><span class="pre">fun_get_all_charger_ids()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#flask_routes.flask_charger.fun_get_all_chargers"><code class="docutils literal notranslate"><span class="pre">fun_get_all_chargers()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#flask_routes.flask_charger.fun_update_charger"><code class="docutils literal notranslate"><span class="pre">fun_update_charger()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-flask_routes.flask_charger_available_connector">flask_routes.flask_charger_available_connector module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-flask_routes.flask_charger_pv_historic">flask_routes.flask_charger_pv_historic module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-flask_routes.flask_charger_rate_historic">flask_routes.flask_charger_rate_historic module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-flask_routes.flask_charger_rate_historic">flask_routes.flask_charger_rate_historic module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#flask_routes.flask_charger_rate_historic.fun_get_all_past_charger_rates"><code class="docutils literal notranslate"><span class="pre">fun_get_all_past_charger_rates()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-flask_routes.flask_connector_type">flask_routes.flask_connector_type module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#flask_routes.flask_connector_type.fun_get_connectors"><code class="docutils literal notranslate"><span class="pre">fun_get_connectors()</span></code></a></li>
 </ul>
@@ -75,6 +79,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-flask_routes.flask_helper_functions">flask_routes.flask_helper_functions module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#flask_routes.flask_helper_functions.determine_json_existence"><code class="docutils literal notranslate"><span class="pre">determine_json_existence()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#flask_routes.flask_helper_functions.format_for_endpoint"><code class="docutils literal notranslate"><span class="pre">format_for_endpoint()</span></code></a></li>
 </ul>
 </li>
@@ -222,6 +227,24 @@
 <section id="module-flask_routes.flask_charger">
 <span id="flask-routes-flask-charger-module"></span><h2>flask_routes.flask_charger module<a class="headerlink" href="#module-flask_routes.flask_charger" title="Permalink to this heading"></a></h2>
 <dl class="py function">
+<dt class="sig sig-object py" id="flask_routes.flask_charger.fun_get_all_charger_ids">
+<span class="sig-prename descclassname"><span class="pre">flask_routes.flask_charger.</span></span><span class="sig-name descname"><span class="pre">fun_get_all_charger_ids</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#flask_routes.flask_charger.fun_get_all_charger_ids" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line">Endpoint implementation for &lt;Route: Get all charger ids&gt;</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><strong>Refer to:</strong></div>
+<div class="line"><a class="reference internal" href="db_access.html#db_access.db_charger.get_all_charger_ids" title="db_access.db_charger.get_all_charger_ids"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db_access.db_charger.get_all_charger_ids()</span></code></a></div>
+<div class="line"><a class="reference internal" href="#flask_routes.flask_helper_functions.format_for_endpoint" title="flask_routes.flask_helper_functions.format_for_endpoint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">flask_routes.flask_helper_functions.format_for_endpoint()</span></code></a></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="flask_routes.flask_charger.fun_get_all_chargers">
 <span class="sig-prename descclassname"><span class="pre">flask_routes.flask_charger.</span></span><span class="sig-name descname"><span class="pre">fun_get_all_chargers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#flask_routes.flask_charger.fun_get_all_chargers" title="Permalink to this definition"></a></dt>
 <dd><div class="line-block">
@@ -237,7 +260,7 @@
 </dl>
 <div class="line-block">
 <div class="line"><strong>Refer to:</strong></div>
-<div class="line"><a class="reference internal" href="db_access.html#db_access.db_charger.get_all_chargers_with_favourite_dict" title="db_access.db_charger.get_all_chargers_with_favourite_dict"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db_access.db_charger.get_all_chargers_with_favourite_dict()</span></code></a></div>
+<div class="line"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db_access.db_charger.get_all_chargers_with_favourite_dict()</span></code></div>
 <div class="line"><a class="reference internal" href="#flask_routes.flask_helper_functions.format_for_endpoint" title="flask_routes.flask_helper_functions.format_for_endpoint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">flask_routes.flask_helper_functions.format_for_endpoint()</span></code></a></div>
 </div>
 </dd></dl>
@@ -275,6 +298,27 @@
 </section>
 <section id="module-flask_routes.flask_charger_rate_historic">
 <span id="flask-routes-flask-charger-rate-historic-module"></span><h2>flask_routes.flask_charger_rate_historic module<a class="headerlink" href="#module-flask_routes.flask_charger_rate_historic" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="flask_routes.flask_charger_rate_historic.fun_get_all_past_charger_rates">
+<span class="sig-prename descclassname"><span class="pre">flask_routes.flask_charger_rate_historic.</span></span><span class="sig-name descname"><span class="pre">fun_get_all_past_charger_rates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#flask_routes.flask_charger_rate_historic.fun_get_all_past_charger_rates" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line">Endpoint implementation for &lt;Route: Get all past charger rates&gt;</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Request GET fields<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id_charger</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><strong>Refer to:</strong></div>
+<div class="line"><a class="reference internal" href="db_access.html#db_access.db_charger_rate_historic.get_all_past_charger_rates" title="db_access.db_charger_rate_historic.get_all_past_charger_rates"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db_access.db_charger_rate_historic.get_all_past_charger_rates()</span></code></a></div>
+<div class="line"><a class="reference internal" href="#flask_routes.flask_helper_functions.format_for_endpoint" title="flask_routes.flask_helper_functions.format_for_endpoint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">flask_routes.flask_helper_functions.format_for_endpoint()</span></code></a></div>
+</div>
+</dd></dl>
+
 </section>
 <section id="module-flask_routes.flask_connector_type">
 <span id="flask-routes-flask-connector-type-module"></span><h2>flask_routes.flask_connector_type module<a class="headerlink" href="#module-flask_routes.flask_connector_type" title="Permalink to this heading"></a></h2>
@@ -365,6 +409,35 @@
 </section>
 <section id="module-flask_routes.flask_helper_functions">
 <span id="flask-routes-flask-helper-functions-module"></span><h2>flask_routes.flask_helper_functions module<a class="headerlink" href="#module-flask_routes.flask_helper_functions" title="Permalink to this heading"></a></h2>
+<p>Code 200: OK
+Code 400: BAD REQUEST
+Code 500: INTERNAL SERVER ERROR</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="flask_routes.flask_helper_functions.determine_json_existence">
+<span class="sig-prename descclassname"><span class="pre">flask_routes.flask_helper_functions.</span></span><span class="sig-name descname"><span class="pre">determine_json_existence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request_json</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#flask_routes.flask_helper_functions.determine_json_existence" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line">Takes a POST request’s json header and checks that all specified keys exist.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request_json</strong> (<em>dict</em>) – request.json</p></li>
+<li><p><strong>*args</strong> (<em>string</em><em>(</em><em>s</em><em>)</em>) – <p>all keys you want to check for</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary</p>
+</dd>
+<dt class="field-odd">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>OPERATION_OK, BAD_REQUEST.</p>
+</dd>
+<dt class="field-even">Key ‘reason’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(array, one) <em>(‘result’ == BAD_REQUEST)</em> MISSING_FIELDS.</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="flask_routes.flask_helper_functions.format_for_endpoint">
 <span class="sig-prename descclassname"><span class="pre">flask_routes.flask_helper_functions.</span></span><span class="sig-name descname"><span class="pre">format_for_endpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db_dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">success_scenarios_array</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#flask_routes.flask_helper_functions.format_for_endpoint" title="Permalink to this definition"></a></dt>
@@ -386,7 +459,7 @@
 <dd class="field-odd"><p>(string) response’s corresponding ‘result’ string.</p>
 </dd>
 <dt class="field-even">Key ‘reason’<span class="colon">:</span></dt>
-<dd class="field-even"><p>(array, one/multiple) <em>(‘status’ == API_FAILURE_STRING)</em> reason for failure.</p>
+<dd class="field-even"><p>(array, none/one/multiple) <em>(‘status’ == API_FAILURE_STRING or ‘status’ == API_ERROR_STRING)</em> reason for failure.</p>
 </dd>
 <dt class="field-odd">Key ‘data’<span class="colon">:</span></dt>
 <dd class="field-odd"><p>(any) <em>(‘status’ == API_SUCCESS_STRING)</em> response’s ‘content’ OR None.</p>

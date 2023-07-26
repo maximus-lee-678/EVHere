@@ -28,7 +28,7 @@ TYPE_GENERIC = 0
 ez_update(TYPE_GENERIC, "This is a generic operation.")
 
 HASHMAP_GENERIC_SUCCESS = 1
-ez_update(HASHMAP_GENERIC_SUCCESS, "Hashmap created.")
+ez_update(HASHMAP_GENERIC_SUCCESS, "Hashmap assembled.")
 
 HASHMAP_GENERIC_EMPTY = 2
 ez_update(HASHMAP_GENERIC_EMPTY, "Hashmap returned empty.")
@@ -62,7 +62,7 @@ TYPE_USER_INFO = 100
 ez_update(TYPE_USER_INFO, "This is a user info operation.")
 
 HASHMAP_USER_INFO_SUCCESS = 101
-ez_update(HASHMAP_USER_INFO_SUCCESS, "User info hashmap created.")
+ez_update(HASHMAP_USER_INFO_SUCCESS, "User info hashmap assembled.")
 
 HASHMAP_USER_INFO_EMPTY = 102
 ez_update(HASHMAP_USER_INFO_EMPTY, "User info hashmap returned empty.")
@@ -139,7 +139,7 @@ TYPE_CHARGER = 200
 ez_update(TYPE_CHARGER, "This is a charger operation.")
 
 HASHMAP_CHARGER_SUCCESS = 201
-ez_update(HASHMAP_CHARGER_SUCCESS, "Charger hashmap created.")
+ez_update(HASHMAP_CHARGER_SUCCESS, "Charger hashmap assembled.")
 
 HASHMAP_CHARGER_EMPTY = 202
 ez_update(HASHMAP_CHARGER_EMPTY, "Charger hashmap returned empty.")
@@ -173,7 +173,7 @@ TYPE_CHARGER_AVAILABLE_CONNECTOR = 300
 ez_update(TYPE_CHARGER_AVAILABLE_CONNECTOR, "This is a charger available connector operation.")
 
 HASHMAP_CHARGER_AVAILABLE_CONNECTOR_SUCCESS = 301
-ez_update(HASHMAP_CHARGER_AVAILABLE_CONNECTOR_SUCCESS, "Charger available connector hashmap created.")
+ez_update(HASHMAP_CHARGER_AVAILABLE_CONNECTOR_SUCCESS, "Charger available connector hashmap assembled.")
 
 HASHMAP_CHARGER_AVAILABLE_CONNECTOR_EMPTY = 302
 ez_update(HASHMAP_CHARGER_AVAILABLE_CONNECTOR_EMPTY, "Charger available connector hashmap returned empty.")
@@ -211,7 +211,7 @@ TYPE_CONNECTOR_TYPE = 400
 ez_update(TYPE_CONNECTOR_TYPE, "This is a connector type operation.")
 
 HASHMAP_CONNECTOR_TYPE_SUCCESS = 401
-ez_update(HASHMAP_CONNECTOR_TYPE_SUCCESS, "Connector type hashmap created.")
+ez_update(HASHMAP_CONNECTOR_TYPE_SUCCESS, "Connector type hashmap assembled.")
 
 HASHMAP_CONNECTOR_TYPE_EMPTY = 402
 ez_update(HASHMAP_CONNECTOR_TYPE_EMPTY, "Connector type hashmap returned empty.")
@@ -239,7 +239,7 @@ TYPE_FAVOURITED_CHARGERS = 500
 ez_update(TYPE_FAVOURITED_CHARGERS, "This is a favourited chargers operation.")
 
 HASHMAP_FAVOURITED_CHARGERS_SUCCESS = 501
-ez_update(HASHMAP_FAVOURITED_CHARGERS_SUCCESS, "Favourited chargers hashmap created.")
+ez_update(HASHMAP_FAVOURITED_CHARGERS_SUCCESS, "Favourited chargers hashmap assembled.")
 
 HASHMAP_FAVOURITED_CHARGERS_EMPTY = 502
 ez_update(HASHMAP_FAVOURITED_CHARGERS_EMPTY, "Favourited chargers hashmap returned empty.")
@@ -280,7 +280,7 @@ TYPE_VEHICLE_INFO = 600
 ez_update(TYPE_VEHICLE_INFO, "This is a vehicle info operation.")
 
 HASHMAP_VEHICLE_INFO_SUCCESS = 601
-ez_update(HASHMAP_VEHICLE_INFO_SUCCESS, "Vehicle info hashmap created.")
+ez_update(HASHMAP_VEHICLE_INFO_SUCCESS, "Vehicle info hashmap assembled.")
 
 HASHMAP_VEHICLE_INFO_EMPTY = 602
 ez_update(HASHMAP_VEHICLE_INFO_EMPTY, "Vehicle info hashmap returned empty.")
@@ -327,7 +327,7 @@ TYPE_CHARGE_HISTORY = 700
 ez_update(TYPE_CHARGE_HISTORY, "This is a charge history operation.")
 
 HASHMAP_CHARGE_HISTORY_SUCCESS = 701
-ez_update(HASHMAP_CHARGE_HISTORY_SUCCESS, "Charge history hashmap created.")
+ez_update(HASHMAP_CHARGE_HISTORY_SUCCESS, "Charge history hashmap assembled.")
 
 HASHMAP_CHARGE_HISTORY_EMPTY = 702
 ez_update(HASHMAP_CHARGE_HISTORY_EMPTY, "Charge history hashmap returned empty.")
@@ -374,7 +374,7 @@ TYPE_CHARGE_CURRENT = 800
 ez_update(TYPE_CHARGE_CURRENT, "This is a charge current operation.")
 
 HASHMAP_CHARGE_CURRENT_SUCCESS = 801
-ez_update(HASHMAP_CHARGE_CURRENT_SUCCESS, "Charge current hashmap created.")
+ez_update(HASHMAP_CHARGE_CURRENT_SUCCESS, "Charge current hashmap assembled.")
 
 HASHMAP_CHARGE_CURRENT_EMPTY = 802
 ez_update(HASHMAP_CHARGE_CURRENT_EMPTY, "Charge current hashmap returned empty.")
@@ -416,6 +416,58 @@ ez_update(CHARGE_CURRENT_UPDATE_FAILURE, "Charge current entry could not be upda
 
 #########################
 
+# charger_pv_historic [900-999]
+TYPE_CHARGER_PV_HISTORIC = 900
+ez_update(TYPE_CHARGER_PV_HISTORIC, "This is a charger PV historic operation.")
+
+HASHMAP_CHARGER_PV_HISTORIC_SUCCESS = 901
+ez_update(HASHMAP_CHARGER_PV_HISTORIC_SUCCESS, "Charger PV historic hashmap assembled.")
+
+HASHMAP_CHARGER_PV_HISTORIC_EMPTY = 902
+ez_update(HASHMAP_CHARGER_PV_HISTORIC_EMPTY, "Charger PV historic hashmap returned empty.")
+
+SELECT_CHARGER_PV_HISTORIC_SUCCESS = 903
+ez_update(SELECT_CHARGER_PV_HISTORIC_SUCCESS, "Charger PV historic select succeeded.")
+
+SELECT_CHARGER_PV_HISTORIC_EMPTY = 904
+ez_update(SELECT_CHARGER_PV_HISTORIC_EMPTY, "Charger PV historic select returned empty.")
+# >
+# >
+#
+# >
+# >
+#
+
+#########################
+
+# charger_rate_historic [1000-1999]
+TYPE_CHARGER_RATE_HISTORIC = 1000
+ez_update(TYPE_CHARGER_RATE_HISTORIC, "This is a charger rate historic operation.")
+
+HASHMAP_CHARGER_RATE_HISTORIC_SUCCESS = 1001
+ez_update(HASHMAP_CHARGER_RATE_HISTORIC_SUCCESS, "Charger rate historic hashmap assembled.")
+
+HASHMAP_CHARGER_RATE_HISTORIC_EMPTY = 1002
+ez_update(HASHMAP_CHARGER_RATE_HISTORIC_EMPTY, "Charger rate historic hashmap returned empty.")
+
+SELECT_CHARGER_RATE_HISTORIC_SUCCESS = 1003
+ez_update(SELECT_CHARGER_RATE_HISTORIC_SUCCESS, "Charger rate historic select succeeded.")
+
+SELECT_CHARGER_RATE_HISTORIC_EMPTY = 1004
+ez_update(SELECT_CHARGER_RATE_HISTORIC_EMPTY, "Charger rate historic select returned empty.")
+# >
+# >
+#
+# >
+# >
+CHARGER_RATE_HISTORIC_FOUND = 1099
+ez_update(CHARGER_RATE_HISTORIC_FOUND, "Charger rate historic found.")
+
+CHARGER_RATE_HISTORIC_NOT_FOUND = 1098
+ez_update(CHARGER_RATE_HISTORIC_NOT_FOUND, "Charger rate historic not found.")
+
+#########################
+
 # converts generic messages into detailed ones based on generic message type and specified convert-to type
 translations = {
     HASHMAP_GENERIC_SUCCESS: {
@@ -426,7 +478,9 @@ translations = {
         TYPE_FAVOURITED_CHARGERS: HASHMAP_FAVOURITED_CHARGERS_SUCCESS,
         TYPE_VEHICLE_INFO: HASHMAP_VEHICLE_INFO_SUCCESS,
         TYPE_CHARGE_HISTORY: HASHMAP_CHARGE_HISTORY_SUCCESS,
-        TYPE_CHARGE_CURRENT: HASHMAP_CHARGE_CURRENT_SUCCESS
+        TYPE_CHARGE_CURRENT: HASHMAP_CHARGE_CURRENT_SUCCESS,
+        TYPE_CHARGER_PV_HISTORIC: HASHMAP_CHARGER_PV_HISTORIC_SUCCESS,
+        TYPE_CHARGER_RATE_HISTORIC: HASHMAP_CHARGER_RATE_HISTORIC_SUCCESS
     },
     HASHMAP_GENERIC_EMPTY: {
         TYPE_USER_INFO: HASHMAP_USER_INFO_EMPTY,
@@ -436,7 +490,9 @@ translations = {
         TYPE_FAVOURITED_CHARGERS: HASHMAP_FAVOURITED_CHARGERS_EMPTY,
         TYPE_VEHICLE_INFO: HASHMAP_VEHICLE_INFO_EMPTY,
         TYPE_CHARGE_HISTORY: HASHMAP_CHARGE_HISTORY_EMPTY,
-        TYPE_CHARGE_CURRENT: HASHMAP_CHARGE_CURRENT_EMPTY
+        TYPE_CHARGE_CURRENT: HASHMAP_CHARGE_CURRENT_EMPTY,
+        TYPE_CHARGER_PV_HISTORIC: HASHMAP_CHARGER_PV_HISTORIC_EMPTY,
+        TYPE_CHARGER_RATE_HISTORIC: HASHMAP_CHARGER_RATE_HISTORIC_EMPTY
     },
     SELECT_GENERIC_SUCCESS: {
         TYPE_USER_INFO: SELECT_USER_INFO_SUCCESS,
@@ -446,7 +502,9 @@ translations = {
         TYPE_FAVOURITED_CHARGERS: SELECT_FAVOURITED_CHARGERS_SUCCESS,
         TYPE_VEHICLE_INFO: SELECT_VEHICLE_INFO_SUCCESS,
         TYPE_CHARGE_HISTORY: SELECT_CHARGE_HISTORY_SUCCESS,
-        TYPE_CHARGE_CURRENT: SELECT_CHARGE_CURRENT_SUCCESS
+        TYPE_CHARGE_CURRENT: SELECT_CHARGE_CURRENT_SUCCESS,
+        TYPE_CHARGER_PV_HISTORIC: SELECT_CHARGER_PV_HISTORIC_SUCCESS,
+        TYPE_CHARGER_RATE_HISTORIC: SELECT_CHARGER_RATE_HISTORIC_SUCCESS
     },
     SELECT_GENERIC_EMPTY: {
         TYPE_USER_INFO: SELECT_USER_INFO_EMPTY,
@@ -456,6 +514,8 @@ translations = {
         TYPE_FAVOURITED_CHARGERS: SELECT_FAVOURITED_CHARGERS_EMPTY,
         TYPE_VEHICLE_INFO: SELECT_VEHICLE_INFO_EMPTY,
         TYPE_CHARGE_HISTORY: SELECT_CHARGE_HISTORY_EMPTY,
-        TYPE_CHARGE_CURRENT: SELECT_CHARGE_CURRENT_EMPTY
+        TYPE_CHARGE_CURRENT: SELECT_CHARGE_CURRENT_EMPTY,
+        TYPE_CHARGER_PV_HISTORIC: SELECT_CHARGER_PV_HISTORIC_EMPTY,
+        TYPE_CHARGER_RATE_HISTORIC: SELECT_CHARGER_RATE_HISTORIC_EMPTY
     }
 }
