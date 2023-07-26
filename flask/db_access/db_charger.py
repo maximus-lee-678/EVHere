@@ -224,7 +224,7 @@ def add_favourites(charger_dict_or_hash, id_user_info_sanitised):
                 value.update({'is_favourite': False})
         else:
             for value in charger_dict_or_hash.values():
-                value.update({'is_favourite': True if row['id'] in favourites_array_out['content'] else False})
+                value.update({'is_favourite': True if value['id'] in favourites_array_out['content'] else False})
 
 
 def update_charger_technical(id_charger, fields_to_update):
