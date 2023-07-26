@@ -184,7 +184,7 @@ def get_charge_history_by_user_id(id_user_info_sanitised, filter_by):
         return {'result': db_service_code_master.INTERNAL_ERROR}
 
     # get chargers hash map
-    charger_hash_map_out = db_charger.get_all_chargers_with_favourite_hash_map(id_user_info_sanitised)
+    charger_hash_map_out = db_charger.get_all_chargers_hash_map_join_favourite(id_user_info_sanitised)
     if charger_hash_map_out['result'] != db_service_code_master.CHARGER_FOUND:
         return {'result': db_service_code_master.INTERNAL_ERROR}
 

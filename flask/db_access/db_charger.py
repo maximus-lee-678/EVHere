@@ -134,14 +134,14 @@ def get_charger_dict(column_names=None, where_array=None):
     return charger_dict_out
 
 
-def get_all_chargers_with_favourite_dict(id_user_info_sanitised):
+def get_all_chargers_dict_join_favourite(id_user_info_sanitised=None):
     """
     | **[ENDPOINT/INTERNAL]**
-    | Retrieves ALL chargers from database. Also includes 'is_favourite'. (Dictionary)
+    | Retrieves ALL chargers from database. Also includes 'is_favourite' if id_user_info_sanitised is provided. (Dictionary)
     | **Fields returned:** [{'id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 'pv_voltage_in', 'pv_current_in', 'pv_voltage_out', 'pv_current_out',
-    | 'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector', 'is_favourite'}]
+    | 'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector', 'is_favourite'*}]
 
-    :param string id_user_info_sanitised: id_user_info_sanitised
+    :param string id_user_info_sanitised: id_user_info_sanitised (optional)
 
     :returns: Dictionary
     :key 'result': (one) INTERNAL_ERROR, CHARGER_NOT_FOUND, CHARGER_FOUND. 
@@ -158,20 +158,21 @@ def get_all_chargers_with_favourite_dict(id_user_info_sanitised):
 
     key_values = charger_dict_out['content']
 
-    add_favourites(key_values, id_user_info_sanitised)
+    if id_user_info_sanitised != None:
+        add_favourites(key_values, id_user_info_sanitised)
 
     return {'result': db_service_code_master.CHARGER_FOUND,
             'content': key_values}
 
 
-def get_all_chargers_with_favourite_hash_map(id_user_info_sanitised):
+def get_all_chargers_hash_map_join_favourite(id_user_info_sanitised=None):
     """
     | **[INTERNAL]**
-    | Retrieves ALL chargers from database. Also includes 'is_favourite'. (Hashmap)
+    | Retrieves ALL chargers from database. Also includes 'is_favourite' if id_user_info_sanitised is provided. (Hashmap)
     | **Fields returned:** {'id', 'name', 'latitude', 'longitude', 'address', 'currently_open', 'pv_voltage_in', 'pv_current_in', 'pv_voltage_out', 'pv_current_out',
-    | 'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector', 'is_favourite'}
+    | 'rate_current', 'rate_predicted', 'active', 'last_updated', 'available_connector', 'is_favourite'*}
 
-    :param string id_user_info_sanitised: id_user_info_sanitised
+    :param string id_user_info_sanitised: id_user_info_sanitised (optional)
 
     :returns: Dictionary
     :key 'result': (one) INTERNAL_ERROR, CHARGER_NOT_FOUND, CHARGER_FOUND. 
@@ -188,7 +189,8 @@ def get_all_chargers_with_favourite_hash_map(id_user_info_sanitised):
 
     content_dict = charger_dict_out['content']
 
-    add_favourites(content_dict, id_user_info_sanitised)
+    if id_user_info_sanitised != None:
+        add_favourites(content_dict, id_user_info_sanitised)
 
     return {'result': db_service_code_master.CHARGER_FOUND,
             'content': content_dict}
