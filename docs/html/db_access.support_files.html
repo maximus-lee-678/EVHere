@@ -197,9 +197,10 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="db_access.support_files.db_helper_functions.update_dict_key">
-<span class="sig-prename descclassname"><span class="pre">db_access.support_files.db_helper_functions.</span></span><span class="sig-name descname"><span class="pre">update_dict_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_to_update</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_key_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_key_value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.support_files.db_helper_functions.update_dict_key" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">db_access.support_files.db_helper_functions.</span></span><span class="sig-name descname"><span class="pre">update_dict_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_to_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_new_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_new_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.support_files.db_helper_functions.update_dict_key" title="Permalink to this definition"></a></dt>
 <dd><div class="line-block">
 <div class="line">Updates a dictionary’s key and value.</div>
+<div class="line">Also usable to add new keys. Leave new_key_name empty.</div>
 <div class="line">No return because dictionaries are pass by reference.</div>
 </div>
 <dl class="field-list simple">
@@ -207,8 +208,8 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>dict</strong> (<em>dict</em>) – dictionary to update</p></li>
 <li><p><strong>key_to_update</strong> (<em>string</em>) – name of current key to update</p></li>
-<li><p><strong>new_key_name</strong> (<em>string</em>) – new key name (optional)</p></li>
-<li><p><strong>new_key_value</strong> (<em>string</em>) – new value</p></li>
+<li><p><strong>key_new_name</strong> (<em>string</em>) – new key name (optional)</p></li>
+<li><p><strong>key_new_value</strong> (<em>string</em>) – new value</p></li>
 </ul>
 </dd>
 </dl>

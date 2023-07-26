@@ -70,8 +70,9 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-db_access.db_charger">db_access.db_charger module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger.add_favourites"><code class="docutils literal notranslate"><span class="pre">add_favourites()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger.get_all_chargers_with_favourite_dict"><code class="docutils literal notranslate"><span class="pre">get_all_chargers_with_favourite_dict()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger.get_all_chargers_with_favourite_hash_map"><code class="docutils literal notranslate"><span class="pre">get_all_chargers_with_favourite_hash_map()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger.get_all_charger_ids"><code class="docutils literal notranslate"><span class="pre">get_all_charger_ids()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger.get_all_chargers_dict_join_favourite"><code class="docutils literal notranslate"><span class="pre">get_all_chargers_dict_join_favourite()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger.get_all_chargers_hash_map_join_favourite"><code class="docutils literal notranslate"><span class="pre">get_all_chargers_hash_map_join_favourite()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger.get_charger_dict"><code class="docutils literal notranslate"><span class="pre">get_charger_dict()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger.get_charger_hash_map"><code class="docutils literal notranslate"><span class="pre">get_charger_hash_map()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger.update_charger_technical"><code class="docutils literal notranslate"><span class="pre">update_charger_technical()</span></code></a></li>
@@ -91,6 +92,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-db_access.db_charger_rate_historic">db_access.db_charger_rate_historic module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger_rate_historic.get_all_past_charger_rates"><code class="docutils literal notranslate"><span class="pre">get_all_past_charger_rates()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger_rate_historic.get_charger_rate_historic_dict"><code class="docutils literal notranslate"><span class="pre">get_charger_rate_historic_dict()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#db_access.db_charger_rate_historic.get_charger_rate_historic_hash_map"><code class="docutils literal notranslate"><span class="pre">get_charger_rate_historic_hash_map()</span></code></a></li>
 </ul>
@@ -528,17 +530,38 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="db_access.db_charger.get_all_chargers_with_favourite_dict">
-<span class="sig-prename descclassname"><span class="pre">db_access.db_charger.</span></span><span class="sig-name descname"><span class="pre">get_all_chargers_with_favourite_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger.get_all_chargers_with_favourite_dict" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="db_access.db_charger.get_all_charger_ids">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charger.</span></span><span class="sig-name descname"><span class="pre">get_all_charger_ids</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger.get_all_charger_ids" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Retrieves ALL charger ids from database. (Dictionary)</div>
+<div class="line"><strong>Fields returned:</strong> [{‘id’}]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary</p>
+</dd>
+<dt class="field-even">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(one) INTERNAL_ERROR, CHARGER_RATE_HISTORIC_NOT_FOUND, CHARGER_RATE_HISTORIC_FOUND.</p>
+</dd>
+<dt class="field-odd">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(dictionary array) <em>(‘result’ == CHARGER_RATE_HISTORIC_FOUND)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charger.get_all_chargers_dict_join_favourite">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charger.</span></span><span class="sig-name descname"><span class="pre">get_all_chargers_dict_join_favourite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger.get_all_chargers_dict_join_favourite" title="Permalink to this definition"></a></dt>
 <dd><div class="line-block">
 <div class="line"><strong>[ENDPOINT/INTERNAL]</strong></div>
-<div class="line">Retrieves ALL chargers from database. Also includes ‘is_favourite’. (Dictionary)</div>
+<div class="line">Retrieves ALL chargers from database. Also includes ‘is_favourite’ if id_user_info_sanitised is provided. (Dictionary)</div>
 <div class="line"><strong>Fields returned:</strong> [{‘id’, ‘name’, ‘latitude’, ‘longitude’, ‘address’, ‘currently_open’, ‘pv_voltage_in’, ‘pv_current_in’, ‘pv_voltage_out’, ‘pv_current_out’,</div>
-<div class="line">‘rate_current’, ‘rate_predicted’, ‘active’, ‘last_updated’, ‘available_connector’, ‘is_favourite’}]</div>
+<div class="line">‘rate_current’, ‘rate_predicted’, ‘active’, ‘last_updated’, ‘available_connector’, ‘is_favourite’<a href="#id1"><span class="problematic" id="id2">*</span></a>}]</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – id_user_info_sanitised</p>
+<dd class="field-odd"><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – id_user_info_sanitised (optional)</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Dictionary</p>
@@ -553,17 +576,17 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="db_access.db_charger.get_all_chargers_with_favourite_hash_map">
-<span class="sig-prename descclassname"><span class="pre">db_access.db_charger.</span></span><span class="sig-name descname"><span class="pre">get_all_chargers_with_favourite_hash_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger.get_all_chargers_with_favourite_hash_map" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="db_access.db_charger.get_all_chargers_hash_map_join_favourite">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charger.</span></span><span class="sig-name descname"><span class="pre">get_all_chargers_hash_map_join_favourite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger.get_all_chargers_hash_map_join_favourite" title="Permalink to this definition"></a></dt>
 <dd><div class="line-block">
 <div class="line"><strong>[INTERNAL]</strong></div>
-<div class="line">Retrieves ALL chargers from database. Also includes ‘is_favourite’. (Hashmap)</div>
+<div class="line">Retrieves ALL chargers from database. Also includes ‘is_favourite’ if id_user_info_sanitised is provided. (Hashmap)</div>
 <div class="line"><strong>Fields returned:</strong> {‘id’, ‘name’, ‘latitude’, ‘longitude’, ‘address’, ‘currently_open’, ‘pv_voltage_in’, ‘pv_current_in’, ‘pv_voltage_out’, ‘pv_current_out’,</div>
-<div class="line">‘rate_current’, ‘rate_predicted’, ‘active’, ‘last_updated’, ‘available_connector’, ‘is_favourite’}</div>
+<div class="line">‘rate_current’, ‘rate_predicted’, ‘active’, ‘last_updated’, ‘available_connector’, ‘is_favourite’<a href="#id3"><span class="problematic" id="id4">*</span></a>}</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – id_user_info_sanitised</p>
+<dd class="field-odd"><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – id_user_info_sanitised (optional)</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Dictionary</p>
@@ -827,6 +850,27 @@
 </section>
 <section id="module-db_access.db_charger_rate_historic">
 <span id="db-access-db-charger-rate-historic-module"></span><h2>db_access.db_charger_rate_historic module<a class="headerlink" href="#module-db_access.db_charger_rate_historic" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="db_access.db_charger_rate_historic.get_all_past_charger_rates">
+<span class="sig-prename descclassname"><span class="pre">db_access.db_charger_rate_historic.</span></span><span class="sig-name descname"><span class="pre">get_all_past_charger_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_charger</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger_rate_historic.get_all_past_charger_rates" title="Permalink to this definition"></a></dt>
+<dd><div class="line-block">
+<div class="line"><strong>[ENDPOINT]</strong></div>
+<div class="line">Retrieves ALL charger ids from database. (Dictionary)</div>
+<div class="line"><strong>Fields returned:</strong> [{‘id’}]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary</p>
+</dd>
+<dt class="field-even">Key ‘result’<span class="colon">:</span></dt>
+<dd class="field-even"><p>(one) INTERNAL_ERROR, CHARGER_RATE_HISTORIC_NOT_FOUND, CHARGER_RATE_HISTORIC_FOUND.</p>
+</dd>
+<dt class="field-odd">Key ‘content’<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(dictionary array) <em>(‘result’ == CHARGER_RATE_HISTORIC_FOUND)</em> Output.</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="db_access.db_charger_rate_historic.get_charger_rate_historic_dict">
 <span class="sig-prename descclassname"><span class="pre">db_access.db_charger_rate_historic.</span></span><span class="sig-name descname"><span class="pre">get_charger_rate_historic_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_charger_rate_historic.get_charger_rate_historic_dict" title="Permalink to this definition"></a></dt>
@@ -1533,14 +1577,17 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="db_access.db_vehicle.remove_vehicle">
-<span class="sig-prename descclassname"><span class="pre">db_access.db_vehicle.</span></span><span class="sig-name descname"><span class="pre">remove_vehicle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_vehicle_input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_vehicle.remove_vehicle" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">db_access.db_vehicle.</span></span><span class="sig-name descname"><span class="pre">remove_vehicle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user_info_sanitised</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_vehicle_input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#db_access.db_vehicle.remove_vehicle" title="Permalink to this definition"></a></dt>
 <dd><div class="line-block">
 <div class="line"><strong>[ENDPOINT]</strong></div>
 <div class="line">Attempts to remove a vehicle.</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>id_vehicle_input</strong> (<em>string</em>) – id_vehicle_input</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_user_info_sanitised</strong> (<em>string</em>) – id_user_info_sanitised</p></li>
+<li><p><strong>id_vehicle_input</strong> (<em>string</em>) – id_vehicle_input</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Dictionary</p>

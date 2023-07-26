@@ -62,8 +62,6 @@ def fun_get_all_charger_ids():
     """
     | Endpoint implementation for <Route: Get all charger ids>
 
-    :request GET fields: None
-
     :returns: Dictionary 
 
     | **Refer to:**

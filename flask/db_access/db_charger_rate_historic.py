@@ -63,8 +63,23 @@ def get_charger_rate_historic_dict(column_names=None, where_array=None):
                                            where_array=where_array)
 
 def get_all_past_charger_rates(id_charger):
-    past_rates_dict_out = get_charger_rate_historic_dict(where_array=[['id_charger', id_charger]])
+    """
+    | **[ENDPOINT]**
+    | Retrieves ALL charger ids from database. (Dictionary)
+    | **Fields returned:** [{'id'}]
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, CHARGER_RATE_HISTORIC_NOT_FOUND, CHARGER_RATE_HISTORIC_FOUND. 
+    :key 'content': (dictionary array) *('result' == CHARGER_RATE_HISTORIC_FOUND)* Output.
+    """
     
-    key_values = past_rates_dict_out['content']
-    return {'result': db_service_code_master.CHARGER_FOUND,
+    charger_rate_historic_out = get_charger_rate_historic_dict(where_array=[['id_charger', id_charger]])
+    if charger_rate_historic_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
+        return {'result': db_service_code_master.CHARGER_RATE_HISTORIC_NOT_FOUND}
+    if charger_rate_historic_out['result'] == db_service_code_master.INTERNAL_ERROR:
+        return charger_rate_historic_out
+    
+    key_values = charger_rate_historic_out['content']
+
+    return {'result': db_service_code_master.CHARGER_RATE_HISTORIC_FOUND,
             'content': key_values}
