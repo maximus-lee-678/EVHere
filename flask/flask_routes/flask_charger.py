@@ -57,6 +57,28 @@ def fun_get_all_chargers():
                                                                                db_service_code_master.CHARGER_NOT_FOUND])
 
 
+@flask_charger.route('/api/get_all_charger_ids', methods=['GET'])
+def fun_get_all_charger_ids():
+    """
+    | Endpoint implementation for <Route: Get all charger ids>
+
+    :request GET fields: None
+
+    :returns: Dictionary 
+
+    | **Refer to:**
+    | :meth:`db_access.db_charger.get_all_charger_ids`
+    | :meth:`flask_routes.flask_helper_functions.format_for_endpoint`
+    """
+
+    # retrieve charger actual
+    charger_response = db_charger.get_all_charger_ids()
+
+    return flask_helper_functions.format_for_endpoint(db_dictionary=charger_response,
+                                                      success_scenarios_array=[db_service_code_master.CHARGER_FOUND,
+                                                                               db_service_code_master.CHARGER_NOT_FOUND])
+
+
 @flask_charger.route('/api/update_charger/', methods=['POST'])
 def fun_update_charger():
     """
@@ -74,7 +96,7 @@ def fun_update_charger():
     """
 
     # verify headers
-    check_headers_response = flask_helper_functions.determine_json_existence(request.json, 'id_charger')
+    check_headers_response = flask_helper_functions.determine_json_existence(request.json, 'id')
     if check_headers_response['result'] != db_service_code_master.OPERATION_OK:
         return flask_helper_functions.format_for_endpoint(db_dictionary=check_headers_response,
                                                           success_scenarios_array=[])
@@ -99,8 +121,9 @@ def fun_update_charger():
                                                           success_scenarios_array=[])
 
     # update charger actual
-    charger_info_response = db_charger.update_charger_technical(id_charger=request.json['id_charger'],
+    charger_info_response = db_charger.update_charger_technical(id_charger=request.json['id'],
                                                                 fields_to_update=fields_to_update)
 
     return flask_helper_functions.format_for_endpoint(db_dictionary=charger_info_response,
                                                       success_scenarios_array=[db_service_code_master.CHARGER_UPDATE_SUCCESS])
+

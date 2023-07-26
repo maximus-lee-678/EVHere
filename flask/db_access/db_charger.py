@@ -256,3 +256,31 @@ def update_charger_technical(id_charger, fields_to_update):
                 'reason': [db_service_code_master.CHARGER_NOT_FOUND]}
 
     return {'result': db_service_code_master.CHARGER_UPDATE_SUCCESS}
+
+
+
+
+
+def get_all_charger_ids():
+    """
+    | **[ENDPOINT]**
+    | Retrieves ALL charger ids from database. (Dictionary)
+    | **Fields returned:** [{'id'}]
+
+    :returns: Dictionary
+    :key 'result': (one) INTERNAL_ERROR, CHARGER_NOT_FOUND, CHARGER_FOUND. 
+    :key 'content': (dictionary array) *('result' == CHARGER_FOUND)* Output.
+    """
+
+    # get charger hash map
+    charger_dict_out = get_charger_dict(column_names=['id'])
+    # check if empty or error
+    if charger_dict_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
+        return {'result': db_service_code_master.CHARGER_NOT_FOUND}
+    if charger_dict_out['result'] == db_service_code_master.INTERNAL_ERROR:
+        return charger_dict_out
+
+    key_values = charger_dict_out['content']
+
+    return {'result': db_service_code_master.CHARGER_FOUND,
+            'content': key_values}

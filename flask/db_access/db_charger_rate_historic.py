@@ -61,3 +61,10 @@ def get_charger_rate_historic_dict(column_names=None, where_array=None):
                                            column_sql_translations=column_sql_translations,
                                            trailing_query=trailing_query,
                                            where_array=where_array)
+
+def get_all_past_charger_rates(id_charger):
+    past_rates_dict_out = get_charger_rate_historic_dict(where_array=[['id_charger', id_charger]])
+    
+    key_values = past_rates_dict_out['content']
+    return {'result': db_service_code_master.CHARGER_FOUND,
+            'content': key_values}
