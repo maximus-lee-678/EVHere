@@ -84,7 +84,7 @@ def get_universal_dict(column_names=None, column_sql_translations=None, trailing
     'WHERE ' + ' AND '.join(f'{item[2] + " " if len(item) == 3 else ""}{column_sql_translations[item[0]]}=?'
                             for item in where_array if item[0] in column_sql_translations.keys())}
     """
-    
+
     if where_array != None:
         task = tuple(item[1] for item in where_array if item[0] in column_sql_translations.keys())
         select = db_methods.safe_select(query=query, task=task, get_type='all')

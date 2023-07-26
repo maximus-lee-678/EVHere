@@ -63,12 +63,10 @@ def get_charger_hash_map(column_names=None, where_array=None):
     # append to original dict
     if not has_temp_id:
         for key, value in charger_hash_out['content'].items():
-            db_helper_functions.update_dict_key(
-                dict=value, key_to_update='available_connector', new_key_name=None, new_key_value=charger_available_connector_dict_out['content'][key])
+            value.update({'available_connector': charger_available_connector_dict_out['content'][key]})
     else:
         for key, value in charger_hash_out['content'].items():
-            db_helper_functions.update_dict_key(
-                dict=value, key_to_update='available_connector', new_key_name=None, new_key_value=charger_available_connector_dict_out['content'][key])
+            value.update({'available_connector': charger_available_connector_dict_out['content'][key]})
             value.pop('id')
 
     return charger_hash_out
@@ -123,12 +121,10 @@ def get_charger_dict(column_names=None, where_array=None):
     # append to original dict
     if not has_temp_id:
         for row in charger_dict_out['content']:
-            db_helper_functions.update_dict_key(
-                dict=row, key_to_update='available_connector', new_key_name=None, new_key_value=charger_available_connector_dict_out['content'][row['id']])
+            row.update({'available_connector': charger_available_connector_dict_out['content'][row['id']]})
     else:
         for row in charger_dict_out['content']:
-            db_helper_functions.update_dict_key(
-                dict=row, key_to_update='available_connector', new_key_name=None, new_key_value=charger_available_connector_dict_out['content'][row['id']])
+            row.update({'available_connector': charger_available_connector_dict_out['content'][row['id']]})
             row.pop('id')
 
     return charger_dict_out
@@ -207,8 +203,7 @@ def add_favourites(charger_dict_or_hash, id_user_info_sanitised):
     """
 
     # get favourite chargers
-    favourites_array_out = db_favourite_charger.get_user_favourite_charger_id_array(
-        id_user_info_sanitised)
+    favourites_array_out = db_favourite_charger.get_user_favourite_charger_id_array(id_user_info_sanitised=id_user_info_sanitised)
     # check if error
     if favourites_array_out['result'] == db_service_code_master.INTERNAL_ERROR:
         return favourites_array_out
@@ -218,21 +213,18 @@ def add_favourites(charger_dict_or_hash, id_user_info_sanitised):
     if type(charger_dict_or_hash) is list:
         if favourites_array_out['result'] == db_service_code_master.FAVOURITE_CHARGERS_NOT_FOUND:
             for row in charger_dict_or_hash:
-                db_helper_functions.update_dict_key(
-                    row, None, 'is_favourite', False)
+                row.update({'is_favourite': False})
         else:
             for row in charger_dict_or_hash:
-                db_helper_functions.update_dict_key(
-                    row, None, 'is_favourite', True if row['id'] in favourites_array_out['content'] else False)
+                row.update({'is_favourite': True if row['id'] in favourites_array_out['content'] else False})
+
     elif type(charger_dict_or_hash) is dict:
         if favourites_array_out['result'] == db_service_code_master.FAVOURITE_CHARGERS_NOT_FOUND:
             for value in charger_dict_or_hash.values():
-                db_helper_functions.update_dict_key(
-                    value, None, 'is_favourite', False)
+                value.update({'is_favourite': False})
         else:
             for value in charger_dict_or_hash.values():
-                db_helper_functions.update_dict_key(
-                    value, None, 'is_favourite', True if value['id'] in favourites_array_out['content'] else False)
+                value.update({'is_favourite': True if row['id'] in favourites_array_out['content'] else False})
 
 
 def update_charger_technical(id_charger, fields_to_update):
@@ -250,21 +242,17 @@ def update_charger_technical(id_charger, fields_to_update):
     :key 'reason': (array, one) *('result' == CHARGER_UPDATE_FAILURE)* CHARGER_NOT_FOUND, MISSING_FIELDS.
     """
 
-    # empty dict
-    if not fields_to_update:
-        return {'result': db_service_code_master.CHARGER_UPDATE_FAILURE, 'reason': [db_service_code_master.MISSING_FIELDS]}
-
     query = f"""
     UPDATE charger SET {', '.join(f'{key}=?' for key in fields_to_update.keys())}, last_updated=?
     WHERE id=?
     """
-    task = tuple(value for value in fields_to_update.values()) + \
-        (db_helper_functions.generate_time_now(), id_charger)
+    task = tuple(value for value in fields_to_update.values()) + (db_helper_functions.generate_time_now(), id_charger)
 
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:
         return {'result': db_service_code_master.INTERNAL_ERROR}
     if transaction['rows_affected'] != 1:
-        return {'result': db_service_code_master.CHARGER_UPDATE_FAILURE, 'reason': [db_service_code_master.CHARGER_NOT_FOUND]}
+        return {'result': db_service_code_master.CHARGER_UPDATE_FAILURE, 
+                'reason': [db_service_code_master.CHARGER_NOT_FOUND]}
 
     return {'result': db_service_code_master.CHARGER_UPDATE_SUCCESS}

@@ -31,7 +31,7 @@ def get_vehicle_hash_map(column_names=None, where_array=None):
     :key 'result': (one) INTERNAL_ERROR, HASHMAP_GENERIC_EMPTY, HASHMAP_GENERIC_SUCCESS. 
     :key 'content': (dictionary) *('result' == HASHMAP_GENERIC_SUCCESS)* Output. ('id' as key)
     """
-    
+
     if column_names == None:
         column_names = copy.deepcopy(column_names_all)
 
@@ -39,7 +39,7 @@ def get_vehicle_hash_map(column_names=None, where_array=None):
                                                                column_sql_translations=column_sql_translations,
                                                                trailing_query=trailing_query,
                                                                where_array=where_array)
-    
+
     if vehicle_hash_map_out['result'] == db_service_code_master.HASHMAP_GENERIC_EMPTY:
         return vehicle_hash_map_out
 
@@ -47,8 +47,7 @@ def get_vehicle_hash_map(column_names=None, where_array=None):
         connector_type_hash_map_out = db_connector_type.get_connector_type_hash_map()
 
         for value in vehicle_hash_map_out['content'].values():
-            db_helper_functions.update_dict_key(
-                dict=value, key_to_update='connector', new_key_name=None, new_key_value=connector_type_hash_map_out['content'][value['connector']])
+            value.update({'connector': connector_type_hash_map_out['content'][value['connector']]})
 
     return vehicle_hash_map_out
 
@@ -82,8 +81,7 @@ def get_vehicle_dict(column_names=None, where_array=None):
         connector_type_hash_map_out = db_connector_type.get_connector_type_hash_map()
 
         for row in vehicle_dict_out['content']:
-            db_helper_functions.update_dict_key(
-                dict=row, key_to_update='connector', new_key_name=None, new_key_value=connector_type_hash_map_out['content'][row['connector']])
+            row.update({'connector': connector_type_hash_map_out['content'][row['connector']]})
 
     return vehicle_dict_out
 
@@ -121,8 +119,7 @@ def add_vehicle(id_user_info_sanitised, name_input, model_input, sn_input, conne
         error_list.append(db_service_code_master.VEHICLE_MODEL_INVALID_LENGTH)
     # 2.2: sanitise and store vehicle model
     else:
-        model_sanitised = db_helper_functions.string_sanitise(
-            model_input)
+        model_sanitised = db_helper_functions.string_sanitise(model_input)
 
     # 3.1: input_vehicle_sn > check[length]
     if len(sn_input) > 8 or len(sn_input) == 0:
@@ -152,8 +149,7 @@ def add_vehicle(id_user_info_sanitised, name_input, model_input, sn_input, conne
     # 5: insert new vehicle
     query = 'INSERT INTO vehicle_info VALUES (?,?,?,?,?,?,?)'
     active = True
-    task = (db_helper_functions.generate_uuid(), id_user_info_sanitised,
-            name_sanitised, model_sanitised, sn_sanitised, connector_id, active)
+    task = (db_helper_functions.generate_uuid(), id_user_info_sanitised, name_sanitised, model_sanitised, sn_sanitised, connector_id, active)
 
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:
@@ -162,11 +158,12 @@ def add_vehicle(id_user_info_sanitised, name_input, model_input, sn_input, conne
     return {'result': db_service_code_master.VEHICLE_ADD_SUCCESS}
 
 
-def remove_vehicle(id_vehicle_input):
+def remove_vehicle(id_user_info_sanitised, id_vehicle_input):
     """
     | **[ENDPOINT]**
     | Attempts to remove a vehicle.
 
+    :param string id_user_info_sanitised: id_user_info_sanitised
     :param string id_vehicle_input: id_vehicle_input
 
     :returns: Dictionary
@@ -175,17 +172,17 @@ def remove_vehicle(id_vehicle_input):
     """
 
     # sanitise input
-    id_vehicle_sanitised = db_helper_functions.string_sanitise(
-        id_vehicle_input)
+    id_vehicle_sanitised = db_helper_functions.string_sanitise(id_vehicle_input)
 
-    query = 'UPDATE vehicle_info SET active=false WHERE id=?'
-    task = (id_vehicle_sanitised,)
+    query = 'UPDATE vehicle_info SET active=false WHERE id=? AND id_user_info=?'
+    task = (id_vehicle_sanitised,id_user_info_sanitised)
 
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:
         return {'result': db_service_code_master.INTERNAL_ERROR}
     if transaction['rows_affected'] != 1:
-        return {'result': db_service_code_master.VEHICLE_REMOVE_FAILURE, 'reason': [db_service_code_master.VEHICLE_NOT_FOUND]}
+        return {'result': db_service_code_master.VEHICLE_REMOVE_FAILURE,
+                'reason': [db_service_code_master.VEHICLE_NOT_FOUND]}
 
     return {'result': db_service_code_master.VEHICLE_REMOVE_SUCCESS}
 
@@ -202,7 +199,7 @@ def get_active_vehicle_by_user_id(id_user_info_sanitised):
     :key 'result': (one) INTERNAL_ERROR, VEHICLE_NOT_FOUND, VEHICLE_FOUND. 
     :key 'content': (dictionary array) *('result' == VEHICLE_FOUND)* Output.
     """
-    
+
     vehicle_dict_out = get_vehicle_dict(column_names=['id', 'name', 'model', 'vehicle_sn', 'connector'],
                                         where_array=[['id_user_info', id_user_info_sanitised], ['active', '1']])
     # check if empty or error

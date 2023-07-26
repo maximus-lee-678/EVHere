@@ -91,8 +91,7 @@ def add_charge_current(id_charge_history, id_charger, id_charger_available_conne
     charger_available_connectors = charger_dict_out['content'][0]['available_connector']
     connector_found = False
     use_check_failed = False
-    id_charger_available_connector_sanitised = db_helper_functions.string_sanitise(
-        id_charger_available_connector_input)
+    id_charger_available_connector_sanitised = db_helper_functions.string_sanitise(id_charger_available_connector_input)
     for row in charger_available_connectors:
         if row['id'] == id_charger_available_connector_sanitised:
             connector_found = True
@@ -110,7 +109,7 @@ def add_charge_current(id_charge_history, id_charger, id_charger_available_conne
 
     # 3: set charger connector's in_use
     charger_available_connectors_out = db_charger_available_connector.set_charger_available_connector_in_use(
-        id_charger_available_connector_sanitised, True)
+        id_charger_available_connector=id_charger_available_connector_sanitised, set_to=True)
     if charger_available_connectors_out['result'] != db_service_code_master.AVAILABLE_CONNECTOR_SET_USE_STATE_SUCCESS:
         return {'result': charger_available_connectors_out['result']}
 
@@ -119,8 +118,7 @@ def add_charge_current(id_charge_history, id_charger, id_charger_available_conne
     last_updated = db_helper_functions.generate_time_now()
 
     query = 'INSERT INTO charge_current VALUES (?,?,?,?,?,?)'
-    task = (id, id_charge_history, id_charger_available_connector_sanitised,
-            0, rate_current, last_updated)
+    task = (id, id_charge_history, id_charger_available_connector_sanitised, 0, rate_current, last_updated)
 
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:
@@ -152,8 +150,7 @@ def update_user_charge_current(id_user_info_sanitised, current_energy_drawn_inpu
                                                                         where_array=[['id_user_info', id_user_info_sanitised], ['is_charge_finished', False]])
     if charge_history_dict_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
         contains_errors = True
-        error_list.append(
-            db_service_code_master.CHARGE_HISTORY_NOT_CHARGING)
+        error_list.append(db_service_code_master.CHARGE_HISTORY_NOT_CHARGING)
     elif charge_history_dict_out['result'] == db_service_code_master.INTERNAL_ERROR:
         return {'result': db_service_code_master.INTERNAL_ERROR}
     else:
@@ -162,8 +159,7 @@ def update_user_charge_current(id_user_info_sanitised, current_energy_drawn_inpu
     # 2: check energy format
     if not current_energy_drawn_input.isdigit():
         contains_errors = True
-        error_list.append(
-            db_service_code_master.CHARGER_AVAILABLE_CONNECTOR_INVALID_ENERGY_LEVEL)
+        error_list.append(db_service_code_master.CHARGER_AVAILABLE_CONNECTOR_INVALID_ENERGY_LEVEL)
 
     if contains_errors:
         return {'result': db_service_code_master.CHARGE_CURRENT_UPDATE_FAILURE,
@@ -195,8 +191,7 @@ def remove_charge_current(id_charge_history):
                                                       where_array=[['id_charge_history', id_charge_history]])
     if charge_current_dict_out['result'] != db_service_code_master.SELECT_GENERIC_SUCCESS:
         return {'result': db_service_code_master.INTERNAL_ERROR}
-    id_charger_available_connector = charge_current_dict_out[
-        'content'][0]['id_charger_available_connector']
+    id_charger_available_connector = charge_current_dict_out['content'][0]['id_charger_available_connector']
 
     query = 'DELETE FROM charge_current WHERE id_charge_history=?'
     task = (id_charge_history,)
@@ -206,8 +201,8 @@ def remove_charge_current(id_charge_history):
         return {'result': db_service_code_master.INTERNAL_ERROR}
 
     # set charger connector's in_use
-    charger_available_connectors_out = db_charger_available_connector.set_charger_available_connector_in_use(
-        id_charger_available_connector, False)
+    charger_available_connectors_out = db_charger_available_connector.set_charger_available_connector_in_use(id_charger_available_connector=id_charger_available_connector,
+                                                                                                             set_to=False)
     if charger_available_connectors_out['result'] != db_service_code_master.AVAILABLE_CONNECTOR_SET_USE_STATE_SUCCESS:
         return {'result': db_service_code_master.INTERNAL_ERROR}
 

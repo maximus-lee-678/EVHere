@@ -11,5 +11,4 @@ import db_access.db_charger_pv_historic as db_charger_pv_historic
 # 
 
 
-flask_charger_pv_historic = Blueprint(
-    'db_charger_pv_historic', __name__, template_folder='flask_routes')
+flask_charger_pv_historic = Blueprint('db_charger_pv_historic', __name__, template_folder='flask_routes')

@@ -13,7 +13,7 @@ export const VehicleInfoAdd = async (email, vehicleName, vehicleModel, vehicleSN
         }));
 }
 
-export const VehicleInfoRemove = async (IDVehicle) => {
+export const VehicleInfoRemove = async (email, IDVehicle) => {
     return GetResponse('/api/remove_vehicle',
-    GenerateHeader({ id_vehicle: IDVehicle }));
+    GenerateHeader({ email: email, id_vehicle: IDVehicle }));
 }

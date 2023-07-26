@@ -11,5 +11,4 @@ import db_access.db_charger_rate_historic as db_charger_rate_historic
 # 
 
 
-flask_charger_rate_historic = Blueprint(
-    'db_charger_rate_historic', __name__, template_folder='flask_routes')
+flask_charger_rate_historic = Blueprint('db_charger_rate_historic', __name__, template_folder='flask_routes')

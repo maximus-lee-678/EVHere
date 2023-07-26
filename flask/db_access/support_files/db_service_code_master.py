@@ -16,8 +16,10 @@ API_SUCCESS_STRING = 'success'
 API_FAILURE_STRING = 'fail'
 API_ERROR_STRING = 'error'
 
+
 def ez_update(code, code_def):
     service_code_dict.update({code: code_def})
+
 
 service_code_dict = {}
 
@@ -36,16 +38,22 @@ ez_update(SELECT_GENERIC_SUCCESS, "Select succeeded.")
 
 SELECT_GENERIC_EMPTY = 4
 ez_update(SELECT_GENERIC_EMPTY, "Select returned empty.")
-#>
-#>
-MISSING_FIELDS = 5
+# >
+# >
+OPERATION_OK = 5
+ez_update(OPERATION_OK, "Operation Succeeded.")
+
+MISSING_FIELDS = 6
 ez_update(MISSING_FIELDS, "One or more json fields are missing.")
 
-CONFIGURATION_ERROR = 6
+CONFIGURATION_ERROR = 7
 ez_update(CONFIGURATION_ERROR, "Function not configured properly.")
 
-INTERNAL_ERROR = 7  # oh damn better call the programmers
+INTERNAL_ERROR = 8  # oh damn better call the programmers
 ez_update(INTERNAL_ERROR, "Something went wrong.")
+
+BAD_REQUEST = 9
+ez_update(BAD_REQUEST, "The server will not process the request due to something that is perceived to be a client error.")
 
 #########################
 
@@ -64,8 +72,8 @@ ez_update(SELECT_USER_INFO_SUCCESS, "User info select succeeded.")
 
 SELECT_USER_INFO_EMPTY = 104
 ez_update(SELECT_USER_INFO_EMPTY, "User info select returned empty.")
-#>
-#>
+# >
+# >
 USERNAME_INVALID_LENGTH = 105
 ez_update(USERNAME_INVALID_LENGTH, "Username field contains string of invalid length.")
 
@@ -92,8 +100,8 @@ ez_update(FULL_NAME_INVALID_LENGTH, "Full name field contains string of invalid 
 
 EMAIL_PASSWORD_INVALID = 113
 ez_update(EMAIL_PASSWORD_INVALID, "Email or Password is incorrect.")
-#>
-#>
+# >
+# >
 USER_INFO_CREATE_SUCCESS = 199
 ez_update(USER_INFO_CREATE_SUCCESS, "Account created.")
 
@@ -141,11 +149,11 @@ ez_update(SELECT_CHARGER_SUCCESS, "Charger select succeeded.")
 
 SELECT_CHARGER_EMPTY = 204
 ez_update(SELECT_CHARGER_EMPTY, "Charger select returned empty.")
-#>
-#>
+# >
+# >
 #
-#>
-#>
+# >
+# >
 CHARGER_FOUND = 299
 ez_update(CHARGER_FOUND, "Chargers found.")
 
@@ -175,12 +183,12 @@ ez_update(SELECT_CHARGER_AVAILABLE_CONNECTOR_SUCCESS, "Charger available connect
 
 SELECT_CHARGER_AVAILABLE_CONNECTOR_EMPTY = 304
 ez_update(SELECT_CHARGER_AVAILABLE_CONNECTOR_EMPTY, "Charger available connector select returned empty.")
-#>
-#>
+# >
+# >
 CHARGER_AVAILABLE_CONNECTOR_INVALID_ENERGY_LEVEL = 305
 ez_update(CHARGER_AVAILABLE_CONNECTOR_INVALID_ENERGY_LEVEL, "Invalid energy level specified.")
-#>
-#>
+# >
+# >
 AVAILABLE_CONNECTORS_NOT_FOUND = 399
 ez_update(AVAILABLE_CONNECTORS_NOT_FOUND, "Charger connector types found.")
 
@@ -213,11 +221,11 @@ ez_update(SELECT_CONNECTOR_TYPE_SUCCESS, "Connector type select succeeded.")
 
 SELECT_CONNECTOR_TYPE_EMPTY = 404  # poetic
 ez_update(SELECT_CONNECTOR_TYPE_EMPTY, "Connector type select returned empty.")
-#>
-#>
+# >
+# >
 #
-#>
-#>
+# >
+# >
 CONNECTOR_FOUND = 499
 ez_update(CONNECTOR_FOUND, "Connector type definitions found.")
 
@@ -241,8 +249,8 @@ ez_update(SELECT_FAVOURITED_CHARGERS_SUCCESS, "Favourited chargers select succee
 
 SELECT_FAVOURITED_CHARGERS_EMPTY = 504
 ez_update(SELECT_FAVOURITED_CHARGERS_EMPTY, "Favourited chargers select returned empty.")
-#>
-#>
+# >
+# >
 FAVOURITE_CHARGER_MODIFY_ILLEGAL_OPERATION = 505
 ez_update(FAVOURITE_CHARGER_MODIFY_ILLEGAL_OPERATION, "Illegal favourite modify favourite operation specified.")
 
@@ -251,8 +259,8 @@ ez_update(FAVOURITE_CHARGER_MODIFY_INVALID_OPERATION, "Invalid favourite modify 
 
 FAVOURITE_CHARGER_DUPLICATE_ENTRY = 507
 ez_update(FAVOURITE_CHARGER_DUPLICATE_ENTRY, "A similar favourite charger already exists.")
-#>
-#>
+# >
+# >
 FAVOURITE_CHARGERS_NOT_FOUND = 599
 ez_update(FAVOURITE_CHARGERS_NOT_FOUND, "No favourite chargers found.")
 
@@ -282,8 +290,8 @@ ez_update(SELECT_VEHICLE_INFO_SUCCESS, "Vehicle info select succeeded.")
 
 SELECT_VEHICLE_INFO_EMPTY = 604
 ez_update(SELECT_VEHICLE_INFO_EMPTY, "Vehicle info select returned empty.")
-#>
-#>
+# >
+# >
 VEHICLE_NAME_INVALID_LENGTH = 605
 ez_update(VEHICLE_NAME_INVALID_LENGTH, "Vehicle name field contains string of invalid length.")
 
@@ -292,8 +300,8 @@ ez_update(VEHICLE_MODEL_INVALID_LENGTH, "Vehicle model field contains string of 
 
 VEHICLE_SN_INVALID_LENGTH = 607
 ez_update(VEHICLE_SN_INVALID_LENGTH, "Vehicle SN field contains string of invalid length.")
-#>
-#>
+# >
+# >
 VEHICLE_ADD_SUCCESS = 699
 ez_update(VEHICLE_ADD_SUCCESS, "Vehicle added.")
 
@@ -329,8 +337,8 @@ ez_update(SELECT_CHARGE_HISTORY_SUCCESS, "Charge history select succeeded.")
 
 SELECT_CHARGE_HISTORY_EMPTY = 704
 ez_update(SELECT_CHARGE_HISTORY_EMPTY, "Charge history select returned empty.")
-#>
-#>
+# >
+# >
 CHARGE_HISTORY_INVALID_CHARGE_LEVEL = 705
 ez_update(CHARGE_HISTORY_INVALID_CHARGE_LEVEL, "Invalid battery percentage specified.")
 
@@ -339,8 +347,8 @@ ez_update(CHARGE_HISTORY_ALREADY_CHARGING, "Can't start a new charge while alrea
 
 CHARGE_HISTORY_NOT_CHARGING = 707
 ez_update(CHARGE_HISTORY_NOT_CHARGING, "Can't finish a charge, this user does not have an unfinished entry.")
-#>
-#>
+# >
+# >
 CHARGE_HISTORY_CREATE_SUCCESS = 799
 ez_update(CHARGE_HISTORY_CREATE_SUCCESS, "Charge history updated - started.")
 
@@ -376,12 +384,12 @@ ez_update(SELECT_CHARGE_CURRENT_SUCCESS, "Charge current select succeeded.")
 
 SELECT_CHARGE_CURRENT_EMPTY = 804
 ez_update(SELECT_CHARGE_CURRENT_EMPTY, "Charge current select returned empty.")
-#>
-#>
+# >
+# >
 CURRENCY_INVALID = 805
 ez_update(CURRENCY_INVALID, "Currency field contains string of invalid syntax.")
-#>
-#>
+# >
+# >
 CHARGE_CURRENT_CREATE_SUCCESS = 899
 ez_update(CHARGE_CURRENT_CREATE_SUCCESS, "Charge current created.")
 
@@ -404,7 +412,7 @@ CHARGE_CURRENT_UPDATE_SUCCESS = 893
 ez_update(CHARGE_CURRENT_UPDATE_SUCCESS, "Charge current entry updated.")
 
 CHARGE_CURRENT_UPDATE_FAILURE = 892
-ez_update(CHARGE_CURRENT_UPDATE_SUCCESS, "Charge current entry could not be updated.")
+ez_update(CHARGE_CURRENT_UPDATE_FAILURE, "Charge current entry could not be updated.")
 
 #########################
 

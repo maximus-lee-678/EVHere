@@ -11,7 +11,7 @@ import { ChargeHistoryFinish } from '../API/API';
 export default function FinishCharge() {
   const userEmail = localStorage.getItem("user_email");
 
-  const [inputKwh, setInputKwh] = useState(0);
+  const [inputKwh, setInputKwh] = useState('0');
 
   // Function that finishes a charge. Called upon form submission.
   async function handleFinish(e) {

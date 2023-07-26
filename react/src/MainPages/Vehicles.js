@@ -88,7 +88,7 @@ export default function Vehicles() {
                             </div>
                         </CardContent>
                     </div>
-                    <CardButton id={id} onClick={handleRemove} icon="trash fa-lg" color="red"></CardButton>
+                    <CardButton id={id} onClick={() => handleRemove(id)} icon="trash fa-lg" color="red"></CardButton>
                 </div>
             )
         }
@@ -132,7 +132,7 @@ export default function Vehicles() {
             return;
         }
 
-        const response = await VehicleInfoRemove(vehicleId);
+        const response = await VehicleInfoRemove(userEmail, vehicleId);
 
         // result is boolean of status
         if (response.status === 'success') {

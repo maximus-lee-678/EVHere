@@ -34,8 +34,7 @@ def touch_database():
                   i['pv_voltage_out'], i['pv_current_out'], i['rate_current'], i['rate_predicted'], i['active'], i['last_updated']) for i in dict_reader]
 
     # Write charger details to database
-    cursor.executemany(
-        "INSERT INTO charger VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", to_db)
+    cursor.executemany("INSERT INTO charger VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", to_db)
     conn.commit()
 
     # Read connector data, write to variable
@@ -57,8 +56,7 @@ def touch_database():
                  for i in dict_reader]
 
     # Write connector details to database
-    cursor.executemany(
-        "INSERT INTO charger_available_connector VALUES (?,?,?,?,?,?)", to_db)
+    cursor.executemany("INSERT INTO charger_available_connector VALUES (?,?,?,?,?,?)", to_db)
     conn.commit()
 
     # Read charger rate historic data, write to variable
@@ -69,8 +67,7 @@ def touch_database():
                  for i in dict_reader]
 
     # Write charger rate historic details to database
-    cursor.executemany(
-        "INSERT INTO charger_rate_historic VALUES (?,?,?,?)", to_db)
+    cursor.executemany("INSERT INTO charger_rate_historic VALUES (?,?,?,?)", to_db)
     conn.commit()    
 
     conn.close()

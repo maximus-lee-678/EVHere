@@ -84,8 +84,7 @@ def get_charge_history_active(id_user_info_sanitised):
     """
 
     # get charge history
-    charge_history_dict_out = get_charge_history_dict(column_names=['id', 'id_vehicle_info',
-                                                                    'id_charger', 'time_start', 'total_energy_drawn'],
+    charge_history_dict_out = get_charge_history_dict(column_names=['id', 'id_vehicle_info', 'id_charger', 'time_start', 'total_energy_drawn'],
                                                       where_array=[['id_user_info', id_user_info_sanitised], ['is_charge_finished', False]])
     # check if empty or error
     if charge_history_dict_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
@@ -103,14 +102,12 @@ def get_charge_history_active(id_user_info_sanitised):
 
     # shove charge_current into charge_history
     key_values = charge_history_dict_out['content'][0]
-    key_values.update(
-        {'charge_current': charge_current_dict_out['content'][0]})
+    key_values.update({'charge_current': charge_current_dict_out['content'][0]})
     # remove a key
     key_values.pop('id')
 
     # get all vehicles hash map
-    vehicle_hash_map_out = db_vehicle.get_vehicle_hash_map(
-        column_names=['name', 'model', 'vehicle_sn', 'connector_type'])
+    vehicle_hash_map_out = db_vehicle.get_vehicle_hash_map(column_names=['name', 'model', 'vehicle_sn', 'connector_type'])
     # check if empty or error
     # at this point, if empty returned, considered impossible under normal circumstances, internal error
     if vehicle_hash_map_out['result'] != db_service_code_master.HASHMAP_GENERIC_SUCCESS:
@@ -124,11 +121,15 @@ def get_charge_history_active(id_user_info_sanitised):
         return {'result': db_service_code_master.INTERNAL_ERROR}
 
     # replace id_vehicle_info with actual info
-    db_helper_functions.update_dict_key(key_values, 'id_vehicle_info', 'vehicle',
-                                        vehicle_hash_map_out['content'][key_values['id_vehicle_info']])
+    db_helper_functions.update_dict_key(dict=key_values,
+                                        key_to_update='id_vehicle_info',
+                                        key_new_name='vehicle',
+                                        key_new_value=vehicle_hash_map_out['content'][key_values['id_vehicle_info']])
     # replace id_charger with actual info
-    db_helper_functions.update_dict_key(
-        key_values, 'id_charger', 'charger', charger_hash_map_out['content'][key_values['id_charger']])
+    db_helper_functions.update_dict_key(dict=key_values, 
+                                        key_to_update='id_charger', 
+                                        key_new_name='charger', 
+                                        key_new_value=charger_hash_map_out['content'][key_values['id_charger']])
 
     return {'result': db_service_code_master.CHARGE_HISTORY_FOUND,
             'content': key_values}
@@ -154,18 +155,15 @@ def get_charge_history_by_user_id(id_user_info_sanitised, filter_by):
     # get charge history
     if filter_by == 'in_progress':
         charge_history_out = get_charge_history_dict(
-            column_names=['id', 'id_vehicle_info', 'id_charger',
-                          'time_start', 'total_energy_drawn'],
+            column_names=['id', 'id_vehicle_info', 'id_charger', 'time_start', 'total_energy_drawn'],
             where_array=[['id_user_info', id_user_info_sanitised], ['is_charge_finished', False]])
     elif filter_by == 'complete':
         charge_history_out = get_charge_history_dict(
-            column_names=['id', 'id_vehicle_info', 'id_charger', 'time_start',
-                          'time_end', 'total_energy_drawn', 'amount_payable'],
+            column_names=['id', 'id_vehicle_info', 'id_charger', 'time_start', 'time_end', 'total_energy_drawn', 'amount_payable'],
             where_array=[['id_user_info', id_user_info_sanitised], ['is_charge_finished', True]])
     elif filter_by == 'all':
         charge_history_out = get_charge_history_dict(
-            column_names=['id', 'id_vehicle_info', 'id_charger', 'time_start', 'time_end',
-                          'total_energy_drawn', 'amount_payable', 'is_charge_finished'],
+            column_names=['id', 'id_vehicle_info', 'id_charger', 'time_start', 'time_end', 'total_energy_drawn', 'amount_payable', 'is_charge_finished'],
             where_array=[['id_user_info', id_user_info_sanitised]])
     else:
         return {'result': db_service_code_master.CONFIGURATION_ERROR}
@@ -177,8 +175,7 @@ def get_charge_history_by_user_id(id_user_info_sanitised, filter_by):
         return charge_history_out
 
     # get vehicles hash map
-    vehicle_hash_map_out = db_vehicle.get_vehicle_hash_map(
-        column_names=['name', 'model', 'vehicle_sn', 'connector'])
+    vehicle_hash_map_out = db_vehicle.get_vehicle_hash_map(column_names=['name', 'model', 'vehicle_sn', 'connector'])
     # check if empty or error (empty -> internal error)
     if vehicle_hash_map_out['result'] != db_service_code_master.HASHMAP_GENERIC_SUCCESS:
         return {'result': db_service_code_master.INTERNAL_ERROR}
@@ -190,15 +187,18 @@ def get_charge_history_by_user_id(id_user_info_sanitised, filter_by):
 
     key_values = charge_history_out['content']
 
-
     # replace id_vehicle_info with actual info
     for row in key_values:
-        db_helper_functions.update_dict_key(row, 'id_vehicle_info', 'vehicle',
-                                            vehicle_hash_map_out['content'][row['id_vehicle_info']])
+        db_helper_functions.update_dict_key(dict=row, 
+                                            key_to_update='id_vehicle_info', 
+                                            key_new_name='vehicle', 
+                                            key_new_value=vehicle_hash_map_out['content'][row['id_vehicle_info']])
     # replace id_charger with actual info
     for row in key_values:
-        db_helper_functions.update_dict_key(row, 'id_charger', 'charger',
-                                            charger_hash_map_out['content'][row['id_charger']])
+        db_helper_functions.update_dict_key(dict=row, 
+                                            key_to_update='id_charger', 
+                                            key_new_name='charger', 
+                                            key_new_value=charger_hash_map_out['content'][row['id_charger']])
 
     return {'result': db_service_code_master.CHARGE_HISTORY_FOUND,
             'content': key_values}
@@ -228,8 +228,7 @@ def add_charge_history_initial(id_user_info_sanitised, id_vehicle_info_input, id
                                                       where_array=[['id_user_info', id_user_info_sanitised], ['is_charge_finished', False]])
     if charge_history_dict_out['result'] == db_service_code_master.SELECT_GENERIC_SUCCESS:
         contains_errors = True
-        error_list.append(
-            db_service_code_master.CHARGE_HISTORY_ALREADY_CHARGING)
+        error_list.append(db_service_code_master.CHARGE_HISTORY_ALREADY_CHARGING)
     elif charge_history_dict_out['result'] == db_service_code_master.INTERNAL_ERROR:
         return {'result': db_service_code_master.INTERNAL_ERROR}
 
@@ -270,19 +269,26 @@ def add_charge_history_initial(id_user_info_sanitised, id_vehicle_info_input, id
     (id, id_user_info, id_vehicle_info, id_charger, time_start, total_energy_drawn, is_charge_finished)
     VALUES (?,?,?,?,?,?,?) 
     """
-    task = (id_charge_history, id_user_info_sanitised, id_vehicle_info_sanitised, id_charger_sanitised,
-            time_start, 0, False)
+    task = (id_charge_history, id_user_info_sanitised, id_vehicle_info_sanitised, id_charger_sanitised, time_start, 0, False)
 
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:
         return {'result': db_service_code_master.INTERNAL_ERROR}
 
     # 6: insert new charge current entry
-    charge_current_response = db_charge_current.add_charge_current(
-        id_charge_history, id_charger_sanitised, id_charger_available_connector_input)
+    charge_current_response = db_charge_current.add_charge_current(id_charge_history=id_charge_history,
+                                                                   id_charger=id_charger_sanitised,
+                                                                   id_charger_available_connector_input=id_charger_available_connector_input)
     if charge_current_response['result'] != db_service_code_master.CHARGE_CURRENT_CREATE_SUCCESS:
         # destroy charge history entry
-        # TODO
+        query = """
+        DELETE FROM charge_history 
+        WHERE id=?
+        """
+        task = (id_charge_history,)
+
+        transaction = db_methods.safe_transaction(query=query, task=task)
+
         return {'result': db_service_code_master.INTERNAL_ERROR}
 
     return {'result': db_service_code_master.CHARGE_HISTORY_CREATE_SUCCESS}
@@ -309,8 +315,7 @@ def finish_charge_history(id_user_info_sanitised):
                                                       where_array=[['id_user_info', id_user_info_sanitised], ['is_charge_finished', False]])
     if charge_history_dict_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
         contains_errors = True
-        error_list.append(
-            db_service_code_master.CHARGE_HISTORY_NOT_CHARGING)
+        error_list.append(db_service_code_master.CHARGE_HISTORY_NOT_CHARGING)
     elif charge_history_dict_out['result'] == db_service_code_master.INTERNAL_ERROR:
         return {'result': db_service_code_master.INTERNAL_ERROR}
     else:
@@ -326,22 +331,20 @@ def finish_charge_history(id_user_info_sanitised):
     if charge_history_dict_out['result'] != db_service_code_master.SELECT_GENERIC_SUCCESS:
         return {'result': db_service_code_master.INTERNAL_ERROR}
     print(charge_current_dict_out['content'][0])
-    amount_payable = db_helper_functions.calculate_charge_cost(charge_current_dict_out['content'][0]['current_energy_drawn'],
-                                                               charge_current_dict_out['content'][0]['rate_snapshot'])
+    amount_payable = db_helper_functions.calculate_charge_cost(energy_drawn=charge_current_dict_out['content'][0]['current_energy_drawn'],
+                                                               rate=charge_current_dict_out['content'][0]['rate_snapshot'])
 
     # 4: previous checks passed, generate rest of the fields
     time_end = db_helper_functions.generate_time_now()
 
     # 5: remove charge current entry
-    charge_current_response = db_charge_current.remove_charge_current(
-        id_charge_history_sanitised)
+    charge_current_response = db_charge_current.remove_charge_current(id_charge_history=id_charge_history_sanitised)
     if charge_current_response['result'] == db_service_code_master.INTERNAL_ERROR:
         return {'result': charge_current_response['result']}
 
     # 6: update charge history entry
     query = 'UPDATE charge_history SET total_energy_drawn=?, amount_payable=?, time_end=?, is_charge_finished=True WHERE id=?'
-    task = (charge_current_dict_out['content'][0]['current_energy_drawn'], amount_payable,
-            time_end, id_charge_history_sanitised)
+    task = (charge_current_dict_out['content'][0]['current_energy_drawn'], amount_payable, time_end, id_charge_history_sanitised)
 
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:

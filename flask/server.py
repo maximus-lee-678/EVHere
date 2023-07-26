@@ -22,11 +22,9 @@ if current_working_directory_highest != 'team_15_flask_react':
 # If db file not exists, create
 
 if not os.path.exists(db_methods.DATABASE_PATH):
-    print(
-        f"[!] database not found!, creating new database... (this may take a while, wait for completion message!)")
+    print(f"[!] database not found!, creating new database... (this may take a while, wait for completion message!)")
     db_methods.touch_database()
-    print(
-        f"[i] created new database at {db_methods.DATABASE_PATH}!")
+    print(f"[i] created new database at {db_methods.DATABASE_PATH}!")
 
 # Initializing flask app
 app = Flask(__name__)

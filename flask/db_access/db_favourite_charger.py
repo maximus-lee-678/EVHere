@@ -9,8 +9,7 @@ import db_access.db_universal as db_universal
 import db_access.db_charger as db_charger
 
 # Generics:
-column_sql_translations = {
-    'id': 'id', 'id_user_info': 'id_user_info', 'id_charger': 'id_charger'}
+column_sql_translations = {'id': 'id', 'id_user_info': 'id_user_info', 'id_charger': 'id_charger'}
 column_names_all = ['id', 'id_user_info', 'id_charger']
 trailing_query = """
 FROM favourited_chargers
@@ -79,8 +78,7 @@ def get_user_favourite_chargers(id_user_info_sanitised):
     """
 
     # get favourite chargers
-    favourites_array_out = get_user_favourite_charger_id_array(
-        id_user_info_sanitised)
+    favourites_array_out = get_user_favourite_charger_id_array(id_user_info_sanitised=id_user_info_sanitised)
     # check if error or empty
     if favourites_array_out['result'] == db_service_code_master.INTERNAL_ERROR:
         return favourites_array_out
@@ -88,8 +86,7 @@ def get_user_favourite_chargers(id_user_info_sanitised):
         return favourites_array_out
 
     # get all chargers
-    charger_hash_map_out = db_charger.get_charger_hash_map(
-        where_array=[['active', True]])
+    charger_hash_map_out = db_charger.get_charger_hash_map(where_array=[['active', True]])
     # check if empty or error (empty -> internal error)
     if charger_hash_map_out['result'] != db_service_code_master.HASHMAP_GENERIC_SUCCESS:
         return {'result': db_service_code_master.INTERNAL_ERROR}
@@ -136,14 +133,14 @@ def add_favourite_charger(id_user_info_sanitised, id_charger_input):
                                                             where_array=[['id_user_info', id_user_info_sanitised], ['id_charger', id_charger_sanitised]])
     if favourite_charger_dict_out['result'] == db_service_code_master.SELECT_GENERIC_SUCCESS:
         contains_errors = True
-        error_list.append(
-            db_service_code_master.FAVOURITE_CHARGER_DUPLICATE_ENTRY)
+        error_list.append(db_service_code_master.FAVOURITE_CHARGER_DUPLICATE_ENTRY)
     if favourite_charger_dict_out['result'] == db_service_code_master.INTERNAL_ERROR:
         contains_errors = True
         error_list.append(favourite_charger_dict_out['result'])
 
     if contains_errors:
-        return {'result': db_service_code_master.FAVOURITE_CHARGER_MODIFY_FAILURE, 'reason': error_list}
+        return {'result': db_service_code_master.FAVOURITE_CHARGER_MODIFY_FAILURE, 
+                'reason': error_list}
 
     id = db_helper_functions.generate_uuid()
 
@@ -171,8 +168,7 @@ def remove_favourite_charger(id_user_info_sanitised, id_charger_input):
     :key 'reason': (array, one) *('result' == FAVOURITE_CHARGER_MODIFY_FAILURE)* FAVOURITE_CHARGERS_NOT_FOUND.
     """
 
-    id_charger_sanitised = db_helper_functions.string_sanitise(
-        id_charger_input)
+    id_charger_sanitised = db_helper_functions.string_sanitise(id_charger_input)
 
     query = 'DELETE FROM favourited_chargers WHERE id_user_info=? AND id_charger=?'
     task = (id_user_info_sanitised, id_charger_sanitised)
@@ -181,7 +177,8 @@ def remove_favourite_charger(id_user_info_sanitised, id_charger_input):
     if not transaction['transaction_successful']:
         return {'result': db_service_code_master.INTERNAL_ERROR}
     if transaction['rows_affected'] != 1:
-        return {'result': db_service_code_master.FAVOURITE_CHARGER_MODIFY_FAILURE, 'reason': [db_service_code_master.FAVOURITE_CHARGERS_NOT_FOUND]}
+        return {'result': db_service_code_master.FAVOURITE_CHARGER_MODIFY_FAILURE, 
+                'reason': [db_service_code_master.FAVOURITE_CHARGERS_NOT_FOUND]}
 
     return {'result': db_service_code_master.FAVOURITE_CHARGER_MODIFY_SUCCESS}
 

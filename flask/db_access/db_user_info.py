@@ -83,8 +83,11 @@ def create_user(username_input, password_input, email_input, full_name_input, ph
     contains_errors = False
     error_list = []
 
-    user_info_out = validate_user_info(username_input=username_input, password_input=password_input,
-                                       email_input=email_input, full_name_input=full_name_input, phone_no_input=phone_no_input)
+    user_info_out = validate_user_info(username_input=username_input,
+                                       password_input=password_input,
+                                       email_input=email_input,
+                                       full_name_input=full_name_input,
+                                       phone_no_input=phone_no_input)
 
     if user_info_out['result'] == db_service_code_master.USER_INFO_INVALID:
         contains_errors = True
@@ -110,9 +113,8 @@ def create_user(username_input, password_input, email_input, full_name_input, ph
 
     # insert new user
     query = 'INSERT INTO user_info VALUES (?,?,?,?,?,?,?,?)'
-    task = (id, user_info_out['content']['username'], user_info_out['content']['password'],
-            user_info_out['content']['email'], user_info_out['content']['full_name'],
-            user_info_out['content']['phone_no'], created_at, modified_at)
+    task = (id, user_info_out['content']['username'], user_info_out['content']['password'], user_info_out['content']['email'],
+            user_info_out['content']['full_name'], user_info_out['content']['phone_no'], created_at, modified_at)
 
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:
@@ -166,8 +168,11 @@ def update_user(id_user_info_sanitised, username_input, password_input, email_in
     contains_errors = False
     error_list = []
 
-    user_info_out = validate_user_info(username_input=username_input, password_input=password_input,
-                                       email_input=email_input, full_name_input=full_name_input, phone_no_input=phone_no_input)
+    user_info_out = validate_user_info(username_input=username_input,
+                                       password_input=password_input,
+                                       email_input=email_input,
+                                       full_name_input=full_name_input,
+                                       phone_no_input=phone_no_input)
 
     if user_info_out['result'] == db_service_code_master.USER_INFO_INVALID:
         contains_errors = True
@@ -175,8 +180,7 @@ def update_user(id_user_info_sanitised, username_input, password_input, email_in
     else:
         # check for email duplicate, but ignore if self
         user_info_dict_out = get_user_info_dict(column_names=['id'],
-                                                where_array=[['email', user_info_out['content']['email']],
-                                                             ['id', id_user_info_sanitised, 'NOT']])
+                                                where_array=[['email', user_info_out['content']['email']], ['id', id_user_info_sanitised, 'NOT']])
         if user_info_dict_out['result'] == db_service_code_master.SELECT_GENERIC_SUCCESS:
             contains_errors = True
             error_list.append(db_service_code_master.ACCOUNT_ALREADY_EXISTS)
@@ -191,11 +195,7 @@ def update_user(id_user_info_sanitised, username_input, password_input, email_in
     UPDATE user_info SET {', '.join(f'{key}=?' for key in user_info_out['content'].keys())}, modified_at=?
     WHERE id=?
     """
-    task = tuple(value for value in user_info_out['content'].values(
-    )) + (db_helper_functions.generate_time_now(), id_user_info_sanitised)
-
-    print(query)
-    print(task)
+    task = tuple(value for value in user_info_out['content'].values()) + (db_helper_functions.generate_time_now(), id_user_info_sanitised)
 
     transaction = db_methods.safe_transaction(query=query, task=task)
     if not transaction['transaction_successful']:
@@ -233,8 +233,7 @@ def validate_user_info(username_input=None, password_input=None, email_input=Non
             contains_errors = True
             error_list.append(db_service_code_master.USERNAME_INVALID_LENGTH)
         elif not contains_errors:
-            output_dict.update(
-                {'username': db_helper_functions.string_sanitise(username_input)})
+            output_dict.update({'username': db_helper_functions.string_sanitise(username_input)})
 
     if password_input != None:
         if len(password_input) > 64 or len(password_input) <= 0:
@@ -245,8 +244,7 @@ def validate_user_info(username_input=None, password_input=None, email_input=Non
             contains_errors = True
             error_list.append(db_service_code_master.PASSWORD_INVALID_SYNTAX)
         elif not contains_errors:
-            output_dict.update(
-                {'password': db_helper_functions.password_encrypt(password_input)})
+            output_dict.update({'password': db_helper_functions.password_encrypt(password_input)})
 
     if email_input != None:
         if len(email_input) > 255 or len(email_input) <= 0:
@@ -257,8 +255,7 @@ def validate_user_info(username_input=None, password_input=None, email_input=Non
             contains_errors = True
             error_list.append(db_service_code_master.EMAIL_INVALID_SYNTAX)
         elif not contains_errors:
-            output_dict.update(
-                {'email': db_helper_functions.string_sanitise(email_input)})
+            output_dict.update({'email': db_helper_functions.string_sanitise(email_input)})
 
     if phone_no_input != None:
         # match phone regex
@@ -273,8 +270,7 @@ def validate_user_info(username_input=None, password_input=None, email_input=Non
             contains_errors = True
             error_list.append(db_service_code_master.FULL_NAME_INVALID_LENGTH)
         elif not contains_errors:
-            output_dict.update(
-                {'full_name': db_helper_functions.string_sanitise(full_name_input)})
+            output_dict.update({'full_name': db_helper_functions.string_sanitise(full_name_input)})
 
     if contains_errors:
         return {'result': db_service_code_master.USER_INFO_INVALID,
@@ -353,5 +349,5 @@ def get_user_id_by_email(email_input):
     if user_info_dict_out['result'] == db_service_code_master.SELECT_GENERIC_EMPTY:
         return {'result': db_service_code_master.ACCOUNT_NOT_FOUND}
 
-    return {"result": db_service_code_master.ACCOUNT_FOUND,
-            "content": user_info_dict_out['content'][0]['id']}
+    return {'result': db_service_code_master.ACCOUNT_FOUND,
+            'content': user_info_dict_out['content'][0]['id']}

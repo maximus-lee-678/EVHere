@@ -11,8 +11,7 @@ import db_access.db_connector_type as db_connector_type
 #
 
 
-flask_connector_type = Blueprint(
-    'flask_connector_type', __name__, template_folder='flask_routes')
+flask_connector_type = Blueprint('flask_connector_type', __name__, template_folder='flask_routes')
 
 
 @flask_connector_type.route('/api/get_all_connectors', methods=['GET'])

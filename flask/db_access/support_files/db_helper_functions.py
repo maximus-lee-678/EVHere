@@ -80,7 +80,7 @@ def validate_phone_no(phone_no):
 def validate_currency(currency):
     """
     | Used to check if a string is a number optionally followed by a decimal point and up to 2 digit
-    
+
     :param string currency: currency
 
     :returns: (bool) True or False
@@ -105,8 +105,7 @@ def string_sanitise(string):
     string = string.encode('utf-8').decode('unicode_escape')
 
     # PHP htmlspecialchars()
-    string = string.replace("&", "&amp;").replace('"', "&quot;").replace(
-        '\'', "&#039;").replace("<", "&lt;").replace(">", "&gt;")
+    string = string.replace('&', '&amp;').replace('"', '&quot;').replace('\'', '&#039;').replace('<', '&lt;').replace('>', '&gt;')
 
     return string
 
@@ -148,23 +147,24 @@ def password_check(password, password_hashed):
     return bcrypt.checkpw(password_bytes, password_hashed)
 
 
-def update_dict_key(dict, key_to_update, new_key_name, new_key_value):
+def update_dict_key(dict=None, key_to_update=None, key_new_name=None, key_new_value=None):
     """
     | Updates a dictionary's key and value.
+    | Also usable to add new keys. Leave new_key_name empty.
     | No return because dictionaries are pass by reference.
 
     :param dict dict: dictionary to update
     :param string key_to_update: name of current key to update
-    :param string new_key_name: new key name (optional)
-    :param string new_key_value: new value
+    :param string key_new_name: new key name (optional)
+    :param string key_new_value: new value
     """
 
     # update key value
-    dict.update({key_to_update: new_key_value})
+    dict.update({key_to_update: key_new_value})
 
     # update key name (if needed)
-    if new_key_name != None:
-        dict[new_key_name] = dict.pop(key_to_update)
+    if key_new_name != None:
+        dict[key_new_name] = dict.pop(key_to_update)
 
 
 def calculate_charge_cost(energy_drawn, rate):
