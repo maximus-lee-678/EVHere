@@ -28,14 +28,14 @@ NR_DAYS = 90
 DAY_DURATION = 24  # hour frequency
 WINDOW = 7 * DAY_DURATION  # 7 days
 HORIZON = 1 * DAY_DURATION  # 1 day
-EPOCHS = 60
-IP_ADDRESS = '172.30.137.47'
+EPOCHS = 1
+IP_ADDRESS = '172.30.136.228'
 
 def pipeline():
     # get all ev charger id
     id_chargers = get_id_chargers()
 
-    for id_charger in id_chargers[:10]:
+    for id_charger in id_chargers:
         # get data
         data = get_data(id_charger['id'])
 

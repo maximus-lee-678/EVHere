@@ -1,14 +1,16 @@
 // React imports
 import React, { useState, useEffect, useCallback } from 'react';
+import { DateTime } from 'luxon';
 
 // Standard imports
 import Toast, { toast } from '../SharedComponents/Toast';
+import { FormatDateTime } from '../Utils/Time';
 
 // API endpoints imports
 import { ChargerGetAllWithEmail, FavouriteChargerAdd, FavouriteChargerRemove } from '../API/API';
 
 // Leaflet imports
-import { Icon, LatLng, Layer, control, divIcon, geoJson, layerGroup, map, marker } from 'leaflet'
+import { Icon, LatLng, divIcon, marker } from 'leaflet'
 import { MapContainer, TileLayer, useMap, useMapEvents, Marker, Popup, GeoJSON } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import markerIconPng from "./marker-icon.png";
@@ -44,7 +46,6 @@ export default function Map(props) {
     //const for navigation
     const [sourceLocation, setSourceLocation] = useState({});
     const [destinationLocation, setDestinationLocation] = useState({});
-    const [nearestMarkerLatLng, setNearestMarkerLatLng] = useState();
     const [geolocationMsg, setGeolocationMsg] = useState("Awaiting permission");
     const { userVehicleInfo, selectedVehicleId } = props;
 
@@ -127,15 +128,15 @@ export default function Map(props) {
         // console.log("selectedId", selectedVehicleId);
 
         //if user has selected their vehicle
-        if (selectedVehicleId != "" && document.getElementById("vehicleName").value != "Show all markers") {
-            var selectedVehicle = userVehicleInfo.find(vehicle => vehicle.id == selectedVehicleId);
+        if (selectedVehicleId !== "" && document.getElementById("vehicleName").value !== "Show all markers") {
+            var selectedVehicle = userVehicleInfo.find(vehicle => vehicle.id === selectedVehicleId);
             markersToRender = [];
 
             
             //check for their vehicle connector
             allChargerInfo.forEach(charger => {
                 charger.available_connector.forEach(connector => {
-                    if (connector.connector_type.id == selectedVehicle.connector.id) {
+                    if (connector.connector_type.id === selectedVehicle.connector.id) {
                         markersToRender.push(charger);
                     }
                 })
@@ -145,11 +146,11 @@ export default function Map(props) {
 
             //check map's existing layers, markers
             map.eachLayer(function(layer) {
-                if (layer._latlng != undefined) {
-                    if (layer._latlng.lat != undefined && layer._latlng.lng != undefined) {
+                if (layer._latlng !== undefined) {
+                    if (layer._latlng.lat !== undefined && layer._latlng.lng !== undefined) {
                         //remove them if doesnt match with markersToRender latlng, and also doesnt match with sourceLocation
-                        if (markersToRender.find(marker => marker.latitude == layer._latlng.lat && marker.longitude == layer._latlng.lng) == undefined) {
-                            if (layer._latlng.lat != sourceLocation.lat && layer._latlng.lng != sourceLocation.lng) {
+                        if (markersToRender.find(marker => marker.latitude === layer._latlng.lat && marker.longitude === layer._latlng.lng) === undefined) {
+                            if (layer._latlng.lat !== sourceLocation.lat && layer._latlng.lng !== sourceLocation.lng) {
                                 map.removeLayer(layer);
                             }
                         }
@@ -167,6 +168,21 @@ export default function Map(props) {
             let favourite = markersToRender[i].is_favourite;
             let lat = markersToRender[i].latitude;
             let lng = markersToRender[i].longitude;
+
+            var predictedValue = "";
+            if (markersToRender[i].rate_predicted != "") {
+                //get time now, then get index for next hour
+                //0 index is 12AM etc. so get the time then see next hour
+                //then put this value in the popup value
+                var timeNow = FormatDateTime(DateTime.now(), "T");
+
+                var currentHour = parseInt(timeNow.split(":")[0]);
+
+                var predictedArray = JSON.parse(markersToRender[i].rate_predicted);
+
+                predictedValue = predictedArray[currentHour+1];
+                
+            }
         
             result.push(
                 <Marker position={[markersToRender[i].latitude, markersToRender[i].longitude]}
@@ -189,6 +205,8 @@ export default function Map(props) {
                             <span className="font-semibold text-sm">Solar Current Out:</span> {markersToRender[i].pv_current_out} A
                             <br />
                             <span className="font-semibold text-sm">Price Rate:</span> ${markersToRender[i].rate_current} / kWh
+                            <br />
+                            <span className="font-semibold text-sm">Predicted Rate (Next Hour):</span> ${predictedValue !== "" ? predictedValue : "--"} / kWh
                         </div>
                         <button id={markersToRender[i].id}
                             onClick={() => handleFavourite(id, favourite === false ? 'add' : 'remove')}
@@ -200,7 +218,7 @@ export default function Map(props) {
                         </button>
                         <button id={markersToRender[i].id}
                             onClick={() => navigate(lat, lng)}
-                            className={(geolocationMsg != "Permission granted" ? "hidden " : "") + "bg-green-400 hover:bg-green-900 px-3 py-2 rounded-full text-white"}>
+                            className={(geolocationMsg !== "Permission granted" ? "hidden " : "") + "bg-green-400 hover:bg-green-900 px-3 py-2 rounded-full text-white"}>
                             Go
                             <i className="fas fa-location-arrow pl-1"></i>
                         </button>
@@ -268,7 +286,6 @@ export default function Map(props) {
     function PopulateRecommendations() {
 
         const map = useMap();
-        var layers = [];
         
         var markersArray = [];
         var markersCoordsArray = [];
@@ -279,7 +296,7 @@ export default function Map(props) {
         }
 
 
-        if (geolocationMsg == "Permission granted" && sourceLocation != null) {
+        if (geolocationMsg === "Permission granted" && sourceLocation != null) {
     
             if (markersArray.length > 0) {
                 //for nearest charger
@@ -303,7 +320,7 @@ export default function Map(props) {
                     prices.push(item.rate_current);
                 });
     
-                var valueMarker = markersArray.find(element => element.rate_current == Math.min.apply(Math, prices));
+                var valueMarker = markersArray.find(element => element.rate_current === Math.min.apply(Math, prices));
     
                 // console.log("valueMarker", valueMarker);
                 document.getElementById("best-value-charger-name").innerText = valueMarker.name;
@@ -331,7 +348,7 @@ export default function Map(props) {
 
         //check for existing location marker
         //if no location marker has been added
-        if (children.find(child => child.src == routeIconPng) == undefined) {
+        if (children.find(child => child.src === routeIconPng) === undefined) {
             //check that source location is not the same as new location
             if (sourceLocation.lat !== center.lat && sourceLocation.lng !== center.lng) {
                 setSourceLocation(center);

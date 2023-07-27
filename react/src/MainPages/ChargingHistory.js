@@ -161,7 +161,7 @@ export default function ChargingHistory() {
             }
         }) */
 
-        console.log(expenses);
+        //console.log(expenses);
 
         setDataExpenses(expenses);
         setDataTimeSpent(timeSpent);
