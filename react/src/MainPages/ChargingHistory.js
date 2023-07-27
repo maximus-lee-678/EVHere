@@ -6,7 +6,7 @@ import { DateTime } from 'luxon';
 // Standard imports
 import Navbar from "../SharedComponents/Navbar";
 import BarChart from "./Barchart";
-import PieChart from "./Piechart";
+import PieChart from "./Piechart"; //not being used in page
 import { FormatDateTime, GetDateDiffString } from '../Utils/Time';
 import Toast, { toast } from '../SharedComponents/Toast';
 
@@ -198,9 +198,8 @@ export default function ChargingHistory() {
 
 
                 <div className="px-0 py-2 md:px-10 mx-auto w-full flex flex-col items-center bg-white">
-                    <div id="overview-tab-content" className="w-full grid grid-rows-2 grid-cols-1 md:grid-cols-2 md:grid-rows-1"> {/* change to w-full block if including piechart for stacked charts */}
+                    <div id="overview-tab-content" className="w-full">
                         <BarChart dataTimeSpent = {dataTimeSpent} dataExpenses = {dataExpenses} dataCharged={dataCharged}/>
-                        <PieChart />
                     </div>
 
                     <div id="history-tab-content" className="hidden w-full mb-12 xl:mb-0 px-4 self-center">
