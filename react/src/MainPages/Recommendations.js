@@ -63,7 +63,7 @@ export default function Recommendations() {
                 
                 optionsList.push(
                     {
-                        text: userVehicleInfo[i].name,
+                        text: userVehicleInfo[i].name + " - " + userVehicleInfo[i].model + " (" + userVehicleInfo[i].vehicle_sn + ")",
                         value: userVehicleInfo[i].id
                     }
                 )
