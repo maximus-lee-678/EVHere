@@ -181,7 +181,7 @@ export default function Vehicles() {
                 style={{ display: displayPopup ? "block" : "none" }}>
                 {/*Modal content*/}
 
-                <Form elementName="Sign In" onSubmit={handleCreate} popup>
+                <Form elementName="Add a new vehicle" onSubmit={handleCreate} popup>
                     <FormInputField elementName="Vehicle Name" id="vehicle-name" placeholder="Enter Vehicle Name . . ."
                         value={vehicleName}
                         onChange={(event) => setVehicleName(event.target.value)}
