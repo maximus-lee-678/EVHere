@@ -327,18 +327,23 @@ export default function Map(props) {
 
         const center = new LatLng(lat, lng);
 
-        if (sourceLocation.lat !== center.lat && sourceLocation.lng !== center.lng) {
-            setSourceLocation(center);
+        let children = Array.from(map._panes.markerPane.children);
 
-            map.setView(center, 24);
-
-            setGeolocationMsg("Permission granted");
-
-            const newMarker = marker(center, {icon: new Icon({ iconUrl: routeIconPng, iconSize: [41, 41], iconAnchor: [20, 41] })});
-
-            newMarker.addTo(map);
-        }
-        
+        //check for existing location marker
+        //if no location marker has been added
+        if (children.find(child => child.src == routeIconPng) == undefined) {
+            //check that source location is not the same as new location
+            if (sourceLocation.lat !== center.lat && sourceLocation.lng !== center.lng) {
+                setSourceLocation(center);
+    
+                map.setView(center, 24);
+    
+                setGeolocationMsg("Permission granted");
+    
+                const newMarker = marker(center, {icon: new Icon({ iconUrl: routeIconPng, iconSize: [41, 41], iconAnchor: [20, 41] })});
+                newMarker.addTo(map);
+            }
+        }        
     }
 
     function navigate(destinationLat, destinationLng) {
