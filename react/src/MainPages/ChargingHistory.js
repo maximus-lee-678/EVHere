@@ -198,7 +198,7 @@ export default function ChargingHistory() {
 
 
                 <div className="px-0 py-2 md:px-10 mx-auto w-full flex flex-col items-center bg-white">
-                    <div id="overview-tab-content" className="w-full">
+                    <div id="overview-tab-content" className="w-full block">
                         <BarChart dataTimeSpent = {dataTimeSpent} dataExpenses = {dataExpenses} dataCharged={dataCharged}/>
                     </div>
 
@@ -324,7 +324,7 @@ export default function ChargingHistory() {
     function showOverview() {
         let overviewTab = document.getElementById("overview-tab-content")
         let historyTab = document.getElementById("history-tab-content")
-        overviewTab.classList.replace("hidden", "grid");
+        overviewTab.classList.replace("hidden", "block");
         historyTab.classList.replace("block", "hidden");
         document.getElementById("overview-tab-btn").classList.replace("bg-gray-300", "bg-white")
         document.getElementById("history-tab-btn").classList.replace("bg-white", "bg-gray-300")
@@ -333,7 +333,7 @@ export default function ChargingHistory() {
     function showHistory() {
         let overviewTab = document.getElementById("overview-tab-content")
         let historyTab = document.getElementById("history-tab-content")
-        overviewTab.classList.replace("grid", "hidden");
+        overviewTab.classList.replace("block", "hidden");
         historyTab.classList.replace("hidden", "block");
         document.getElementById("overview-tab-btn").classList.replace("bg-white", "bg-gray-300")
         document.getElementById("history-tab-btn").classList.replace("bg-gray-300", "bg-white")
