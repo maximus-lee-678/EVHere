@@ -49,7 +49,7 @@ def fun_get_all_chargers():
 
     # if GET, no email, and by extension user id, is specified
     else:
-        # retrieve charger actual 2
+        # retrieve charger actual
         charger_response = db_charger.get_all_chargers_dict_join_favourite(id_user_info_sanitised=None)
 
     return flask_helper_functions.format_for_endpoint(db_dictionary=charger_response,

@@ -12,16 +12,15 @@
 | *"Like the good old days of C, eh?"*
 """
 
-API_SUCCESS_STRING = 'success'
-API_FAILURE_STRING = 'fail'
-API_ERROR_STRING = 'error'
-
-
 def ez_update(code, code_def):
     service_code_dict.update({code: code_def})
 
 
 service_code_dict = {}
+
+API_SUCCESS_STRING = 'success'
+API_FAILURE_STRING = 'fail'
+API_ERROR_STRING = 'error'
 
 # generic [0-99]
 TYPE_GENERIC = 0
@@ -49,7 +48,7 @@ ez_update(MISSING_FIELDS, "One or more json fields are missing.")
 CONFIGURATION_ERROR = 7
 ez_update(CONFIGURATION_ERROR, "Function not configured properly.")
 
-INTERNAL_ERROR = 8  # oh damn better call the programmers
+INTERNAL_ERROR = 8  # better call programmers
 ez_update(INTERNAL_ERROR, "Something went wrong.")
 
 BAD_REQUEST = 9

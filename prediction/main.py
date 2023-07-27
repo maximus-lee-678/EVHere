@@ -4,6 +4,7 @@ import requests
 import json
 import pandas as pd
 import numpy as np
+import os
 
 from pytorch_lightning.callbacks import Callback, EarlyStopping
 from sklearn.preprocessing import MaxAbsScaler
@@ -17,6 +18,10 @@ from darts import TimeSeries
 
 from loss_logger import LossLogger
 
+# if running sphinx, need to change directory to 'root'
+current_working_directory_highest = os.path.basename(os.getcwd())
+if current_working_directory_highest != 'prediction':
+    os.chdir('prediction')
 
 # declaring some constants
 NR_DAYS = 90
@@ -24,13 +29,13 @@ DAY_DURATION = 24  # hour frequency
 WINDOW = 7 * DAY_DURATION  # 7 days
 HORIZON = 1 * DAY_DURATION  # 1 day
 EPOCHS = 60
-IP_ADDRESS = '192.168.18.12'
+IP_ADDRESS = '172.30.137.47'
 
 def pipeline():
-    #get all ev charger id
+    # get all ev charger id
     id_chargers = get_id_chargers()
 
-    for id_charger in id_chargers:
+    for id_charger in id_chargers[:10]:
         # get data
         data = get_data(id_charger['id'])
 
@@ -74,12 +79,12 @@ def pipeline():
             "rate_predicted": json.dumps(pred_arr)
         }
         headers = {'Content-Type':"application/json"}
-        response = requests.post("http://{}:5000/api/update_charger".format(IP_ADDRESS), data=json.dumps(data), headers=headers)           
+        response = requests.post("http://{}:3000/api/update_charger".format(IP_ADDRESS), data=json.dumps(data), headers=headers)           
         print(response.text)
 
 
 def get_id_chargers():
-    req = requests.get("http://{}:5000/api/get_all_charger_ids".format(IP_ADDRESS), headers={'Content-Type':"application/json"})
+    req = requests.get("http://{}:3000/api/get_all_charger_ids".format(IP_ADDRESS), headers={'Content-Type':"application/json"})
     data = json.loads(req.content)
     return data['data']
 
@@ -88,7 +93,7 @@ def get_id_chargers():
 def get_data(id_charger):
     print("manipulating data...")
 
-    req = requests.get("http://{}:5000/api/get_all_past_charger_rates".format(IP_ADDRESS), params={'id_charger': id_charger}, headers={'Content-Type':"application/json"})
+    req = requests.get("http://{}:3000/api/get_all_past_charger_rates".format(IP_ADDRESS), params={'id_charger': id_charger}, headers={'Content-Type':"application/json"})
     data = json.loads(req.content)
     
     length = len(data['data'])
@@ -109,7 +114,3 @@ def get_data(id_charger):
 
 
 pipeline()
-
-
-
-
