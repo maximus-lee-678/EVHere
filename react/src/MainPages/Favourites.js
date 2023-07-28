@@ -1,10 +1,12 @@
 // React imports
 import React, { useState, useEffect, useCallback } from 'react';
+import { DateTime } from 'luxon';
 
 // Standard imports
 import Navbar from '../SharedComponents/Navbar';
 import Toast, { toast } from '../SharedComponents/Toast';
 import { CardContent, CardButton } from '../SharedComponents/Card.js';
+import { FormatDateTime } from '../Utils/Time';
 
 // API endpoints imports
 import { FavouriteChargerGet, FavouriteChargerRemove } from '../API/API';
@@ -57,6 +59,20 @@ export default function Favourites() {
 
         for (var i = 0; i < favouriteChargerInfo.length; i++) {
             let id = favouriteChargerInfo[i].id;
+            var predictedValue = "";
+            if (favouriteChargerInfo[i].rate_predicted != "") {
+                //get time now, then get index for next hour
+                //0 index is 12AM etc. so get the time then see next hour
+                //then put this value in the popup value
+                var timeNow = FormatDateTime(DateTime.now(), "T");
+
+                var currentHour = parseInt(timeNow.split(":")[0]);
+
+                var predictedArray = JSON.parse(favouriteChargerInfo[i].rate_predicted);
+
+                predictedValue = predictedArray[currentHour+1];
+                
+            }
 
             result.push(
                 <div className="lg:flex py-4 lg:px-10 px-3 bg-white rounded-lg grid grid-rows-4" key={id}>
@@ -68,6 +84,7 @@ export default function Favourites() {
                             <div><span className="uppercase font-semibold text-sm">Solar Voltage Out:</span> {favouriteChargerInfo[i].pv_voltage_out} V</div>
                             <div><span className="uppercase font-semibold text-sm">Solar Current Out:</span> {favouriteChargerInfo[i].pv_current_out} A</div>
                             <div><span className="uppercase font-semibold text-sm">Price Rate:</span> ${favouriteChargerInfo[i].rate_current} / kWh</div>
+                            <span className="uppercase font-semibold text-sm">Predicted Rate (Next Hour):</span> ${predictedValue !== "" ? predictedValue : "--"} / kWh
                         </CardContent>
                     </div>
                     <CardButton id={id} onClick={() => handleFavouriteRemove(id)} icon="heart-broken fa-lg" color="red"></CardButton>

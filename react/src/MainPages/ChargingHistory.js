@@ -263,7 +263,7 @@ export default function ChargingHistory() {
                         <div className="mt-2 px-7 py-3 space-y-5">
                             {/*Vehicle charging details*/}
                             <div>
-                                <p>Vehicle: <span id="veh-name">(Vehicle name)</span></p>
+                                <p>Vehicle: <span id="vehicle">(Vehicle name)</span></p>
                                 <p>Time: <span id="duration">2pm - 2.25pm (25 min)</span></p>
                                 <p>Charged: <span id="charged">0 kWh</span></p>
                                 <p>Total price: <span id="paid">$0.00</span></p>
@@ -276,6 +276,7 @@ export default function ChargingHistory() {
                                 <p>Connector used: <span id="connector-used">XX</span></p>
                                 <p>Location: <span id="location">XX</span></p>
                                 <p>Rate: <span id="rate">$1.50/kWh</span></p>
+                                <p>Predicted rate (Next hour): <span id="predicted-rate">$-- / kwh</span></p>
                             </div>
                             <div className="flex justify-center items-center" id="favourite-button-div">
                                 <button id="favourite-button" className="bg-red-400 hover:bg-red-900 px-3 py-2 mr-2 rounded-full text-white">
@@ -299,7 +300,7 @@ export default function ChargingHistory() {
         let record = chargeHistoryDetails.find(rec => rec.id == e.target.id)
 
         document.getElementById("date").innerHTML = FormatDateTime(record.time_start);
-        document.getElementById("veh-name").innerHTML = record.vehicle.name;
+        document.getElementById("vehicle").innerHTML = record.vehicle.name + " - " + record.vehicle.model + " (" + record.vehicle.vehicle_sn + ")";
         document.getElementById("duration").innerHTML = FormatDateTime(record.time_start, "t") + " - " + FormatDateTime(record.time_end, "t") + "<br/><span class='text-sm'>(" + GetDateDiffString(record.time_start, record.time_end, ["hours", "minutes", "seconds"]) + ")</span>    ";
         document.getElementById("charged").innerHTML = record.total_energy_drawn + " kWh";
         document.getElementById("paid").innerHTML = "$" + round(record.amount_payable, 2);
@@ -308,6 +309,23 @@ export default function ChargingHistory() {
         document.getElementById("connector-used").innerHTML = record.vehicle.connector.name_connector;
         document.getElementById("location").innerHTML = record.charger.address;
         document.getElementById("rate").innerHTML = "$" + record.charger.rate_current + " / kWh";
+
+        var predictedValue = "";
+        if (record.charger.rate_predicted != "") {
+            //get time now, then get index for next hour
+            //0 index is 12AM etc. so get the time then see next hour
+            //then put this value in the popup value
+            var timeNow = FormatDateTime(DateTime.now(), "T");
+
+            var currentHour = parseInt(timeNow.split(":")[0]);
+
+            var predictedArray = JSON.parse(record.charger.rate_predicted);
+
+            predictedValue = predictedArray[currentHour+1];
+            
+        }
+
+        document.getElementById("predicted-rate").innerHTML = "$" + predictedValue + " / kWh";
         
         if (record.charger.is_favourite == true) {
             document.getElementById("favourite-button-div").innerHTML = `<button id='favourite-button' class='bg-red-400 hover:bg-red-300 px-3 py-2 mr-2 rounded-full text-white'><i class='fas fa-trash'></i> Remove favourite</button>`;
