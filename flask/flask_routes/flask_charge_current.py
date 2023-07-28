@@ -11,4 +11,4 @@ import db_access.db_charge_current as db_charge_current
 #
 
 
-flask_charge_current = Blueprint('db_charge_current', __name__, template_folder='flask_routes')
+flask_charge_current = Blueprint('flask_charge_current', __name__, template_folder='flask_routes')

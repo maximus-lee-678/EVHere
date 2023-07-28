@@ -11,4 +11,4 @@ import db_access.db_charger_available_connector as db_charger_available_connecto
 # 
 
 
-flask_charger_available_connector = Blueprint('db_charger_available_connector', __name__, template_folder='flask_routes')
+flask_charger_available_connector = Blueprint('flask_charger_available_connector', __name__, template_folder='flask_routes')
