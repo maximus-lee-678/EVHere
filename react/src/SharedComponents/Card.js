@@ -83,14 +83,14 @@ export function DashboardCard(props) {
 export function ChargingCard(props) {
     const { elementName, vName, SN, currEnergyDrawn, startTime, timeElapsed } = props;
     return (
-        <div className="container mx-auto px-4 -mt-52">
+        <div className="container mx-auto px-4 -mt-48">
             <div className="flex justify-center w-full">
                 <div className="w-full md:w-1/2 px-4">
                     <div className="relative flex flex-col min-w-0 break-words bg-lime-100 mb-8 shadow-lg rounded-lg">
                         <div className="px-4 py-5 flex-auto">
                             <h6 className="text-lg font-semibold uppercase text-center">{elementName}</h6>
 
-                            <div className="space-y-1 grid grid-cols-2 text-center">
+                            <div className="grid grid-cols-2 text-center">
                                 <div>Vehicle: {vName} ({SN})</div>
                                 <div>Energy Drawn: {currEnergyDrawn}</div>
                                 <div>Started at: {startTime}</div>
