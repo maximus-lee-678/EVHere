@@ -124,7 +124,7 @@ export default function Barchart(props) {
                   Expenses
                 </h6>
                 <h2 className="text-blueGray-700 text-xl font-semibold">
-                  Yearly expenses
+                  Expenses by month
                 </h2>
               </div>
             </div>
