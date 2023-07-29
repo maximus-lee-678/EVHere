@@ -78,8 +78,8 @@ export default function Vehicles() {
             let id = userVehicleInfo[i].id;
 
             options.push(
-                <div className="flex bg-white rounded-lg py-4 px-10" key={id}>
-                    <div className="w-4/5">
+                <div className="md:flex py-4 lg:px-10 px-3 bg-white rounded-lg grid grid-rows-3" key={id}>
+                    <div className="w-full md:w-4/5 row-span-2">
                         <CardContent elementName={userVehicleInfo[i].name}>
                             <div>
                                 <div>Model: {userVehicleInfo[i].model}</div>
@@ -151,7 +151,7 @@ export default function Vehicles() {
 
             <main>
                 <section className="w-full h-full">
-                    <div className="relative container mx-auto px-4 h-full bg-gray-900 w-3/4 md:w-1/2">
+                    <div className="relative container mx-auto px-4 w-full h-full bg-gray-900 md:w-1/2">
                         <div className="h-40">
                             <div className="flex content-center items-center justify-center h-full w-full font-semibold text-3xl text-white">Vehicles</div>
                         </div>
