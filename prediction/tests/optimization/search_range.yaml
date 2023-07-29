@@ -1,0 +1,23 @@
+method: random
+metric:
+  goal: minimize
+  name: val_loss
+parameters:
+  batch_size:
+    values:
+      - 16
+      - 64
+      - 128
+      - 256
+  epochs:
+    values:
+      - 60
+      - 120
+      - 180
+  learning_rate:
+    values:
+      - 1e-06
+      - 0.0001
+      - 0.01
+program: electric_learning.py
+project: Electricity Prices
