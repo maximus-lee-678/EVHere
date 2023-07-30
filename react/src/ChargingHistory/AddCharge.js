@@ -165,33 +165,33 @@ export default function AddCharge() {
         <div>
             <Toast />
             <div className="absolute w-full h-full bg-gray-900">
-            <Form elementName="Add new Charging History" onSubmit={handleStart} backgroundImageURL="battery.png">
-                <FormInputSelect elementName="Vehicle" id="vehicle"
-                    value={(userVehicleInfo && selectedVehicleId) || ""}
-                    options={userVehicleInfo && <VehicleChoices />}
-                    onChange={(event) => {
-                        setSelectedVehicleId(event.target.value);
-                        setSelectedVehicleConnectorId(event.target.selectedOptions[0].getAttribute('data-connector-id'));
-                    }}
-                />
+                <Form elementName="Add new Charging History" onSubmit={handleStart} backgroundImageURL="battery.png">
+                    <FormInputSelect elementName="Vehicle" id="vehicle"
+                        value={(userVehicleInfo && selectedVehicleId) || ""}
+                        options={userVehicleInfo && <VehicleChoices />}
+                        onChange={(event) => {
+                            setSelectedVehicleId(event.target.value);
+                            setSelectedVehicleConnectorId(event.target.selectedOptions[0].getAttribute('data-connector-id'));
+                        }}
+                    />
 
-                <FormInputSelect elementName="Charger Name" id="charger"
-                    value={(allChargerInfo && selectedChargerId) || ""}
-                    options={allChargerInfo && <ChargerChoices />}
-                    onChange={(event) => {
-                        setSelectedCharger(event.target.value);
-                    }}
-                />
+                    <FormInputSelect elementName="Charger Name" id="charger"
+                        value={(allChargerInfo && selectedChargerId) || ""}
+                        options={allChargerInfo && <ChargerChoices />}
+                        onChange={(event) => {
+                            setSelectedCharger(event.target.value);
+                        }}
+                    />
 
-                <FormInputSelect elementName="Charger Connector" id="charger-connector"
-                    value={(allChargerInfo && selectedChargerConnectorId) || ""}
-                    options={(allChargerInfo && <ConnectorChoices />)}
-                    onChange={(event) => setSelectedChargerConnectorId(event.target.value)}
-                />
+                    <FormInputSelect elementName="Charger Connector" id="charger-connector"
+                        value={(allChargerInfo && selectedChargerConnectorId) || ""}
+                        options={(allChargerInfo && <ConnectorChoices />)}
+                        onChange={(event) => setSelectedChargerConnectorId(event.target.value)}
+                    />
 
-                <FormButton elementName={"\"Start\" Charge"} />
-            </Form>
-        
+                    <FormButton elementName={"\"Start\" Charge"} />
+                </Form>
+
             </div>
         </div>
     )

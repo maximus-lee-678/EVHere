@@ -1,9 +1,9 @@
 // React imports
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 // Standard imports
 import Toast, { toast } from '../SharedComponents/Toast';
-import Form, { FormButton, FormInputField, FormInputSelect } from '../SharedComponents/Form';
+import Form, { FormButton, FormInputField } from '../SharedComponents/Form';
 
 // API endpoints imports
 import { ChargeHistoryFinish } from '../API/API';

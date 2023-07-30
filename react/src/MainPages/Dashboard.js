@@ -1,12 +1,11 @@
 // React imports
 import React, { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
 import { DateTime } from 'luxon';
 
 // Standard imports
 import Navbar from "../SharedComponents/Navbar";
 import { FormatDateTime, GetDateDiffString } from '../Utils/Time';
-import { CardContent, CardButton, DashboardCard, ChargingCard } from '../SharedComponents/Card';
+import { DashboardCard, ChargingCard } from '../SharedComponents/Card';
 
 // API endpoints imports
 import { ChargeHistoryActiveGet } from '../API/API';
@@ -58,12 +57,12 @@ export default function Dashboard() {
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                  <h1 className="text-white font-semibold text-3xl md:text-5xl">
-                    The best EV charging experience.
-                  </h1>
-                  <p className="mt-4 md:text-lg text-gray-300">
-                    All your expenses in one place. Mark your favourite chargers, and get recommended charging locations while you're on the go.
-                  </p>
+                <h1 className="text-white font-semibold text-3xl md:text-5xl">
+                  The best EV charging experience.
+                </h1>
+                <p className="mt-4 md:text-lg text-gray-300">
+                  All your expenses in one place. Mark your favourite chargers, and get recommended charging locations while you're on the go.
+                </p>
               </div>
 
             </div>

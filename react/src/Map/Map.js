@@ -132,7 +132,7 @@ export default function Map(props) {
             var selectedVehicle = userVehicleInfo.find(vehicle => vehicle.id === selectedVehicleId);
             markersToRender = [];
 
-            
+
             //check for their vehicle connector
             allChargerInfo.forEach(charger => {
                 charger.available_connector.forEach(connector => {
@@ -145,7 +145,7 @@ export default function Map(props) {
             // console.log("IN SELECTED", markersToRender);
 
             //check map's existing layers, markers
-            map.eachLayer(function(layer) {
+            map.eachLayer(function (layer) {
                 if (layer._latlng !== undefined) {
                     if (layer._latlng.lat !== undefined && layer._latlng.lng !== undefined) {
                         //remove them if doesnt match with markersToRender latlng, and also doesnt match with sourceLocation
@@ -159,7 +159,7 @@ export default function Map(props) {
             })
         }
         else {
-            markersToRender = allChargerInfo; 
+            markersToRender = allChargerInfo;
         }
 
         for (var i = 0; i < markersToRender.length; i++) {
@@ -180,10 +180,10 @@ export default function Map(props) {
 
                 var predictedArray = JSON.parse(markersToRender[i].rate_predicted);
 
-                predictedValue = predictedArray[currentHour+1];
-                
+                predictedValue = predictedArray[currentHour + 1];
+
             }
-        
+
             result.push(
                 <Marker position={[markersToRender[i].latitude, markersToRender[i].longitude]}
                     icon={markersToRender[i].is_favourite === false ?
@@ -268,7 +268,7 @@ export default function Map(props) {
         };
 
         //if location allowed, set view as current location
-        navigator.geolocation.getCurrentPosition((position) => location(map, position.coords.latitude, position.coords.longitude), function(error) {setGeolocationMsg(error.message)});
+        navigator.geolocation.getCurrentPosition((position) => location(map, position.coords.latitude, position.coords.longitude), function (error) { setGeolocationMsg(error.message) });
 
         // Return geoJSON overlay depending on zoom level
         if (zoomLevel >= displayMarkersThreshold) {// No overlay, only markers
@@ -286,7 +286,7 @@ export default function Map(props) {
     function PopulateRecommendations() {
 
         const map = useMap();
-        
+
         var markersArray = [];
         var markersCoordsArray = [];
         for (var i = 0; i < markersToRender.length; i++) {
@@ -297,46 +297,46 @@ export default function Map(props) {
 
 
         if (geolocationMsg === "Permission granted" && sourceLocation != null) {
-    
+
             if (markersArray.length > 0) {
                 //for nearest charger
 
                 var nearest = GeometryUtil.closest(map, markersCoordsArray, [sourceLocation.lat, sourceLocation.lng], true);
-        
+
                 var nearestMarker = markersArray.find(element => element.latitude === nearest.lat && element.longitude === nearest.lng);
-    
+
                 // console.log("nearestMarker", nearestMarker);
-    
+
                 document.getElementById("nearest-charger-name").innerText = nearestMarker.name;
                 document.getElementById("nearest-charger-button").addEventListener("click", () => {
                     map.panTo(new LatLng(nearestMarker.latitude, nearestMarker.longitude));
                 });
-    
-    
+
+
                 //for best value charger
                 var prices = [];
-    
+
                 markersArray.forEach(item => {
                     prices.push(item.rate_current);
                 });
-    
+
                 var valueMarker = markersArray.find(element => element.rate_current === Math.min.apply(Math, prices));
-    
+
                 // console.log("valueMarker", valueMarker);
                 document.getElementById("best-value-charger-name").innerText = valueMarker.name;
                 document.getElementById("best-value-charger-button").addEventListener("click", () => {
                     map.panTo(new LatLng(valueMarker.latitude, valueMarker.longitude));
                 });
-    
-    
+
+
             }
 
         }
         else {
             document.getElementById("nearest-charger-name").innerText = "-- (" + geolocationMsg + ")";
-            document.getElementById("best-value-charger-name").innerText =  "-- (" + geolocationMsg + ")";
+            document.getElementById("best-value-charger-name").innerText = "-- (" + geolocationMsg + ")";
         }
-        
+
     }
 
 
@@ -352,15 +352,15 @@ export default function Map(props) {
             //check that source location is not the same as new location
             if (sourceLocation.lat !== center.lat && sourceLocation.lng !== center.lng) {
                 setSourceLocation(center);
-    
+
                 map.setView(center, 24);
-    
+
                 setGeolocationMsg("Permission granted");
-    
-                const newMarker = marker(center, {icon: new Icon({ iconUrl: routeIconPng, iconSize: [41, 41], iconAnchor: [20, 41] })});
+
+                const newMarker = marker(center, { icon: new Icon({ iconUrl: routeIconPng, iconSize: [41, 41], iconAnchor: [20, 41] }) });
                 newMarker.addTo(map);
             }
-        }        
+        }
     }
 
     function navigate(destinationLat, destinationLng) {
@@ -382,8 +382,8 @@ export default function Map(props) {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 {<OverlayRender />  /* Must be rendered as a component to be a considered descendant of MapContainer */}
-                {allChargerInfo && <PopulateRecommendations/>}
-                <Route source={sourceLocation} destination={destinationLocation}/>
+                {allChargerInfo && <PopulateRecommendations />}
+                <Route source={sourceLocation} destination={destinationLocation} />
             </MapContainer>
         </>
     );

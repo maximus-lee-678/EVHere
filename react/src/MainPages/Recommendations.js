@@ -8,16 +8,12 @@ import Map from "../Map/Map";
 
 // API endpoints imports
 import { VehicleInfoGetByUser } from '../API/API';
-import { map } from 'leaflet';
-import { useMap } from 'react-leaflet';
-import { LatLng } from 'leaflet';
 
 export default function Recommendations() {
     const userEmail = localStorage.getItem("user_email");
 
     const [userVehicleInfo, setUserVehicleInfo] = useState();
     const [selectedVehicleId, setSelectedVehicleId] = useState('');
-
 
     // Function that loads all user vehicles. Called on page load, populates userVehicleInfo.
     // Used in main page.
@@ -60,7 +56,7 @@ export default function Recommendations() {
 
             for (var i = 0; i < userVehicleInfo.length; i++) {
                 let id = userVehicleInfo[i].id;
-                
+
                 optionsList.push(
                     {
                         text: userVehicleInfo[i].name + " - " + userVehicleInfo[i].model + " (" + userVehicleInfo[i].vehicle_sn + ")",
@@ -68,7 +64,7 @@ export default function Recommendations() {
                     }
                 )
             }
-            
+
         }
 
         optionsList = optionsList.sort((a, b) => {
@@ -112,9 +108,9 @@ export default function Recommendations() {
                                 <div className="md:mt-6 md:h-24 flex">
                                     <div className="flex content-center items-center justify-center h-full w-full font-semibold lg:text-2xl text-xl">Recommended</div>
                                     <button className="md:hidden"
-                                    onClick={() => setRecommendationsOpen(!recommendationsOpen)}>
+                                        onClick={() => setRecommendationsOpen(!recommendationsOpen)}>
                                         {
-                                             <i className="fas fa-angle-down"></i>
+                                            <i className="fas fa-angle-down"></i>
                                         }
                                     </button>
                                 </div>
@@ -170,7 +166,7 @@ export default function Recommendations() {
 }
 
 
-function SelectVehicles({ optionList, onSelected}) {
+function SelectVehicles({ optionList, onSelected }) {
     const [value, setValue] = useState();
 
     function updateValue({ target }) {
@@ -179,24 +175,24 @@ function SelectVehicles({ optionList, onSelected}) {
             onSelected(target.value);
         }
     };
-    
-      return (
+
+    return (
         <>
-          <select
-            id="vehicleName"
-            disabled
-            className="border-0 px-3 py-3 text-gray-700 bg-white rounded text-sm focus:outline-none focus:ring w-full"
-            style={{ transition: "all .15s ease" }}
-            defaultValue="No vehicles available"
-            value={value}
-            onChange={updateValue}
-          >
-            {optionList.map((option) => (
-              <option value={option.value} key={option.value}>
-                {option.text}
-              </option>
-            ))}
-          </select>
+            <select
+                id="vehicleName"
+                disabled
+                className="border-0 px-3 py-3 text-gray-700 bg-white rounded text-sm focus:outline-none focus:ring w-full"
+                style={{ transition: "all .15s ease" }}
+                defaultValue="No vehicles available"
+                value={value}
+                onChange={updateValue}
+            >
+                {optionList.map((option) => (
+                    <option value={option.value} key={option.value}>
+                        {option.text}
+                    </option>
+                ))}
+            </select>
         </>
-      );
+    );
 }

@@ -1,12 +1,10 @@
 // React imports
 import React, { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
 import { DateTime } from 'luxon';
 
 // Standard imports
 import Navbar from "../SharedComponents/Navbar";
 import BarChart from "./Barchart";
-import PieChart from "./Piechart"; //not being used in page
 import { FormatDateTime, GetDateDiffString } from '../Utils/Time';
 import Toast, { toast } from '../SharedComponents/Toast';
 
@@ -18,12 +16,10 @@ export default function ChargingHistory() {
 
     const [chargeHistoryDetails, setChargeHistoryDetails] = useState(null);
 
-    const [dataTimeSpent, setDataTimeSpent] = useState([0,0,0,0,0,0,0,0,0,0,0,0]);
-    const [dataExpenses, setDataExpenses] = useState([0,0,0,0,0,0,0,0,0,0,0,0]);
-    const [dataCharged, setDataCharged] = useState([0,0,0,0,0,0,0,0,0,0,0,0]);
+    const [dataTimeSpent, setDataTimeSpent] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    const [dataExpenses, setDataExpenses] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    const [dataCharged, setDataCharged] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
     
-    var idAdded = [];
-
     // Function that gets user's historical charges. Called on page load, populates chargeHistoryDetails.
     const fetchUserChargeHistory = useCallback(async () => {
         const response = await ChargeHistoryGet(userEmail, 'complete');
@@ -38,12 +34,43 @@ export default function ChargingHistory() {
         fetchUserChargeHistory();
     }, [fetchUserChargeHistory]);
 
+    const calculateGraphData = useCallback(() => {
+        var timeSpent = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        var expenses = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        var charged = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        for (var i = 0; i < chargeHistoryDetails.length; i++) {
+            if (FormatDateTime(chargeHistoryDetails[i].time_start, "yyyy") === String(DateTime.now().year)) {
+                timeSpent[FormatDateTime(chargeHistoryDetails[i].time_start, "L") - 1] = parseInt(timeSpent[FormatDateTime(chargeHistoryDetails[i].time_start, "L") - 1]) +
+                    parseInt(GetDateDiffString(chargeHistoryDetails[i].time_start, chargeHistoryDetails[i].time_end, ["minutes"]).split(" ")[0]);
+
+                var roundedExpenses = round(parseFloat(expenses[FormatDateTime(chargeHistoryDetails[i].time_start, "L") - 1]) +
+                    parseFloat(chargeHistoryDetails[i].amount_payable), 2);
+
+                expenses[FormatDateTime(chargeHistoryDetails[i].time_start, "L") - 1] = roundedExpenses;
+                charged[FormatDateTime(chargeHistoryDetails[i].time_start, "L") - 1] = parseFloat(charged[FormatDateTime(chargeHistoryDetails[i].time_start, "L") - 1]) +
+                    parseFloat(chargeHistoryDetails[i].total_energy_drawn);
+            }
+
+        }
+
+        // for 0 values not to be drawn on graph - example
+        /* expenses.forEach((item, index) => {
+            if (item == 0) {
+                expenses[index] = null;
+            }
+        }) */
+
+        setDataExpenses(expenses);
+        setDataTimeSpent(timeSpent);
+        setDataCharged(charged);
+    }, [chargeHistoryDetails]);
+
 
     useEffect(() => {
-        if (chargeHistoryDetails != null && chargeHistoryDetails.length > 0) {
+        if (chargeHistoryDetails !== null && chargeHistoryDetails.length > 0) {
             calculateGraphData();
         }
-    }, [chargeHistoryDetails]);
+    }, [chargeHistoryDetails, calculateGraphData]);
 
 
     window.onclick = function (event) {
@@ -102,7 +129,7 @@ export default function ChargingHistory() {
             result.push(
                 <tr key={id}>
                     <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                    {FormatDateTime(chargeHistoryDetails[i].time_start)}
+                        {FormatDateTime(chargeHistoryDetails[i].time_start)}
                     </th>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         {chargeHistoryDetails[i].charger.name}
@@ -114,7 +141,7 @@ export default function ChargingHistory() {
                         {chargeHistoryDetails[i].total_energy_drawn} kWh
                     </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        ${round(chargeHistoryDetails[i].amount_payable,2)}
+                        ${round(chargeHistoryDetails[i].amount_payable, 2)}
                     </td>
 
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
@@ -135,40 +162,6 @@ export default function ChargingHistory() {
         return result.reverse();
     }
 
-    function calculateGraphData() {
-
-        var timeSpent = [0,0,0,0,0,0,0,0,0,0,0,0];
-        var expenses = [0,0,0,0,0,0,0,0,0,0,0,0];
-        var charged = [0,0,0,0,0,0,0,0,0,0,0,0];
-        for (var i = 0; i < chargeHistoryDetails.length; i++) {
-            if (!idAdded.includes(chargeHistoryDetails[i].id)) {
-                idAdded.push(chargeHistoryDetails[i].id);
-                if (FormatDateTime(chargeHistoryDetails[i].time_start, "yyyy") == DateTime.now().year) {
-                    timeSpent[FormatDateTime(chargeHistoryDetails[i].time_start, "L") - 1] = parseInt(timeSpent[FormatDateTime(chargeHistoryDetails[i].time_start, "L") - 1]) + parseInt(GetDateDiffString(chargeHistoryDetails[i].time_start, chargeHistoryDetails[i].time_end, ["minutes"]).split(" ")[0]);
-                    
-                    var roundedExpenses = round(parseFloat(expenses[FormatDateTime(chargeHistoryDetails[i].time_start, "L") - 1]) + parseFloat(chargeHistoryDetails[i].amount_payable), 2);
-
-                    expenses[FormatDateTime(chargeHistoryDetails[i].time_start, "L") - 1] = roundedExpenses;
-                    charged[FormatDateTime(chargeHistoryDetails[i].time_start, "L") - 1] = parseFloat(charged[FormatDateTime(chargeHistoryDetails[i].time_start, "L") - 1]) + parseFloat(chargeHistoryDetails[i].total_energy_drawn);
-                }
-            }
-        }
-
-        // for 0 values not to be drawn on graph - example
-        /* expenses.forEach((item, index) => {
-            if (item == 0) {
-                expenses[index] = null;
-            }
-        }) */
-
-        //console.log(expenses);
-
-        setDataExpenses(expenses);
-        setDataTimeSpent(timeSpent);
-        setDataCharged(charged);
-        
-    }
-
     return (
         <div className="min-h-screen bg-gray-900"
             style={{
@@ -178,7 +171,7 @@ export default function ChargingHistory() {
                 backgroundRepeat: "repeat"
             }}>
             <Navbar transparent />
-            <Toast/>
+            <Toast />
             <div className="relative container mx-auto px-0 md:px-4 h-screen bg-gray-900">
                 {/* Header */}
                 <div className="h-40">
@@ -199,7 +192,7 @@ export default function ChargingHistory() {
 
                 <div className="px-0 py-2 md:px-10 mx-auto w-full flex flex-col items-center bg-white">
                     <div id="overview-tab-content" className="w-full block">
-                        <BarChart dataTimeSpent = {dataTimeSpent} dataExpenses = {dataExpenses} dataCharged={dataCharged}/>
+                        <BarChart dataTimeSpent={dataTimeSpent} dataExpenses={dataExpenses} dataCharged={dataCharged} />
                     </div>
 
                     <div id="history-tab-content" className="hidden w-full mb-12 xl:mb-0 px-4 self-center">
@@ -246,50 +239,50 @@ export default function ChargingHistory() {
                             </div>
                         </div>
 
-                </div>
-            </div>
-
-
-            {/*Modal with overlay*/}
-            <div
-                className="fixed hidden inset-0 bg-gray-900 bg-opacity-50 h-full"
-                id="charge-details">
-                {/*Modal content*/}
-                <div
-                    className="relative mx-auto w-fit max-w-screen top-24 p-5 border shadow-lg rounded-md bg-white"
-                >
-                    <div className="mt-3 text-center w-fit">
-                        <h3 className="text-lg leading-6 font-medium text-gray-900" id="date">1/6/2023, 2pm</h3>
-                        <div className="mt-2 px-7 py-3 space-y-5">
-                            {/*Vehicle charging details*/}
-                            <div>
-                                <p>Vehicle: <span id="vehicle">(Vehicle name)</span></p>
-                                <p>Time: <span id="duration">2pm - 2.25pm (25 min)</span></p>
-                                <p>Charged: <span id="charged">0 kWh</span></p>
-                                <p>Total price: <span id="paid">$0.00</span></p>
-                            </div>
-
-                            {/*Charger details*/}
-                            <div>
-
-                                <p>Charger: <span id="charger-name">(Charger name)</span></p>
-                                <p>Connector used: <span id="connector-used">XX</span></p>
-                                <p>Location: <span id="location">XX</span></p>
-                                <p>Rate: <span id="rate">$1.50/kWh</span></p>
-                                <p>Predicted rate (Next hour): <span id="predicted-rate">$-- / kwh</span></p>
-                            </div>
-                            <div className="flex justify-center items-center" id="favourite-button-div">
-                                <button id="favourite-button" className="bg-red-400 hover:bg-red-900 px-3 py-2 mr-2 rounded-full text-white">
-                                    <i className="fas fa-heart" style={{ color: "#ffffff" }}></i> Add charger to favourites
-                                </button>
-                            </div>
-                            <p className="text-gray-400 text-sm italic">Click outside to close</p>
-                        </div>
                     </div>
                 </div>
 
+
+                {/*Modal with overlay*/}
+                <div
+                    className="fixed hidden inset-0 bg-gray-900 bg-opacity-50 h-full"
+                    id="charge-details">
+                    {/*Modal content*/}
+                    <div
+                        className="relative mx-auto w-fit max-w-screen top-24 p-5 border shadow-lg rounded-md bg-white"
+                    >
+                        <div className="mt-3 text-center w-fit">
+                            <h3 className="text-lg leading-6 font-medium text-gray-900" id="date">1/6/2023, 2pm</h3>
+                            <div className="mt-2 px-7 py-3 space-y-5">
+                                {/*Vehicle charging details*/}
+                                <div>
+                                    <p>Vehicle: <span id="vehicle">(Vehicle name)</span></p>
+                                    <p>Time: <span id="duration">2pm - 2.25pm (25 min)</span></p>
+                                    <p>Charged: <span id="charged">0 kWh</span></p>
+                                    <p>Total price: <span id="paid">$0.00</span></p>
+                                </div>
+
+                                {/*Charger details*/}
+                                <div>
+
+                                    <p>Charger: <span id="charger-name">(Charger name)</span></p>
+                                    <p>Connector used: <span id="connector-used">XX</span></p>
+                                    <p>Location: <span id="location">XX</span></p>
+                                    <p>Rate: <span id="rate">$1.50/kWh</span></p>
+                                    <p>Predicted rate (Next hour): <span id="predicted-rate">$-- / kwh</span></p>
+                                </div>
+                                <div className="flex justify-center items-center" id="favourite-button-div">
+                                    <button id="favourite-button" className="bg-red-400 hover:bg-red-900 px-3 py-2 mr-2 rounded-full text-white">
+                                        <i className="fas fa-heart" style={{ color: "#ffffff" }}></i> Add charger to favourites
+                                    </button>
+                                </div>
+                                <p className="text-gray-400 text-sm italic">Click outside to close</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        </div>
         </div>
     );
 
@@ -297,7 +290,7 @@ export default function ChargingHistory() {
         let modal = document.getElementById("charge-details");
         modal.classList.replace("hidden", "block");
 
-        let record = chargeHistoryDetails.find(rec => rec.id == e.target.id)
+        let record = chargeHistoryDetails.find(rec => rec.id === e.target.id)
 
         document.getElementById("date").innerHTML = FormatDateTime(record.time_start);
         document.getElementById("vehicle").innerHTML = record.vehicle.name + " - " + record.vehicle.model + " (" + record.vehicle.vehicle_sn + ")";
@@ -311,7 +304,7 @@ export default function ChargingHistory() {
         document.getElementById("rate").innerHTML = "$" + record.charger.rate_current + " / kWh";
 
         var predictedValue = "";
-        if (record.charger.rate_predicted != "") {
+        if (record.charger.rate_predicted !== "") {
             //get time now, then get index for next hour
             //0 index is 12AM etc. so get the time then see next hour
             //then put this value in the popup value
@@ -321,22 +314,22 @@ export default function ChargingHistory() {
 
             var predictedArray = JSON.parse(record.charger.rate_predicted);
 
-            predictedValue = predictedArray[currentHour+1];
-            
+            predictedValue = predictedArray[currentHour + 1];
+
         }
 
         document.getElementById("predicted-rate").innerHTML = "$" + predictedValue + " / kWh";
-        
-        if (record.charger.is_favourite == true) {
+
+        if (record.charger.is_favourite === true) {
             document.getElementById("favourite-button-div").innerHTML = `<button id='favourite-button' class='bg-red-400 hover:bg-red-300 px-3 py-2 mr-2 rounded-full text-white'><i class='fas fa-trash'></i> Remove favourite</button>`;
             document.getElementById("favourite-button").addEventListener("click", () => handleFavourite(record.charger.id, 'remove'));
         }
         else {
             document.getElementById("favourite-button-div").innerHTML = "<button id='favourite-button' class='bg-red-400 hover:bg-red-900 px-3 py-2 mr-2 rounded-full text-white'><i class='fas fa-heart'></i> Add to favourites</button>";
             document.getElementById("favourite-button").addEventListener("click", () => handleFavourite(record.charger.id, 'add'));
-    
+
         }
-        
+
     }
 
     function showOverview() {

@@ -68,6 +68,14 @@ flask\_routes.flask\_favourite\_charger module
    :undoc-members:
    :show-inheritance:
 
+flask\_routes.flask\_generic module
+-----------------------------------
+
+.. automodule:: flask_routes.flask_generic
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 flask\_routes.flask\_helper\_functions module
 ---------------------------------------------
 

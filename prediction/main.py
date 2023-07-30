@@ -18,7 +18,6 @@ from darts import TimeSeries
 
 from loss_logger import LossLogger
 
-# if running sphinx, need to change directory to 'root'
 current_working_directory_highest = os.path.basename(os.getcwd())
 if current_working_directory_highest != 'prediction':
     os.chdir('prediction')

@@ -70,8 +70,8 @@ export default function Favourites() {
 
                 var predictedArray = JSON.parse(favouriteChargerInfo[i].rate_predicted);
 
-                predictedValue = predictedArray[currentHour+1];
-                
+                predictedValue = predictedArray[currentHour + 1];
+
             }
 
             result.push(
