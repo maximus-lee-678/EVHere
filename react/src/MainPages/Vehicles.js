@@ -182,17 +182,17 @@ export default function Vehicles() {
                 {/*Modal content*/}
 
                 <Form elementName="Add a new vehicle" onSubmit={handleCreate} popup>
-                    <FormInputField elementName="Vehicle Name" id="vehicle-name" placeholder="Enter Vehicle Name . . ."
+                    <FormInputField elementName="Vehicle Name" id="vehicle-name" placeholder="Enter Vehicle Name"
                         value={vehicleName}
                         onChange={(event) => setVehicleName(event.target.value)}
                     />
 
-                    <FormInputField elementName="Vehicle Model" id="vehicle-model" placeholder="Enter Vehicle Model . . ."
+                    <FormInputField elementName="Vehicle Model" id="vehicle-model" placeholder="Enter Vehicle Model"
                         value={vehicleModel}
                         onChange={(event) => setVehicleModel(event.target.value)}
                     />
 
-                    <FormInputField elementName="Vehicle S/N" id="vehicle-sn" placeholder="Enter Vehicle S/N . . ."
+                    <FormInputField elementName="Vehicle S/N" id="vehicle-sn" placeholder="Enter Vehicle S/N"
                         value={vehicleSN}
                         onChange={(event) => setVehicleSN(event.target.value)}
                     />
