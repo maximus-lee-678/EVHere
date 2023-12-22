@@ -8,7 +8,7 @@ EVHere Prototype
 * Machine Learning is performed on Historical EV data to predict upcoming prices.
 * Photovoltaic voltage is able to be read from Solar Panels and uploaded to the Website Backend Database.
 
-.. image:: https://github.com/maximus-lee-678/team_15_flask_react/tree/main/other/webpage_screenshot.jpg
+.. image:: https://github.com/maximus-lee-678/team_15_flask_react/blob/main/other/webpage_screenshot.jpg
   :alt: EVHere Webpage
 
 👥 Team Members
