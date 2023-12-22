@@ -23,7 +23,7 @@ EVHere Prototype
      - Team Lead + Machine Learning
    * - `Maximus Lee <https://github.com/maximus-lee-678>`_
      - Backend Lead + Frontend
-   * - `Yong Zhi Wei <zoee-Y>`_
+   * - `Yong Zhi Wei <https://github.com/zoee-Y>`_
      - Frontend Lead
    * - `Yi Kiat <https://github.com/yi-kiat>`_
      - Raspberry PI
